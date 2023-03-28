@@ -28,8 +28,8 @@ modules:
       hash_length: 0
       exclude_implicits: true
       exclude:
-      - squashfuse
       - gcc@10.4.0
+      - squashfuse
       - slirp4netns
       - libtree
       - tree

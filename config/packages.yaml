@@ -247,6 +247,8 @@ packages:
     variants: [+hl, +szip, +fortran, +cxx, ~mpi]
   netcdf-cxx4:
     variants: [~doxygen]
+  parallelio:
+    variants: [+pnetcdf]
   fftw:
     variants: [~mpi]
   eccodes:
