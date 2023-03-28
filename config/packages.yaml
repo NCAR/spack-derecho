@@ -122,13 +122,6 @@ packages:
     externals:
     - spec: groff@1.22.4
       prefix: /usr
-  libfuse:
-    externals:
-    - spec: libfuse@2.9.7
-      prefix: /usr
-    - spec: libfuse@3.10.5
-      prefix: /usr
-    require: ~utils
   openssh:
     externals:
     - spec: openssh@8.4p1
