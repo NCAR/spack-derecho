@@ -1,0 +1,287 @@
+modules:
+  'default:':
+    roots:
+      lmod: /glade/u/apps/derecho/modules/23.04
+    arch_folder: false
+    'enable:':
+    - lmod
+    prefix_inspections:
+      bin:
+      - PATH
+      lib:
+      - NCAR_LDFLAGS_{name}
+      lib64:
+      - NCAR_LDFLAGS_{name}64
+      include:
+      - NCAR_INC_{name}
+      man:
+      - MANPATH
+      share/man:
+      - MANPATH
+      lib/pkgconfig:
+      - PKG_CONFIG_PATH
+      lib64/pkgconfig:
+      - PKG_CONFIG_PATH
+    lmod:
+      hierarchy:
+      - mpi
+      hash_length: 0
+      exclude_implicits: true
+      exclude:
+      - slirp4netns
+      - libtree
+      - tree
+      - gdb
+      - emacs
+      - tmux
+      - openjdk
+      - meson
+      - python
+      - zstd
+      - antlr
+      - squashfuse
+      - squashfs
+      - flex
+      - tcl
+      - ruby
+      - bison
+      - texinfo
+      - sqlite
+      - readline
+      - ncurses
+      - jasper
+      - libtirpc
+      - libtiff
+      - libjpeg-turbo
+      - libpng
+      - xz
+      - bzip2
+      - libszip
+      - unzip
+      - curl
+      - libtool
+      - autoconf@2.71
+      - automake
+      - lmod
+      - netcdf-c
+      - netcdf-fortran
+      - netcdf-cxx4
+      - cray-mpich
+      - cray-libsci
+      - cray-fftw
+      include:
+      - git
+      all:
+        environment:
+          set:
+            NCAR_ROOT_{name}: '{prefix}'
+            NCAR_SPACK_HASH_{name}: '{hash}'
+        template: ncar_default.lua
+      mpi:
+        template: ncar_wrapper_mpi.lua
+        environment:
+          set:
+            NCAR_ID_MPI: '{name}-{version}'
+            NCAR_BUILD_ENV_MPI: derecho-{compiler.name}-{compiler.version}-{name}-{version}
+          append_path:
+            MODULEPATH: /glade/u/apps/cseg/modules/23.04/{name}/{version}/{compiler.name}/{compiler.version}
+      gcc:
+        environment:
+          set:
+            NCAR_ID_COMPILER: '{name}-{version}'
+            NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
+            NCAR_BUILD_ENV: derecho-{name}-{version}
+          append_path:
+            MODULEPATH: /glade/u/apps/cseg/modules/23.04/{name}/{version}
+      intel-oneapi-compilers:
+        filter:
+          exclude_env_vars: [NCAR_ROOT_INTEL_ONEAPI_COMPILERS, NCAR_SPACK_HASH_INTEL_ONEAPI_COMPILERS]
+        environment:
+          set:
+            PE_ENV: INTEL
+            INTEL_VERSION: '{version}'
+            INTEL_PATH: '{prefix}'
+            INTEL_COMPILER_TYPE: ONEAPI
+            NCAR_ROOT_ONEAPI: '{prefix}'
+            NCAR_SPACK_HASH_ONEAPI: '{hash}'
+            NCAR_ID_COMPILER: oneapi-{version}
+            NCAR_BUILD_ENV_COMPILER: derecho-oneapi-{version}
+            NCAR_BUILD_ENV: derecho-oneapi-{version}
+            OMPI_CC: icx
+            OMPI_CXX: icpx
+            OMPI_FC: ifx
+            OMPI_F77: ifx
+            I_MPI_CC: icx
+            I_MPI_CXX: icpx
+            I_MPI_FC: ifx
+            I_MPI_F90: ifx
+            I_MPI_F77: ifx
+          append_path:
+            MODULEPATH: /glade/u/apps/cseg/modules/23.04/oneapi/{version}
+      intel-oneapi-compilers-classic:
+        autoload: none
+        filter:
+          exclude_env_vars: [NCAR_ROOT_INTEL_ONEAPI_COMPILERS_CLASSIC, CMAKE_PREFIX_PATH,
+            NCAR_SPACK_HASH_INTEL_ONEAPI_COMPILERS_CLASSIC]
+        environment:
+          set:
+            PE_ENV: INTEL
+            INTEL_VERSION: '{version}'
+            INTEL_PATH: '{^intel-oneapi-compilers.prefix}'
+            INTEL_COMPILER_TYPE: CLASSIC
+            NCAR_ROOT_INTEL: '{^intel-oneapi-compilers.prefix}'
+            NCAR_SPACK_HASH_INTEL: '{hash}'
+            NCAR_ID_COMPILER: intel-{^intel-oneapi-compilers.version}
+            NCAR_BUILD_ENV_COMPILER: derecho-intel-{^intel-oneapi-compilers.version}
+            NCAR_BUILD_ENV: derecho-intel-{^intel-oneapi-compilers.version}
+            OMPI_CC: icc
+            OMPI_CXX: icpc
+            OMPI_FC: ifort
+            OMPI_F77: ifort
+            I_MPI_CC: icc
+            I_MPI_CXX: icpc
+            I_MPI_FC: ifort
+            I_MPI_F90: ifort
+            I_MPI_F77: ifort
+          append_path:
+            MODULEPATH: /glade/u/apps/cseg/modules/23.04/oneapi/{^intel-oneapi-compilers.version}
+      intel-oneapi-mkl:
+        template: ncar_math.lua
+        filter:
+          exclude_env_vars: [NCAR_ROOT_INTEL_ONEAPI_MKL, NCAR_LDFLAGS_INTEL_ONEAPI_MKL,
+            NCAR_SPACK_HASH_INTEL_ONEAPI_MKL]
+        environment:
+          set:
+            NCAR_ROOT_MKL: '{prefix}/mkl/{version}'
+            NCAR_LDFLAGS_MKL: '{prefix}/mkl/{version}/lib/intel64'
+            NCAR_SPACK_HASH_MKL: '{hash}'
+      intel-oneapi-mpi:
+        filter:
+          exclude_env_vars: [NCAR_ROOT_INTEL_ONEAPI_MPI, NCAR_SPACK_HASH_INTEL_ONEAPI_MPI]
+        environment:
+          set:
+            NCAR_ROOT_IMPI: '{prefix}'
+            NCAR_SPACK_HASH_IMPI: '{hash}'
+      nvhpc:
+        environment:
+          set:
+            PE_ENV: NVIDIA
+            NVIDIA_VERSION: '{version}'
+            NVIDIA_PATH: '{prefix}'
+            CRAY_NVIDIA_VERSION: '{version}'
+            NCAR_ID_COMPILER: '{name}-{version}'
+            NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
+            NCAR_BUILD_ENV: derecho-{name}-{version}
+          prepend_path:
+            LD_LIBRARY_PATH: '{prefix}/Linux_x86_64/{version}/compilers/lib'
+          append_path:
+            MODULEPATH: /glade/u/apps/cseg/modules/23.04/{name}/{version}
+      ncarcompilers:
+        environment:
+          set:
+            NCAR_EXCLUDE_ASNEEDED: '1'
+        template: ncar_wrapper.lua
+      netcdf:
+        autoload: all
+      parallel-netcdf:
+        filter:
+          exclude_env_vars: [NCAR_ROOT_PARALLEL_NETCDF]
+        environment:
+          set:
+            NCAR_ROOT_PNETCDF: '{prefix}'
+            PNETCDF: '{prefix}'
+      cuda:
+        environment:
+          set:
+            NVHPC_CUDA_HOME: '{prefix}'
+            CRAY_ACCEL_TARGET: nvidia80
+            CRAY_TCMALLOC_MEMFS_FORCE: '1'
+            CRAYPE_LINK_TYPE: dynamic
+            CRAY_ACCEL_VENDOR: nvidia
+            CRAY_CUDATOOLKIT_VERSION: '{version}'
+            CRAY_CUDATOOLKIT_PREFIX: '{prefix}'
+            CRAY_CUDATOOLKIT_DIR: '{prefix}'
+            CUDATOOLKIT_HOME: '{prefix}'
+            NCAR_LIBS_CRAYGTL: -lstdc++
+          prepend_path:
+            LD_LIBRARY_PATH: '{prefix}/lib64:{prefix}/nvvm/lib64:{prefix}/extras/CUPTI/lib64:{prefix}/extras/Debugger/lib64'
+            CRAY_LD_LIBRARY_PATH: '{prefix}/lib64'
+      cudnn:
+        environment:
+          prepend_path:
+            LD_LIBRARY_PATH: '{prefix}/lib'
+      openmpi:
+        environment:
+          set:
+            OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
+          prepend_path:
+            LD_LIBRARY_PATH: '{prefix}/lib'
+      miniconda3:
+        filter:
+          exclude_env_vars: [PATH, LD_LIBRARY_PATH, NCAR_LDFLAGS_MINICONDA3, NCAR_INC_MINICONDA3,
+            NCAR_ROOT_MINICONDA3, ACLOCAL_PATH, PKG_CONFIG_PATH, CMAKE_PREFIX_PATH,
+            CONDA_SHLVL, _CE_CONDA, _CE_M, MANPATH]
+        environment:
+          set:
+            NCAR_ROOT_CONDA: '{prefix}'
+            CONDA_ROOT: '{prefix}'
+            CONDA_EXE: '{prefix}/bin/conda'
+        template: conda.lua
+      apptainer:
+        environment:
+          prepend_path:
+            PATH: '{^squashfs.prefix}/bin'
+        filter:
+          exclude_env_vars: [GOPATH]
+      singularityce:
+        environment:
+          prepend_path:
+            PATH: '{^squashfs.prefix}/bin'
+        filter:
+          exclude_env_vars: [GOPATH]
+      ncarenv:
+        template: ncar_env.lua
+      netcdf~mpi:
+        template: conflict-serial.lua
+      netcdf+mpi:
+        template: conflict-mpi.lua
+      hdf5~mpi:
+        template: conflict-serial.lua
+      hdf5+mpi:
+        template: conflict-mpi.lua
+      fftw~mpi:
+        template: conflict-serial.lua
+      fftw+mpi:
+        template: conflict-mpi.lua
+      esmf~mpi:
+        template: conflict-serial.lua
+      esmf+mpi:
+        template: conflict-mpi.lua
+      projections:
+        all: '{name}/{version}'
+        fftw+mpi: fftw-mpi/{version}
+        netcdf+mpi: netcdf-mpi/{version}
+        hdf5+mpi: hdf5-mpi/{version}
+        netcdf: netcdf/{version}
+        intel-oneapi-compilers: intel-oneapi/{version}
+        intel-oneapi-compilers-classic: intel-classic/{^intel-oneapi-compilers.version}
+        intel-oneapi-mpi: impi/{version}
+        intel-oneapi-mkl: mkl/{version}
+        miniconda3: conda/latest
+      core_compilers:
+      - gcc@7.5.0
+      core_specs:
+      - cuda
+      - r
+      - cmake
+      - git
+      - nco
+      - cdo
+      - wgrib2
+      - ncview
+      defaults:
+      - netcdf@4.9.1
+      - parallel-netcdf@1.12.3
+      - fftw@3.3.10
+      - openmpi@4.1.4
+      - nvhpc@23.1

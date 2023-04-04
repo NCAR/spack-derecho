@@ -1,0 +1,26 @@
+config:
+  install_tree:
+    projections:
+      gcc: '{name}/{version}'
+      hdf5+threadsafe: '{name}/{version}-safe/{compiler.name}/{compiler.version}'
+      netcdf-c^hdf5+threadsafe: '{name}/{version}-safe/{compiler.name}/{compiler.version}'
+      eccodes^hdf5+threadsafe: '{name}/{version}-safe/{compiler.name}/{compiler.version}'
+      netcdf-c^mpi: netcdf/{version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}
+      netcdf-fortran^mpi: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}
+      netcdf-cxx4^mpi: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}
+      netcdf-c: netcdf/{version}/packages/{name}/{version}/{compiler.name}/{compiler.version}
+      netcdf-fortran: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{compiler.name}/{compiler.version}
+      netcdf-cxx4: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{compiler.name}/{compiler.version}
+      all: '{name}/{version}/{compiler.name}/{compiler.version}'
+      ^mpi: '{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}'
+  build_jobs: 8
+  test_stage: /glade/derecho/scratch/$user/temp/spack/derecho/23.04/tests
+  source_cache: /glade/derecho/scratch/$user/temp/spack/cache
+  misc_cache: /glade/derecho/scratch/$user/temp/spack/derecho/23.04/misc
+  build_stage:
+  - /glade/derecho/scratch/$user/temp/spack/derecho/23.04/builds
+  shared_linking:
+    type: rpath
+    bind: false
+  template_dirs:
+  - /glade/work/csgteam/spack-deployments/derecho/23.04/envs/build/templates/modules

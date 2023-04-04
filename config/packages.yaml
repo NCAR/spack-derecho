@@ -1,0 +1,273 @@
+packages:
+  cairo:
+    require: '%gcc@7.5.0'
+  libxcb:
+    require: '%gcc@7.5.0'
+  fontconfig:
+    require: '%gcc@7.5.0'
+  libxaw:
+    require: '%gcc@7.5.0'
+  libx11:
+    require: '%gcc@7.5.0'
+  snappy:
+    require: '%gcc@7.5.0'
+  qhull:
+    require: '%gcc@7.5.0'
+  giflib:
+    require: '%gcc@7.5.0'
+  json-c:
+    require: '%gcc@7.5.0'
+  libdeflate:
+    require: '%gcc@7.5.0'
+  lz4:
+    require: '%gcc@7.5.0'
+  ninja:
+    require: '%gcc@7.5.0'
+  pmix:
+    require: '%gcc@7.5.0'
+  numactl:
+    require: '%gcc@7.5.0'
+  readline:
+    require: '%gcc@7.5.0'
+  pcre2:
+    require: '%gcc@7.5.0'
+  icu4c:
+    require: '%gcc@7.5.0'
+  openjdk:
+    require: '%gcc@7.5.0'
+  which:
+    require: '%gcc@7.5.0'
+  xz:
+    require: '%gcc@7.5.0'
+  texinfo:
+    require: '%gcc@7.5.0'
+  util-linux-uuid:
+    require: '%gcc@7.5.0'
+  perl:
+    require: '%gcc@7.5.0'
+  libjpeg-turbo:
+    require: '%gcc@7.5.0'
+  flex:
+    require: '%gcc@7.5.0'
+  bison:
+    require: '%gcc@7.5.0'
+  sqlite:
+    require: '%gcc@7.5.0'
+  googletest:
+    require: '%gcc@7.5.0'
+  libtiff:
+    require: '%gcc@7.5.0'
+  antlr:
+    require: '%gcc@7.5.0'
+  libpng:
+    require: '%gcc@7.5.0'
+  jasper:
+    require: '%gcc@7.5.0'
+  libxml2:
+    require: '%gcc@7.5.0'
+  cmake:
+    require: '%gcc@7.5.0'
+  zlib:
+    require: '%gcc@7.5.0'
+  libszip:
+    require: '%gcc@7.5.0'
+  expat:
+    require: '%gcc@7.5.0'
+  cudnn:
+    externals:
+    - spec: cudnn@8.5.0.96-11.7
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/cudnn/8.5.0.96-11.7
+    buildable: false
+  nvhpc:
+    externals:
+    - spec: nvhpc@23.1
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.1
+    buildable: false
+  arm-forge:
+    externals:
+    - spec: arm-forge@22.1.3
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/arm-forge/22.1.3
+    buildable: false
+  intel-oneapi-compilers:
+    externals:
+    - spec: intel-oneapi-compilers@2023.0.0
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/intel-oneapi-compilers/2023.0.0
+    buildable: false
+  libfabric:
+    externals:
+    - spec: libfabric@1.15.2 fabrics=tcp,udp
+      prefix: /opt/cray/libfabric/1.15.2.0
+    buildable: false
+  gawk:
+    externals:
+    - spec: gawk@4.2.1
+      prefix: /usr
+  gcc:
+    externals:
+    - spec: gcc@7.5.0 languages=c,c++
+      prefix: /usr
+      extra_attributes:
+        compilers:
+          c: /usr/bin/gcc-7
+          cxx: /usr/bin/g++-7
+    variants: [+piclibs, 'languages=c,c++,fortran,go']
+  groff:
+    externals:
+    - spec: groff@1.22.4
+      prefix: /usr
+  openssh:
+    externals:
+    - spec: openssh@8.4p1
+      prefix: /usr
+  rsync:
+    externals:
+    - spec: rsync@3.2.3
+      prefix: /usr
+  bash:
+    externals:
+    - spec: bash@4.4.23
+      prefix: /usr
+    buildable: false
+  cpio:
+    externals:
+    - spec: cpio@2.13
+      prefix: /usr
+    buildable: false
+  diffutils:
+    externals:
+    - spec: diffutils@3.6
+      prefix: /usr
+    buildable: false
+  findutils:
+    externals:
+    - spec: findutils@4.8.0
+      prefix: /usr
+    buildable: false
+  gmake:
+    externals:
+    - spec: gmake@4.2.1
+      prefix: /usr
+    buildable: false
+  lustre:
+    externals:
+    - spec: lustre@2.15.0.7_rc2_cray_3_g412d1c5
+      prefix: /usr
+    buildable: false
+  m4:
+    externals:
+    - spec: m4@1.4.18
+      prefix: /usr
+    buildable: false
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+  tar:
+    externals:
+    - spec: tar@1.34
+      prefix: /usr
+    buildable: false
+  ghostscript:
+    externals:
+    - spec: ghostscript@9.52
+      prefix: /usr
+    buildable: false
+  all:
+    'compiler:': [gcc@7.5.0, gcc, cce, nvhpc, oneapi, intel]
+    providers:
+      'mpi:': [cray-mpich, openmpi]
+      'szip:': [libszip]
+      'pkgconfig:': [pkg-config]
+      'lapack:': [cray-libsci, openblas]
+      'blas:': [cray-libsci, openblas]
+    permissions:
+      read: world
+      write: user
+    target: [x86_64_v3]
+  libfuse:
+    require: ~utils
+  openpbs:
+    externals:
+    - spec: openpbs@2021.1.3
+      prefix: /opt/pbs
+    buildable: false
+  miniconda3:
+    externals:
+    - spec: miniconda3@4.12.0
+      prefix: /glade/u/apps/opt/conda
+    buildable: false
+  cray-mpich:
+    externals:
+    - spec: cray-mpich@8.1.25 %gcc
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/gnu/9.1
+    - spec: cray-mpich@8.1.25 %cce
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/cray/10.0
+    - spec: cray-mpich@8.1.25 %nvhpc
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
+    - spec: cray-mpich@8.1.25 %oneapi
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0
+    buildable: false
+  cray-libsci:
+    externals:
+    - spec: cray-libsci@23.02.1.1
+      modules:
+      - cray-libsci/23.02.1.1
+    buildable: false
+  cuda:
+    externals:
+    - spec: cuda@11.7.1
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/cuda/11.7.1
+    buildable: false
+    require: +allow-unsupported-compilers
+  hwloc:
+    require: '%gcc@7.5.0'
+    variants: [+cuda]
+  openmpi:
+    variants: [+cuda]
+    require: fabrics=cma,ofi schedulers=tm +gpfs +lustre
+  zstd:
+    require: '%gcc@7.5.0'
+    variants: [+programs]
+  git:
+    variants: [+svn]
+  netcdf:
+    variants: [+dap, ~mpi]
+  netcdf-c:
+    variants: [+dap, ~mpi]
+  hdf:
+    variants: [+fortran, +szip]
+  hdf5:
+    require: '@:1.12'
+    variants: [+hl, +szip, +fortran, +cxx, ~mpi]
+  netcdf-cxx4:
+    variants: [~doxygen]
+  fftw:
+    variants: [~mpi]
+  eccodes:
+    variants: [+tools, +fortran, +netcdf, +png, jp2k=jasper]
+  cdo:
+    variants: [+curl]
+  singularityce:
+    variants: [~suid]
+  apptainer:
+    variants: [~suid]
+  esmf:
+    variants: [~mpi]
+  ncl:
+    variants: [+gdal, +hdf4]
+  intel-oneapi-mpi:
+    variants: [+external-libfabric, +ilp64]
+  intel-oneapi-mkl:
+    variants: [+ilp64]
+  gdb:
+    variants: [+gold, +ld, +lto, +tui, ~python, ~debuginfod]
+  curl:
+    require: '%gcc@7.5.0'
+    variants: [+libidn2]
+  gdal:
+    variants: [+blosc, +curl, +deflate, +expat, +geos, +gif, +grass, +grib, +hdf5,
+      +iconv, +jasper, +jpeg, +libcsf, +liblzma, +lz4, +netcdf, +pcidsk, +png, +qhull,
+      +sqlite3, +zstd]
+  arpack-ng:
+    variants: [~mpi]
