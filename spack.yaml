@@ -260,6 +260,8 @@ spack:
     zstd:
       require: '%gcc@7.5.0'
       variants: [+programs]
+    parallelio:
+      variants: [+pnetcdf]
     git:
       variants: [+svn]
     netcdf:
@@ -841,3 +843,7 @@ spack:
   - nco@5.1.4%gcc@12.2.0
   - cdo@2.1.1%gcc@12.2.0
   - ncview@2.1.8%gcc@12.2.0
+  - parallelio@2.5.10%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
+  - parallelio@2.5.10%nvhpc@23.1 ^cray-mpich@8.1.25%nvhpc@23.1
+  - parallelio@2.5.10%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
+  - parallelio@2.5.10%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1

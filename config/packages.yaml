@@ -229,6 +229,8 @@ packages:
   zstd:
     require: '%gcc@7.5.0'
     variants: [+programs]
+  parallelio:
+    variants: [+pnetcdf]
   git:
     variants: [+svn]
   netcdf:
