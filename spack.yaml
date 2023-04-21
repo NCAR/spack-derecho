@@ -755,7 +755,6 @@ spack:
   - bison
   - ruby
   - tcl
-  - flex
   - squashfs
   - squashfuse
   - antlr
@@ -783,7 +782,6 @@ spack:
   - cuda@11.7.1
   - cudnn@8.5.0.96-11.7
   - intel-oneapi-compilers-classic@2021.8.0
-  - ncl ^esmf@8.0.0 ^hdf5~mpi
   - intel-oneapi-mkl@2023.0.0%oneapi@2023.0.0
   - cray-libsci@23.02.1.1%gcc@12.2.0
   - cray-libsci@23.02.1.1%cce@15.0.1

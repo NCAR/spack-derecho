@@ -45,7 +45,7 @@ fi
 if command -v nvidia-smi &> /dev/null; then
     export NGPUS=`nvidia-smi -L |& grep -c UUID`
     
-    if  [ $NGPUS > 0 ]; then
+    if  [ $NGPUS -gt 0 ]; then
         export MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED=1
     fi
 else
