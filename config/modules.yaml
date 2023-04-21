@@ -28,6 +28,8 @@ modules:
       hash_length: 0
       exclude_implicits: true
       exclude:
+      - git-lfs
+      - flex@2.6.4
       - slirp4netns
       - libtree
       - tree
@@ -83,16 +85,12 @@ modules:
           set:
             NCAR_ID_MPI: '{name}-{version}'
             NCAR_BUILD_ENV_MPI: derecho-{compiler.name}-{compiler.version}-{name}-{version}
-          append_path:
-            MODULEPATH: /glade/u/apps/cseg/modules/23.04/{name}/{version}/{compiler.name}/{compiler.version}:"..os.getenv("__NCAR_USER_MODULEROOT").."/{name}/{version}/{compiler.name}/{compiler.version}
       gcc:
         environment:
           set:
             NCAR_ID_COMPILER: '{name}-{version}'
             NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
             NCAR_BUILD_ENV: derecho-{name}-{version}
-          append_path:
-            MODULEPATH: /glade/u/apps/cseg/modules/23.04/{name}/{version}:"..os.getenv("__NCAR_USER_MODULEROOT").."/{name}/{version}
       intel-oneapi-compilers:
         filter:
           exclude_env_vars: [NCAR_ROOT_INTEL_ONEAPI_COMPILERS, NCAR_SPACK_HASH_INTEL_ONEAPI_COMPILERS]
@@ -116,8 +114,6 @@ modules:
             I_MPI_FC: ifx
             I_MPI_F90: ifx
             I_MPI_F77: ifx
-          append_path:
-            MODULEPATH: /glade/u/apps/cseg/modules/23.04/oneapi/{version}:"..os.getenv("__NCAR_USER_MODULEROOT").."/oneapi/{version}
       intel-oneapi-compilers-classic:
         autoload: none
         filter:
@@ -143,8 +139,6 @@ modules:
             I_MPI_FC: ifort
             I_MPI_F90: ifort
             I_MPI_F77: ifort
-          append_path:
-            MODULEPATH: /glade/u/apps/cseg/modules/23.04/oneapi/{^intel-oneapi-compilers.version}:"..os.getenv("__NCAR_USER_MODULEROOT").."/oneapi/{^intel-oneapi-compilers.version}
       intel-oneapi-mkl:
         template: ncar_math.lua
         filter:
@@ -174,8 +168,6 @@ modules:
             NCAR_BUILD_ENV: derecho-{name}-{version}
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/Linux_x86_64/{version}/compilers/lib'
-          append_path:
-            MODULEPATH: /glade/u/apps/cseg/modules/23.04/{name}/{version}:"..os.getenv("__NCAR_USER_MODULEROOT").."/{name}/{version}
       ncarcompilers:
         environment:
           set:
@@ -285,3 +277,5 @@ modules:
       - fftw@3.3.10
       - openmpi@4.1.4
       - nvhpc@23.1
+      - parallelio+mpi
+      - esmf+mpi
