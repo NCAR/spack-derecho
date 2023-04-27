@@ -166,10 +166,6 @@
       "spec": "lmod"
     },
     {
-      "hash": "wzsqkudo2f5hvlvjzhexamqilaysy73f",
-      "spec": "cmake"
-    },
-    {
       "hash": "75aezgzxw6vxopcpsnrvosz7qluopdee",
       "spec": "miniconda3"
     },

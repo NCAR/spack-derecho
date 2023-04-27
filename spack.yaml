@@ -790,7 +790,6 @@ spack:
   - libtree
   - slirp4netns
   - lmod
-  - cmake
   - miniconda3
   - arm-forge@22.1.3
   - git
