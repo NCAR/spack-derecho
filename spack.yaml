@@ -905,3 +905,4 @@ spack:
   - esmf@8.4.1%cce@15.0.1+mpi ^cray-mpich@8.1.25%cce@15.0.1
   - ncl ^esmf@8.0.0 ^hdf5~mpi
   - hdf@4.2.15%nvhpc@21.3
+  - cmake

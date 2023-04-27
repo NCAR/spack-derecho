@@ -624,6 +624,10 @@
     {
       "hash": "v5dqzpulnmhhptao5cw3c3xsvclcredr",
       "spec": "hdf@4.2.15%nvhpc@21.3"
+    },
+    {
+      "hash": "wzsqkudo2f5hvlvjzhexamqilaysy73f",
+      "spec": "cmake"
     }
   ],
   "concrete_specs": {
