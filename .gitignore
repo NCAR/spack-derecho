@@ -1,0 +1,6 @@
+.spack-env
+.installs
+cache
+logs
+modules
+opt
