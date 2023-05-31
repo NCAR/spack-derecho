@@ -303,7 +303,7 @@ spack:
     charliecloud:
       variants: [+squashfuse]
     parallelio:
-      variants: [+pnetcdf, ~logging]
+      variants: [+pnetcdf, ~logging, +ncint]
     esmf:
       variants: [~mpi, ~xerces, +external-lapack, +parallelio, ~pnetcdf]
     ncl:
@@ -917,3 +917,13 @@ spack:
   - cdo@2.1.1%gcc@12.2.0
   - ncview@2.1.8%gcc@12.2.0
   - nccmp@1.9.0.1%gcc@12.2.0
+  - parallelio@2.6.0%gcc@12.2.0~mpi~pnetcdf
+  - parallelio@2.6.0%nvhpc@21.3~mpi~pnetcdf
+  - parallelio@2.6.0%nvhpc@23.1~mpi~pnetcdf
+  - parallelio@2.6.0%oneapi@2023.0.0~mpi~pnetcdf
+  - parallelio@2.6.0%cce@15.0.1~mpi~pnetcdf
+  - parallelio@2.6.0%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
+  - parallelio@2.6.0%nvhpc@21.3 ^cray-mpich@8.1.25%nvhpc@21.3
+  - parallelio@2.6.0%nvhpc@23.1 ^cray-mpich@8.1.25%nvhpc@23.1
+  - parallelio@2.6.0%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
+  - parallelio@2.6.0%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1

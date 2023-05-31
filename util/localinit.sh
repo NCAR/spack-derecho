@@ -42,14 +42,16 @@ if [ -n "$PBS_O_WORKDIR" ] && [ -z "$NCAR_PBS_JOBINIT" ]; then
 fi
 
 # Set number of GPUs (analogous to NCPUS)
-if command -v nvidia-smi &> /dev/null; then
-    export NGPUS=`nvidia-smi -L |& grep -c UUID`
-    
-    if  [ $NGPUS -gt 0 ]; then
-        export MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED=1
+if [ -n "$PBS_JOBID" ]; then
+    if command -v nvidia-smi &> /dev/null; then
+        export NGPUS=`nvidia-smi -L |& grep -c UUID`
+        
+        if  [ $NGPUS -gt 0 ]; then
+            export MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED=1
+        fi
+    else
+        export NGPUS=0
     fi
-else
-    export NGPUS=0
 fi
 
 # Load default modules

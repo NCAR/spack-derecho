@@ -275,7 +275,7 @@ packages:
   charliecloud:
     variants: [+squashfuse]
   parallelio:
-    variants: [+pnetcdf, ~logging]
+    variants: [+pnetcdf, ~logging, +ncint]
   esmf:
     variants: [~mpi, ~xerces, +external-lapack, +parallelio, ~pnetcdf]
   ncl:
