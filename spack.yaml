@@ -380,6 +380,7 @@ spack:
       - autoconf@2.71
       - automake
       - tmux
+      - nghttp2
       link_type: symlink
       link: roots
   compilers:
@@ -927,3 +928,4 @@ spack:
   - parallelio@2.6.0%nvhpc@23.1 ^cray-mpich@8.1.25%nvhpc@23.1
   - parallelio@2.6.0%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
   - parallelio@2.6.0%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1
+  - nghttp2

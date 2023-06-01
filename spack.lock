@@ -688,6 +688,10 @@
     {
       "hash": "qyompe5b22mkjax7adiy2smw7bx5mf5c",
       "spec": "parallelio@2.6.0%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1"
+    },
+    {
+      "hash": "pij522i4t6ovjfoooj75m7zwvc7bju6b",
+      "spec": "nghttp2"
     }
   ],
   "concrete_specs": {
