@@ -281,7 +281,7 @@ packages:
   ncl:
     variants: [+gdal, +hdf4]
   intel-oneapi-mpi:
-    variants: [+external-libfabric]
+    variants: [+external-libfabric, +generic-names]
   gdb:
     variants: [+gold, +ld, +lto, +tui, ~python, ~debuginfod]
   curl:
@@ -309,3 +309,22 @@ packages:
     require: '@:3.3'
   wgrib2:
     variants: [+netcdf4, ~netcdf3, +mysql, +udf, +proj4]
+  gnuplot:
+    variants: [+X, +wx, +qt]
+  qt:
+    variants: [+gtk, +opengl, +examples]
+  gtkplus:
+    variants: [+cups]
+  octave:
+    variants: [+arpack, +curl, +fftw, +fltk, +fontconfig, +freetype, +gl2ps, +glpk,
+      +gnuplot, +llvm, +magick, +opengl, +qhull, +qrupdate, +qscintilla, +qt, +suitesparse,
+      +zlib]
+  paraview:
+    variants: [+adios2, +examples, +eyedomelighting, +fortran, +hdf5, +libcatalyst,
+      +openpmd, +osmesa, +pagosa, +python, +qt, +visitbridge]
+  adios2:
+    variants: [+hdf5, +python]
+  harfbuzz:
+    variants: [+graphite2]
+  wxwidgets:
+    variants: [+opengl]
