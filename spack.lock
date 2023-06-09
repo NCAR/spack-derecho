@@ -696,6 +696,34 @@
     {
       "hash": "w2ya2isjkrku2jhsr2a2qysc3crdfhr6",
       "spec": "ncvis"
+    },
+    {
+      "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+      "spec": "intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "5siwdjnj2citoveq6wcbiiytdqirolsd",
+      "spec": "parallel-netcdf@1.12.3%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "s5igfs7fv4sotoibkemgark26w7lqkh3",
+      "spec": "hdf5@1.12.2%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "pbygw6n2gctjxzzrgqnbfxic3hpz67h7",
+      "spec": "netcdf@4.9.2%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "rgxiz3lwedfosgvxzlbxvseq4nas2jsn",
+      "spec": "fftw@3.3.10%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "umlj3jejm2vfbt5tlhfaixyzqzbpegg2",
+      "spec": "parallelio@2.6.0%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "ljotjopffu3i5rc57ykdnfcma2x2l3i4",
+      "spec": "esmf@8.4.2%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
     }
   ],
   "concrete_specs": {
@@ -27206,6 +27234,685 @@
         }
       ],
       "hash": "vpjwpzx5hkykm5fl77zc2523hg3bztyg"
+    },
+    "mhf4bkulk43sgl65lftyeifqzjpxyfua": {
+      "name": "intel-oneapi-mpi",
+      "version": "2021.8.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "generic",
+        "envmods": true,
+        "external-libfabric": true,
+        "generic-names": true,
+        "ilp64": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "krxekdy73v5tmdvd5rw3unbrbiqmjpghknwr2f3rxx7bfnqer6mq====",
+      "dependencies": [
+        {
+          "name": "libfabric",
+          "hash": "apw7jlillj534gqftlo4jvkdzniizy3d",
+          "type": [
+            "link",
+            "run"
+          ]
+        }
+      ],
+      "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua"
+    },
+    "apw7jlillj534gqftlo4jvkdzniizy3d": {
+      "name": "libfabric",
+      "version": "1.15.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "debug": false,
+        "fabrics": [
+          "sockets",
+          "tcp",
+          "udp"
+        ],
+        "kdreg": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/cray/libfabric/1.15.2.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "mojvctnexfhjswofnol3yoh2qirgr33jz5mfiahdfg4fno4nf4fq====",
+      "hash": "apw7jlillj534gqftlo4jvkdzniizy3d"
+    },
+    "5siwdjnj2citoveq6wcbiiytdqirolsd": {
+      "name": "parallel-netcdf",
+      "version": "1.12.3",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "burstbuffer": false,
+        "cxx": true,
+        "fortran": true,
+        "pic": true,
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "th5gt5332pthrwte4o2dlsgy6a7yd76ijxwgzzci7dgae636ybga====",
+      "dependencies": [
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "m4",
+          "hash": "akl5lbvhl6rrbh7qyucwz37zxlpjyexr",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "perl",
+          "hash": "uuu2ukzjf4geentqx2ow7afkfwrr4htj",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "5siwdjnj2citoveq6wcbiiytdqirolsd"
+    },
+    "s5igfs7fv4sotoibkemgark26w7lqkh3": {
+      "name": "hdf5",
+      "version": "1.12.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "api": "default",
+        "build_system": "cmake",
+        "build_type": "Release",
+        "cxx": true,
+        "fortran": true,
+        "generator": "make",
+        "hl": true,
+        "ipo": false,
+        "java": false,
+        "mpi": true,
+        "shared": true,
+        "szip": true,
+        "threadsafe": false,
+        "tools": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "7ta6mrpmvyhhg3vjm434ep6j4o5si6f6opsokfyrvvpki2hi426a====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libszip",
+          "hash": "5pxxhsn6425ttczpx5bywnmlqdp4zjle",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "pkg-config",
+          "hash": "cn6b5cmj6n5lgwliyo5oh2jvseg55jis",
+          "type": [
+            "run"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "s5igfs7fv4sotoibkemgark26w7lqkh3"
+    },
+    "pbygw6n2gctjxzzrgqnbfxic3hpz67h7": {
+      "name": "netcdf",
+      "version": "4.9.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "ncar.hpcd",
+      "parameters": {
+        "build_system": "bundle",
+        "dap": true,
+        "hdf4": false,
+        "mpi": true,
+        "parallel-netcdf": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "glqt2vxuw4zdcgy4mdim5r7cfbkthg2bp3avwfdgdqgfoz6zxlta====",
+      "dependencies": [
+        {
+          "name": "netcdf-c",
+          "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-cxx4",
+          "hash": "kkcwxrgkrsed6gpjvqd35r2j2xzdrs27",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "zaqergpxc4ch7f6tb7qkg6sjnbzmvn55",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "pbygw6n2gctjxzzrgqnbfxic3hpz67h7"
+    },
+    "ojkqjivigz67ma5q7x76lys3h2kaot4u": {
+      "name": "netcdf-c",
+      "version": "4.9.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "blosc": true,
+        "build_system": "autotools",
+        "byterange": false,
+        "dap": true,
+        "fsync": false,
+        "hdf4": false,
+        "jna": false,
+        "mpi": true,
+        "nczarr_zip": false,
+        "optimize": true,
+        "parallel-netcdf": false,
+        "pic": true,
+        "shared": true,
+        "szip": true,
+        "zstd": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "sfmwuhq2eoiyae65vyvvgr7shrxo6msd4k65e4qhahr77n5qwpvq====",
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "hash": "p5dufjsszhkhtoo77wxrlrksis5rldur",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "c-blosc",
+          "hash": "lc6syiplkkqtvo6s5gvzy43zczerdplr",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "curl",
+          "hash": "u3etkrhxsi2ph5vumvcpmj7if5rzwhdd",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hdf5",
+          "hash": "s5igfs7fv4sotoibkemgark26w7lqkh3",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libszip",
+          "hash": "5pxxhsn6425ttczpx5bywnmlqdp4zjle",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libxml2",
+          "hash": "zw6m7mvcrjghlnslr7fwqcmww23mld4z",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zstd",
+          "hash": "j7uq4dpxiemtpo4ers747unn2mxl4vam",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u"
+    },
+    "kkcwxrgkrsed6gpjvqd35r2j2xzdrs27": {
+      "name": "netcdf-cxx4",
+      "version": "4.3.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "doc": false,
+        "pic": true,
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "mhimjw7lce5wtday5knt6zd6dbi5ew2wp45cnr425eszkywvgb7q====",
+      "dependencies": [
+        {
+          "name": "netcdf-c",
+          "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "kkcwxrgkrsed6gpjvqd35r2j2xzdrs27"
+    },
+    "zaqergpxc4ch7f6tb7qkg6sjnbzmvn55": {
+      "name": "netcdf-fortran",
+      "version": "4.6.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "doc": false,
+        "pic": true,
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "4phjv4wbuh4bnhl2xlsc2uspjcwbc6rnkcyj4iwbynzictjmaanq====",
+      "dependencies": [
+        {
+          "name": "netcdf-c",
+          "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "zaqergpxc4ch7f6tb7qkg6sjnbzmvn55"
+    },
+    "rgxiz3lwedfosgvxzlbxvseq4nas2jsn": {
+      "name": "fftw",
+      "version": "3.3.10",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "mpi": true,
+        "openmp": false,
+        "pfft_patches": false,
+        "precision": [
+          "double",
+          "float"
+        ],
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "b5bkvwfcfqyx7ankdqcm4v7cqwyxavvafi2js6ztj7myfnsf2qzq====",
+      "dependencies": [
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "rgxiz3lwedfosgvxzlbxvseq4nas2jsn"
+    },
+    "umlj3jejm2vfbt5tlhfaixyzqzbpegg2": {
+      "name": "parallelio",
+      "version": "2.6.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "fortran": true,
+        "generator": "make",
+        "ipo": false,
+        "logging": false,
+        "mpi": true,
+        "ncint": true,
+        "patches": [
+          "ff95407b063caa120af717b260c62ce5d04e41f1b08fed11ee6a48eaa7b0ca1a"
+        ],
+        "pnetcdf": true,
+        "shared": true,
+        "timing": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "ff95407b063caa120af717b260c62ce5d04e41f1b08fed11ee6a48eaa7b0ca1a"
+      ],
+      "package_hash": "kgvytttippfyerrzovegc2tfc4plpjhbvbrigilyju2sgmy6mwmq====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "zaqergpxc4ch7f6tb7qkg6sjnbzmvn55",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "5siwdjnj2citoveq6wcbiiytdqirolsd",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "umlj3jejm2vfbt5tlhfaixyzqzbpegg2"
+    },
+    "ljotjopffu3i5rc57ykdnfcma2x2l3i4": {
+      "name": "esmf",
+      "version": "8.4.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "makefile",
+        "debug": false,
+        "esmf_comm": "auto",
+        "esmf_os": "auto",
+        "esmf_pio": "auto",
+        "external-lapack": true,
+        "external-parallelio": true,
+        "mpi": true,
+        "netcdf": true,
+        "patches": [
+          "f63d4050cf90cc3577291804b752e37d87a657e0775fb5c8ddfec540a7aa73eb"
+        ],
+        "pnetcdf": true,
+        "shared": true,
+        "xerces": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "f63d4050cf90cc3577291804b752e37d87a657e0775fb5c8ddfec540a7aa73eb"
+      ],
+      "package_hash": "o7norn3czmbi7bas4raklydj3rqdej43rtel2qxcu6ntlo2kda3q====",
+      "dependencies": [
+        {
+          "name": "intel-oneapi-mkl",
+          "hash": "wkexcxmq3ksxiypgpo47irfc6iixz5lc",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "zaqergpxc4ch7f6tb7qkg6sjnbzmvn55",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "5siwdjnj2citoveq6wcbiiytdqirolsd",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "parallelio",
+          "hash": "umlj3jejm2vfbt5tlhfaixyzqzbpegg2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "ljotjopffu3i5rc57ykdnfcma2x2l3i4"
     }
   }
 }
