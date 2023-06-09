@@ -159,6 +159,9 @@ modules:
           set:
             NCAR_ROOT_IMPI: '{prefix}'
             NCAR_SPACK_HASH_IMPI: '{hash}'
+            FI_PROVIDER_PATH: /opt/cray/libfabric/1.15.2.0/lib64/libfabric
+          prepend_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
       nvhpc:
         environment:
           set:
@@ -258,7 +261,7 @@ modules:
         netcdf: netcdf/{version}
         intel-oneapi-compilers: intel-oneapi/{version}
         intel-oneapi-compilers-classic: intel-classic/{^intel-oneapi-compilers.version}
-        intel-oneapi-mpi: impi/{version}
+        intel-oneapi-mpi: intel-mpi/{version}
         intel-oneapi-mkl: mkl/{version}
         miniconda3: conda/latest
       core_compilers:

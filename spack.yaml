@@ -650,6 +650,9 @@ spack:
             set:
               NCAR_ROOT_IMPI: '{prefix}'
               NCAR_SPACK_HASH_IMPI: '{hash}'
+              FI_PROVIDER_PATH: /opt/cray/libfabric/1.15.2.0/lib64/libfabric
+            prepend_path:
+              LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
         nvhpc:
           environment:
             set:
@@ -749,7 +752,7 @@ spack:
           netcdf: netcdf/{version}
           intel-oneapi-compilers: intel-oneapi/{version}
           intel-oneapi-compilers-classic: intel-classic/{^intel-oneapi-compilers.version}
-          intel-oneapi-mpi: impi/{version}
+          intel-oneapi-mpi: intel-mpi/{version}
           intel-oneapi-mkl: mkl/{version}
           miniconda3: conda/latest
         core_compilers:
@@ -949,11 +952,4 @@ spack:
   - parallelio@2.6.0%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
   - parallelio@2.6.0%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1
   - nghttp2
-  - intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - parallel-netcdf@1.12.3%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - hdf5@1.12.2%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - netcdf@4.9.2%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - fftw@3.3.10%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - parallelio@2.6.0%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - esmf@8.4.2%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - ncvis
