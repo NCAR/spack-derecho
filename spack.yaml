@@ -494,6 +494,20 @@ spack:
           PE_ENV: GNU
         append_path:
           LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+  - compiler:
+      spec: nvhpc@23.5
+      paths:
+        cc: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/bin/nvc
+        cxx: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/bin/nvc++
+        f77: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/bin/nvfortran
+        fc: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/bin/nvfortran
+      operating_system: sles15
+      modules: []
+      environment:
+        prepend_path:
+          LD_LIBRARY_PATH: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/lib
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
   modules:
     'default:':
       roots:
@@ -972,3 +986,23 @@ spack:
   - parallelio@2.6.0%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - esmf@8.4.2%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - linaro-forge@23.0
+  - nvhpc@23.5
+  - cray-mpich@8.1.25%nvhpc@23.5
+  - ncarcompilers@1.0.0%nvhpc@23.5
+  - fftw@3.3.10%nvhpc@23.5~mpi
+  - udunits@2.2.28%nvhpc@23.5
+  - hdf5@1.12.2%nvhpc@23.5~mpi
+  - netcdf@4.9.2%nvhpc@23.5~mpi
+  - proj@8.2.1%nvhpc@23.5
+  - geos@3.9.1%nvhpc@23.5
+  - hdf@4.2.15%nvhpc@23.5
+  - mpi-serial@2.3.0%nvhpc@23.5
+  - parallelio@2.6.0%nvhpc@23.5~mpi~pnetcdf
+  - esmf@8.4.2%nvhpc@23.5~mpi ^nvhpc ^parallelio~mpi
+  - eccodes@2.25.0%nvhpc@23.5
+  - parallel-netcdf@1.12.3%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
+  - hdf5@1.12.2%nvhpc@23.5+mpi ^cray-mpich@8.1.25%nvhpc@23.5
+  - netcdf@4.9.2%nvhpc@23.5+mpi ^cray-mpich@8.1.25%nvhpc@23.5
+  - fftw@3.3.10%nvhpc@23.5+mpi ^cray-mpich@8.1.25%nvhpc@23.5
+  - parallelio@2.6.0%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
+  - esmf@8.4.2%nvhpc@23.5+mpi+pnetcdf ^cray-mpich@8.1.25%nvhpc@23.5 ^nvhpc
