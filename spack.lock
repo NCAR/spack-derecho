@@ -724,6 +724,10 @@
     {
       "hash": "ljotjopffu3i5rc57ykdnfcma2x2l3i4",
       "spec": "esmf@8.4.2%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "i2f7xpxuqs5i7wa2pzejm3fwiyv6o5fk",
+      "spec": "linaro-forge@23.0"
     }
   ],
   "concrete_specs": {
@@ -27913,6 +27917,38 @@
         }
       ],
       "hash": "ljotjopffu3i5rc57ykdnfcma2x2l3i4"
+    },
+    "i2f7xpxuqs5i7wa2pzejm3fwiyv6o5fk": {
+      "name": "linaro-forge",
+      "version": "23.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "accept-eula": false,
+        "build_system": "generic",
+        "probe": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/common/23.04/spack/opt/spack/linaro-forge/23.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "v2mkphphla4jzq7oeieotiljdfmcwnxqzvzmgjhbhd2xgdspdi4a====",
+      "hash": "i2f7xpxuqs5i7wa2pzejm3fwiyv6o5fk"
     }
   }
 }

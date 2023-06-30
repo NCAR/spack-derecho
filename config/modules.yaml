@@ -241,6 +241,10 @@ modules:
             PATH: '{^squashfs.prefix}/bin'
         filter:
           exclude_env_vars: [GOPATH]
+      parallelio:
+        environment:
+          set:
+            PIO: '{prefix}'
       netcdf~mpi:
         template: conflict-serial.lua
       netcdf+mpi:

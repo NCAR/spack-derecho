@@ -27,6 +27,95 @@ spack:
     template_dirs:
     - /glade/work/csgteam/spack-deployments/derecho/23.06/envs/build/templates/modules
   packages:
+    linaro-forge:
+      externals:
+      - spec: linaro-forge@23.0
+        prefix: /glade/u/apps/common/23.04/spack/opt/spack/linaro-forge/23.0
+      buildable: false
+    gawk:
+      externals:
+      - spec: gawk@4.2.1
+        prefix: /usr
+    gcc:
+      externals:
+      - spec: gcc@7.5.0 languages=c,c++,fortran
+        prefix: /usr
+        extra_attributes:
+          compilers:
+            c: /usr/bin/gcc-7
+            cxx: /usr/bin/g++-7
+            fortran: /usr/bin/gfortran-7
+      variants: [+piclibs, 'languages=c,c++,fortran,go']
+    groff:
+      externals:
+      - spec: groff@1.22.4
+        prefix: /usr
+    openssh:
+      externals:
+      - spec: openssh@8.4p1
+        prefix: /usr
+    rsync:
+      externals:
+      - spec: rsync@3.2.3
+        prefix: /usr
+    tar:
+      externals:
+      - spec: tar@1.34
+        prefix: /usr
+      buildable: false
+      require: '%gcc@7.5.0'
+    bash:
+      externals:
+      - spec: bash@4.4.23
+        prefix: /usr
+      buildable: false
+    cpio:
+      externals:
+      - spec: cpio@2.13
+        prefix: /usr
+      buildable: false
+    diffutils:
+      externals:
+      - spec: diffutils@3.6
+        prefix: /usr
+      buildable: false
+    findutils:
+      externals:
+      - spec: findutils@4.8.0
+        prefix: /usr
+      buildable: false
+    gmake:
+      externals:
+      - spec: gmake@4.2.1
+        prefix: /usr
+      buildable: false
+      require: '%gcc@7.5.0'
+    lustre:
+      externals:
+      - spec: lustre@2.15.0.7_rc2_cray_3_g412d1c5
+        prefix: /usr
+      buildable: false
+    m4:
+      externals:
+      - spec: m4@1.4.18
+        prefix: /usr
+      buildable: false
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
+      require: '%gcc@7.5.0'
+    ghostscript:
+      externals:
+      - spec: ghostscript@9.52
+        prefix: /usr
+      buildable: false
+    openssl:
+      externals:
+      - spec: openssl@1.1.1l
+        prefix: /usr
+      buildable: false
     bzip2:
       require: '%gcc@7.5.0'
     libxcb:
@@ -102,6 +191,8 @@ spack:
       buildable: false
     nvhpc:
       externals:
+      - spec: nvhpc@23.5
+        prefix: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5
       - spec: nvhpc@23.3
         prefix: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.3
       - spec: nvhpc@23.1
@@ -126,99 +217,15 @@ spack:
       - spec: libfabric@1.15.2 fabrics=tcp,udp
         prefix: /opt/cray/libfabric/1.15.2.0
       buildable: false
-    gawk:
-      externals:
-      - spec: gawk@4.2.1
-        prefix: /usr
-    gcc:
-      externals:
-      - spec: gcc@7.5.0 languages=c,c++,fortran
-        prefix: /usr
-        extra_attributes:
-          compilers:
-            c: /usr/bin/gcc-7
-            cxx: /usr/bin/g++-7
-            fortran: /usr/bin/gfortran-7
-      variants: [+piclibs, 'languages=c,c++,fortran,go']
-    groff:
-      externals:
-      - spec: groff@1.22.4
-        prefix: /usr
     openjdk:
       require: '%gcc@7.5.0'
       externals:
       - spec: openjdk@11.0.16_8-suse-150000.3.83.1-x8664
         prefix: /usr
-    openssh:
-      externals:
-      - spec: openssh@8.4p1
-        prefix: /usr
-    rsync:
-      externals:
-      - spec: rsync@3.2.3
-        prefix: /usr
     texlive:
       externals:
       - spec: texlive@20210325
         prefix: /usr
-    tar:
-      require: '%gcc@7.5.0'
-      externals:
-      - spec: tar@1.34
-        prefix: /usr
-      buildable: false
-    bash:
-      externals:
-      - spec: bash@4.4.23
-        prefix: /usr
-      buildable: false
-    cpio:
-      externals:
-      - spec: cpio@2.13
-        prefix: /usr
-      buildable: false
-    diffutils:
-      externals:
-      - spec: diffutils@3.6
-        prefix: /usr
-      buildable: false
-    findutils:
-      externals:
-      - spec: findutils@4.8.0
-        prefix: /usr
-      buildable: false
-    gmake:
-      require: '%gcc@7.5.0'
-      externals:
-      - spec: gmake@4.2.1
-        prefix: /usr
-      buildable: false
-    lustre:
-      externals:
-      - spec: lustre@2.15.0.7_rc2_cray_3_g412d1c5
-        prefix: /usr
-      buildable: false
-    m4:
-      externals:
-      - spec: m4@1.4.18
-        prefix: /usr
-      buildable: false
-    pkg-config:
-      require: '%gcc@7.5.0'
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
-    ghostscript:
-      externals:
-      - spec: ghostscript@9.52
-        prefix: /usr
-      buildable: false
-    openssl:
-      externals:
-      - spec: openssl@1.1.1l
-        prefix: /usr
-      buildable: false
     all:
       'compiler:': [gcc@7.5.0, gcc, cce, nvhpc, oneapi, intel]
       providers:
@@ -732,6 +739,10 @@ spack:
               PATH: '{^squashfs.prefix}/bin'
           filter:
             exclude_env_vars: [GOPATH]
+        parallelio:
+          environment:
+            set:
+              PIO: '{prefix}'
         netcdf~mpi:
           template: conflict-serial.lua
         netcdf+mpi:
@@ -960,3 +971,4 @@ spack:
   - fftw@3.3.10%oneapi@2023.0.0+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - parallelio@2.6.0%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - esmf@8.4.2%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
+  - linaro-forge@23.0
