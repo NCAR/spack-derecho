@@ -193,6 +193,7 @@ modules:
             NCAR_ROOT_PNETCDF: '{prefix}'
             PNETCDF: '{prefix}'
       cuda:
+        template: ncar_cuda.lua
         environment:
           set:
             NVHPC_CUDA_HOME: '{prefix}'
@@ -205,6 +206,7 @@ modules:
             CRAY_CUDATOOLKIT_DIR: '{prefix}'
             CUDATOOLKIT_HOME: '{prefix}'
             NCAR_LIBS_CRAYGTL: -lstdc++
+            CUDA_VERSION: '{version}'
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/lib64:{prefix}/nvvm/lib64:{prefix}/extras/CUPTI/lib64:{prefix}/extras/Debugger/lib64'
             CRAY_LD_LIBRARY_PATH: '{prefix}/lib64'
@@ -212,6 +214,14 @@ modules:
         environment:
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/lib'
+      cutensor:
+        template: ncar_requires_cuda.lua
+        filter:
+          exclude_env_vars: [NCAR_LDFLAGS_CUTENSOR]
+        environment:
+          set:
+            NCAR_LDFLAGS_CUTENSOR_CUDA: '{prefix}/lib/" .. os.getenv("CUDA_MAJOR_VERSION")
+              .."'
       openmpi:
         environment:
           set:

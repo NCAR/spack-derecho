@@ -808,6 +808,10 @@
     {
       "hash": "5nbq34goi65xdp43ibtb27oszso5x32t",
       "spec": "esmf@8.4.2%nvhpc@23.5+mpi+pnetcdf ^cray-mpich@8.1.25%nvhpc@23.5 ^nvhpc"
+    },
+    {
+      "hash": "cbu72axwqdm7fk3fi6a4b4edhzqvawqb",
+      "spec": "cutensor@1.7.0.1"
     }
   ],
   "concrete_specs": {
@@ -29740,6 +29744,36 @@
         }
       ],
       "hash": "5nbq34goi65xdp43ibtb27oszso5x32t"
+    },
+    "cbu72axwqdm7fk3fi6a4b4edhzqvawqb": {
+      "name": "cutensor",
+      "version": "1.7.0.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "generic",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/common/23.04/spack/opt/spack/cutensor/1.7.0.1",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "n2qyrtl3dvfqqcafggmj3g2pqkqlkpi3novks5p65vqjopcuswrq====",
+      "hash": "cbu72axwqdm7fk3fi6a4b4edhzqvawqb"
     }
   }
 }
