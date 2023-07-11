@@ -160,6 +160,8 @@ modules:
             NCAR_ROOT_IMPI: '{prefix}'
             NCAR_SPACK_HASH_IMPI: '{hash}'
             FI_PROVIDER_PATH: /opt/cray/libfabric/1.15.2.0
+            I_MPI_HYDRA_BOOTSTRAP_EXEC: pbs_tmrsh
+            I_MPI_HYDRA_BOOTSTRAP: rsh
           prepend_path:
             LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
       nvhpc:
