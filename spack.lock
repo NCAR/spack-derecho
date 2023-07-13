@@ -812,6 +812,26 @@
     {
       "hash": "cbu72axwqdm7fk3fi6a4b4edhzqvawqb",
       "spec": "cutensor@1.7.0.1"
+    },
+    {
+      "hash": "jgral3a3ne74wroutmwo4bxe5inpxbnu",
+      "spec": "gptl@8.1.1%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0"
+    },
+    {
+      "hash": "47imga2wrievvx6ep42ihreyf6js6lpx",
+      "spec": "gptl@8.1.1%nvhpc@21.3 ^cray-mpich@8.1.25%nvhpc@21.3"
+    },
+    {
+      "hash": "2zp5wbqsh4n3flsrvniyj7vz75vldk3i",
+      "spec": "gptl@8.1.1%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5"
+    },
+    {
+      "hash": "g4su7yy6gi63zixg2t6n6fdic3fbn7vu",
+      "spec": "gptl@8.1.1%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0"
+    },
+    {
+      "hash": "avvx3yy7hj37jiufya2cv6kyqt5qbjmi",
+      "spec": "gptl@8.1.1%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
     }
   ],
   "concrete_specs": {
@@ -29774,6 +29794,302 @@
       },
       "package_hash": "n2qyrtl3dvfqqcafggmj3g2pqkqlkpi3novks5p65vqjopcuswrq====",
       "hash": "cbu72axwqdm7fk3fi6a4b4edhzqvawqb"
+    },
+    "jgral3a3ne74wroutmwo4bxe5inpxbnu": {
+      "name": "gptl",
+      "version": "8.1.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "12.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "disable-unwind": false,
+        "nestedomp": false,
+        "papi": true,
+        "pmpi": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "gqn2wnufqerrhqqfndt2z2f7ighjklbotf3ipecwchaotwuboyea====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "moe4qr5y5rb7fv2povkpsn446x5couhe",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libunwind",
+          "hash": "mhn2w6g3o6exs6lvz5piwfypqkuum4jk",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "jgral3a3ne74wroutmwo4bxe5inpxbnu"
+    },
+    "mhn2w6g3o6exs6lvz5piwfypqkuum4jk": {
+      "name": "libunwind",
+      "version": "1.6.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "block_signals": false,
+        "build_system": "autotools",
+        "components": [
+          "coredump",
+          "ptrace",
+          "setjump"
+        ],
+        "conservative_checks": false,
+        "cxx_exceptions": true,
+        "debug": false,
+        "debug_frame": true,
+        "docs": true,
+        "libs": [
+          "shared",
+          "static"
+        ],
+        "pic": true,
+        "tests": true,
+        "weak_backtrace": true,
+        "xz": true,
+        "zlib": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "ehitg7cktumeyju2lsmjvka7gkkmqmhlh36fylthqjrflkww55ga====",
+      "dependencies": [
+        {
+          "name": "xz",
+          "hash": "sv6lp7wu7pt23blfjh6eutmpzrarqhkm",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "mhn2w6g3o6exs6lvz5piwfypqkuum4jk"
+    },
+    "47imga2wrievvx6ep42ihreyf6js6lpx": {
+      "name": "gptl",
+      "version": "8.1.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "21.3"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "disable-unwind": false,
+        "nestedomp": false,
+        "papi": true,
+        "pmpi": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "gqn2wnufqerrhqqfndt2z2f7ighjklbotf3ipecwchaotwuboyea====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "kdx2yprblakupetzvluxtf5ya6p57mxc",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libunwind",
+          "hash": "mhn2w6g3o6exs6lvz5piwfypqkuum4jk",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "47imga2wrievvx6ep42ihreyf6js6lpx"
+    },
+    "2zp5wbqsh4n3flsrvniyj7vz75vldk3i": {
+      "name": "gptl",
+      "version": "8.1.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "23.5"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "disable-unwind": false,
+        "nestedomp": false,
+        "papi": true,
+        "pmpi": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "gqn2wnufqerrhqqfndt2z2f7ighjklbotf3ipecwchaotwuboyea====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "dpkqgrxmzxkiqx6uya76hrsig4lz5xr4",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libunwind",
+          "hash": "mhn2w6g3o6exs6lvz5piwfypqkuum4jk",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "2zp5wbqsh4n3flsrvniyj7vz75vldk3i"
+    },
+    "g4su7yy6gi63zixg2t6n6fdic3fbn7vu": {
+      "name": "gptl",
+      "version": "8.1.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "disable-unwind": false,
+        "nestedomp": false,
+        "papi": true,
+        "pmpi": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "gqn2wnufqerrhqqfndt2z2f7ighjklbotf3ipecwchaotwuboyea====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "ynu6talwag6gsswygjj46pr3b6hmtayu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libunwind",
+          "hash": "mhn2w6g3o6exs6lvz5piwfypqkuum4jk",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "g4su7yy6gi63zixg2t6n6fdic3fbn7vu"
+    },
+    "avvx3yy7hj37jiufya2cv6kyqt5qbjmi": {
+      "name": "gptl",
+      "version": "8.1.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "disable-unwind": false,
+        "nestedomp": false,
+        "papi": true,
+        "pmpi": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "gqn2wnufqerrhqqfndt2z2f7ighjklbotf3ipecwchaotwuboyea====",
+      "dependencies": [
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libunwind",
+          "hash": "mhn2w6g3o6exs6lvz5piwfypqkuum4jk",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "avvx3yy7hj37jiufya2cv6kyqt5qbjmi"
     }
   }
 }

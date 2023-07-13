@@ -368,6 +368,12 @@ spack:
       variants: [+graphite2]
     wxwidgets:
       variants: [+opengl]
+    gptl:
+      variants: [+papi, +pmpi]
+    libunwind:
+      require: '%gcc@7.5.0'
+      variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
+        +cxx_exceptions]
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.06/opt
@@ -1024,3 +1030,8 @@ spack:
   - parallelio@2.6.0%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
   - esmf@8.4.2%nvhpc@23.5+mpi+pnetcdf ^cray-mpich@8.1.25%nvhpc@23.5 ^nvhpc
   - cutensor@1.7.0.1
+  - gptl@8.1.1%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
+  - gptl@8.1.1%nvhpc@21.3 ^cray-mpich@8.1.25%nvhpc@21.3
+  - gptl@8.1.1%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
+  - gptl@8.1.1%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
+  - gptl@8.1.1%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0

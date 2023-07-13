@@ -340,3 +340,9 @@ packages:
     variants: [+graphite2]
   wxwidgets:
     variants: [+opengl]
+  gptl:
+    variants: [+papi, +pmpi]
+  libunwind:
+    require: '%gcc@7.5.0'
+    variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
+      +cxx_exceptions]
