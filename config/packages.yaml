@@ -1,9 +1,10 @@
 packages:
-  cutensor:
-    externals:
-    - spec: cutensor@1.7.0.1
-      prefix: /glade/u/apps/common/23.04/spack/opt/spack/cutensor/1.7.0.1
-    buildable: false
+  libtool:
+    require: '%gcc@7.5.0'
+  automake:
+    require: '%gcc@7.5.0'
+  autoconf:
+    require: '%gcc@7.5.0'
   gawk:
     externals:
     - spec: gawk@4.2.1
@@ -87,6 +88,11 @@ packages:
     externals:
     - spec: openssl@1.1.1l
       prefix: /usr
+    buildable: false
+  cutensor:
+    externals:
+    - spec: cutensor@1.7.0.1
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/cutensor/1.7.0.1
     buildable: false
   linaro-forge:
     externals:
@@ -229,6 +235,14 @@ packages:
     buildable: false
   cray-mpich:
     externals:
+    - spec: cray-mpich@8.1.26 %gcc
+      prefix: /opt/cray/pe/mpich/8.1.26/ofi/gnu/9.1
+    - spec: cray-mpich@8.1.26 %cce
+      prefix: /opt/cray/pe/mpich/8.1.26/ofi/cray/14.0
+    - spec: cray-mpich@8.1.26 %nvhpc
+      prefix: /opt/cray/pe/mpich/8.1.26/ofi/nvidia/20.7
+    - spec: cray-mpich@8.1.26 %oneapi
+      prefix: /opt/cray/pe/mpich/8.1.26/ofi/intel/2022.1
     - spec: cray-mpich@8.1.25 %gcc
       prefix: /opt/cray/pe/mpich/8.1.25/ofi/gnu/9.1
     - spec: cray-mpich@8.1.25 %cce
@@ -240,6 +254,9 @@ packages:
     buildable: false
   cray-libsci:
     externals:
+    - spec: cray-libsci@23.05.1.4
+      modules:
+      - cray-libsci/23.05.1.4
     - spec: cray-libsci@23.02.1.1
       modules:
       - cray-libsci/23.02.1.1
@@ -346,3 +363,7 @@ packages:
     require: '%gcc@7.5.0'
     variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
       +cxx_exceptions]
+  darshan-runtime:
+    variants: [+hdf5, +parallel-netcdf, scheduler=pbs]
+  darshan-util:
+    variants: [+bzip2]

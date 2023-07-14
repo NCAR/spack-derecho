@@ -27,11 +27,12 @@ spack:
     template_dirs:
     - /glade/work/csgteam/spack-deployments/derecho/23.06/envs/build/templates/modules
   packages:
-    cutensor:
-      externals:
-      - spec: cutensor@1.7.0.1
-        prefix: /glade/u/apps/common/23.04/spack/opt/spack/cutensor/1.7.0.1
-      buildable: false
+    libtool:
+      require: '%gcc@7.5.0'
+    automake:
+      require: '%gcc@7.5.0'
+    autoconf:
+      require: '%gcc@7.5.0'
     gawk:
       externals:
       - spec: gawk@4.2.1
@@ -115,6 +116,11 @@ spack:
       externals:
       - spec: openssl@1.1.1l
         prefix: /usr
+      buildable: false
+    cutensor:
+      externals:
+      - spec: cutensor@1.7.0.1
+        prefix: /glade/u/apps/common/23.04/spack/opt/spack/cutensor/1.7.0.1
       buildable: false
     linaro-forge:
       externals:
@@ -257,6 +263,14 @@ spack:
       buildable: false
     cray-mpich:
       externals:
+      - spec: cray-mpich@8.1.26 %gcc
+        prefix: /opt/cray/pe/mpich/8.1.26/ofi/gnu/9.1
+      - spec: cray-mpich@8.1.26 %cce
+        prefix: /opt/cray/pe/mpich/8.1.26/ofi/cray/14.0
+      - spec: cray-mpich@8.1.26 %nvhpc
+        prefix: /opt/cray/pe/mpich/8.1.26/ofi/nvidia/20.7
+      - spec: cray-mpich@8.1.26 %oneapi
+        prefix: /opt/cray/pe/mpich/8.1.26/ofi/intel/2022.1
       - spec: cray-mpich@8.1.25 %gcc
         prefix: /opt/cray/pe/mpich/8.1.25/ofi/gnu/9.1
       - spec: cray-mpich@8.1.25 %cce
@@ -268,6 +282,9 @@ spack:
       buildable: false
     cray-libsci:
       externals:
+      - spec: cray-libsci@23.05.1.4
+        modules:
+        - cray-libsci/23.05.1.4
       - spec: cray-libsci@23.02.1.1
         modules:
         - cray-libsci/23.02.1.1
@@ -374,6 +391,10 @@ spack:
       require: '%gcc@7.5.0'
       variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
         +cxx_exceptions]
+    darshan-runtime:
+      variants: [+hdf5, +parallel-netcdf, scheduler=pbs]
+    darshan-util:
+      variants: [+bzip2]
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.06/opt
@@ -517,6 +538,22 @@ spack:
       environment:
         prepend_path:
           LD_LIBRARY_PATH: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/lib
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+  - compiler:
+      spec: cce@16.0.0
+      paths:
+        cc: cc
+        cxx: CC
+        f77: ftn
+        fc: ftn
+      operating_system: sles15
+      modules:
+      - craype
+      - cce/16.0.0
+      environment:
+        set:
+          PE_ENV: CRAY
         append_path:
           LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
   modules:
@@ -1035,3 +1072,9 @@ spack:
   - gptl@8.1.1%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
   - gptl@8.1.1%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
   - gptl@8.1.1%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
+  - darshan-util@3.4.2
+  - darshan-runtime@3.4.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0 ^hdf5+mpi
+  - darshan-runtime@3.4.2%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5 ^hdf5+mpi
+  - darshan-runtime@3.4.2%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0 ^hdf5+mpi
+  - darshan-runtime@3.4.2%oneapi@2023.0.0 ^hdf5+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
+  - darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1 ^hdf5+mpi
