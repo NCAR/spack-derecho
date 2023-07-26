@@ -26,6 +26,8 @@ modules:
       hash_length: 0
       exclude_implicits: true
       exclude:
+      - gnuplot
+      - qt
       - nghttp2
       - imagemagick
       - nano

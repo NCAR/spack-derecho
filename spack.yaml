@@ -399,6 +399,8 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.06/opt
       select:
+      - gnuplot
+      - qt
       - imagemagick
       - nano
       - git-lfs
@@ -586,6 +588,8 @@ spack:
         hash_length: 0
         exclude_implicits: true
         exclude:
+        - gnuplot
+        - qt
         - nghttp2
         - imagemagick
         - nano
@@ -1082,3 +1086,5 @@ spack:
   - darshan-runtime@3.4.2%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0 ^hdf5+mpi
   - darshan-runtime@3.4.2%oneapi@2023.0.0 ^hdf5+mpi ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1 ^hdf5+mpi
+  - qt
+  - gnuplot
