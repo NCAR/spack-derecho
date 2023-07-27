@@ -233,10 +233,6 @@ spack:
       externals:
       - spec: openjdk@11.0.16_8-suse-150000.3.83.1-x8664
         prefix: /usr
-    texlive:
-      externals:
-      - spec: texlive@20210325
-        prefix: /usr
     all:
       'compiler:': [gcc@7.5.0, gcc, cce, nvhpc, oneapi, intel]
       providers:
@@ -1088,3 +1084,4 @@ spack:
   - darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1 ^hdf5+mpi
   - qt
   - gnuplot
+  - texlive
