@@ -1085,3 +1085,12 @@ spack:
   - qt
   - gnuplot
   - texlive
+  - esmf@8.5.0%gcc@12.2.0~mpi ^parallelio~mpi
+  - esmf@8.5.0%nvhpc@23.5~mpi ^nvhpc ^parallelio~mpi
+  - esmf@8.5.0%oneapi@2023.0.0~mpi ^intel-oneapi-mkl ^parallelio~mpi
+  - esmf@8.5.0%cce@15.0.1~mpi ^parallelio~mpi
+  - esmf@8.5.0%gcc@12.2.0+mpi+pnetcdf ^cray-mpich@8.1.25%gcc@12.2.0
+  - esmf@8.5.0%nvhpc@23.5+mpi+pnetcdf ^cray-mpich@8.1.25%nvhpc@23.5 ^nvhpc
+  - esmf@8.5.0%oneapi@2023.0.0+mpi+pnetcdf ^cray-mpich@8.1.25%oneapi@2023.0.0 ^intel-oneapi-mkl
+  - esmf@8.5.0%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
+  - esmf@8.5.0%cce@15.0.1+mpi+pnetcdf ^cray-mpich@8.1.25%cce@15.0.1
