@@ -260,9 +260,11 @@ modules:
           set:
             PIO: '{prefix}'
       darshan-runtime:
+        autoload: none
         environment:
           set:
             DARSHAN_LOG_DIR_PATH: /glade/u/home/"..os.getenv("USER").."
+            DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
       netcdf~mpi:
         template: conflict-serial.lua
       netcdf+mpi:
