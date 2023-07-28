@@ -388,7 +388,7 @@ spack:
       variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
         +cxx_exceptions]
     darshan-runtime:
-      variants: [scheduler=pbs]
+      variants: [scheduler=pbs, +parallel-netcdf]
     darshan-util:
       variants: [+bzip2]
   view:
@@ -1092,8 +1092,3 @@ spack:
   - esmf@8.5.0%oneapi@2023.0.0+mpi+pnetcdf ^cray-mpich@8.1.25%oneapi@2023.0.0 ^intel-oneapi-mkl
   - esmf@8.5.0%oneapi@2023.0.0+mpi+pnetcdf ^intel-oneapi-mkl ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - esmf@8.5.0%cce@15.0.1+mpi+pnetcdf ^cray-mpich@8.1.25%cce@15.0.1
-  - darshan-runtime@3.4.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
-  - darshan-runtime@3.4.2%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
-  - darshan-runtime@3.4.2%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
-  - darshan-runtime@3.4.2%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
-  - darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1
