@@ -265,6 +265,7 @@ modules:
           set:
             DARSHAN_LOG_DIR_PATH: /glade/u/home/"..os.getenv("USER").."
             DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
+            DARSHAN_MOD_DISABLE: LUSTRE
       netcdf~mpi:
         template: conflict-serial.lua
       netcdf+mpi:

@@ -360,6 +360,6 @@ packages:
     variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
       +cxx_exceptions]
   darshan-runtime:
-    variants: [+hdf5, +parallel-netcdf, scheduler=pbs]
+    variants: [scheduler=pbs]
   darshan-util:
     variants: [+bzip2]
