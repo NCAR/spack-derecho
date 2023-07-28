@@ -884,6 +884,26 @@
     {
       "hash": "rqhpy33cgffebvu7gcidkhi7drchflcf",
       "spec": "esmf@8.5.0%cce@15.0.1+mpi+pnetcdf ^cray-mpich@8.1.25%cce@15.0.1"
+    },
+    {
+      "hash": "qvdmclomuomr2mcgss5cgtcfyoxfhgrd",
+      "spec": "darshan-runtime@3.4.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0"
+    },
+    {
+      "hash": "xicrn7j5vt7ravignf4arrb6peyu3gtn",
+      "spec": "darshan-runtime@3.4.2%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5"
+    },
+    {
+      "hash": "uaru55fkh4ntk7hgs6setm7vedei2g7q",
+      "spec": "darshan-runtime@3.4.2%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0"
+    },
+    {
+      "hash": "uzcqa7ay6w4qzneszc2uhm6g5alnxttb",
+      "spec": "darshan-runtime@3.4.2%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "xhktxuruv6n7toxvi7wzbxotaqzvgk2w",
+      "spec": "darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1"
     }
   ],
   "concrete_specs": {
@@ -32895,6 +32915,436 @@
         }
       ],
       "hash": "rqhpy33cgffebvu7gcidkhi7drchflcf"
+    },
+    "qvdmclomuomr2mcgss5cgtcfyoxfhgrd": {
+      "name": "darshan-runtime",
+      "version": "3.4.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "12.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "build_system": "autotools",
+        "hdf5": false,
+        "mpi": true,
+        "parallel-netcdf": true,
+        "scheduler": "pbs",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "eflfm6ybuw4irgvlbjaamr3b5hsbp6pfcomv42gmfschetoyepba====",
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "hash": "ukornobdqy5i3cq7fchldjx5xirb2rui",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "hash": "ecwyrzrhfgsxykl5dch2w36dota3r4po",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "moe4qr5y5rb7fv2povkpsn446x5couhe",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "hash": "cpbfd2wyowtzvasoyylb5ttfucoxvues",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "hash": "oxioi4zbehkwadkzt7zkaltg4vpimopw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "s5g62rww3hpqat7shrdtfrhgmmolnxza",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "qvdmclomuomr2mcgss5cgtcfyoxfhgrd"
+    },
+    "xicrn7j5vt7ravignf4arrb6peyu3gtn": {
+      "name": "darshan-runtime",
+      "version": "3.4.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "23.5"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "build_system": "autotools",
+        "hdf5": false,
+        "mpi": true,
+        "parallel-netcdf": true,
+        "scheduler": "pbs",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "eflfm6ybuw4irgvlbjaamr3b5hsbp6pfcomv42gmfschetoyepba====",
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "hash": "ukornobdqy5i3cq7fchldjx5xirb2rui",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "hash": "ecwyrzrhfgsxykl5dch2w36dota3r4po",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "dpkqgrxmzxkiqx6uya76hrsig4lz5xr4",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "hash": "cpbfd2wyowtzvasoyylb5ttfucoxvues",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "hash": "oxioi4zbehkwadkzt7zkaltg4vpimopw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "7srcq4eoiq5lzugxsouo3ekd3uu5i4zn",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "xicrn7j5vt7ravignf4arrb6peyu3gtn"
+    },
+    "uaru55fkh4ntk7hgs6setm7vedei2g7q": {
+      "name": "darshan-runtime",
+      "version": "3.4.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "build_system": "autotools",
+        "hdf5": false,
+        "mpi": true,
+        "parallel-netcdf": true,
+        "scheduler": "pbs",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "eflfm6ybuw4irgvlbjaamr3b5hsbp6pfcomv42gmfschetoyepba====",
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "hash": "ukornobdqy5i3cq7fchldjx5xirb2rui",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "hash": "ecwyrzrhfgsxykl5dch2w36dota3r4po",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "ynu6talwag6gsswygjj46pr3b6hmtayu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "hash": "cpbfd2wyowtzvasoyylb5ttfucoxvues",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "hash": "oxioi4zbehkwadkzt7zkaltg4vpimopw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "blyrhj4ghrulbnfup6mspwvxmadzwrcn",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "uaru55fkh4ntk7hgs6setm7vedei2g7q"
+    },
+    "uzcqa7ay6w4qzneszc2uhm6g5alnxttb": {
+      "name": "darshan-runtime",
+      "version": "3.4.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "build_system": "autotools",
+        "hdf5": false,
+        "mpi": true,
+        "parallel-netcdf": true,
+        "scheduler": "pbs",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "eflfm6ybuw4irgvlbjaamr3b5hsbp6pfcomv42gmfschetoyepba====",
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "hash": "ukornobdqy5i3cq7fchldjx5xirb2rui",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "hash": "ecwyrzrhfgsxykl5dch2w36dota3r4po",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "hash": "cpbfd2wyowtzvasoyylb5ttfucoxvues",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "hash": "oxioi4zbehkwadkzt7zkaltg4vpimopw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "5siwdjnj2citoveq6wcbiiytdqirolsd",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "uzcqa7ay6w4qzneszc2uhm6g5alnxttb"
+    },
+    "xhktxuruv6n7toxvi7wzbxotaqzvgk2w": {
+      "name": "darshan-runtime",
+      "version": "3.4.2",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "15.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "build_system": "autotools",
+        "hdf5": false,
+        "mpi": true,
+        "parallel-netcdf": true,
+        "scheduler": "pbs",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "eflfm6ybuw4irgvlbjaamr3b5hsbp6pfcomv42gmfschetoyepba====",
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "hash": "ukornobdqy5i3cq7fchldjx5xirb2rui",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "hash": "ecwyrzrhfgsxykl5dch2w36dota3r4po",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "wwqkoqm5rcprj7kozngllajxtz3sljtl",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "hash": "cpbfd2wyowtzvasoyylb5ttfucoxvues",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "hash": "oxioi4zbehkwadkzt7zkaltg4vpimopw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "5xs5magvtdptxoap645gwfyedzm3g44n",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "hash": "dw5eltokzc5tzlzio4srpskiukpmps3w",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "xhktxuruv6n7toxvi7wzbxotaqzvgk2w"
     }
   }
 }
