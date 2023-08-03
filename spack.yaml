@@ -329,6 +329,8 @@ spack:
       variants: [+squashfuse]
     parallelio:
       variants: [+pnetcdf, ~logging, +ncint]
+    pio1:
+      variants: [+pnetcdf]
     esmf:
       variants: [~mpi, ~xerces, +external-lapack, +parallelio, ~pnetcdf]
     ncl:
@@ -824,6 +826,8 @@ spack:
               DARSHAN_LOG_DIR_PATH: /glade/u/home/"..os.getenv("USER").."
               DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
               DARSHAN_MOD_DISABLE: LUSTRE
+        esmf:
+          autoload: none
         netcdf~mpi:
           template: conflict-serial.lua
         netcdf+mpi:

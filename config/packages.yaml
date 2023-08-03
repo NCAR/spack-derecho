@@ -301,6 +301,8 @@ packages:
     variants: [+squashfuse]
   parallelio:
     variants: [+pnetcdf, ~logging, +ncint]
+  pio1:
+    variants: [+pnetcdf]
   esmf:
     variants: [~mpi, ~xerces, +external-lapack, +parallelio, ~pnetcdf]
   ncl:
