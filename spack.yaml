@@ -913,7 +913,6 @@ spack:
   - zstd
   - python
   - meson
-  - openjdk
   - tmux
   - emacs
   - gdb

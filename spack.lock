@@ -154,10 +154,6 @@
       "spec": "meson"
     },
     {
-      "hash": "vwntbau3ftmvnwtle5kwrepcsd6kaibd",
-      "spec": "openjdk"
-    },
-    {
       "hash": "bjcgu56htpkm3gf2eu2m3fzhldisl34s",
       "spec": "tmux"
     },
@@ -4284,36 +4280,6 @@
       ],
       "package_hash": "kgnvrvxufabdy4mtg7uirib76fjvlckhqucdgjdwsntit7xahqja====",
       "hash": "qkp2esaasr5wa6jyrqyramdaifniwzkl"
-    },
-    "vwntbau3ftmvnwtle5kwrepcsd6kaibd": {
-      "name": "openjdk",
-      "version": "11.0.16_8-suse-150000.3.83.1-x8664",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "sles15",
-        "target": "x86_64_v3"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "7.5.0"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "build_system": "generic",
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "external": {
-        "path": "/usr",
-        "module": null,
-        "extra_attributes": {}
-      },
-      "package_hash": "snmkjvofwa6h6s5oiaqszw5haribuflashxsapdyyymkzmnvokmq====",
-      "hash": "vwntbau3ftmvnwtle5kwrepcsd6kaibd"
     },
     "bjcgu56htpkm3gf2eu2m3fzhldisl34s": {
       "name": "tmux",
