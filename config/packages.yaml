@@ -202,9 +202,6 @@ packages:
     buildable: false
   openjdk:
     require: '%gcc@7.5.0'
-    externals:
-    - spec: openjdk@11.0.16_8-suse-150000.3.83.1-x8664
-      prefix: /usr
   all:
     'compiler:': [gcc@7.5.0, gcc, cce, nvhpc, oneapi, intel]
     providers:

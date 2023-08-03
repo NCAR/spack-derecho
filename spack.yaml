@@ -230,9 +230,6 @@ spack:
       buildable: false
     openjdk:
       require: '%gcc@7.5.0'
-      externals:
-      - spec: openjdk@11.0.16_8-suse-150000.3.83.1-x8664
-        prefix: /usr
     all:
       'compiler:': [gcc@7.5.0, gcc, cce, nvhpc, oneapi, intel]
       providers:
@@ -586,6 +583,7 @@ spack:
         hash_length: 0
         exclude_implicits: true
         exclude:
+        - openjdk
         - gnuplot
         - qt
         - nghttp2
@@ -599,7 +597,6 @@ spack:
         - gdb
         - emacs
         - tmux
-        - openjdk
         - meson
         - python
         - zstd
@@ -1100,3 +1097,4 @@ spack:
   - darshan-runtime@3.4.2%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
   - darshan-runtime@3.4.2%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1
+  - openjdk

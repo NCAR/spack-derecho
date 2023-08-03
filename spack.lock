@@ -900,6 +900,10 @@
     {
       "hash": "xhktxuruv6n7toxvi7wzbxotaqzvgk2w",
       "spec": "darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1"
+    },
+    {
+      "hash": "emtj2hhthtjnhd3qqhucuupw2ne2melw",
+      "spec": "openjdk"
     }
   ],
   "concrete_specs": {
@@ -33311,6 +33315,31 @@
         }
       ],
       "hash": "xhktxuruv6n7toxvi7wzbxotaqzvgk2w"
+    },
+    "emtj2hhthtjnhd3qqhucuupw2ne2melw": {
+      "name": "openjdk",
+      "version": "11.0.17_8",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "generic",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "cogbixjotnhfpjce2pnpjtntbe3yzy7ecjewxijcfrm456dkrqiq====",
+      "hash": "emtj2hhthtjnhd3qqhucuupw2ne2melw"
     }
   }
 }
