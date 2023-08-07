@@ -326,7 +326,7 @@ spack:
       variants: [+squashfuse]
     parallelio:
       variants: [+pnetcdf, ~logging, +ncint]
-    pio1:
+    parallelio1:
       variants: [+pnetcdf]
     esmf:
       variants: [~mpi, ~xerces, +external-lapack, +parallelio, ~pnetcdf]
@@ -816,6 +816,17 @@ spack:
           environment:
             set:
               PIO: '{prefix}'
+        parallelio1:
+          filter:
+            exclude_env_vars: [NCAR_LDFLAGS_PARALLELIO1, NCAR_INC_PARALLELIO1, NCAR_ROOT_PARALLELIO1,
+              NCAR_SPACK_HASH_PARALLELIO1]
+          environment:
+            set:
+              PIO: '{prefix}'
+              NCAR_LDFLAGS_PARALLELIO: '{prefix}/lib'
+              NCAR_INC_PARALLELIO: '{prefix}/include'
+              NCAR_ROOT_PARALLELIO: '{prefix}'
+              NCAR_SPACK_HASH_PARALLELIO: '{hash}'
         darshan-runtime:
           autoload: none
           environment:
@@ -848,6 +859,7 @@ spack:
           intel-oneapi-mpi: intel-mpi/{version}
           intel-oneapi-mkl: mkl/{version}
           miniconda3: conda/latest
+          parallelio1: parallelio/{version}
         core_compilers:
         - gcc@7.5.0
         core_specs:
@@ -1098,3 +1110,8 @@ spack:
   - darshan-runtime@3.4.2%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
   - darshan-runtime@3.4.2%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1
   - openjdk
+  - parallelio1@1.10.1%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
+  - parallelio1@1.10.1%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5
+  - parallelio1@1.10.1%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0
+  - parallelio1@1.10.1%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0
+  - parallelio1@1.10.1%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1

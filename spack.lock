@@ -904,6 +904,26 @@
     {
       "hash": "emtj2hhthtjnhd3qqhucuupw2ne2melw",
       "spec": "openjdk"
+    },
+    {
+      "hash": "qpuwia66ynwoiaabwm6mejdcouyafxtq",
+      "spec": "parallelio1@1.10.1%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0"
+    },
+    {
+      "hash": "ox5hvzbtl4demdpcn2f5inxleuak5jtk",
+      "spec": "parallelio1@1.10.1%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5"
+    },
+    {
+      "hash": "g2ytrtryeq42tnfafihzfws272nqrcet",
+      "spec": "parallelio1@1.10.1%oneapi@2023.0.0 ^cray-mpich@8.1.25%oneapi@2023.0.0"
+    },
+    {
+      "hash": "kxzlu76aytjxilywghqc7orbpwjgzn62",
+      "spec": "parallelio1@1.10.1%oneapi@2023.0.0 ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "kekusnbdjthyefsbmyp4cvtlvof3iweg",
+      "spec": "parallelio1@1.10.1%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1"
     }
   ],
   "concrete_specs": {
@@ -33340,6 +33360,391 @@
       },
       "package_hash": "cogbixjotnhfpjce2pnpjtntbe3yzy7ecjewxijcfrm456dkrqiq====",
       "hash": "emtj2hhthtjnhd3qqhucuupw2ne2melw"
+    },
+    "qpuwia66ynwoiaabwm6mejdcouyafxtq": {
+      "name": "parallelio1",
+      "version": "1.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "12.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "generator": "make",
+        "ipo": false,
+        "mpi": true,
+        "pnetcdf": true,
+        "shared": true,
+        "timing": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "byyqqwj45fjcvfinxpdmqang5ekkt4kcuqm7hzfuvnlhic76akia====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "moe4qr5y5rb7fv2povkpsn446x5couhe",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "vwjj6lz5ichssyulplfcmshigfvg2qb2",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "daks37om7gt35xj6wsfgcxmqami5johb",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "s5g62rww3hpqat7shrdtfrhgmmolnxza",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "qpuwia66ynwoiaabwm6mejdcouyafxtq"
+    },
+    "ox5hvzbtl4demdpcn2f5inxleuak5jtk": {
+      "name": "parallelio1",
+      "version": "1.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "23.5"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "generator": "make",
+        "ipo": false,
+        "mpi": true,
+        "pnetcdf": true,
+        "shared": true,
+        "timing": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "byyqqwj45fjcvfinxpdmqang5ekkt4kcuqm7hzfuvnlhic76akia====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "dpkqgrxmzxkiqx6uya76hrsig4lz5xr4",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "e6wwkc7kqwef7barsy7mhvlvmmfowcfq",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "pyxgz3w36oj44zzidaohs7iyhnfkgrqs",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "7srcq4eoiq5lzugxsouo3ekd3uu5i4zn",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "ox5hvzbtl4demdpcn2f5inxleuak5jtk"
+    },
+    "g2ytrtryeq42tnfafihzfws272nqrcet": {
+      "name": "parallelio1",
+      "version": "1.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "generator": "make",
+        "ipo": false,
+        "mpi": true,
+        "pnetcdf": true,
+        "shared": true,
+        "timing": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "byyqqwj45fjcvfinxpdmqang5ekkt4kcuqm7hzfuvnlhic76akia====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "ynu6talwag6gsswygjj46pr3b6hmtayu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "ip2npuifh5xnwbght4inxnzy6j3t5dhn",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "lg5hxqeanlzix5xm2felgzrhobdb4oxn",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "blyrhj4ghrulbnfup6mspwvxmadzwrcn",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "g2ytrtryeq42tnfafihzfws272nqrcet"
+    },
+    "kxzlu76aytjxilywghqc7orbpwjgzn62": {
+      "name": "parallelio1",
+      "version": "1.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "oneapi",
+        "version": "2023.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "generator": "make",
+        "ipo": false,
+        "mpi": true,
+        "pnetcdf": true,
+        "shared": true,
+        "timing": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "byyqqwj45fjcvfinxpdmqang5ekkt4kcuqm7hzfuvnlhic76akia====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "intel-oneapi-mpi",
+          "hash": "mhf4bkulk43sgl65lftyeifqzjpxyfua",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "ojkqjivigz67ma5q7x76lys3h2kaot4u",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "zaqergpxc4ch7f6tb7qkg6sjnbzmvn55",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "5siwdjnj2citoveq6wcbiiytdqirolsd",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "kxzlu76aytjxilywghqc7orbpwjgzn62"
+    },
+    "kekusnbdjthyefsbmyp4cvtlvof3iweg": {
+      "name": "parallelio1",
+      "version": "1.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "15.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "generator": "make",
+        "ipo": false,
+        "mpi": true,
+        "pnetcdf": true,
+        "shared": true,
+        "timing": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "byyqqwj45fjcvfinxpdmqang5ekkt4kcuqm7hzfuvnlhic76akia====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cray-mpich",
+          "hash": "wwqkoqm5rcprj7kozngllajxtz3sljtl",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "hash": "gv63nppq7j3wikn6i5mv3wmvm7moxiey",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-fortran",
+          "hash": "ssn7ibdzxeo7ftt2rsiqlldtrmum5hvi",
+          "type": [
+            "link"
+          ]
+        },
+        {
+          "name": "parallel-netcdf",
+          "hash": "5xs5magvtdptxoap645gwfyedzm3g44n",
+          "type": [
+            "link"
+          ]
+        }
+      ],
+      "hash": "kekusnbdjthyefsbmyp4cvtlvof3iweg"
     }
   }
 }

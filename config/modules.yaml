@@ -259,6 +259,17 @@ modules:
         environment:
           set:
             PIO: '{prefix}'
+      parallelio1:
+        filter:
+          exclude_env_vars: [NCAR_LDFLAGS_PARALLELIO1, NCAR_INC_PARALLELIO1, NCAR_ROOT_PARALLELIO1,
+            NCAR_SPACK_HASH_PARALLELIO1]
+        environment:
+          set:
+            PIO: '{prefix}'
+            NCAR_LDFLAGS_PARALLELIO: '{prefix}/lib'
+            NCAR_INC_PARALLELIO: '{prefix}/include'
+            NCAR_ROOT_PARALLELIO: '{prefix}'
+            NCAR_SPACK_HASH_PARALLELIO: '{hash}'
       darshan-runtime:
         autoload: none
         environment:
@@ -291,6 +302,7 @@ modules:
         intel-oneapi-mpi: intel-mpi/{version}
         intel-oneapi-mkl: mkl/{version}
         miniconda3: conda/latest
+        parallelio1: parallelio/{version}
       core_compilers:
       - gcc@7.5.0
       core_specs:
