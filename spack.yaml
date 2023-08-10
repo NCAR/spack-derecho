@@ -793,12 +793,10 @@ spack:
           filter:
             exclude_env_vars: [PATH, LD_LIBRARY_PATH, NCAR_LDFLAGS_MINICONDA3, NCAR_INC_MINICONDA3,
               NCAR_ROOT_MINICONDA3, ACLOCAL_PATH, PKG_CONFIG_PATH, CMAKE_PREFIX_PATH,
-              CONDA_SHLVL, _CE_CONDA, _CE_M, MANPATH]
+              CONDA_SHLVL, _CE_CONDA, _CE_M, MANPATH, CONDA_EXE, CONDA_PYTHON_EXE]
           environment:
             set:
               NCAR_ROOT_CONDA: '{prefix}'
-              CONDA_ROOT: '{prefix}'
-              CONDA_EXE: '{prefix}/bin/conda'
           template: conda.lua
         apptainer:
           environment:
