@@ -4,3 +4,4 @@ hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.03.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.02.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/cesmdev/1.0.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.05.lua
+hide-modulefile /glade/u/apps/derecho/modules/23.06/oneapi/2023.0.0/openmpi/main.lua

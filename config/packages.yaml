@@ -264,8 +264,8 @@ packages:
     require: '%gcc@7.5.0'
     variants: [+cuda]
   openmpi:
-    variants: [+cuda]
-    require: fabrics=cma,ofi schedulers=tm +gpfs +lustre
+    variants: [~cuda]
+    require: fabrics=cma,ofi,knem schedulers=tm +gpfs +lustre
   zstd:
     require: '%gcc@7.5.0'
     variants: [+programs]
