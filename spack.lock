@@ -932,6 +932,18 @@
     {
       "hash": "jqkyalddtufy6kq5ljj2my5jncraz5rb",
       "spec": "parallel-netcdf@1.12.3%oneapi@2023.0.0 cppflags=\"-g\" ^openmpi"
+    },
+    {
+      "hash": "tbyis7ufg5xiwrxqnvtnzevbm7hd67ok",
+      "spec": "matlab@R2023a"
+    },
+    {
+      "hash": "bfyccvodcwo7qjl2cykogksgqvb6rvpr",
+      "spec": "idl@8.9.0"
+    },
+    {
+      "hash": "7vfmowoohhopi6qthoejwd7js5zg2e66",
+      "spec": "xxdiff"
     }
   ],
   "concrete_specs": {
@@ -34190,6 +34202,120 @@
         }
       ],
       "hash": "jqkyalddtufy6kq5ljj2my5jncraz5rb"
+    },
+    "tbyis7ufg5xiwrxqnvtnzevbm7hd67ok": {
+      "name": "matlab",
+      "version": "R2023a",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "generic",
+        "key": "<installation-key-here>",
+        "mode": "interactive",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/opt/matlab/R2023a",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "36xtnrna2pdhgcgj2sfjkza4n4vngtgnjvkrgx2unp3x3q2eu5dq====",
+      "hash": "tbyis7ufg5xiwrxqnvtnzevbm7hd67ok"
+    },
+    "bfyccvodcwo7qjl2cykogksgqvb6rvpr": {
+      "name": "idl",
+      "version": "8.9.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "generic",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/opt/idl/8.9.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "czisd6ufj7itqfo54xrbqngp4vfo4mrz5mk4xmwxpd3somhm5ybq====",
+      "hash": "bfyccvodcwo7qjl2cykogksgqvb6rvpr"
+    },
+    "7vfmowoohhopi6qthoejwd7js5zg2e66": {
+      "name": "xxdiff",
+      "version": "latest",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "makefile",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "irht5gy2tajs4be72lpqbvziadnnisb4egmg3cxe2ogqsbnigjiq====",
+      "dependencies": [
+        {
+          "name": "bison",
+          "hash": "ihfqwvj4kpfziwceofrbdcz2qkzhhods",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "flex",
+          "hash": "j62xloyt5qlb7r7vnv5s6epckkc3lkvt",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "qt",
+          "hash": "mbw4k5bmjgjvk7vnxz4hrwly4bpsyy66",
+          "type": [
+            "build",
+            "link",
+            "run"
+          ]
+        }
+      ],
+      "hash": "7vfmowoohhopi6qthoejwd7js5zg2e66"
     }
   }
 }

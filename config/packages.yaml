@@ -1,10 +1,9 @@
 packages:
-  libtool:
-    require: '%gcc@7.5.0'
-  automake:
-    require: '%gcc@7.5.0'
-  autoconf:
-    require: '%gcc@7.5.0'
+  idl:
+    externals:
+    - spec: idl@8.9.0
+      prefix: /glade/u/apps/opt/idl/8.9.0
+    buildable: false
   gawk:
     externals:
     - spec: gawk@4.2.1
@@ -89,6 +88,17 @@ packages:
     - spec: openssl@1.1.1l
       prefix: /usr
     buildable: false
+  matlab:
+    externals:
+    - spec: matlab@R2023a
+      prefix: /glade/u/apps/opt/matlab/R2023a
+    buildable: false
+  libtool:
+    require: '%gcc@7.5.0'
+  automake:
+    require: '%gcc@7.5.0'
+  autoconf:
+    require: '%gcc@7.5.0'
   cutensor:
     externals:
     - spec: cutensor@1.7.0.1
@@ -362,3 +372,5 @@ packages:
     variants: [scheduler=pbs, +parallel-netcdf]
   darshan-util:
     variants: [+bzip2]
+  julia:
+    require: ^llvm~clang~gold~polly ^openblas threads=openmp

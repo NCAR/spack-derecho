@@ -27,12 +27,11 @@ spack:
     template_dirs:
     - /glade/work/csgteam/spack-deployments/derecho/23.06/envs/build/templates/modules
   packages:
-    libtool:
-      require: '%gcc@7.5.0'
-    automake:
-      require: '%gcc@7.5.0'
-    autoconf:
-      require: '%gcc@7.5.0'
+    idl:
+      externals:
+      - spec: idl@8.9.0
+        prefix: /glade/u/apps/opt/idl/8.9.0
+      buildable: false
     gawk:
       externals:
       - spec: gawk@4.2.1
@@ -117,6 +116,17 @@ spack:
       - spec: openssl@1.1.1l
         prefix: /usr
       buildable: false
+    matlab:
+      externals:
+      - spec: matlab@R2023a
+        prefix: /glade/u/apps/opt/matlab/R2023a
+      buildable: false
+    libtool:
+      require: '%gcc@7.5.0'
+    automake:
+      require: '%gcc@7.5.0'
+    autoconf:
+      require: '%gcc@7.5.0'
     cutensor:
       externals:
       - spec: cutensor@1.7.0.1
@@ -390,10 +400,13 @@ spack:
       variants: [scheduler=pbs, +parallel-netcdf]
     darshan-util:
       variants: [+bzip2]
+    julia:
+      require: ^llvm~clang~gold~polly ^openblas threads=openmp
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.06/opt
       select:
+      - xxdiff
       - gnuplot
       - qt
       - imagemagick
@@ -583,6 +596,7 @@ spack:
         hash_length: 0
         exclude_implicits: true
         exclude:
+        - xxdiff
         - openjdk
         - gnuplot
         - qt
@@ -1116,3 +1130,6 @@ spack:
   - parallelio1@1.10.1%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1
   - openmpi@main%oneapi cppflags="-g"
   - parallel-netcdf@1.12.3%oneapi@2023.0.0 cppflags="-g" ^openmpi
+  - matlab@R2023a
+  - idl@8.9.0
+  - xxdiff
