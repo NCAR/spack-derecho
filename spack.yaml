@@ -27,10 +27,10 @@ spack:
     template_dirs:
     - /glade/work/csgteam/spack-deployments/derecho/23.06/envs/build/templates/modules
   packages:
-    idl:
+    intel-oneapi-vtune:
       externals:
-      - spec: idl@8.9.0
-        prefix: /glade/u/apps/opt/idl/8.9.0
+      - spec: intel-oneapi-vtune@2023.0.0
+        prefix: /glade/u/apps/common/23.04/spack/opt/spack/intel-oneapi-vtune/2023.0.0
       buildable: false
     gawk:
       externals:
@@ -115,6 +115,11 @@ spack:
       externals:
       - spec: openssl@1.1.1l
         prefix: /usr
+      buildable: false
+    idl:
+      externals:
+      - spec: idl@8.9.0
+        prefix: /glade/u/apps/opt/idl/8.9.0
       buildable: false
     matlab:
       externals:
@@ -737,6 +742,13 @@ spack:
               I_MPI_HYDRA_BOOTSTRAP: rsh
             prepend_path:
               LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+        intel-oneapi-vtune:
+          filter:
+            exclude_env_vars: [NCAR_ROOT_INTEL_ONEAPI_VTUNE, NCAR_SPACK_HASH_INTEL_ONEAPI_VTUNE]
+          environment:
+            set:
+              NCAR_ROOT_VTUNE: '{prefix}'
+              NCAR_SPACK_HASH_VTUNE: '{hash}'
         nvhpc:
           environment:
             set:
@@ -871,6 +883,7 @@ spack:
           intel-oneapi-compilers-classic: intel-classic/{^intel-oneapi-compilers.version}
           intel-oneapi-mpi: intel-mpi/{version}
           intel-oneapi-mkl: mkl/{version}
+          intel-oneapi-vtune: vtune/{version}
           miniconda3: conda/latest
           parallelio1: parallelio/{version}
         core_compilers:
