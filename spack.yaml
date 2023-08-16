@@ -1146,3 +1146,4 @@ spack:
   - matlab@R2023a
   - idl@8.9.0
   - xxdiff
+  - intel-oneapi-vtune@2023.0.0
