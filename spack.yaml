@@ -750,7 +750,7 @@ spack:
               NCAR_ROOT_VTUNE: '{prefix}'
               NCAR_SPACK_HASH_VTUNE: '{hash}'
             append_path:
-              LD_LIBRARY_PATH: '{prefix}/lib64'
+              LD_LIBRARY_PATH: '{prefix}/vtune/latest/lib64'
         nvhpc:
           environment:
             set:
