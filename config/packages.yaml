@@ -369,6 +369,8 @@ packages:
     variants: [+opengl]
   gptl:
     variants: [+papi, +pmpi]
+  mpifileutils:
+    variants: [+gpfs, +lustre, +xattr]
   libunwind:
     require: '%gcc@7.5.0'
     variants: ['components=setjump,ptrace,coredump', +pic, +xz, +debug_frame, +zlib,
