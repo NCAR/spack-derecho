@@ -1,0 +1,25 @@
+config:
+  install_tree:
+    projections:
+      ^mpi: '{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}'
+      all: '{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}'
+      gcc: '{name}/{version}/{hash:4}'
+      netcdf-c: netcdf/{version}/packages/{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-c^mpi: netcdf/{version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-cxx4: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-cxx4^mpi: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-fortran: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-fortran^mpi: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}
+  build_jobs: 4
+  test_stage: /glade/derecho/scratch/$user/temp/spack/derecho/23.09/tests
+  source_cache: /glade/derecho/scratch/$user/temp/spack/cache
+  misc_cache: /glade/derecho/scratch/$user/temp/spack/derecho/23.09/misc
+  build_stage:
+  - /glade/derecho/scratch/$user/temp/spack/derecho/23.09/builds
+  shared_linking:
+    # Turning this setting on would be beneficial but vendor compilers do not
+    # seem to work with it! Avoid!
+    type: rpath
+    bind: false
+  template_dirs:
+  - /glade/work/csgteam/spack-deployments/derecho/23.09/envs/build/templates/modules

@@ -1,0 +1,718 @@
+packages:
+  libfabric:
+    externals:
+    - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
+      prefix: /opt/cray/libfabric/1.15.2.0
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  bash:
+    externals:
+    - spec: bash@4.4.23
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  cpio:
+    externals:
+    - spec: cpio@2.13
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  diffutils:
+    externals:
+    - spec: diffutils@3.6
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  findutils:
+    externals:
+    - spec: findutils@4.8.0
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  gmake:
+    externals:
+    - spec: gmake@4.2.1
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  lustre:
+    externals:
+    - spec: lustre@2.15.0.7_rc2_cray_3_g412d1c5
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  m4:
+    # Julia of course...
+    externals:
+    - spec: m4@1.4.18
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  tar:
+    externals:
+    - spec: tar@1.34
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  ghostscript:
+    externals:
+    - spec: ghostscript@9.52
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  openssl:
+    # Requiring certs=system is necessary to perform builds like rust using
+    # external openssl
+    externals:
+    - spec: openssl@1.1.1l
+      prefix: /usr
+    buildable: false
+    require:
+    - certs=system
+    - '%gcc@7.5.0'
+  adios2:
+    variants:
+    - +hdf5
+    - ~python
+  all:
+    'compiler:':
+    - gcc@7.5.0
+    - gcc
+    - oneapi
+    - nvhpc
+    - cce
+    providers:
+      'mpi:':
+      - cray-mpich
+      - impi
+      'szip:':
+      - libszip
+      'pkgconfig:':
+      - pkg-config
+      'lapack:':
+      - openblas
+      - intel-oneapi-mkl
+      - cray-libsci
+      'blas:':
+      - openblas
+      - intel-oneapi-mkl
+      - cray-libsci
+      'zlib-api:':
+      - zlib
+    permissions:
+      read: world
+      write: user
+    target:
+      # This target is lowest-common denominator between Intel and Milans
+    - x86_64_v3
+    require:
+      # This should force packages to use the vendor-preferred solution
+      # for BLAS and LAPACK without needing to set it on each package
+    - any_of:
+      - '%gcc@7 ^openblas %gcc@7'
+      - '%gcc@11: ^openblas %gcc@11:'
+      - '%oneapi ^intel-oneapi-mkl'
+      - '%nvhpc ^nvhpc'
+      when: ^blas
+    - any_of:
+      - '%gcc@7 ^openblas %gcc@7'
+      - '%gcc@11: ^openblas %gcc@11:'
+      - '%oneapi ^intel-oneapi-mkl'
+      - '%nvhpc ^nvhpc'
+      when: ^lapack
+  antlr:
+    require: '%gcc@7.5.0'
+  apptainer:
+    variants:
+    - ~suid
+  arpack-ng:
+    variants:
+    - ~mpi
+  autoconf:
+    require: '%gcc@7.5.0'
+  autoconf-archive:
+    require: '%gcc@7.5.0'
+  automake:
+    require: '%gcc@7.5.0'
+  bison:
+    require: '%gcc@7.5.0'
+  bzip2:
+    require: '%gcc@7.5.0'
+  c-blosc:
+    require:
+    - '%gcc@7.5.0'
+  cairo:
+    require: '%gcc@7.5.0'
+    variants:
+    - +X
+    - +fc
+    - +ft
+    - +gobject
+    - +pdf
+    - +png
+  cdo:
+    variants:
+    - +curl
+  charliecloud:
+    variants:
+    - +squashfuse
+  cli11:
+    require:
+    - '%gcc@7.5.0'
+  cmake:
+    # Without +ownlibs, some packages can't concretize due to infinite regression
+    require: '%gcc@7.5.0'
+    variants:
+    - +ownlibs
+  cray-libsci:
+    externals:
+    - spec: cray-libsci@23.05.1.4
+      modules:
+      - cray-libsci/23.05.1.4
+    - spec: cray-libsci@23.02.1.1
+      modules:
+      - cray-libsci/23.02.1.1
+    buildable: false
+  cray-mpich:
+    externals:
+    - spec: cray-mpich@8.1.25 %gcc
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/gnu/9.1
+    - spec: cray-mpich@8.1.25 %cce
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/cray/10.0
+    - spec: cray-mpich@8.1.25 %nvhpc
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
+    - spec: cray-mpich@8.1.25 %oneapi
+      prefix: /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0
+    buildable: false
+  cuda:
+    require:
+    - +allow-unsupported-compilers
+    - '%gcc@7.5.0'
+    externals:
+    - spec: cuda@11.8.0
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0
+    buildable: false
+  cudnn:
+    require:
+    - '%gcc@7.5.0'
+    externals:
+    - spec: cudnn@8.7.0.84-11.8
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/cudnn/8.7.0.84-11.8
+    buildable: false
+  curl:
+    # Need mbedtls option for Julia - most other packages seem to prefer openSSL
+    require: '%gcc@7.5.0'
+    variants:
+    - +libidn2
+    - +libssh2
+    - +nghttp2
+    - tls=openssl,mbedtls
+  darshan-runtime:
+    variants:
+    - +parallel-netcdf
+    - scheduler=pbs
+    require:
+    - any_of:
+      - ^hdf5+mpi
+      when: +hdf5
+  darshan-util:
+    variants:
+    - +bzip2
+  doxygen:
+    variants:
+    - +graphviz
+    require:
+    - '%gcc@7.5.0'
+  eccodes:
+    variants:
+    - +fortran
+    - +netcdf
+    - +png
+    - +tools
+    - jp2k=jasper
+  eigen:
+    require:
+    - '%gcc@7.5.0'
+  esmf:
+    # If external-lapack not forced, concretizer will try to be lazy and
+    # avoid lapack requirements by switching to internal despite variant
+    require:
+    - any_of:
+      - '@8.1: +external-lapack'
+      - '@:8'
+    variants:
+    - +parallelio
+    - ~mpi
+    - ~pnetcdf
+    - ~xerces
+  expat:
+    require: '%gcc@7.5.0'
+  ffmpeg:
+    variants:
+    - +X
+    - +drawtext
+    - +libaom
+    - +libmp3lame
+    - +libopenjpeg
+    - +libopus
+    - +libsnappy
+    - +libspeex
+    - +libssh
+    - +libvorbis
+    - +libvpx
+    - +libwebp
+    - +libx264
+    - +libxml2
+    - +libzma
+    - +libzmq
+    - +sdl2
+  fftw:
+    variants:
+    - ~mpi
+  flex:
+    require: '%gcc@7.5.0'
+  fltk:
+    require:
+    - '%gcc@7.5.0'
+  fontconfig:
+    require: '%gcc@7.5.0'
+  freetype:
+    # Newer version leads to concretization issues for Python packages
+    # This setting avoids multiple builds of many packages
+    require: '@:2.10.2'
+  gawk:
+    require:
+    - '%gcc@7.5.0'
+  gcc:
+    variants:
+    - +piclibs
+    - languages=c,c++,fortran,go
+    require:
+    - '%gcc@7.5.0'
+  gdal:
+    require:
+    - any_of:
+      - ^hdf5~mpi
+      when: +hdf5
+    variants:
+    - +blosc
+    - +curl
+    - +deflate
+    - +expat
+    - +geos
+    - +gif
+    - +grass
+    - +grib
+    - +hdf5
+    - +iconv
+    - +jasper
+    - +jpeg
+    - +libcsf
+    - +liblzma
+    - +lz4
+    - +netcdf
+    - +pcidsk
+    - +png
+    - +qhull
+    - +sqlite3
+    - +zstd
+  gdb:
+    variants:
+    - +gold
+    - +ld
+    - +lto
+    - +tui
+    - ~debuginfod
+    - ~python
+  giflib:
+    require:
+    - '%gcc@7.5.0'
+  git:
+    variants:
+    - +svn
+  glpk:
+    require:
+    - '%gcc@7.5.0'
+  gnuplot:
+    variants:
+    - +X
+    - +qt
+    - +wx
+  googletest:
+    require: '%gcc@7.5.0'
+  gptl:
+    variants:
+    - +papi
+    - +pmpi
+  groff:
+    require:
+    - '%gcc@7.5.0'
+  gtkplus:
+    variants:
+    - +cups
+  harfbuzz:
+    variants:
+    - +graphite2
+  hdf:
+    variants:
+    - +fortran
+    - +szip
+  hdf5:
+    require: '@:1.12'
+    variants:
+    - +cxx
+    - +fortran
+    - +hl
+    - +szip
+    - ~mpi
+  hwloc:
+    require: '%gcc@7.5.0'
+    variants:
+    - +cuda
+  icu4c:
+    require: '%gcc@7.5.0'
+  idl:
+    require:
+    - '%gcc@7.5.0'
+    externals:
+    - spec: idl@8.9.0
+      prefix: /glade/u/apps/opt/idl/8.9.0
+    buildable: false
+  imagemagick:
+    variants:
+    - +ghostscript
+  intel-oneapi-compilers:
+    require:
+    - '%gcc@7.5.0'
+    externals:
+    - spec: intel-oneapi-compilers@2023.2.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1
+    buildable: false
+  intel-oneapi-mpi:
+    variants:
+    - +external-libfabric
+    - +generic-names
+  ispc:
+    require: '%clang'
+  jasper:
+    # Newer Jasper versions have caused issues in the past
+    # TODO - recheck whether this is a problem now
+    require:
+    - '%gcc@7.5.0'
+    - '@:2'
+  json-c:
+    require:
+    - '%gcc@7.5.0'
+  jsoncpp:
+    require:
+    - '%gcc@7.5.0'
+  julia:
+    require: ^llvm~clang~gold~polly ^openblas threads=openmp
+  krb5:
+    require:
+    - '%gcc@7.5.0'
+  libarchive:
+    require: compression=bz2lib,lz4,lzma,lzo2,zlib,zstd xar=expat
+  libcatalyst:
+    require:
+    - '%gcc@7.5.0'
+  libdeflate:
+    require:
+    - '%gcc@7.5.0'
+  libffi:
+    require:
+    - '@:3.3'
+    - '%gcc@7.5.0'
+  libfuse:
+    require: ~utils
+  libgd:
+    # gnuplot fails to build with newer version due to libiconv linking failure
+    require: '@2.2.4'
+  libgit2:
+    # Julia is demanding...
+    require:
+    - '@1.5'
+  libjpeg-turbo:
+    require: '%gcc@7.5.0'
+  libogg:
+    require:
+    - '%gcc@7.5.0'
+  libpng:
+    require: '%gcc@7.5.0'
+  libssh2:
+    # Julia again...
+    require:
+    - '@1.10'
+    variants:
+    - crypto=mbedtls
+  libszip:
+    require: '%gcc@7.5.0'
+  libtheora:
+    require:
+    - '%gcc@7.5.0'
+  libtiff:
+    require: '%gcc@7.5.0'
+  libtirpc:
+    require:
+    - '%gcc@7.5.0'
+  libtool:
+    require: '%gcc@7.5.0'
+  libunwind:
+    require: '%gcc@7.5.0'
+    variants:
+    - +cxx_exceptions
+    - +debug_frame
+    - +pic
+    - +xz
+    - +zlib
+    - components=setjump,ptrace,coredump
+  libx11:
+    require:
+    - '%gcc@7.5.0'
+  libxaw:
+    require:
+    - '%gcc@7.5.0'
+  libxcb:
+    require: '%gcc@7.5.0'
+  libxml2:
+    require: '%gcc@7.5.0'
+  linaro-forge:
+    require:
+    - '%gcc@7.5.0'
+    externals:
+    - spec: linaro-forge@23.0
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/linaro-forge/23.0
+    buildable: false
+  lz4:
+    require:
+    - '%gcc@7.5.0'
+  matlab:
+    require:
+    - '%gcc@7.5.0'
+    externals:
+    - spec: matlab@R2023a
+      prefix: /glade/u/apps/opt/matlab/R2023a
+    buildable: false
+  maven:
+    require:
+    - '%gcc@7.5.0'
+  mbedtls:
+    # Julia of course...
+    require:
+    - '@2.28'
+    - libs=static,shared
+  mgard:
+    require:
+    - '%gcc@7.5.0'
+  miniconda3:
+    externals:
+    - spec: miniconda3@4.12.0
+      prefix: /glade/u/apps/opt/conda
+    buildable: false
+  mpifileutils:
+    variants:
+    - +gpfs
+    - +lustre
+    - +xattr
+  ncl:
+    # Newer ESMF versions cause issues for NCL
+    # TODO - bake this into recipe?
+    require:
+    - ^esmf@:8.0.1 ~external-lapack
+    - ^hdf5~mpi
+    variants:
+    - +gdal
+    - +grib
+    - +hdf4
+  netcdf:
+    variants:
+    - +dap
+    - ~mpi
+  netcdf-c:
+    variants:
+    - +dap
+    - ~mpi
+  netcdf-cxx4:
+    variants:
+    - ~doxygen
+  nghttp2:
+    # Thanks Julia...
+    require: '@1.48'
+  ninja:
+    require:
+    - '%gcc@7.5.0'
+  numactl:
+    require:
+    - '%gcc@7.5.0'
+  nvhpc:
+    require:
+    - '%gcc@7.5.0'
+    externals:
+    - spec: nvhpc@23.7
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/23.7
+    buildable: false
+  octave:
+    variants:
+    - +arpack
+    - +curl
+    - +fftw
+    - +fltk
+    - +fontconfig
+    - +freetype
+    - +gl2ps
+    - +glpk
+    - +gnuplot
+    - +llvm
+    - +magick
+    - +opengl
+    - +qhull
+    - +qrupdate
+    - +qscintilla
+    - +qt
+    - +suitesparse
+    - +zlib
+  openblas:
+    variants:
+    - +fortran
+    - threads=openmp
+  openjdk:
+    require:
+    - '%gcc@7.5.0'
+  openmpi:
+    variants:
+    - +cuda
+    require: fabrics=cma,ofi,knem schedulers=tm +gpfs +lustre
+  openpbs:
+    externals:
+    - spec: openpbs@2021.1.3
+      prefix: /opt/pbs
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  openssh:
+    require:
+    - '%gcc@7.5.0'
+  pango:
+    variants:
+    - +X
+  parallelio:
+    variants:
+    - +ncint
+    - +pnetcdf
+    - ~logging
+  parallelio1:
+    variants:
+    - +pnetcdf
+  patchelf:
+    # Patchelf 0.18 breaks using gcc@7.5.0
+    require:
+    - '@:0.17'
+  pcre:
+    require:
+    - '%gcc@7.5.0'
+  pcre2:
+    require: '%gcc@7.5.0'
+  pegtl:
+    require:
+    - '%gcc@7.5.0'
+  perl:
+    require: '%gcc@7.5.0'
+  pmix:
+    require:
+    - '%gcc@7.5.0'
+  protobuf:
+    require:
+    - '%gcc@7.5.0'
+  py-setuptools:
+    # Newer versions cannot be used by py-numpy as of Aug 2023
+    require:
+    - '@:63'
+  qhull:
+    require:
+    - '%gcc@7.5.0'
+  qt:
+    variants:
+    - +dbus
+    - +examples
+    - +gtk
+    - +opengl
+    - +webkit
+  readline:
+    require: '%gcc@7.5.0'
+  rsync:
+    require:
+    - '%gcc@7.5.0'
+  sed:
+    require:
+    - '%gcc@7.5.0'
+  singularityce:
+    variants:
+    - ~suid
+  snappy:
+    require:
+    - '%gcc@7.5.0'
+  sqlite:
+    require: '%gcc@7.5.0'
+  sz:
+    require:
+    - '%gcc@7.5.0'
+  texinfo:
+    require: '%gcc@7.5.0'
+  texlive:
+    require:
+    - '%gcc@7.5.0'
+  ucx:
+    require:
+    - '%gcc@7.5.0'
+  util-linux-uuid:
+    require: '%gcc@7.5.0'
+  vtk-m:
+    require:
+    - '%gcc@7.5.0'
+  wget:
+    require:
+    - '%gcc@7.5.0'
+  wgrib2:
+    variants:
+    - +netcdf4
+    - +proj4
+    - +udf
+    - ~checks
+    - ~netcdf3
+  which:
+    require: '%gcc@7.5.0'
+  wxwidgets:
+    variants:
+    - +opengl
+  xz:
+    require: '%gcc@7.5.0'
+  zfp:
+    require:
+    - '%gcc@7.5.0'
+  zlib:
+    # zlib 1.3 causes configure failure for openssh because it expects
+    # 3 version digits (i.e., X.Y.Z) as of Aug 2023
+    require:
+    - '%gcc@7.5.0'
+    - '@:1.2.13'
+  zstd:
+    require: '%gcc@7.5.0'
+    variants:
+    - +programs
