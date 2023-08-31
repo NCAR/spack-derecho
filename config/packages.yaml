@@ -1,9 +1,4 @@
 packages:
-  intel-oneapi-vtune:
-    externals:
-    - spec: intel-oneapi-vtune@2023.0.0
-      prefix: /glade/u/apps/common/23.04/spack/opt/spack/intel-oneapi-vtune/2023.0.0
-    buildable: false
   gawk:
     externals:
     - spec: gawk@4.2.1
@@ -87,6 +82,11 @@ packages:
     externals:
     - spec: openssl@1.1.1l
       prefix: /usr
+    buildable: false
+  intel-oneapi-vtune:
+    externals:
+    - spec: intel-oneapi-vtune@2023.0.0
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/intel-oneapi-vtune/2023.0.0
     buildable: false
   idl:
     externals:
@@ -184,11 +184,15 @@ packages:
     require: '%gcc@7.5.0'
   cudnn:
     externals:
+    - spec: cudnn@8.7.0.84-11.8
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/cudnn/8.7.0.84-11.8
     - spec: cudnn@8.5.0.96-11.7
       prefix: /glade/u/apps/common/23.04/spack/opt/spack/cudnn/8.5.0.96-11.7
     buildable: false
   nvhpc:
     externals:
+    - spec: nvhpc@23.7
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/23.7
     - spec: nvhpc@23.5
       prefix: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5
     - spec: nvhpc@23.3
@@ -205,6 +209,8 @@ packages:
     buildable: false
   intel-oneapi-compilers:
     externals:
+    - spec: intel-oneapi-compilers@2023.2.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1
     - spec: intel-oneapi-compilers@2023.1.0
       prefix: /glade/u/apps/common/23.04/spack/opt/spack/intel-oneapi-compilers/2023.1.0
     - spec: intel-oneapi-compilers@2023.0.0
@@ -271,6 +277,8 @@ packages:
     buildable: false
   cuda:
     externals:
+    - spec: cuda@11.8.0
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0
     - spec: cuda@11.7.1
       prefix: /glade/u/apps/common/23.04/spack/opt/spack/cuda/11.7.1
     buildable: false
