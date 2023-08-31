@@ -26,13 +26,6 @@ spack:
     template_dirs:
     - /glade/work/csgteam/spack-deployments/derecho/23.09/envs/build/templates/modules
   packages:
-    libfabric:
-      externals:
-      - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
-        prefix: /opt/cray/libfabric/1.15.2.0
-      buildable: false
-      require:
-      - '%gcc@7.5.0'
     bash:
       externals:
       - spec: bash@4.4.23
@@ -113,6 +106,13 @@ spack:
       buildable: false
       require:
       - certs=system
+      - '%gcc@7.5.0'
+    libfabric:
+      externals:
+      - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
+        prefix: /opt/cray/libfabric/1.15.2.0
+      buildable: false
+      require:
       - '%gcc@7.5.0'
     adios2:
       variants:
@@ -235,6 +235,8 @@ spack:
       externals:
       - spec: cuda@11.8.0
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0
+      - spec: cuda@11.7.1
+        prefix: /glade/u/apps/common/23.04/spack/opt/spack/cuda/11.7.1
       buildable: false
     cudnn:
       require:
@@ -242,6 +244,8 @@ spack:
       externals:
       - spec: cudnn@8.7.0.84-11.8
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/cudnn/8.7.0.84-11.8
+      - spec: cudnn@8.5.0.96-11.7
+        prefix: /glade/u/apps/common/23.04/spack/opt/spack/cudnn/8.5.0.96-11.7
       buildable: false
     curl:
       # Need mbedtls option for Julia - most other packages seem to prefer openSSL
@@ -945,6 +949,8 @@ spack:
         - nvhpc@23.7
         - parallelio+mpi
         - esmf+mpi
+        - cuda@11.7.1
+        - cudnn@8.5.0.96-11.7
         esmf:
           autoload: none
         exclude:
@@ -1362,3 +1368,5 @@ spack:
   - parallelio@2.6.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
   - parallelio@2.6.2%nvhpc@23.7 ^cray-mpich@8.1.25%nvhpc@23.7
   - parallelio@2.6.2%oneapi@2023.2.1 ^cray-mpich@8.1.25%oneapi@2023.2.1
+  - cuda@11.7.1
+  - cudnn@8.5.0.96-11.7

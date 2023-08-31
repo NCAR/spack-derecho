@@ -1,11 +1,4 @@
 packages:
-  libfabric:
-    externals:
-    - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
-      prefix: /opt/cray/libfabric/1.15.2.0
-    buildable: false
-    require:
-    - '%gcc@7.5.0'
   bash:
     externals:
     - spec: bash@4.4.23
@@ -86,6 +79,13 @@ packages:
     buildable: false
     require:
     - certs=system
+    - '%gcc@7.5.0'
+  libfabric:
+    externals:
+    - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
+      prefix: /opt/cray/libfabric/1.15.2.0
+    buildable: false
+    require:
     - '%gcc@7.5.0'
   adios2:
     variants:
@@ -208,6 +208,8 @@ packages:
     externals:
     - spec: cuda@11.8.0
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0
+    - spec: cuda@11.7.1
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/cuda/11.7.1
     buildable: false
   cudnn:
     require:
@@ -215,6 +217,8 @@ packages:
     externals:
     - spec: cudnn@8.7.0.84-11.8
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/cudnn/8.7.0.84-11.8
+    - spec: cudnn@8.5.0.96-11.7
+      prefix: /glade/u/apps/common/23.04/spack/opt/spack/cudnn/8.5.0.96-11.7
     buildable: false
   curl:
     # Need mbedtls option for Julia - most other packages seem to prefer openSSL

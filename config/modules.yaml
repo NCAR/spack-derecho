@@ -91,6 +91,8 @@ modules:
       - nvhpc@23.7
       - parallelio+mpi
       - esmf+mpi
+      - cuda@11.7.1
+      - cudnn@8.5.0.96-11.7
       esmf:
         autoload: none
       exclude:
