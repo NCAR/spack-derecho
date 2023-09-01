@@ -919,6 +919,20 @@ spack:
         - esmf+mpi
   concretizer:
     unify: false
+  bootstrap:
+    enable: true
+    root: /glade/work/csgteam/spack-deployments/bootstrap/23.06
+    sources:
+    - name: github-actions-v0.4
+      metadata: $spack/share/spack/bootstrap/github-actions-v0.4
+    - name: github-actions-v0.3
+      metadata: $spack/share/spack/bootstrap/github-actions-v0.3
+    - name: spack-install
+      metadata: $spack/share/spack/bootstrap/spack-install
+    trusted:
+      github-actions-v0.4: true
+      github-actions-v0.3: true
+      spack-install: true
   mirrors:
     ncar_mirror_global: /glade/u/apps/derecho/mirror
   repos:
