@@ -154,13 +154,15 @@ spack:
         # for BLAS and LAPACK without needing to set it on each package
       - any_of:
         - '%gcc@7 ^openblas %gcc@7'
-        - '%gcc@11: ^openblas %gcc@11:'
+        - '%gcc@11: ^cray-libsci %gcc@11:'
+        - '%cce ^cray-libsci'
         - '%oneapi ^intel-oneapi-mkl'
         - '%nvhpc ^nvhpc'
         when: ^blas
       - any_of:
         - '%gcc@7 ^openblas %gcc@7'
-        - '%gcc@11: ^openblas %gcc@11:'
+        - '%gcc@11: ^cray-libsci %gcc@11:'
+        - '%cce ^cray-libsci'
         - '%oneapi ^intel-oneapi-mkl'
         - '%nvhpc ^nvhpc'
         when: ^lapack
@@ -278,6 +280,9 @@ spack:
       - +png
       - +tools
       - jp2k=jasper
+    ecflow:
+      variants:
+      - +ui
     eigen:
       require:
       - '%gcc@7.5.0'
@@ -747,6 +752,9 @@ spack:
       require: '%gcc@7.5.0'
       variants:
       - +programs
+    superlu-dist:
+      variants:
+      - +openmp
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
@@ -1370,3 +1378,5 @@ spack:
   - parallelio@2.6.2%oneapi@2023.2.1 ^cray-mpich@8.1.25%oneapi@2023.2.1
   - cuda@11.7.1
   - cudnn@8.5.0.96-11.7
+  - intel-oneapi-vtune@2023.2.0
+  - ecflow

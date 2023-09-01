@@ -127,13 +127,15 @@ packages:
       # for BLAS and LAPACK without needing to set it on each package
     - any_of:
       - '%gcc@7 ^openblas %gcc@7'
-      - '%gcc@11: ^openblas %gcc@11:'
+      - '%gcc@11: ^cray-libsci %gcc@11:'
+      - '%cce ^cray-libsci'
       - '%oneapi ^intel-oneapi-mkl'
       - '%nvhpc ^nvhpc'
       when: ^blas
     - any_of:
       - '%gcc@7 ^openblas %gcc@7'
-      - '%gcc@11: ^openblas %gcc@11:'
+      - '%gcc@11: ^cray-libsci %gcc@11:'
+      - '%cce ^cray-libsci'
       - '%oneapi ^intel-oneapi-mkl'
       - '%nvhpc ^nvhpc'
       when: ^lapack
@@ -251,6 +253,9 @@ packages:
     - +png
     - +tools
     - jp2k=jasper
+  ecflow:
+    variants:
+    - +ui
   eigen:
     require:
     - '%gcc@7.5.0'
@@ -720,3 +725,6 @@ packages:
     require: '%gcc@7.5.0'
     variants:
     - +programs
+  superlu-dist:
+    variants:
+    - +openmp
