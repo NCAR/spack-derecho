@@ -1,4 +1,5 @@
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/23.06.lua
+hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/23.09.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/22.12.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.03.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.02.lua
