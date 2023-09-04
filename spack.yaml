@@ -1311,7 +1311,6 @@ spack:
   - cuda@11.8.0
   - cudnn@8.7.0.84-11.8
   - intel-oneapi-compilers-classic@2021.10.0
-  - ncl
   - ncvis
   - linaro-forge@23.0
   - darshan-util@3.4.2
