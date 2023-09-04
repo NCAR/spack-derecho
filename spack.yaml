@@ -1399,3 +1399,4 @@ spack:
   - cudnn@8.5.0.96-11.7
   - intel-oneapi-vtune@2023.2.0
   - ecflow
+  - ncl
