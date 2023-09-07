@@ -1400,3 +1400,13 @@ spack:
   - intel-oneapi-vtune@2023.2.0
   - ecflow
   - ncl
+  - intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - parallel-netcdf@1.12.3%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - hdf5@1.12.2%oneapi@2023.2.1+mpi ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - netcdf@4.9.2%oneapi@2023.2.1+mpi ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - fftw@3.3.10%oneapi@2023.2.1+mpi ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - parallelio1@1.10.1%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - parallelio@2.6.2%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - esmf@8.5.0%oneapi@2023.2.1+mpi+pnetcdf ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - darshan-runtime@3.4.2%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - gptl@8.1.1%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
