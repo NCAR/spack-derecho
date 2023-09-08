@@ -1020,6 +1020,10 @@
     {
       "hash": "w2vrwn7xnb6ugvxajxnckzyzexfhv67x",
       "spec": "parallelio@2.6.2%oneapi@2023.0.0 ^cmake~ownlibs ^intel-oneapi-mpi@2021.8.0%oneapi@2023.0.0"
+    },
+    {
+      "hash": "rlkfvurr2zhqqooelfxfqve2wljuuujb",
+      "spec": "grads ^cmake~ownlibs"
     }
   ],
   "concrete_specs": {
@@ -36081,6 +36085,142 @@
         }
       ],
       "hash": "w2vrwn7xnb6ugvxajxnckzyzexfhv67x"
+    },
+    "rlkfvurr2zhqqooelfxfqve2wljuuujb": {
+      "name": "grads",
+      "version": "2.2.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "geotiff": true,
+        "shapefile": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "stsh7ro23mj3zbyc7lou56lew6bq445r4ewmolk4kllpgk6qlvhq====",
+      "dependencies": [
+        {
+          "name": "cairo",
+          "hash": "77huohxrtwti2hqo5h3dymb5qft6lovu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libgd",
+          "hash": "efugnurjkrnrih2cwt3pjvnsjdatnewn",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libgeotiff",
+          "hash": "m42237vm22zzfeu5kwpt3n62nq5vt4aw",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libxmu",
+          "hash": "wuklvlhwfzq7rg6m6tu6o2lcc2s7ktnf",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "pkg-config",
+          "hash": "cn6b5cmj6n5lgwliyo5oh2jvseg55jis",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "readline",
+          "hash": "qf3wsrpsqwpqo7vqmhmskniel52gwqa5",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "shapelib",
+          "hash": "w7sqpikwbyxgc3dnf6s64pwinkegnbsl",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "udunits",
+          "hash": "machpsgsiq3baudw66longl2onsqbswh",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "rlkfvurr2zhqqooelfxfqve2wljuuujb"
+    },
+    "w7sqpikwbyxgc3dnf6s64pwinkegnbsl": {
+      "name": "shapelib",
+      "version": "1.5.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "cmake",
+        "build_type": "Release",
+        "generator": "make",
+        "ipo": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "mjxjoeh3rdru3v752friq72l4xozgnzkmgpbmkbcn6zh5r5vapqq====",
+      "dependencies": [
+        {
+          "name": "cmake",
+          "hash": "l2rq5xa6mwd3i2haeq7xt7pmfyo6tsjq",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gmake",
+          "hash": "tb4q7wamhalektcypqqrao7iy4ucvbfg",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "w7sqpikwbyxgc3dnf6s64pwinkegnbsl"
     }
   }
 }
