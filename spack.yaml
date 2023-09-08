@@ -383,6 +383,7 @@ spack:
     git:
       variants:
       - +svn
+      - +tcltk
     glpk:
       require:
       - '%gcc@7.5.0'
@@ -801,7 +802,7 @@ spack:
       - libtool
       - autoconf@2.71
       - automake
-      - git
+      - git+tcltk
       link_type: symlink
       link: roots
   compilers:
@@ -962,6 +963,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - git+tcltk
         - xxdiff
         - gnuplot
         - qt@5.14.2
@@ -1410,3 +1412,4 @@ spack:
   - esmf@8.5.0%oneapi@2023.2.1+mpi+pnetcdf ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - darshan-runtime@3.4.2%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - gptl@8.1.1%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - git+tcltk

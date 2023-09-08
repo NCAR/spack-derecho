@@ -356,6 +356,7 @@ packages:
   git:
     variants:
     - +svn
+    - +tcltk
   glpk:
     require:
     - '%gcc@7.5.0'
