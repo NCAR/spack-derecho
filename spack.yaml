@@ -1401,7 +1401,6 @@ spack:
   - cudnn@8.5.0.96-11.7
   - intel-oneapi-vtune@2023.2.0
   - ecflow
-  - ncl
   - intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - parallel-netcdf@1.12.3%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - hdf5@1.12.2%oneapi@2023.2.1+mpi ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
