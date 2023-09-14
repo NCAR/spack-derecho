@@ -398,6 +398,9 @@ spack:
       variants:
       - +papi
       - +pmpi
+    grads:
+      variants:
+      - +dap
     groff:
       require:
       - '%gcc@7.5.0'
@@ -1413,3 +1416,4 @@ spack:
   - gptl@8.1.1%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - git+tcltk
   - ncl
+  - grads
