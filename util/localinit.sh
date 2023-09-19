@@ -31,7 +31,6 @@ export PATH=${PATH}:$NCAR_DEFAULT_PATH
 export MANPATH=${MANPATH}:$NCAR_DEFAULT_MANPATH
 export INFOPATH=${INFOPATH}:$NCAR_DEFAULT_INFOPATH
 
-
 # Set PBS workdir if appropriate
 if [ -n "$PBS_O_WORKDIR" ] && [ -z "$NCAR_PBS_JOBINIT" ]; then
     if [ -d "$PBS_O_WORKDIR" ]; then
@@ -39,19 +38,6 @@ if [ -n "$PBS_O_WORKDIR" ] && [ -z "$NCAR_PBS_JOBINIT" ]; then
     fi
 
     export NCAR_PBS_JOBINIT=$PBS_JOBID
-fi
-
-# Set number of GPUs (analogous to NCPUS)
-if [ -n "$PBS_JOBID" ]; then
-    if command -v nvidia-smi &> /dev/null; then
-        export NGPUS=`nvidia-smi -L |& grep -c UUID`
-        
-        if  [ $NGPUS -gt 0 ]; then
-            export MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED=1
-        fi
-    else
-        export NGPUS=0
-    fi
 fi
 
 # Load default modules

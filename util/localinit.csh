@@ -49,19 +49,6 @@ if ( $?PBS_O_WORKDIR  && ! $?NCAR_PBS_JOBINIT ) then
     setenv NCAR_PBS_JOBINIT $PBS_JOBID
 endif
 
-# Set number of GPUs (analogous to NCPUS)
-if ( $?PBS_JOBID ) then
-    if ( `where nvidia-smi` != "" ) then
-        setenv NGPUS `nvidia-smi -L |& grep -c UUID`
-
-        if ( $NGPUS > 0 ) then
-            setenv MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED 1
-        endif
-    else
-        setenv NGPUS 0
-    endif
-endif
-
 # Load default modules
 if ( ! $?__Init_Default_Modules || ! $?LD_LIBRARY_PATH ) then
   setenv __Init_Default_Modules 1
