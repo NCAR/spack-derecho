@@ -5,7 +5,10 @@ setenv MODULEPATH_ROOT /glade/u/apps/derecho/modules
 # Lmod configuration
 setenv LMOD_SYSTEM_NAME derecho
 setenv LMOD_SYSTEM_DEFAULT_MODULES "ncarenv/23.09:craype/2.7.20:intel/2023.2.1:ncarcompilers/1.0.0:cray-mpich/8.1.25:netcdf/4.9.2"
-setenv MODULEPATH /glade/u/apps/derecho/modules/environment
+
+if ( ! $?MODULEPATH || ($MODULEPATH !~ *${MODULEPATH_ROOT}*)) then
+    setenv MODULEPATH $MODULEPATH_ROOT/environment
+endif
 
 # Get location of Lmod initialization scripts
 setenv LMOD_ROOT /glade/u/apps/derecho/23.09/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/c645
@@ -28,13 +31,13 @@ setenv NCAR_DEFAULT_INFOPATH /usr/local/share/info:/usr/share/info
 
 setenv PATH ${PATH}:$NCAR_DEFAULT_PATH
 
-if ( ! ($?MANPATH) ) then
+if ( ! $?MANPATH ) then
     setenv MANPATH $NCAR_DEFAULT_MANPATH
 else
     setenv MANPATH ${MANPATH}:$NCAR_DEFAULT_MANPATH
 endif
 
-if ( ! ($?INFOPATH) ) then
+if ( ! $?INFOPATH ) then
     setenv INFOPATH $NCAR_DEFAULT_INFOPATH
 else
     setenv INFOPATH ${INFOPATH}:$NCAR_DEFAULT_INFOPATH
