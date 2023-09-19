@@ -96,6 +96,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - xnedit
       - git+tcltk
       - xxdiff
       - gnuplot

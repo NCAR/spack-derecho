@@ -539,6 +539,9 @@ packages:
     - spec: miniconda3@4.12.0
       prefix: /glade/u/apps/opt/conda
     buildable: false
+  motif:
+    require:
+    - ^autoconf@2.69
   mpifileutils:
     variants:
     - +gpfs

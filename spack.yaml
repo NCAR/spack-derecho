@@ -566,6 +566,9 @@ spack:
       - spec: miniconda3@4.12.0
         prefix: /glade/u/apps/opt/conda
       buildable: false
+    motif:
+      require:
+      - ^autoconf@2.69
     mpifileutils:
       variants:
       - +gpfs
@@ -763,6 +766,7 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - xnedit
       - xxdiff
       - gnuplot
       - qt@5.14.2
@@ -966,6 +970,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - xnedit
         - git+tcltk
         - xxdiff
         - gnuplot
@@ -1417,3 +1422,4 @@ spack:
   - git+tcltk
   - ncl
   - grads
+  - xnedit
