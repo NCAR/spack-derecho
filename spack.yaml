@@ -210,11 +210,14 @@ spack:
       require: '%gcc@7.5.0'
       variants:
       - +ownlibs
+    cp2k:
+      variants:
+      - +elpa
+      - +libvori
+      - +plumed
+      - +spglib
     cray-libsci:
       externals:
-      - spec: cray-libsci@23.05.1.4
-        modules:
-        - cray-libsci/23.05.1.4
       - spec: cray-libsci@23.02.1.1
         modules:
         - cray-libsci/23.02.1.1
@@ -762,6 +765,18 @@ spack:
     superlu-dist:
       variants:
       - +openmp
+    py-fypp:
+      require:
+      - '%gcc@7.5.0'
+    binutils:
+      require:
+      - '%gcc@7.5.0'
+    libxcrypt:
+      require:
+      - '%gcc@7.5.0'
+    gmp:
+      require:
+      - '%gcc@7.5.0'
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
@@ -1423,3 +1438,4 @@ spack:
   - ncl
   - grads
   - xnedit
+  - cp2k@2023.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0 ^libint%gcc@12.2.0 ^libxsmm@1.17%gcc@12.2.0

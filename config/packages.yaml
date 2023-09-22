@@ -183,11 +183,14 @@ packages:
     require: '%gcc@7.5.0'
     variants:
     - +ownlibs
+  cp2k:
+    variants:
+    - +elpa
+    - +libvori
+    - +plumed
+    - +spglib
   cray-libsci:
     externals:
-    - spec: cray-libsci@23.05.1.4
-      modules:
-      - cray-libsci/23.05.1.4
     - spec: cray-libsci@23.02.1.1
       modules:
       - cray-libsci/23.02.1.1
@@ -735,3 +738,15 @@ packages:
   superlu-dist:
     variants:
     - +openmp
+  py-fypp:
+    require:
+    - '%gcc@7.5.0'
+  binutils:
+    require:
+    - '%gcc@7.5.0'
+  libxcrypt:
+    require:
+    - '%gcc@7.5.0'
+  gmp:
+    require:
+    - '%gcc@7.5.0'

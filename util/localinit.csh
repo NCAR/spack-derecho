@@ -6,7 +6,9 @@ setenv MODULEPATH_ROOT /glade/u/apps/derecho/modules
 setenv LMOD_SYSTEM_NAME derecho
 setenv LMOD_SYSTEM_DEFAULT_MODULES "ncarenv/23.09:craype/2.7.20:intel/2023.2.1:ncarcompilers/1.0.0:cray-mpich/8.1.25:netcdf/4.9.2"
 
-if ( ! $?MODULEPATH || ($MODULEPATH !~ *${MODULEPATH_ROOT}*)) then
+if ( ! $?MODULEPATH ) then
+    setenv MODULEPATH $MODULEPATH_ROOT/environment
+else if ( $MODULEPATH !~ *${MODULEPATH_ROOT}* ) then
     setenv MODULEPATH $MODULEPATH_ROOT/environment
 endif
 
