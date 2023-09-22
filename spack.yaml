@@ -242,6 +242,8 @@ spack:
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0
       - spec: cuda@11.7.1
         prefix: /glade/u/apps/common/23.04/spack/opt/spack/cuda/11.7.1
+      - spec: cuda@12.2.1
+        prefix: /glade/u/apps/common/23.08/spack/opt/spack/cuda/12.2.1
       buildable: false
     cudnn:
       require:
@@ -577,6 +579,13 @@ spack:
       - +gpfs
       - +lustre
       - +xattr
+    mvapich:
+      variants:
+      - +cuda
+      - file_systems=lustre,gpfs,nfs,ufs
+      - process_managers=hydra
+      require:
+      - netmod=ofi
     ncl:
       # Newer ESMF versions cause issues for NCL
       # TODO - bake this into recipe?
@@ -775,6 +784,9 @@ spack:
       require:
       - '%gcc@7.5.0'
     gmp:
+      require:
+      - '%gcc@7.5.0'
+    libpciaccess:
       require:
       - '%gcc@7.5.0'
   view:
@@ -1439,3 +1451,4 @@ spack:
   - grads
   - xnedit
   - cp2k@2023.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0 ^libint%gcc@12.2.0 ^libxsmm@1.17%gcc@12.2.0
+  - cuda@12.2.1
