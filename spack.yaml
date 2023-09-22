@@ -1452,3 +1452,9 @@ spack:
   - xnedit
   - cp2k@2023.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0 ^libint%gcc@12.2.0 ^libxsmm@1.17%gcc@12.2.0
   - cuda@12.2.1
+  - superlu@5.3.0%gcc@12.2.0
+  - superlu@5.3.0%nvhpc@23.7
+  - superlu@5.3.0%oneapi@2023.2.1
+  - superlu-dist@8.1.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
+  - superlu-dist@8.1.2%oneapi@2023.2.1 ^cray-mpich@8.1.25%oneapi@2023.2.1
+  - superlu-dist@8.1.2%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
