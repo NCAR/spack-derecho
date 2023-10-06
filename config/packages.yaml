@@ -626,7 +626,15 @@ packages:
   openmpi:
     variants:
     - +cuda
-    require: fabrics=cma,ofi,knem schedulers=tm +gpfs +lustre
+    require:
+    - fabrics=cma,ofi
+    - schedulers=tm
+    - +gpfs
+    - +lustre
+    - +internal-pmix
+    - any_of:
+      - '^cuda@12.2:'
+      when: '@5.0.0rc13'
   openpbs:
     externals:
     - spec: openpbs@2021.1.3

@@ -653,7 +653,15 @@ spack:
     openmpi:
       variants:
       - +cuda
-      require: fabrics=cma,ofi,knem schedulers=tm +gpfs +lustre
+      require:
+      - fabrics=cma,ofi
+      - schedulers=tm
+      - +gpfs
+      - +lustre
+      - +internal-pmix
+      - any_of:
+        - '^cuda@12.2:'
+        when: '@5.0.0rc13'
     openpbs:
       externals:
       - spec: openpbs@2021.1.3
@@ -1217,7 +1225,6 @@ spack:
           environment:
             set:
               OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
-              OMPI_MCA_smsc: ^knem
             prepend_path:
               LD_LIBRARY_PATH: '{prefix}/lib'
         parallel-netcdf:
@@ -1458,3 +1465,25 @@ spack:
   - superlu-dist@8.1.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0
   - superlu-dist@8.1.2%oneapi@2023.2.1 ^cray-mpich@8.1.25%oneapi@2023.2.1
   - superlu-dist@8.1.2%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
+  - openmpi@5.0.0rc13%gcc@12.2.0
+  - mvapich@3.0b%gcc@12.2.0
+  - parallel-netcdf@1.12.3%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
+  - parallel-netcdf@1.12.3%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
+  - hdf5@1.12.2%gcc@12.2.0+mpi ^openmpi@5.0.0rc13%gcc@12.2.0
+  - hdf5@1.12.2%gcc@12.2.0+mpi ^mvapich@3.0b%gcc@12.2.0
+  - netcdf@4.9.2%gcc@12.2.0+mpi ^openmpi@5.0.0rc13%gcc@12.2.0
+  - netcdf@4.9.2%gcc@12.2.0+mpi ^mvapich@3.0b%gcc@12.2.0
+  - fftw@3.3.10%gcc@12.2.0+mpi ^openmpi@5.0.0rc13%gcc@12.2.0
+  - fftw@3.3.10%gcc@12.2.0+mpi ^mvapich@3.0b%gcc@12.2.0
+  - parallelio1@1.10.1%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
+  - parallelio1@1.10.1%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
+  - parallelio@2.6.2%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
+  - parallelio@2.6.2%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
+  - esmf@8.5.0%gcc@12.2.0+mpi+pnetcdf ^openmpi@5.0.0rc13%gcc@12.2.0
+  - esmf@8.5.0%gcc@12.2.0+mpi+pnetcdf ^mvapich@3.0b%gcc@12.2.0
+  - darshan-runtime@3.4.2%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
+  - darshan-runtime@3.4.2%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
+  - superlu-dist@8.1.2%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
+  - superlu-dist@8.1.2%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
+  - gptl@8.1.1%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
+  - gptl@8.1.1%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0

@@ -316,7 +316,6 @@ modules:
         environment:
           set:
             OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
-            OMPI_MCA_smsc: ^knem
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/lib'
       parallel-netcdf:
