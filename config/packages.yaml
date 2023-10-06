@@ -770,3 +770,10 @@ packages:
   libpciaccess:
     require:
     - '%gcc@7.5.0'
+  rstudio:
+    externals:
+    - spec: rstudio@2023.09.0
+      prefix: /glade/u/apps/opt/rstudio/2023.09.0
+    buildable: false
+    require:
+    - '%gcc@7.5.0'

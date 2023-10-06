@@ -797,6 +797,13 @@ spack:
     libpciaccess:
       require:
       - '%gcc@7.5.0'
+    rstudio:
+      externals:
+      - spec: rstudio@2023.09.0
+        prefix: /glade/u/apps/opt/rstudio/2023.09.0
+      buildable: false
+      require:
+      - '%gcc@7.5.0'
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
@@ -1249,6 +1256,13 @@ spack:
               NCAR_ROOT_PARALLELIO: '{prefix}'
               NCAR_SPACK_HASH_PARALLELIO: '{hash}'
               PIO: '{prefix}'
+        rstudio:
+          filter:
+            exclude_env_vars:
+            - CMAKE_PREFIX_PATH
+          environment:
+            prepend_path:
+              PATH: '{prefix}'
         projections:
           all: '{name}/{version}'
           fftw+mpi: fftw-mpi/{version}
@@ -1487,3 +1501,4 @@ spack:
   - superlu-dist@8.1.2%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
   - gptl@8.1.1%gcc@12.2.0 ^openmpi@5.0.0rc13%gcc@12.2.0
   - gptl@8.1.1%gcc@12.2.0 ^mvapich@3.0b%gcc@12.2.0
+  - rstudio@2023.09.0

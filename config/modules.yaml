@@ -340,6 +340,13 @@ modules:
             NCAR_ROOT_PARALLELIO: '{prefix}'
             NCAR_SPACK_HASH_PARALLELIO: '{hash}'
             PIO: '{prefix}'
+      rstudio:
+        filter:
+          exclude_env_vars:
+          - CMAKE_PREFIX_PATH
+        environment:
+          prepend_path:
+            PATH: '{prefix}'
       projections:
         all: '{name}/{version}'
         fftw+mpi: fftw-mpi/{version}
