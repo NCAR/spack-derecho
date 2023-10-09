@@ -554,7 +554,7 @@ packages:
     - +xattr
   mvapich:
     variants:
-    - +cuda
+    - ~cuda
     - file_systems=lustre,gpfs,nfs,ufs
     - process_managers=hydra
     require:
@@ -625,7 +625,7 @@ packages:
     - '%gcc@7.5.0'
   openmpi:
     variants:
-    - +cuda
+    - ~cuda
     require:
     - fabrics=cma,ofi
     - schedulers=tm
@@ -634,7 +634,7 @@ packages:
     - +internal-pmix
     - any_of:
       - '^cuda@12.2:'
-      when: '@5.0.0rc13'
+      when: '@5.0.0rc13 +cuda'
   openpbs:
     externals:
     - spec: openpbs@2021.1.3
