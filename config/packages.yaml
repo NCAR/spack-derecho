@@ -631,7 +631,6 @@ packages:
     - schedulers=tm
     - +gpfs
     - +lustre
-    - +internal-pmix
     - any_of:
       - '^cuda@12.2:'
       when: '@5.0.0rc13 +cuda'
@@ -645,6 +644,9 @@ packages:
   openssh:
     require:
     - '%gcc@7.5.0'
+  osu-micro-benchmarks:
+    variants:
+    - +cuda
   pango:
     variants:
     - +X
