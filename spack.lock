@@ -1024,6 +1024,18 @@
     {
       "hash": "rlkfvurr2zhqqooelfxfqve2wljuuujb",
       "spec": "grads ^cmake~ownlibs"
+    },
+    {
+      "hash": "pavazqgporugkw757xvlvuorvscebji5",
+      "spec": "osu-micro-benchmarks%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0"
+    },
+    {
+      "hash": "sgbbw7lt5y555a7ybub3yjnq5ztrhyk2",
+      "spec": "osu-micro-benchmarks%nvhpc@23.5 ^cray-mpich@8.1.25%nvhpc@23.5"
+    },
+    {
+      "hash": "zqkwxapxgnppbjbjbwl7zosatwfv5jlp",
+      "spec": "osu-micro-benchmarks%cce@15.0.1 ^cray-mpich@8.1.25%cce@15.0.1"
     }
   ],
   "concrete_specs": {
@@ -36221,6 +36233,252 @@
         }
       ],
       "hash": "w7sqpikwbyxgc3dnf6s64pwinkegnbsl"
+    },
+    "pavazqgporugkw757xvlvuorvscebji5": {
+      "name": "osu-micro-benchmarks",
+      "version": "7.1-1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "12.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "cuda": true,
+        "cuda_arch": [
+          "none"
+        ],
+        "graphing": false,
+        "papi": false,
+        "rocm": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "xsga2zafpoltmocas72xk2iwa7khp5avocgdkycr4lwwv3cj72ca====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "moe4qr5y5rb7fv2povkpsn446x5couhe",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "cuda",
+          "hash": "hrlz2pwiazumehrwmk6e6fko7n3ymfas",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "pavazqgporugkw757xvlvuorvscebji5"
+    },
+    "hrlz2pwiazumehrwmk6e6fko7n3ymfas": {
+      "name": "cuda",
+      "version": "11.8.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "12.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "allow-unsupported-compilers": true,
+        "build_system": "generic",
+        "dev": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "6ej2gnrvzmyb3s7xhn5lhpwvrvyoadnvuru2owkrtifrcsuo7cyq====",
+      "hash": "hrlz2pwiazumehrwmk6e6fko7n3ymfas"
+    },
+    "sgbbw7lt5y555a7ybub3yjnq5ztrhyk2": {
+      "name": "osu-micro-benchmarks",
+      "version": "7.1-1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "23.5"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "cuda": true,
+        "cuda_arch": [
+          "none"
+        ],
+        "graphing": false,
+        "papi": false,
+        "rocm": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "xsga2zafpoltmocas72xk2iwa7khp5avocgdkycr4lwwv3cj72ca====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "dpkqgrxmzxkiqx6uya76hrsig4lz5xr4",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "cuda",
+          "hash": "sa4hfjzmjdik4r3ipuenahc6iyumkztj",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "sgbbw7lt5y555a7ybub3yjnq5ztrhyk2"
+    },
+    "sa4hfjzmjdik4r3ipuenahc6iyumkztj": {
+      "name": "cuda",
+      "version": "11.8.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "23.5"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "allow-unsupported-compilers": true,
+        "build_system": "generic",
+        "dev": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "6ej2gnrvzmyb3s7xhn5lhpwvrvyoadnvuru2owkrtifrcsuo7cyq====",
+      "hash": "sa4hfjzmjdik4r3ipuenahc6iyumkztj"
+    },
+    "zqkwxapxgnppbjbjbwl7zosatwfv5jlp": {
+      "name": "osu-micro-benchmarks",
+      "version": "7.1-1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "15.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_system": "autotools",
+        "cuda": true,
+        "cuda_arch": [
+          "none"
+        ],
+        "graphing": false,
+        "papi": false,
+        "rocm": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "package_hash": "xsga2zafpoltmocas72xk2iwa7khp5avocgdkycr4lwwv3cj72ca====",
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "hash": "wwqkoqm5rcprj7kozngllajxtz3sljtl",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "cuda",
+          "hash": "ejdzggl4vo5y3gsm3hioxw6dfjktvvun",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "zqkwxapxgnppbjbjbwl7zosatwfv5jlp"
+    },
+    "ejdzggl4vo5y3gsm3hioxw6dfjktvvun": {
+      "name": "cuda",
+      "version": "11.8.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64_v3"
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "15.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "allow-unsupported-compilers": true,
+        "build_system": "generic",
+        "dev": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/glade/u/apps/common/23.08/spack/opt/spack/cuda/11.8.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "package_hash": "6ej2gnrvzmyb3s7xhn5lhpwvrvyoadnvuru2owkrtifrcsuo7cyq====",
+      "hash": "ejdzggl4vo5y3gsm3hioxw6dfjktvvun"
     }
   }
 }

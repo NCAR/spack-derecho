@@ -6,13 +6,9 @@ export MODULEPATH_ROOT=/glade/u/apps/derecho/modules
 export LMOD_SYSTEM_NAME=derecho
 export LMOD_SYSTEM_DEFAULT_MODULES="ncarenv/23.06:craype/2.7.20:intel/2023.0.0:ncarcompilers/1.0.0:cray-mpich/8.1.25:netcdf/4.9.2"
 
-case "$MODULEPATH" in
-    *"${MODULEPATH_ROOT}"*)
-        ;;
-    *)
-        export MODULEPATH=$MODULEPATH_ROOT/environment
-        ;;
-esac
+if [ "$MODULEPATH" != *"${MODULEPATH_ROOT}"* ]; then
+    export MODULEPATH=$MODULEPATH_ROOT/environment
+fi
 
 # Location of Lmod initialization scripts
 export LMOD_ROOT=/glade/u/apps/derecho/23.06/spack/opt/spack/lmod/8.7.20/gcc/7.5.0/pdxb

@@ -23,6 +23,8 @@ compilers:
         LD_LIBRARY_PATH: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/21.3/Linux_x86_64/21.3/compilers/lib
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
 - compiler:
     spec: nvhpc@23.1
     paths:
@@ -37,6 +39,8 @@ compilers:
         LD_LIBRARY_PATH: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.1/Linux_x86_64/23.1/compilers/lib
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
 - compiler:
     spec: oneapi@2023.0.0
     paths:
@@ -51,6 +55,8 @@ compilers:
         LD_LIBRARY_PATH: /glade/u/apps/common/23.04/spack/opt/spack/intel-oneapi-compilers/2023.0.0/compiler/latest/linux/compiler/lib/intel64
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
 - compiler:
     spec: cce@15.0.1
     paths:
@@ -65,6 +71,7 @@ compilers:
     environment:
       set:
         PE_ENV: CRAY
+        NVCCFLAGS: -allow-unsupported-compiler
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
 - compiler:
@@ -81,6 +88,7 @@ compilers:
     environment:
       set:
         PE_ENV: GNU
+        NVCCFLAGS: -allow-unsupported-compiler
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
 - compiler:
@@ -97,6 +105,8 @@ compilers:
         LD_LIBRARY_PATH: /glade/u/apps/common/23.04/spack/opt/spack/nvhpc/23.5/Linux_x86_64/23.5/compilers/lib
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
 - compiler:
     spec: cce@16.0.0
     paths:

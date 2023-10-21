@@ -389,3 +389,6 @@ packages:
     variants: [+bzip2]
   julia:
     require: ^llvm~clang~gold~polly ^openblas threads=openmp
+  osu-micro-benchmarks:
+    variants:
+    - +cuda
