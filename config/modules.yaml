@@ -87,7 +87,6 @@ modules:
       - netcdf@4.9.2
       - parallel-netcdf@1.12.3
       - fftw@3.3.10
-      - openmpi@4.1.5
       - nvhpc@23.7
       - parallelio+mpi
       - esmf+mpi
@@ -143,6 +142,8 @@ modules:
       - automake
       - libfabric
       - lmod
+      - cray-mpich
+      - cray-libsci
       exclude_implicits: true
       fftw+mpi:
         template: conflict-mpi.lua

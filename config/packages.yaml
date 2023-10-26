@@ -194,6 +194,9 @@ packages:
     - spec: cray-libsci@23.02.1.1
       modules:
       - cray-libsci/23.02.1.1
+    - spec: cray-libsci@23.09.1.1
+      modules:
+      - cray-libsci/23.09.1.1
     buildable: false
   cray-mpich:
     externals:
@@ -205,6 +208,14 @@ packages:
       prefix: /opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
     - spec: cray-mpich@8.1.25 %oneapi
       prefix: /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0
+    - spec: cray-mpich@8.1.27 %gcc
+      prefix: /opt/cray/pe/mpich/8.1.27/ofi/gnu/9.1
+    - spec: cray-mpich@8.1.27 %cce
+      prefix: /opt/cray/pe/mpich/8.1.27/ofi/cray/14.0
+    - spec: cray-mpich@8.1.27 %nvhpc
+      prefix: /opt/cray/pe/mpich/8.1.27/ofi/nvidia/20.7
+    - spec: cray-mpich@8.1.27 %oneapi
+      prefix: /opt/cray/pe/mpich/8.1.27/ofi/intel/2022.1
     buildable: false
   cuda:
     require:
@@ -624,16 +635,16 @@ packages:
     require:
     - '%gcc@7.5.0'
   openmpi:
-    variants:
-    - ~cuda
     require:
     - fabrics=cma,ofi
     - schedulers=tm
     - +gpfs
     - +lustre
+    - +internal-pmix
+    - +cuda
     - any_of:
       - '^cuda@12.2:'
-      when: '@5.0.0rc13 +cuda'
+      when: '@5.0.0rc16 +cuda'
   openpbs:
     externals:
     - spec: openpbs@2021.1.3

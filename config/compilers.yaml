@@ -31,8 +31,8 @@ compilers:
     paths:
       cc: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/latest/linux/bin/icx
       cxx: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/latest/linux/bin/icpx
-      f77: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/latest/linux/bin/ifx
-      fc: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/latest/linux/bin/ifx
+      f77: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/latest/linux/bin/intel64/ifort
+      fc: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/latest/linux/bin/intel64/ifort
     operating_system: sles15
     modules: []
     environment:
@@ -57,5 +57,22 @@ compilers:
       set:
         NVCCFLAGS: -allow-unsupported-compiler
         PE_ENV: GNU
+      append_path:
+        LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+- compiler:
+    spec: cce@16.0.1
+    paths:
+      cc: cc
+      cxx: CC
+      f77: ftn
+      fc: ftn
+    operating_system: sles15
+    modules:
+    - craype
+    - cce/16.0.1
+    environment:
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
+        PE_ENV: CRAY
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
