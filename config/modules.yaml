@@ -95,6 +95,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - rpcsvc-proto
       - xnedit
       - git+tcltk
       - xxdiff

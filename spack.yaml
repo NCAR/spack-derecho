@@ -1044,6 +1044,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - rpcsvc-proto
         - xnedit
         - git+tcltk
         - xxdiff
@@ -1598,3 +1599,4 @@ spack:
   - esmf@8.5.0%oneapi@2023.2.1+mpi+pnetcdf ^cray-mpich@8.1.27%oneapi@2023.2.1
   - superlu-dist@8.1.2%oneapi@2023.2.1 ^cray-mpich@8.1.27%oneapi@2023.2.1
   - superlu-dist@8.1.2%oneapi@2023.2.1 ^openmpi@5.0.0rc16%oneapi@2023.2.1
+  - rpcsvc-proto
