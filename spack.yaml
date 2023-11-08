@@ -1044,6 +1044,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - libnsl
         - rpcsvc-proto
         - xnedit
         - git+tcltk
@@ -1599,4 +1600,31 @@ spack:
   - esmf@8.5.0%oneapi@2023.2.1+mpi+pnetcdf ^cray-mpich@8.1.27%oneapi@2023.2.1
   - superlu-dist@8.1.2%oneapi@2023.2.1 ^cray-mpich@8.1.27%oneapi@2023.2.1
   - superlu-dist@8.1.2%oneapi@2023.2.1 ^openmpi@5.0.0rc16%oneapi@2023.2.1
-  - rpcsvc-proto
+  - cray-mpich@8.1.27%cce@16.0.1
+  - openmpi@5.0.0rc16%cce@16.0.1
+  - cray-libsci@23.09.1.1%cce@16.0.1
+  - ncarcompilers@1.0.0%cce@16.0.1
+  - fftw@3.3.10%cce@16.0.1~mpi
+  - udunits@2.2.28%cce@16.0.1
+  - hdf5@1.12.2%cce@16.0.1~mpi
+  - netcdf@4.9.2%cce@16.0.1~mpi
+  - proj@8.2.1%cce@16.0.1
+  - geos@3.9.1%cce@16.0.1
+  - hdf@4.2.15%cce@16.0.1 cflags="-std=c90 -Wno-error=int-conversion"
+  - mpi-serial@2.3.0%cce@16.0.1 cflags="-std=c90"
+  - parallelio@2.6.2%cce@16.0.1~mpi~pnetcdf
+  - superlu@5.3.0%cce@16.0.1
+  - eccodes@2.25.0%cce@16.0.1
+  - gdal@3.7.1%cce@16.0.1
+  - parallel-netcdf@1.12.3%cce@16.0.1 ^cray-mpich@8.1.27%cce@16.0.1
+  - parallel-netcdf@1.12.3%cce@16.0.1 ^openmpi@5.0.0rc16%cce@16.0.1
+  - hdf5@1.12.2%cce@16.0.1+mpi ^cray-mpich@8.1.27%cce@16.0.1
+  - hdf5@1.12.2%cce@16.0.1+mpi ^openmpi@5.0.0rc16%cce@16.0.1
+  - netcdf@4.9.2%cce@16.0.1+mpi ^cray-mpich@8.1.27%cce@16.0.1
+  - netcdf@4.9.2%cce@16.0.1+mpi ^openmpi@5.0.0rc16%cce@16.0.1
+  - fftw@3.3.10%cce@16.0.1+mpi ^cray-mpich@8.1.27%cce@16.0.1
+  - fftw@3.3.10%cce@16.0.1+mpi ^openmpi@5.0.0rc16%cce@16.0.1
+  - parallelio1@1.10.1%cce@16.0.1 ^cray-mpich@8.1.27%cce@16.0.1
+  - parallelio1@1.10.1%cce@16.0.1 ^openmpi@5.0.0rc16%cce@16.0.1
+  - wgrib2
+  - grib-util
