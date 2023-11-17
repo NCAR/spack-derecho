@@ -983,6 +983,8 @@ spack:
           filter:
             exclude_env_vars:
             - GOPATH
+        cdo:
+          autoload: none
         core_compilers:
         - gcc@7.5.0
         core_specs:
@@ -1240,6 +1242,12 @@ spack:
             set:
               NCAR_EXCLUDE_ASNEEDED: '1'
           template: ncar_wrapper.lua
+        nco:
+          autoload: none
+        ncview:
+          autoload: none
+        nccmp:
+          autoload: none
         netcdf:
           autoload: all
         netcdf+mpi:
@@ -1323,7 +1331,7 @@ spack:
     unify: false
   bootstrap:
     enable: true
-    root: /glade/work/csgteam/spack-deployments/bootstrap/23.09
+    root: /glade/u/apps/derecho/23.09/opt/view
     sources:
     - name: github-actions-v0.4
       metadata: $spack/share/spack/bootstrap/github-actions-v0.4

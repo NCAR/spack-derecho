@@ -34,6 +34,8 @@ modules:
         filter:
           exclude_env_vars:
           - GOPATH
+      cdo:
+        autoload: none
       core_compilers:
       - gcc@7.5.0
       core_specs:
@@ -291,6 +293,12 @@ modules:
           set:
             NCAR_EXCLUDE_ASNEEDED: '1'
         template: ncar_wrapper.lua
+      nco:
+        autoload: none
+      ncview:
+        autoload: none
+      nccmp:
+        autoload: none
       netcdf:
         autoload: all
       netcdf+mpi:
