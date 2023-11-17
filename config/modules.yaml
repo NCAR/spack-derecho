@@ -176,6 +176,14 @@ modules:
             NCAR_SPACK_HASH_VTUNE: '{hash}'
           append_path:
             LD_LIBRARY_PATH: '{prefix}/vtune/latest/lib64'
+      cdo:
+        autoload: none
+      nco:
+        autoload: none
+      ncview:
+        autoload: none
+      nccmp:
+        autoload: none
       nvhpc:
         environment:
           set:

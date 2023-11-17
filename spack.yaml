@@ -774,6 +774,14 @@ spack:
               NCAR_SPACK_HASH_VTUNE: '{hash}'
             append_path:
               LD_LIBRARY_PATH: '{prefix}/vtune/latest/lib64'
+        cdo:
+          autoload: none
+        nco:
+          autoload: none
+        ncview:
+          autoload: none
+        nccmp:
+          autoload: none
         nvhpc:
           environment:
             set:
@@ -934,7 +942,7 @@ spack:
     unify: false
   bootstrap:
     enable: true
-    root: /glade/work/csgteam/spack-deployments/bootstrap/23.06
+    root: /glade/u/apps/derecho/23.06/opt
     sources:
     - name: github-actions-v0.4
       metadata: $spack/share/spack/bootstrap/github-actions-v0.4
