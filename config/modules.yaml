@@ -159,6 +159,7 @@ modules:
             NCAR_BUILD_ENV: derecho-{name}-{version}
             NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
             NCAR_ID_COMPILER: '{name}-{version}'
+            NCAR_ROOT_COMPILER: '{prefix}'
       hash_length: 0
       hdf5+mpi:
         template: conflict-mpi.lua
@@ -186,6 +187,7 @@ modules:
             NCAR_BUILD_ENV_COMPILER: derecho-oneapi-{version}
             NCAR_ID_COMPILER: oneapi-{version}
             NCAR_ROOT_ONEAPI: '{prefix}'
+            NCAR_ROOT_COMPILER: '{prefix}'
             NCAR_SPACK_HASH_ONEAPI: '{hash}'
             OMPI_CC: icx
             OMPI_CXX: icpx
@@ -214,6 +216,7 @@ modules:
             NCAR_BUILD_ENV_COMPILER: derecho-intel-{^intel-oneapi-compilers.version}
             NCAR_ID_COMPILER: intel-{^intel-oneapi-compilers.version}
             NCAR_ROOT_INTEL: '{^intel-oneapi-compilers.prefix}'
+            NCAR_ROOT_COMPILER: '{^intel-oneapi-compilers.prefix}'
             NCAR_SPACK_HASH_INTEL: '{hash}'
             OMPI_CC: icc
             OMPI_CXX: icpc
@@ -288,6 +291,7 @@ modules:
           set:
             NCAR_BUILD_ENV_MPI: derecho-{compiler.name}-{compiler.version}-{name}-{version}
             NCAR_ID_MPI: '{name}-{version}'
+            NCAR_ROOT_MPI: '{prefix}'
       ncarcompilers:
         environment:
           set:
@@ -312,6 +316,7 @@ modules:
             NCAR_BUILD_ENV: derecho-{name}-{version}
             NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
             NCAR_ID_COMPILER: '{name}-{version}'
+            NCAR_ROOT_COMPILER: '{prefix}'
             NVIDIA_PATH: '{prefix}'
             NVIDIA_VERSION: '{version}'
             PE_ENV: NVIDIA

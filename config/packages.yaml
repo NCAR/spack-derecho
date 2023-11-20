@@ -141,6 +141,9 @@ packages:
       when: ^lapack
   antlr:
     require: '%gcc@7.5.0'
+  aocc:
+    require:
+    - +license-agreed
   apptainer:
     variants:
     - ~suid
@@ -216,6 +219,8 @@ packages:
       prefix: /opt/cray/pe/mpich/8.1.27/ofi/nvidia/20.7
     - spec: cray-mpich@8.1.27 %oneapi
       prefix: /opt/cray/pe/mpich/8.1.27/ofi/intel/2022.1
+    - spec: cray-mpich@8.1.27 %aocc
+      prefix: /opt/cray/pe/mpich/8.1.27/ofi/aocc/3.0
     buildable: false
   cuda:
     require:
