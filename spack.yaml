@@ -1631,3 +1631,6 @@ spack:
   - esmf@8.6.0%nvhpc@23.7+mpi+pnetcdf ^openmpi@5.0.0%nvhpc@23.7
   - esmf@8.6.0%oneapi@2023.2.1+mpi+pnetcdf ^cray-mpich@8.1.27%oneapi@2023.2.1
   - esmf@8.6.0%oneapi@2023.2.1+mpi+pnetcdf ^openmpi@5.0.0%oneapi@2023.2.1
+  - esmf@8.6.0%gcc@12.2.0~mpi ^parallelio~mpi
+  - esmf@8.6.0%nvhpc@23.7~mpi ^parallelio~mpi
+  - esmf@8.6.0%oneapi@2023.2.1~mpi ^parallelio~mpi
