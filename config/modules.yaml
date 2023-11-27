@@ -97,6 +97,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - parallel
       - libnsl
       - rpcsvc-proto
       - xnedit

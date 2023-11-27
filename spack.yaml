@@ -826,6 +826,7 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - parallel
       - xnedit
       - xxdiff
       - gnuplot
@@ -1051,6 +1052,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - parallel
         - libnsl
         - rpcsvc-proto
         - xnedit
@@ -1634,3 +1636,4 @@ spack:
   - esmf@8.6.0%gcc@12.2.0~mpi ^parallelio~mpi
   - esmf@8.6.0%nvhpc@23.7~mpi ^parallelio~mpi
   - esmf@8.6.0%oneapi@2023.2.1~mpi ^parallelio~mpi
+  - parallel
