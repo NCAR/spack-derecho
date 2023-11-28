@@ -149,6 +149,7 @@ modules:
       - lmod
       - cray-mpich
       - cray-libsci
+      - perl
       exclude_implicits: true
       fftw+mpi:
         template: conflict-mpi.lua

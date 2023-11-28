@@ -871,6 +871,7 @@ spack:
       - autoconf@2.71
       - automake
       - git+tcltk
+      - perl
       link_type: symlink
       link: roots
   compilers:
@@ -1104,6 +1105,7 @@ spack:
         - lmod
         - cray-mpich
         - cray-libsci
+        - perl
         exclude_implicits: true
         fftw+mpi:
           template: conflict-mpi.lua
