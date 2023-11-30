@@ -97,6 +97,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - vim
       - parallel
       - libnsl
       - rpcsvc-proto

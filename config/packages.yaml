@@ -547,6 +547,13 @@ packages:
   maven:
     require:
     - '%gcc@7.5.0'
+  met:
+    variants:
+    - +graphics
+    - +grib2
+    - +lidar2nc
+    - +modis
+    - +python
   mbedtls:
     # Julia of course...
     require:
@@ -698,6 +705,15 @@ packages:
     # Newer versions cannot be used by py-numpy as of Aug 2023
     require:
     - '@:63'
+  py-netcdf4:
+    variants:
+    - ~mpi
+  py-numpy:
+    # TODO - force use of non-Julia openblas, but next time build it first
+    require:
+    - any_of:
+      - ^openblas symbol_suffix=none
+      when: +blas
   qhull:
     require:
     - '%gcc@7.5.0'
@@ -795,3 +811,18 @@ packages:
     buildable: false
     require:
     - '%gcc@7.5.0'
+  vim:
+    variants:
+    - +cscope
+    - +x
+    - +gui
+    - +gtk
+    - +lua
+    - +perl
+    - +python
+    - +ruby
+    - features=huge
+    require:
+    - any_of:
+      - ^gtkplus+cups
+      when: +gtk
