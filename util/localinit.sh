@@ -14,6 +14,11 @@ case "$MODULEPATH" in
         ;;
 esac
 
+# Set defaults for Lmod behavior configuration
+export LMOD_PACKAGE_PATH=/glade/work/csgteam/spack-deployments/derecho/23.09/envs/public/util
+export LMOD_CONFIG_DIR=/glade/work/csgteam/spack-deployments/derecho/23.09/envs/public/util
+export LMOD_AVAIL_STYLE=grouped:system
+
 # Location of Lmod initialization scripts
 export LMOD_ROOT=/glade/u/apps/derecho/23.09/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/c645
 

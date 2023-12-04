@@ -554,6 +554,12 @@ packages:
     - +lidar2nc
     - +modis
     - +python
+  metplus:
+    variants:
+    - +series_analysis
+    - +cycloneplotter
+    - +makeplots
+    - +plotdataplane
   mbedtls:
     # Julia of course...
     require:
