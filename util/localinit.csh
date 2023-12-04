@@ -12,6 +12,11 @@ else if ( $MODULEPATH !~ *${MODULEPATH_ROOT}* ) then
     setenv MODULEPATH $MODULEPATH_ROOT/environment
 endif
 
+# Set defaults for Lmod behavior configuration
+setenv LMOD_PACKAGE_PATH /glade/work/csgteam/spack-deployments/derecho/23.06/envs/public/util
+setenv LMOD_CONFIG_DIR /glade/work/csgteam/spack-deployments/derecho/23.06/envs/public/util
+setenv LMOD_AVAIL_STYLE grouped:system
+
 # Get location of Lmod initialization scripts
 setenv LMOD_ROOT /glade/u/apps/derecho/23.06/spack/opt/spack/lmod/8.7.20/gcc/7.5.0/pdxb
 
