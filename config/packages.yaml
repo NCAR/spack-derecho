@@ -388,6 +388,20 @@ packages:
     - +wx
   googletest:
     require: '%gcc@7.5.0'
+  gmt:
+    variants:
+    - +ffmpeg
+    - +fftw
+    - +geos
+    - +ghostscript
+    - +glib
+    # This option needs to be off for now b/c graphicsmagick has issues with libxml2 linking
+    # (it wants ftp support, which libxml2 doesnt current have in Spack
+    - ~graphicsmagick
+    - +pcre
+    require:
+    - +blas
+    - +lapack
   gptl:
     variants:
     - +papi
