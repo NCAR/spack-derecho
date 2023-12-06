@@ -1688,3 +1688,7 @@ spack:
   - parallelio@2.6.2%oneapi@2023.2.1~mpi~pnetcdf
   - esmf@8.6.0%gcc@12.2.0~mpi ^parallelio@2.6.2~mpi
   - esmf@8.6.0%oneapi@2023.2.1~mpi ^parallelio@2.6.2~mpi
+  - esmf@8.5.0%gcc@12.2.0~mpi ^parallelio@2.6.1~mpi
+  - esmf@8.5.0%nvhpc@23.7~mpi ^nvhpc ^parallelio@2.6.1~mpi
+  - esmf@8.5.0%oneapi@2023.2.1~mpi ^parallelio@2.6.1~mpi
+  - esmf@8.6.0%nvhpc@23.7~mpi ^nvhpc ^parallelio@2.6.2~mpi
