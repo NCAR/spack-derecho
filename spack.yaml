@@ -1677,3 +1677,14 @@ spack:
   - parallel
   - vim
   - gmt@6.4.0%gcc@12.2.0
+  - mpi-serial@2.3.0%gcc@12.2.0
+  - mpi-serial@2.3.0%nvhpc@23.7
+  - mpi-serial@2.3.0%oneapi@2023.2.1
+  - parallelio@2.6.1%gcc@12.2.0~mpi~pnetcdf
+  - parallelio@2.6.1%nvhpc@23.7~mpi~pnetcdf
+  - parallelio@2.6.1%oneapi@2023.2.1~mpi~pnetcdf
+  - parallelio@2.6.2%gcc@12.2.0~mpi~pnetcdf
+  - parallelio@2.6.2%nvhpc@23.7~mpi~pnetcdf
+  - parallelio@2.6.2%oneapi@2023.2.1~mpi~pnetcdf
+  - esmf@8.6.0%gcc@12.2.0~mpi ^parallelio@2.6.2~mpi
+  - esmf@8.6.0%oneapi@2023.2.1~mpi ^parallelio@2.6.2~mpi
