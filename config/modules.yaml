@@ -97,6 +97,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - autoconf-archive
       - vim
       - parallel
       - libnsl

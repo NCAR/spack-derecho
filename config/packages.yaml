@@ -139,6 +139,9 @@ packages:
       - '%oneapi ^intel-oneapi-mkl'
       - '%nvhpc ^nvhpc'
       when: ^lapack
+    - any_of:
+      - ^pkg-config
+      when: ^pkgconfig
   antlr:
     require: '%gcc@7.5.0'
   aocc:

@@ -166,6 +166,9 @@ spack:
         - '%oneapi ^intel-oneapi-mkl'
         - '%nvhpc ^nvhpc'
         when: ^lapack
+      - any_of:
+        - ^pkg-config
+        when: ^pkgconfig
     antlr:
       require: '%gcc@7.5.0'
     aocc:
@@ -920,6 +923,7 @@ spack:
       - nghttp2
       - openssl
       - libtool
+      - autoconf-archive
       - autoconf@2.71
       - automake
       - git+tcltk
@@ -1105,6 +1109,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - autoconf-archive
         - vim
         - parallel
         - libnsl
@@ -1692,3 +1697,4 @@ spack:
   - esmf@8.5.0%nvhpc@23.7~mpi ^nvhpc ^parallelio@2.6.1~mpi
   - esmf@8.5.0%oneapi@2023.2.1~mpi ^parallelio@2.6.1~mpi
   - esmf@8.6.0%nvhpc@23.7~mpi ^nvhpc ^parallelio@2.6.2~mpi
+  - autoconf-archive
