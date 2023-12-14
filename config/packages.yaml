@@ -615,6 +615,9 @@ packages:
     - +gdal
     - +grib
     - +hdf4
+    - +eemd
+    - +hdf-eos2
+    - +hdf-eos5
   netcdf:
     variants:
     - +dap

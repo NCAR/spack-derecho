@@ -642,6 +642,9 @@ spack:
       - +gdal
       - +grib
       - +hdf4
+      - +eemd
+      - +hdf-eos2
+      - +hdf-eos5
     netcdf:
       variants:
       - +dap
@@ -1569,7 +1572,6 @@ spack:
   - darshan-runtime@3.4.2%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - gptl@8.1.1%oneapi@2023.2.1 ^intel-oneapi-mpi@2021.10.0%oneapi@2023.2.1
   - git+tcltk
-  - ncl
   - grads
   - xnedit
   - cp2k@2023.2%gcc@12.2.0 ^cray-mpich@8.1.25%gcc@12.2.0 ^libint%gcc@12.2.0 ^libxsmm@1.17%gcc@12.2.0
