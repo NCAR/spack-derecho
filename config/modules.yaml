@@ -27,6 +27,10 @@ modules:
             NCAR_ROOT_{name}: '{prefix}'
             NCAR_SPACK_HASH_{name}: '{hash}'
         template: ncar_default.lua
+      adios2:
+        environment:
+          set:
+            ADIOS2: '{prefix}'
       apptainer:
         environment:
           prepend_path:

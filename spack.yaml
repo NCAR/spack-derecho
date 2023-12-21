@@ -806,6 +806,11 @@ spack:
       - '%gcc@7.5.0'
     util-linux-uuid:
       require: '%gcc@7.5.0'
+    vasp:
+      externals:
+      - spec: vasp@5.3.5 %oneapi@2023.2.1
+        prefix: /glade/u/apps/derecho/23.09/opt/vasp/5.3.5/cray-mpich/8.1.27/intel/2023.2.1
+      buildable: false
     vtk-m:
       require:
       - '%gcc@7.5.0'
@@ -1042,6 +1047,10 @@ spack:
               NCAR_ROOT_{name}: '{prefix}'
               NCAR_SPACK_HASH_{name}: '{hash}'
           template: ncar_default.lua
+        adios2:
+          environment:
+            set:
+              ADIOS2: '{prefix}'
         apptainer:
           environment:
             prepend_path:
@@ -1701,3 +1710,4 @@ spack:
   - esmf@8.6.0%nvhpc@23.7~mpi ^nvhpc ^parallelio@2.6.2~mpi
   - autoconf-archive
   - ncl
+  - vasp@5.3.5%oneapi@2023.2.1

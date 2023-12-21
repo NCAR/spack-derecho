@@ -779,6 +779,11 @@ packages:
     - '%gcc@7.5.0'
   util-linux-uuid:
     require: '%gcc@7.5.0'
+  vasp:
+    externals:
+    - spec: vasp@5.3.5 %oneapi@2023.2.1
+      prefix: /glade/u/apps/derecho/23.09/opt/vasp/5.3.5/cray-mpich/8.1.27/intel/2023.2.1
+    buildable: false
   vtk-m:
     require:
     - '%gcc@7.5.0'
