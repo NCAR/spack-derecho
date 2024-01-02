@@ -101,6 +101,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - ncftp
       - autoconf-archive
       - vim
       - parallel
