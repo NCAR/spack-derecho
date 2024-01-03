@@ -1718,3 +1718,4 @@ spack:
   - mpi-serial@2.5.0%nvhpc@23.7
   - mpi-serial@2.5.0%oneapi@2023.2.1
   - ncftp
+  - libemos@4.5.1%gcc@12.2.0
