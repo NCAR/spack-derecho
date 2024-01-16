@@ -283,6 +283,15 @@ packages:
   eigen:
     require:
     - '%gcc@7.5.0'
+  emacs:
+    variants:
+    - +X
+    - +json
+    - +treesitter
+    require:
+    - any_of:
+      - ^gtkplus+cups
+      when: +X
   esmf:
     # If external-lapack not forced, concretizer will try to be lazy and
     # avoid lapack requirements by switching to internal despite variant

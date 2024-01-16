@@ -310,6 +310,15 @@ spack:
     eigen:
       require:
       - '%gcc@7.5.0'
+    emacs:
+      variants:
+      - +X
+      - +json
+      - +treesitter
+      require:
+      - any_of:
+        - ^gtkplus+cups
+        when: +X
     esmf:
       # If external-lapack not forced, concretizer will try to be lazy and
       # avoid lapack requirements by switching to internal despite variant
@@ -1122,6 +1131,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - emacs
         - ncftp
         - autoconf-archive
         - vim
@@ -1141,7 +1151,6 @@ spack:
         - libtree
         - tree
         - gdb
-        - emacs
         - tmux
         - openjdk
         - meson
@@ -1273,6 +1282,8 @@ spack:
           environment:
             set:
               FI_PROVIDER_PATH: /opt/cray/libfabric/1.15.2.0
+              I_MPI_OFI_LIBRARY: /opt/cray/libfabric/1.15.2.0/lib64/libfabric.so.1
+              I_MPI_OFI_PROVIDER: cxi
               I_MPI_HYDRA_BOOTSTRAP: rsh
               I_MPI_HYDRA_BOOTSTRAP_EXEC: pbs_tmrsh
               NCAR_ROOT_INTEL_MPI: '{prefix}'
@@ -1718,3 +1729,4 @@ spack:
   - mpi-serial@2.5.0%oneapi@2023.2.1
   - ncftp
   - libemos@4.5.1%gcc@12.2.0
+  - emacs
