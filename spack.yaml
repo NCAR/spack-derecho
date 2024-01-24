@@ -1730,3 +1730,4 @@ spack:
   - ncftp
   - libemos@4.5.1%gcc@12.2.0
   - emacs
+  - openblas@0.3.23%gcc@12.2.0
