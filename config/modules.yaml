@@ -101,6 +101,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - googletest
       - emacs
       - ncftp
       - autoconf-archive

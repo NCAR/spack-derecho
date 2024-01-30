@@ -897,6 +897,7 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - googletest
       - ncftp
       - vim
       - parallel
@@ -1131,6 +1132,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - googletest
         - emacs
         - ncftp
         - autoconf-archive
@@ -1731,3 +1733,5 @@ spack:
   - libemos@4.5.1%gcc@12.2.0
   - emacs
   - openblas@0.3.23%gcc@12.2.0
+  - ioapi@3.2%gcc@12.2.0
+  - googletest

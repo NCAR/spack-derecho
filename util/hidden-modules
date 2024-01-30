@@ -16,3 +16,4 @@ hide-modulefile /glade/u/apps/derecho/modules/23.09/nvhpc/23.7/openmpi/5.0.0.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2023.2.1/openmpi/5.0.0.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2023.2.1/vasp/5.3.5.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2023.2.1/intel-mpi/2021.10.0.lua
+hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.12.lua
