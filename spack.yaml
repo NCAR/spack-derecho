@@ -26,6 +26,49 @@ spack:
     template_dirs:
     - /glade/work/csgteam/spack-deployments/derecho/23.09/envs/build/templates/modules
   packages:
+    gawk:
+      externals:
+      - spec: gawk@4.2.1
+        prefix: /usr
+      require:
+      - '%gcc@7.5.0'
+    gcc:
+      externals:
+      - spec: gcc@7.5.0 languages='c,c++,fortran'
+        prefix: /usr
+        extra_attributes:
+          compilers:
+            c: /usr/bin/gcc-7
+            cxx: /usr/bin/g++-7
+            fortran: /usr/bin/gfortran-7
+      variants:
+      - +piclibs
+      - languages=c,c++,fortran,go
+      require:
+      - '%gcc@7.5.0'
+    openssh:
+      externals:
+      - spec: openssh@8.4p1
+        prefix: /usr
+      require:
+      - '%gcc@7.5.0'
+    gmake:
+      externals:
+      - spec: gmake@4.2.1
+        prefix: /usr
+      buildable: false
+      require:
+      - '%gcc@7.5.0'
+    openssl:
+      # Requiring certs=system is necessary to perform builds like rust using
+      # external openssl
+      externals:
+      - spec: openssl@1.1.1l
+        prefix: /usr
+      buildable: false
+      require:
+      - certs=system
+      - '%gcc@7.5.0'
     bash:
       externals:
       - spec: bash@4.4.23
@@ -50,13 +93,6 @@ spack:
     findutils:
       externals:
       - spec: findutils@4.8.0
-        prefix: /usr
-      buildable: false
-      require:
-      - '%gcc@7.5.0'
-    gmake:
-      externals:
-      - spec: gmake@4.2.1
         prefix: /usr
       buildable: false
       require:
@@ -96,16 +132,6 @@ spack:
         prefix: /usr
       buildable: false
       require:
-      - '%gcc@7.5.0'
-    openssl:
-      # Requiring certs=system is necessary to perform builds like rust using
-      # external openssl
-      externals:
-      - spec: openssl@1.1.1l
-        prefix: /usr
-      buildable: false
-      require:
-      - certs=system
       - '%gcc@7.5.0'
     libfabric:
       externals:
@@ -366,15 +392,6 @@ spack:
       # Newer version leads to concretization issues for Python packages
       # This setting avoids multiple builds of many packages
       require: '@:2.10.2'
-    gawk:
-      require:
-      - '%gcc@7.5.0'
-    gcc:
-      variants:
-      - +piclibs
-      - languages=c,c++,fortran,go
-      require:
-      - '%gcc@7.5.0'
     gdal:
       require:
       - any_of:
@@ -462,7 +479,6 @@ spack:
       - +fortran
       - +szip
     hdf5:
-      require: '@:1.12'
       variants:
       - +cxx
       - +fortran
@@ -491,6 +507,8 @@ spack:
       externals:
       - spec: intel-oneapi-compilers@2023.2.1
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1
+      - spec: intel-oneapi-compilers@2024.0.2
+        prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2024.0.2
       buildable: false
     intel-oneapi-mpi:
       variants:
@@ -726,9 +744,6 @@ spack:
       buildable: false
       require:
       - '%gcc@7.5.0'
-    openssh:
-      require:
-      - '%gcc@7.5.0'
     osu-micro-benchmarks:
       variants:
       - +cuda
@@ -775,7 +790,7 @@ spack:
       require:
       - any_of:
         - ^openblas symbol_suffix=none
-        when: +blas
+        when: ^openblas
     qhull:
       require:
       - '%gcc@7.5.0'
@@ -893,6 +908,19 @@ spack:
       - any_of:
         - ^gtkplus+cups
         when: +gtk
+    intel-oneapi-inspector:
+      externals:
+      - spec: intel-oneapi-inspector@2024.0.0
+        prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-inspector/2024.0.0
+      buildable: false
+      require:
+      - '%gcc@7.5.0'
+    libaec:
+      require:
+      - '%gcc@7.5.0'
+    ecbuild:
+      require:
+      - '%gcc@7.5.0'
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
@@ -1434,15 +1462,12 @@ spack:
     sources:
     - name: github-actions-v0.4
       metadata: $spack/share/spack/bootstrap/github-actions-v0.4
-    - name: github-actions-v0.3
-      metadata: $spack/share/spack/bootstrap/github-actions-v0.3
     - name: spack-install
       metadata: $spack/share/spack/bootstrap/spack-install
     trusted:
     # By default we trust bootstrapping from sources and from binaries
     # produced on Github via the workflow
       github-actions-v0.4: true
-      github-actions-v0.3: true
       spack-install: true
   mirrors:
     ncar_mirror_global: /glade/u/apps/derecho/mirror
@@ -1735,3 +1760,4 @@ spack:
   - openblas@0.3.23%gcc@12.2.0
   - ioapi@3.2%gcc@12.2.0
   - googletest
+  - intel-oneapi-inspector@2024.0.0
