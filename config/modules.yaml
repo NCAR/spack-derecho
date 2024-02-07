@@ -91,16 +91,16 @@ modules:
             DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
       defaults:
       - netcdf@4.9.2
-      - parallel-netcdf@1.12.3
-      - fftw@3.3.10
       - nvhpc@23.7
       - parallelio+mpi
       - esmf+mpi
-      - cuda@11.7.1
-      - cudnn@8.5.0.96-11.7
+      - cuda@12.2.1
+      - intel-oneapi-compilers@2023.2.1
+      - gcc@12.2.0
       esmf:
         autoload: none
       exclude:
+      - qhull@2020.2
       - googletest
       - emacs
       - ncftp
@@ -344,6 +344,8 @@ modules:
         environment:
           set:
             OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
+            # https://github.com/open-mpi/ompi/issues/9647
+            OMPI_MCA_rmaps_default_mapping_policy: :hwtcpus
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/lib'
       parallel-netcdf:

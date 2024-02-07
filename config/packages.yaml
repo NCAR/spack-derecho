@@ -1,12 +1,13 @@
 packages:
-  gawk:
-    externals:
-    - spec: gawk@4.2.1
-      prefix: /usr
-    require:
-    - '%gcc@7.5.0'
   gcc:
     externals:
+    - spec: gcc@13.2.0 languages='c,c++,fortran'
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/bin/gcc
+          cxx: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/bin/g++
+          fortran: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/bin/gfortran
     - spec: gcc@7.5.0 languages='c,c++,fortran'
       prefix: /usr
       extra_attributes:
@@ -14,15 +15,10 @@ packages:
           c: /usr/bin/gcc-7
           cxx: /usr/bin/g++-7
           fortran: /usr/bin/gfortran-7
+    buildable: false
     variants:
     - +piclibs
     - languages=c,c++,fortran,go
-    require:
-    - '%gcc@7.5.0'
-  openssh:
-    externals:
-    - spec: openssh@8.4p1
-      prefix: /usr
     require:
     - '%gcc@7.5.0'
   gmake:
@@ -41,6 +37,18 @@ packages:
     buildable: false
     require:
     - certs=system
+    - '%gcc@7.5.0'
+  gawk:
+    externals:
+    - spec: gawk@4.2.1
+      prefix: /usr
+    require:
+    - '%gcc@7.5.0'
+  openssh:
+    externals:
+    - spec: openssh@8.4p1
+      prefix: /usr
+    require:
     - '%gcc@7.5.0'
   bash:
     externals:
@@ -151,16 +159,18 @@ packages:
     require:
       # This should force packages to use the vendor-preferred solution
       # for BLAS and LAPACK without needing to set it on each package
-    - any_of:
+    - one_of:
       - '%gcc@7 ^openblas %gcc@7'
-      - '%gcc@11: ^cray-libsci %gcc@11:'
+      - '%gcc@12 ^cray-libsci %gcc@12'
+      - '%gcc@13 ^openblas %gcc@13'
       - '%cce ^cray-libsci'
       - '%oneapi ^intel-oneapi-mkl'
       - '%nvhpc ^nvhpc'
       when: ^blas
-    - any_of:
+    - one_of:
       - '%gcc@7 ^openblas %gcc@7'
-      - '%gcc@11: ^cray-libsci %gcc@11:'
+      - '%gcc@12 ^cray-libsci %gcc@12'
+      - '%gcc@13 ^openblas %gcc@13'
       - '%cce ^cray-libsci'
       - '%oneapi ^intel-oneapi-mkl'
       - '%nvhpc ^nvhpc'
@@ -577,6 +587,8 @@ packages:
     externals:
     - spec: linaro-forge@23.0
       prefix: /glade/u/apps/common/23.04/spack/opt/spack/linaro-forge/23.0
+    - spec: linaro-forge@23.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/23.1
     buildable: false
   lz4:
     require:
@@ -638,6 +650,7 @@ packages:
     require:
     - ^esmf@:8.0.1 ~external-lapack
     - ^hdf5~mpi
+    - '%gcc@7.5.0'
     variants:
     - +gdal
     - +grib
@@ -645,6 +658,10 @@ packages:
     - +eemd
     - +hdf-eos2
     - +hdf-eos5
+    externals:
+    - spec: ncl@6.6.2
+      prefix: /glade/u/apps/opt/ncl/6.6.2
+    buildable: true
   netcdf:
     variants:
     - +dap
@@ -671,6 +688,8 @@ packages:
     externals:
     - spec: nvhpc@23.7
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/23.7
+    - spec: nvhpc@24.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.1
     buildable: false
   octave:
     variants:
@@ -728,6 +747,10 @@ packages:
     - +ncint
     - +pnetcdf
     - ~logging
+    require:
+    - any_of:
+      - ~pnetcdf
+      when: ~mpi
   parallelio1:
     variants:
     - +pnetcdf
