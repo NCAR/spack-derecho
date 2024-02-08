@@ -639,7 +639,7 @@ packages:
     - +xattr
   mvapich:
     variants:
-    - ~cuda
+    - +cuda
     - file_systems=lustre,gpfs,nfs,ufs
     - process_managers=hydra
     require:
