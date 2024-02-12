@@ -641,7 +641,7 @@ packages:
     variants:
     - +cuda
     - file_systems=lustre,gpfs,nfs,ufs
-    - process_managers=hydra
+    - process_managers=auto
     require:
     - netmod=ofi
   ncl:

@@ -170,6 +170,7 @@ modules:
             NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
             NCAR_ID_COMPILER: '{name}-{version}'
             NCAR_ROOT_COMPILER: '{prefix}'
+            PE_ENV: GNU
       hash_length: 0
       hdf5+mpi:
         template: conflict-mpi.lua
@@ -390,6 +391,7 @@ modules:
         intel-oneapi-vtune: vtune/{version}
         miniconda3: conda/latest
         parallelio1: parallelio/{version}
+        mvapich~cuda: mvapich/{version}-cpu
       singularityce:
         environment:
           prepend_path:
