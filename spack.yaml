@@ -1295,6 +1295,8 @@ spack:
               NCAR_ID_COMPILER: '{name}-{version}'
               NCAR_ROOT_COMPILER: '{prefix}'
               PE_ENV: GNU
+              GNU_PATH: '{prefix}'
+              GNU_VERSION: '{version}'
         hash_length: 0
         hdf5+mpi:
           template: conflict-mpi.lua
