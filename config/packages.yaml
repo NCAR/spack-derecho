@@ -632,6 +632,13 @@ packages:
   motif:
     require:
     - ^autoconf@2.69
+  mpich:
+    require:
+    - device=ch4
+    - netmod=ofi
+    - pmi=pmi2
+    variants:
+    - ~cuda
   mpifileutils:
     variants:
     - +gpfs
@@ -639,11 +646,17 @@ packages:
     - +xattr
   mvapich:
     variants:
-    - +cuda
     - file_systems=lustre,gpfs,nfs,ufs
     - process_managers=auto
     require:
     - netmod=ofi
+    - +pbs
+    - one_of:
+      - ~cuda
+      when: '%oneapi'
+    - one_of:
+      - +cuda
+      when: '%nvhpc'
   ncl:
     # Newer ESMF versions cause issues for NCL
     # TODO - bake this into recipe?

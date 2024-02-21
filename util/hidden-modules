@@ -20,3 +20,5 @@ hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.12.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/23.06.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/default
 hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2024.0.2/mvapich/3.0rc.lua
+hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2024.0.2/mvapich/3.0rc-cpu.lua
+hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2024.0.2/mpich/3.4.3.lua

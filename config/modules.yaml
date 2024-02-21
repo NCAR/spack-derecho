@@ -394,6 +394,7 @@ modules:
         miniconda3: conda/latest
         parallelio1: parallelio/{version}
         mvapich~cuda: mvapich/{version}-cpu
+        mvapich+cuda: mvapich/{version}-cuda
       singularityce:
         environment:
           prepend_path:
