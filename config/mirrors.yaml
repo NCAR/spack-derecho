@@ -1,3 +1,4 @@
 mirrors:
   ncar_mirror_global: /glade/u/apps/derecho/mirror
   ncar_mirror_local: /glade/u/apps/derecho/mirror
+  ncar_mirror_stratus: s3://spack-cache-derecho
