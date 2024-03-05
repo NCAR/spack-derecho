@@ -1,4 +1,21 @@
 packages:
+  gmake:
+    externals:
+    - spec: gmake@4.2.1
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  openssl:
+    # Requiring certs=system is necessary to perform builds like rust using
+    # external openssl
+    externals:
+    - spec: openssl@1.1.1l
+      prefix: /usr
+    buildable: false
+    require:
+    - certs=system
+    - '%gcc@7.5.0'
   gcc:
     externals:
     - spec: gcc@13.2.0 languages='c,c++,fortran'
@@ -20,23 +37,6 @@ packages:
     - +piclibs
     - languages=c,c++,fortran,go
     require:
-    - '%gcc@7.5.0'
-  gmake:
-    externals:
-    - spec: gmake@4.2.1
-      prefix: /usr
-    buildable: false
-    require:
-    - '%gcc@7.5.0'
-  openssl:
-    # Requiring certs=system is necessary to perform builds like rust using
-    # external openssl
-    externals:
-    - spec: openssl@1.1.1l
-      prefix: /usr
-    buildable: false
-    require:
-    - certs=system
     - '%gcc@7.5.0'
   gawk:
     externals:
@@ -928,5 +928,19 @@ packages:
     require:
     - '%gcc@7.5.0'
   ecbuild:
+    require:
+    - '%gcc@7.5.0'
+  intel-oneapi-vtune:
+    externals:
+    - spec: intel-oneapi-vtune@2024.0.0
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-vtune/2024.0.0
+    buildable: false
+    require:
+    - '%gcc@7.5.0'
+  intel-oneapi-advisor:
+    externals:
+    - spec: intel-oneapi-advisor@2024.0.0
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-advisor/2024.0.0
+    buildable: false
     require:
     - '%gcc@7.5.0'
