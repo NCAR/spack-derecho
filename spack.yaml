@@ -1415,6 +1415,24 @@ spack:
               NCAR_SPACK_HASH_INTEL_MPI: '{hash}'
             prepend_path:
               LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+        intel-oneapi-advisor:
+          filter:
+            exclude_env_vars:
+            - NCAR_ROOT_INTEL_ONEAPI_ADVISOR
+            - NCAR_SPACK_HASH_INTEL_ONEAPI_ADVISOR
+          environment:
+            set:
+              NCAR_ROOT_INTEL_ADVISOR: '{prefix}'
+              NCAR_SPACK_HASH_INTEL_ADVISOR: '{hash}'
+        intel-oneapi-inspector:
+          filter:
+            exclude_env_vars:
+            - NCAR_ROOT_INTEL_ONEAPI_INSPECTOR
+            - NCAR_SPACK_HASH_INTEL_ONEAPI_INSPECTOR
+          environment:
+            set:
+              NCAR_ROOT_INTEL_INSPECTOR: '{prefix}'
+              NCAR_SPACK_HASH_INTEL_INSPECTOR: '{hash}'
         intel-oneapi-vtune:
           filter:
             exclude_env_vars:
@@ -1422,8 +1440,8 @@ spack:
             - NCAR_SPACK_HASH_INTEL_ONEAPI_VTUNE
           environment:
             set:
-              NCAR_ROOT_VTUNE: '{prefix}'
-              NCAR_SPACK_HASH_VTUNE: '{hash}'
+              NCAR_ROOT_INTEL_VTUNE: '{prefix}'
+              NCAR_SPACK_HASH_INTEL_VTUNE: '{hash}'
             append_path:
               LD_LIBRARY_PATH: '{prefix}/vtune/latest/lib64'
         julia:
@@ -1537,11 +1555,13 @@ spack:
           netcdf+mpi: netcdf-mpi/{version}
           hdf5+mpi: hdf5-mpi/{version}
           netcdf: netcdf/{version}
+          intel-oneapi-advisor: intel-advisor/{version}
           intel-oneapi-compilers: intel-oneapi/{version}
           intel-oneapi-compilers-classic: intel-classic/{^intel-oneapi-compilers.version}
+          intel-oneapi-inspector: intel-inspector/{version}
           intel-oneapi-mpi: intel-mpi/{version}
           intel-oneapi-mkl: mkl/{version}
-          intel-oneapi-vtune: vtune/{version}
+          intel-oneapi-vtune: intel-vtune/{version}
           miniconda3: conda/latest
           parallelio1: parallelio/{version}
           mvapich~cuda: mvapich/{version}-cpu
