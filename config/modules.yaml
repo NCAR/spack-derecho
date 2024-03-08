@@ -40,6 +40,10 @@ modules:
           - GOPATH
       cdo:
         autoload: none
+      charliecloud:
+        environment:
+          prepend_path:
+            PYTHONPATH: /glade/u/apps/derecho/23.09/opt/pythonpkgs/lib/python3.10/site-packages
       core_compilers:
       - gcc@7.5.0
       core_specs:

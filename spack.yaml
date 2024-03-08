@@ -1027,6 +1027,18 @@ spack:
       - perl
       link_type: symlink
       link: roots
+    pythonpkgs:
+      # This view allows us to provide an environment with needed Python runtime dependencies for pkgs:
+      #   - charliecloud
+      root: /glade/u/apps/derecho/23.09/opt/pythonpkgs
+      select:
+      - py-requests
+      - py-urllib3
+      - py-charset-normalizer
+      - py-idna
+      - py-certifi
+      link_type: symlink
+      link: run
   compilers:
   - compiler:
       spec: gcc@=7.5.0
@@ -1191,6 +1203,10 @@ spack:
             - GOPATH
         cdo:
           autoload: none
+        charliecloud:
+          environment:
+            prepend_path:
+              PYTHONPATH: /glade/u/apps/derecho/23.09/opt/pythonpkgs/lib/python3.10/site-packages
         core_compilers:
         - gcc@7.5.0
         core_specs:
