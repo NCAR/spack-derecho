@@ -96,7 +96,7 @@ modules:
       defaults:
       - netcdf@4.9.2
       - nvhpc@23.7
-      - parallelio+mpi
+      - parallelio+mpi+shared
       - esmf+mpi
       - cuda@12.2.1
       - intel-oneapi-compilers@2023.2.1
@@ -417,6 +417,7 @@ modules:
         intel-oneapi-vtune: intel-vtune/{version}
         miniconda3: conda/latest
         parallelio1: parallelio/{version}
+        parallelio~shared: parallelio/{version}-static
         mvapich~cuda: mvapich/{version}-cpu
         mvapich+cuda: mvapich/{version}-cuda
       singularityce:

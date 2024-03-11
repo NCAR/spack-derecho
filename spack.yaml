@@ -1259,7 +1259,7 @@ spack:
         defaults:
         - netcdf@4.9.2
         - nvhpc@23.7
-        - parallelio+mpi
+        - parallelio+mpi+shared
         - esmf+mpi
         - cuda@12.2.1
         - intel-oneapi-compilers@2023.2.1
@@ -1580,6 +1580,7 @@ spack:
           intel-oneapi-vtune: intel-vtune/{version}
           miniconda3: conda/latest
           parallelio1: parallelio/{version}
+          parallelio~shared: parallelio/{version}-static
           mvapich~cuda: mvapich/{version}-cpu
           mvapich+cuda: mvapich/{version}-cuda
         singularityce:
@@ -2016,3 +2017,9 @@ spack:
   - superlu-dist@8.2.1%oneapi@2024.0.2 ^mvapich@3.0%oneapi@2024.0.2
   - intel-oneapi-vtune@2024.0.0
   - intel-oneapi-advisor@2024.0.0
+  - parallelio@2.6.2%gcc@13.2.0~shared ^cray-mpich@8.1.27%gcc@13.2.0
+  - parallelio@2.6.2%nvhpc@24.1~shared ^cray-mpich@8.1.27%nvhpc@24.1
+  - parallelio@2.6.2%nvhpc@24.1~shared ^mvapich@3.0%nvhpc@24.1
+  - parallelio@2.6.2%oneapi@2024.0.2~shared ^cray-mpich@8.1.27%oneapi@2024.0.2
+  - parallelio@2.6.2%oneapi@2024.0.2~shared ^mvapich@3.0%oneapi@2024.0.2
+  - parallelio@2.6.2%cce@16.0.1~shared ^cray-mpich@8.1.27%cce@16.0.1
