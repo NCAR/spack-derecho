@@ -68,7 +68,7 @@ modules:
             CRAY_TCMALLOC_MEMFS_FORCE: '1'
             CUDATOOLKIT_HOME: '{prefix}'
             CUDA_VERSION: '{version}'
-            NCAR_LIBS_CRAYGTL: -lstdc++
+            NCAR_LIBS_CRAYGTL: -lcuda -lcudart -lstdc++
             NVHPC_CUDA_HOME: '{prefix}'
           prepend_path:
             CRAY_LD_LIBRARY_PATH: '{prefix}/lib64'
