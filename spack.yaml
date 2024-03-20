@@ -2053,3 +2053,4 @@ spack:
   - parallelio@2.6.2%nvhpc@24.3~shared ^cray-mpich@8.1.27%nvhpc@24.3
   - osu-micro-benchmarks%nvhpc@24.3 ^cray-mpich@8.1.27%nvhpc@24.3
   - gptl@8.1.1%nvhpc@24.3 ^cray-mpich@8.1.27%nvhpc@24.3
+  - madis
