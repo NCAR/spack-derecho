@@ -24,3 +24,4 @@ hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2024.0.2/mvapich/3.0r
 hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2024.0.2/mpich/3.4.3.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.09/nvhpc/24.1/mvapich/3.0-cuda.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.09/oneapi/2024.0.2/mvapich/3.0-cpu.lua
+hide-modulefile /glade/u/apps/derecho/modules/23.09/Core/libtorch/2.2.1.lua

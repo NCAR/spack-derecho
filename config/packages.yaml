@@ -946,3 +946,10 @@ packages:
     buildable: false
     require:
     - '%gcc@7.5.0'
+  libtorch:
+    externals:
+    - spec: libtorch@2.2.1
+      prefix: /glade/u/apps/opt/libtorch/2.2.1
+    buildable: false
+    require:
+    - '%gcc@7.5.0'

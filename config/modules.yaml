@@ -301,6 +301,11 @@ modules:
         environment:
           append_path:
             PATH: '{^llvm.prefix}/bin'
+      libtorch:
+        filter:
+          exclude_env_vars:
+          - PATH
+          - CMAKE_PREFIX_PATH
       miniconda3:
         filter:
           exclude_env_vars:
@@ -420,6 +425,7 @@ modules:
         parallelio~shared: parallelio/{version}-static
         mvapich~cuda: mvapich/{version}-cpu
         mvapich+cuda: mvapich/{version}-cuda
+        py-torch: libtorch/{version}
       singularityce:
         environment:
           prepend_path:
