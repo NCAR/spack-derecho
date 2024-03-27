@@ -975,8 +975,8 @@ spack:
       - '%gcc@7.5.0'
     libtorch:
       externals:
-      - spec: libtorch@2.2.1
-        prefix: /glade/u/apps/opt/libtorch/2.2.1
+      - spec: libtorch@2.1.2
+        prefix: /glade/u/apps/opt/libtorch/2.1.2
       buildable: false
       require:
       - '%gcc@7.5.0'
@@ -2067,4 +2067,4 @@ spack:
   - osu-micro-benchmarks%nvhpc@24.3 ^cray-mpich@8.1.27%nvhpc@24.3
   - gptl@8.1.1%nvhpc@24.3 ^cray-mpich@8.1.27%nvhpc@24.3
   - madis
-  - libtorch@2.2.1
+  - libtorch@2.1.2
