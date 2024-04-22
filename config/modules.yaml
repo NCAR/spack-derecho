@@ -40,6 +40,18 @@ modules:
           - GOPATH
       cdo:
         autoload: none
+      chapel:
+        environment:
+          set:
+            CHPL_HOME: '{prefix}'
+            CHPL_MODULE_HOME: '{prefix}'
+          prepend_path:
+            PATH: '{prefix.bin}/hpe-cray-ex-x86_64'
+        filter:
+          exclude_env_vars:
+          - NCAR_INC_CHAPEL
+          - NCAR_LDFLAGS_CHAPEL
+          - CMAKE_PREFIX_PATH
       charliecloud:
         environment:
           prepend_path:
