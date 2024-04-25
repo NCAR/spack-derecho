@@ -41,12 +41,14 @@ modules:
       cdo:
         autoload: none
       chapel:
+        template: chapel.lua
         environment:
           set:
             CHPL_HOME: '{prefix}'
             CHPL_MODULE_HOME: '{prefix}'
+            CHPL_LAUNCHER: pals
           prepend_path:
-            PATH: '{prefix.bin}/hpe-cray-ex-x86_64'
+            PATH: '{prefix.bin}/hpe-cray-ex-x86_64:/opt/cray/pe/gcc/12.2.0/snos/bin'
         filter:
           exclude_env_vars:
           - NCAR_INC_CHAPEL
