@@ -1915,7 +1915,6 @@ spack:
   - esmf@8.5.0%oneapi@2023.2.1~mpi ^parallelio@2.6.1~mpi
   - esmf@8.6.0%nvhpc@23.7~mpi ^nvhpc ^parallelio@2.6.2~mpi
   - autoconf-archive
-  - ncl
   - vasp@5.3.5%oneapi@2023.2.1
   - opencoarrays@2.10.1%gcc@12.2.0 ^cray-mpich@8.1.27%gcc@12.2.0
   - mpi-serial@2.5.0%gcc@12.2.0
