@@ -1299,6 +1299,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - py-tabulate
         - qhull@2020.2
         - googletest
         - emacs
@@ -2092,3 +2093,4 @@ spack:
   - esmf@8.6.0%oneapi@2023.2.1~mpi ^mpi-serial@2.5.0 ^parallelio@2.6.2~mpi
   - chapel@2.0.0
   - ncl
+  - py-tabulate
