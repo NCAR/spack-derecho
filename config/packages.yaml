@@ -167,14 +167,6 @@ packages:
       - '%oneapi ^intel-oneapi-mkl'
       - '%nvhpc ^nvhpc'
       when: ^blas
-    - one_of:
-      - '%gcc@7 ^openblas %gcc@7'
-      - '%gcc@12 ^cray-libsci %gcc@12'
-      - '%gcc@13 ^openblas %gcc@13'
-      - '%cce ^cray-libsci'
-      - '%oneapi ^intel-oneapi-mkl'
-      - '%nvhpc ^nvhpc'
-      when: ^lapack
     - any_of:
       - ^pkg-config
       when: ^pkgconfig
@@ -335,6 +327,14 @@ packages:
     - one_of:
       - +external-lapack
       when: '@8.1:'
+    - one_of:
+      - '%gcc@7 ^openblas %gcc@7'
+      - '%gcc@12 ^cray-libsci %gcc@12'
+      - '%gcc@13 ^openblas %gcc@13'
+      - '%cce ^cray-libsci'
+      - '%oneapi ^intel-oneapi-mkl'
+      - '%nvhpc ^nvhpc'
+      when: +external-lapack
     variants:
     - +parallelio
     - ~mpi

@@ -118,6 +118,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - py-pandas@2.1.4
       - py-tabulate
       - qhull@2020.2
       - googletest
