@@ -121,7 +121,6 @@ modules:
       - py-pandas@2.1.4
       - py-tabulate
       - qhull@2020.2
-      - googletest
       - emacs
       - ncftp
       - autoconf-archive

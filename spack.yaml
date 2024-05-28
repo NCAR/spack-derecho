@@ -991,7 +991,6 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
-      - googletest
       - ncftp
       - vim
       - parallel
@@ -1302,7 +1301,6 @@ spack:
         - py-pandas@2.1.4
         - py-tabulate
         - qhull@2020.2
-        - googletest
         - emacs
         - ncftp
         - autoconf-archive
