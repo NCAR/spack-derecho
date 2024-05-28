@@ -2103,3 +2103,4 @@ spack:
   - esmf@8.6.1%nvhpc@24.3+mpi+pnetcdf ^cray-mpich@8.1.27%nvhpc@24.3
   - esmf@8.6.1%oneapi@2024.0.2+mpi+pnetcdf ^cray-mpich@8.1.27%oneapi@2024.0.2
   - esmf@8.6.1%cce@16.0.1+mpi+pnetcdf ^cray-mpich@8.1.27%cce@16.0.1
+  - neovim
