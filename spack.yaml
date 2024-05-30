@@ -1540,6 +1540,8 @@ spack:
           autoload: none
         nccmp:
           autoload: none
+        neovim:
+          template: ncar_neovim.lua
         netcdf:
           autoload: all
         netcdf+mpi:
