@@ -10,7 +10,10 @@ compilers:
     operating_system: sles15
     target: x86_64
     modules: []
-    environment: {}
+    environment:
+      set:
+        # Needed to use cargo for some reason (probably old openssl before certs=system)
+        CARGO_HTTP_CAINFO: /etc/ssl/ca-bundle.pem
     extra_rpaths: []
 - compiler:
     spec: nvhpc@23.7
