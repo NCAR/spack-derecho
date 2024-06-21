@@ -8,3 +8,4 @@ hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.05.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.06/oneapi/2023.0.0/openmpi/main.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.09.lua
 hide-modulefile /glade/u/apps/derecho/modules/23.06/oneapi/2023.0.0/intel-mpi/2021.8.0.lua
+hide-modulefile /glade/u/apps/derecho/modules/environment/crayenv/23.12.lua
