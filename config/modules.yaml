@@ -317,6 +317,10 @@ modules:
         environment:
           append_path:
             PATH: '{^llvm.prefix}/bin'
+      lcov:
+        environment:
+          prepend_path:
+            PATH: /glade/u/apps/derecho/23.09/opt/wrappers/{name}/{version}/{hash:4}/bin
       libtorch:
         filter:
           exclude_env_vars:
