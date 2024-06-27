@@ -2104,3 +2104,4 @@ spack:
   - esmf@8.6.1%cce@16.0.1+mpi+pnetcdf ^cray-mpich@8.1.27%cce@16.0.1
   - neovim
   - ripgrep
+  - lcov@2.0
