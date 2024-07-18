@@ -497,6 +497,8 @@ spack:
       externals:
       - spec: idl@8.9.0
         prefix: /glade/u/apps/opt/idl/8.9.0
+      - spec: idl@9.0.0
+        prefix: /glade/u/apps/opt/idl/9.0.0
       buildable: false
     imagemagick:
       variants:
@@ -616,6 +618,8 @@ spack:
       externals:
       - spec: matlab@R2023a
         prefix: /glade/u/apps/opt/matlab/R2023a
+      - spec: matlab@R2024a
+        prefix: /glade/u/apps/opt/matlab/R2024a
       buildable: false
     maven:
       require:
@@ -2109,3 +2113,5 @@ spack:
   - neovim
   - ripgrep
   - lcov@2.0
+  - matlab@R2024a
+  - idl@9.0.0
