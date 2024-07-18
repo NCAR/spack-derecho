@@ -503,8 +503,6 @@ packages:
   jsoncpp:
     require:
     - '%gcc@7.5.0'
-  julia:
-    require: ^llvm~clang~gold~polly ^openblas threads=openmp
   krb5:
     require:
     - '%gcc@7.5.0'
@@ -525,10 +523,6 @@ packages:
   libgd:
     # gnuplot fails to build with newer version due to libiconv linking failure
     require: '@2.2.4'
-  libgit2:
-    # Julia is demanding...
-    require:
-    - '@1.5'
   libjpeg-turbo:
     require: '%gcc@7.5.0'
   libogg:
@@ -538,10 +532,10 @@ packages:
     require: '%gcc@7.5.0'
   libssh2:
     # Julia again...
-    require:
-    - '@1.10'
     variants:
     - crypto=mbedtls
+    require:
+    - '%gcc@7.5.0'
   libszip:
     require: '%gcc@7.5.0'
   libtheora:
@@ -555,7 +549,8 @@ packages:
   libtool:
     require: '%gcc@7.5.0'
   libunwind:
-    require: '%gcc@7.5.0'
+    require:
+    - '%gcc@7.5.0'
     variants:
     - +cxx_exceptions
     - +debug_frame
@@ -615,6 +610,7 @@ packages:
     require:
     - '@2.28'
     - libs=static,shared
+    - '%gcc@7.5.0'
   mgard:
     require:
     - '%gcc@7.5.0'
@@ -626,6 +622,9 @@ packages:
   motif:
     require:
     - ^autoconf@2.69
+  mpfr:
+    require:
+    - '%gcc@7.5.0'
   mpich:
     require:
     - device=ch4
@@ -678,9 +677,6 @@ packages:
   netcdf-cxx4:
     variants:
     - ~doxygen
-  nghttp2:
-    # Thanks Julia...
-    require: '@1.48'
   ninja:
     require:
     - '%gcc@7.5.0'
@@ -765,6 +761,7 @@ packages:
     # Patchelf 0.18 breaks using gcc@7.5.0
     require:
     - '@:0.17'
+    - '%gcc@7.5.0'
   pcre:
     require:
     - '%gcc@7.5.0'
@@ -952,5 +949,29 @@ packages:
     - spec: chapel@2.0.0
       prefix: /glade/u/apps/opt/chapel/2.0.0/hpe-cray-ex
     buildable: false
+    require:
+    - '%gcc@7.5.0'
+  lwgrp:
+    require:
+    - '%gcc@7.5.0'
+  utf8proc:
+    require:
+    - '%gcc@7.5.0'
+  p7zip:
+    require:
+    - '%gcc@7.5.0'
+  openlibm:
+    require:
+    - '%gcc@7.5.0'
+  libwhich:
+    require:
+    - '%gcc@7.5.0'
+  libgit2:
+    require:
+    - '%gcc@7.5.0'
+  libblastrampoline:
+    require:
+    - '%gcc@7.5.0'
+  dsfmt:
     require:
     - '%gcc@7.5.0'
