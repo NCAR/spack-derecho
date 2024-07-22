@@ -80,6 +80,24 @@ compilers:
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
 - compiler:
+    spec: cce@17.0.1
+    paths:
+      cc: cc
+      cxx: CC
+      f77: ftn
+      fc: ftn
+    operating_system: sles15
+    modules:
+    - craype
+    - cce/17.0.1
+    environment:
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
+        PE_ENV: CRAY
+      append_path:
+        LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64:/glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+        LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+- compiler:
     spec: nvhpc@24.1
     paths:
       cc: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.1/Linux_x86_64/24.1/compilers/bin/nvc

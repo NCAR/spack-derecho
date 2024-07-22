@@ -248,6 +248,9 @@ spack:
       - spec: cray-libsci@23.09.1.1
         modules:
         - cray-libsci/23.09.1.1
+      - spec: cray-libsci@24.03.0
+        modules:
+        - cray-libsci/24.03.0
       buildable: false
     cray-mpich:
       externals:
@@ -269,6 +272,32 @@ spack:
         prefix: /opt/cray/pe/mpich/8.1.27/ofi/intel/2022.1
       - spec: cray-mpich@8.1.27 %aocc
         prefix: /opt/cray/pe/mpich/8.1.27/ofi/aocc/3.0
+      - spec: cray-mpich@8.1.29 %gcc
+        prefix: /opt/cray/pe/mpich/8.1.29/ofi/gnu/12.3
+      - spec: cray-mpich@8.1.29 %cce
+        prefix: /opt/cray/pe/mpich/8.1.29/ofi/cray/17.0
+      - spec: cray-mpich@8.1.29 %nvhpc
+        prefix: /opt/cray/pe/mpich/8.1.29/ofi/nvidia/23.3
+        extra_attributes:
+          environment:
+            append_path:
+              LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+              LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+      - spec: cray-mpich@8.1.29 %oneapi
+        prefix: /opt/cray/pe/mpich/8.1.29/ofi/intel/2022.1
+        extra_attributes:
+          environment:
+            append_path:
+              LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+              LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+              __INTEL_PRE_CFLAGS: --gcc-toolchain=/glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0
+      - spec: cray-mpich@8.1.29 %aocc
+        prefix: /opt/cray/pe/mpich/8.1.29/ofi/aocc/4.1
+        extra_attributes:
+          environment:
+            append_path:
+              LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+              LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
       buildable: false
     cuda:
       require:
@@ -1139,6 +1168,24 @@ spack:
           PE_ENV: CRAY
         append_path:
           LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+  - compiler:
+      spec: cce@17.0.1
+      paths:
+        cc: cc
+        cxx: CC
+        f77: ftn
+        fc: ftn
+      operating_system: sles15
+      modules:
+      - craype
+      - cce/17.0.1
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          PE_ENV: CRAY
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64:/glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+          LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
   - compiler:
       spec: nvhpc@24.1
       paths:
@@ -2137,3 +2184,69 @@ spack:
   - matlab@R2024a
   - idl@9.0.0
   - julia@1.10.2
+  - cray-mpich@8.1.29%gcc@13.2.0
+  - cray-mpich@8.1.29%nvhpc@24.3
+  - cray-mpich@8.1.29%cce@17.0.1
+  - cray-libsci@24.03.0%cce@17.0.1
+  - ncarcompilers@1.0.0%cce@17.0.1
+  - fftw@3.3.10%cce@17.0.1~mpi
+  - udunits@2.2.28%cce@17.0.1
+  - hdf5@1.14.3%cce@17.0.1~mpi
+  - netcdf@4.9.2%cce@17.0.1~mpi
+  - proj@9.2.1%cce@17.0.1
+  - geos@3.12.1%cce@17.0.1
+  - hdf@4.2.15%cce@17.0.1 cflags='-std=c90 -Wno-error=int-conversion'
+  - superlu@5.3.0%cce@17.0.1
+  - eccodes@2.32.0%cce@17.0.1
+  - mpi-serial@2.5.0%cce@17.0.1
+  - parallelio@2.6.2%cce@17.0.1~mpi~pnetcdf ^mpi-serial@2.5.0
+  - esmf@8.6.1%cce@17.0.1~mpi ^mpi-serial@2.5.0 ^parallelio@2.6.2~mpi
+  - gdal@3.8.1%cce@17.0.1
+  - parallel-netcdf@1.12.3%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - parallel-netcdf@1.12.3%nvhpc@24.3 ^cray-mpich@8.1.29%nvhpc@24.3
+  - cray-mpich@8.1.29%oneapi@2024.0.2
+  - parallel-netcdf@1.12.3%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - parallel-netcdf@1.12.3%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - hdf5@1.14.3%gcc@13.2.0+mpi ^cray-mpich@8.1.29%gcc@13.2.0
+  - hdf5@1.14.3%nvhpc@24.3+mpi ^cray-mpich@8.1.29%nvhpc@24.3
+  - hdf5@1.14.3%oneapi@2024.0.2+mpi ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - hdf5@1.14.3%cce@17.0.1+mpi ^cray-mpich@8.1.29%cce@17.0.1
+  - netcdf@4.9.2%gcc@13.2.0+mpi ^cray-mpich@8.1.29%gcc@13.2.0
+  - netcdf@4.9.2%nvhpc@24.3+mpi ^cray-mpich@8.1.29%nvhpc@24.3
+  - netcdf@4.9.2%oneapi@2024.0.2+mpi ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - netcdf@4.9.2%cce@17.0.1+mpi ^cray-mpich@8.1.29%cce@17.0.1
+  - fftw@3.3.10%gcc@13.2.0+mpi ^cray-mpich@8.1.29%gcc@13.2.0
+  - fftw@3.3.10%nvhpc@24.3+mpi ^cray-mpich@8.1.29%nvhpc@24.3
+  - fftw@3.3.10%oneapi@2024.0.2+mpi ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - fftw@3.3.10%cce@17.0.1+mpi ^cray-mpich@8.1.29%cce@17.0.1
+  - parallelio1@1.10.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - parallelio1@1.10.1%nvhpc@24.3 ^cray-mpich@8.1.29%nvhpc@24.3
+  - parallelio1@1.10.1%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - parallelio1@1.10.1%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - darshan-runtime@3.4.4%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - darshan-runtime@3.4.4%nvhpc@24.3 ^cray-mpich@8.1.29%nvhpc@24.3
+  - darshan-runtime@3.4.4%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - darshan-runtime@3.4.4%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - parallelio@2.6.2%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - parallelio@2.6.2%nvhpc@24.3 ^cray-mpich@8.1.29%nvhpc@24.3
+  - parallelio@2.6.2%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - parallelio@2.6.2%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - esmf@8.6.1%gcc@13.2.0+mpi+pnetcdf ^cray-mpich@8.1.29%gcc@13.2.0
+  - esmf@8.6.1%nvhpc@24.3+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@24.3
+  - esmf@8.6.1%oneapi@2024.0.2+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - esmf@8.6.1%cce@17.0.1+mpi+pnetcdf ^cray-mpich@8.1.29%cce@17.0.1
+  - parallelio@2.6.2%gcc@13.2.0~shared ^cray-mpich@8.1.29%gcc@13.2.0
+  - parallelio@2.6.2%nvhpc@24.3~shared ^cray-mpich@8.1.29%nvhpc@24.3
+  - parallelio@2.6.2%oneapi@2024.0.2~shared ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - parallelio@2.6.2%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
+  - osu-micro-benchmarks%nvhpc@24.3 ^cray-mpich@8.1.29%nvhpc@24.3
+  - osu-micro-benchmarks%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - osu-micro-benchmarks%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - gptl@8.1.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - gptl@8.1.1%nvhpc@24.3 ^cray-mpich@8.1.29%nvhpc@24.3
+  - gptl@8.1.1%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - superlu-dist@8.2.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - superlu-dist@8.2.1%oneapi@2024.0.2 ^cray-mpich@8.1.29%oneapi@2024.0.2
+  - superlu-dist@8.2.1%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - mpifileutils@0.11.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - opencoarrays@2.10.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0

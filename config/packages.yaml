@@ -221,6 +221,9 @@ packages:
     - spec: cray-libsci@23.09.1.1
       modules:
       - cray-libsci/23.09.1.1
+    - spec: cray-libsci@24.03.0
+      modules:
+      - cray-libsci/24.03.0
     buildable: false
   cray-mpich:
     externals:
@@ -242,6 +245,32 @@ packages:
       prefix: /opt/cray/pe/mpich/8.1.27/ofi/intel/2022.1
     - spec: cray-mpich@8.1.27 %aocc
       prefix: /opt/cray/pe/mpich/8.1.27/ofi/aocc/3.0
+    - spec: cray-mpich@8.1.29 %gcc
+      prefix: /opt/cray/pe/mpich/8.1.29/ofi/gnu/12.3
+    - spec: cray-mpich@8.1.29 %cce
+      prefix: /opt/cray/pe/mpich/8.1.29/ofi/cray/17.0
+    - spec: cray-mpich@8.1.29 %nvhpc
+      prefix: /opt/cray/pe/mpich/8.1.29/ofi/nvidia/23.3
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+            LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+    - spec: cray-mpich@8.1.29 %oneapi
+      prefix: /opt/cray/pe/mpich/8.1.29/ofi/intel/2022.1
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+            LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+            __INTEL_PRE_CFLAGS: --gcc-toolchain=/glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0
+    - spec: cray-mpich@8.1.29 %aocc
+      prefix: /opt/cray/pe/mpich/8.1.29/ofi/aocc/4.1
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
+            LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/gcc/13.2.0/lib64
     buildable: false
   cuda:
     require:
