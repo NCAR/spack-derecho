@@ -2250,3 +2250,7 @@ spack:
   - superlu-dist@8.2.1%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
   - mpifileutils@0.11.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
   - opencoarrays@2.10.1%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - eccodes@2.36.0%gcc@13.2.0
+  - eccodes@2.36.0%nvhpc@24.3
+  - eccodes@2.36.0%oneapi@2024.0.2
+  - eccodes@2.36.0%cce@17.0.1
