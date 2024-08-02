@@ -1037,6 +1037,7 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - jq
       - ripgrep
       - ncftp
       - vim
@@ -1380,6 +1381,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - jq
         - ripgrep
         - py-pandas@2.1.4
         - py-tabulate
@@ -2296,3 +2298,4 @@ spack:
   - parallelio@2.6.2%nvhpc@24.7~shared ^cray-mpich@8.1.29%nvhpc@24.7
   - osu-micro-benchmarks%nvhpc@24.7 ^cray-mpich@8.1.29%nvhpc@24.7
   - gptl@8.1.1%nvhpc@24.7 ^cray-mpich@8.1.29%nvhpc@24.7
+  - jq
