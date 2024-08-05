@@ -821,7 +821,6 @@ packages:
     require:
     - any_of:
       - ^openblas symbol_suffix=none
-      when: ^openblas
   qhull:
     require:
     - '%gcc@7.5.0'

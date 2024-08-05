@@ -848,7 +848,6 @@ spack:
       require:
       - any_of:
         - ^openblas symbol_suffix=none
-        when: ^openblas
     qhull:
       require:
       - '%gcc@7.5.0'
@@ -1378,6 +1377,7 @@ spack:
         - cuda@12.2.1
         - intel-oneapi-compilers@2023.2.1
         - gcc@12.2.0
+        - ecflow@5.8.3
         esmf:
           autoload: none
         exclude:
@@ -2299,3 +2299,4 @@ spack:
   - osu-micro-benchmarks%nvhpc@24.7 ^cray-mpich@8.1.29%nvhpc@24.7
   - gptl@8.1.1%nvhpc@24.7 ^cray-mpich@8.1.29%nvhpc@24.7
   - jq
+  - ecflow@5.11.4

@@ -115,6 +115,7 @@ modules:
       - cuda@12.2.1
       - intel-oneapi-compilers@2023.2.1
       - gcc@12.2.0
+      - ecflow@5.8.3
       esmf:
         autoload: none
       exclude:
