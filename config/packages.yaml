@@ -1005,3 +1005,6 @@ packages:
   dsfmt:
     require:
     - '%gcc@7.5.0'
+  libevent:
+    require:
+    - '%gcc@7.5.0'

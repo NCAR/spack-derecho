@@ -400,6 +400,7 @@ modules:
             OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
             # https://github.com/open-mpi/ompi/issues/9647
             OMPI_MCA_rmaps_default_mapping_policy: :hwtcpus
+            OMPI_MCA_prte_silence_shared_fs: '1'
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/lib'
       parallel-netcdf:

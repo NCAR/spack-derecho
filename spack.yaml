@@ -1032,6 +1032,9 @@ spack:
     dsfmt:
       require:
       - '%gcc@7.5.0'
+    libevent:
+      require:
+      - '%gcc@7.5.0'
   view:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
@@ -1662,6 +1665,7 @@ spack:
               OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
               # https://github.com/open-mpi/ompi/issues/9647
               OMPI_MCA_rmaps_default_mapping_policy: :hwtcpus
+              OMPI_MCA_prte_silence_shared_fs: '1'
             prepend_path:
               LD_LIBRARY_PATH: '{prefix}/lib'
         parallel-netcdf:
@@ -2300,3 +2304,40 @@ spack:
   - gptl@8.1.1%nvhpc@24.7 ^cray-mpich@8.1.29%nvhpc@24.7
   - jq
   - ecflow@5.11.4
+  - openmpi@5.0.5%gcc@13.2.0
+  - openmpi@5.0.5%nvhpc@24.7
+  - openmpi@5.0.5%oneapi@2024.0.2
+  - parallel-netcdf@1.12.3%gcc@13.2.0 ^openmpi@5.0.5%gcc@13.2.0
+  - parallel-netcdf@1.12.3%nvhpc@24.7 ^openmpi@5.0.5%nvhpc@24.7
+  - parallel-netcdf@1.12.3%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
+  - hdf5@1.14.3%gcc@13.2.0+mpi ^openmpi@5.0.5%gcc@13.2.0
+  - hdf5@1.14.3%nvhpc@24.7+mpi ^openmpi@5.0.5%nvhpc@24.7
+  - hdf5@1.14.3%oneapi@2024.0.2+mpi ^openmpi@5.0.5%oneapi@2024.0.2
+  - netcdf@4.9.2%gcc@13.2.0+mpi ^openmpi@5.0.5%gcc@13.2.0
+  - netcdf@4.9.2%nvhpc@24.7+mpi ^openmpi@5.0.5%nvhpc@24.7
+  - netcdf@4.9.2%oneapi@2024.0.2+mpi ^openmpi@5.0.5%oneapi@2024.0.2
+  - fftw@3.3.10%gcc@13.2.0+mpi ^openmpi@5.0.5%gcc@13.2.0
+  - fftw@3.3.10%nvhpc@24.7+mpi ^openmpi@5.0.5%nvhpc@24.7
+  - fftw@3.3.10%oneapi@2024.0.2+mpi ^openmpi@5.0.5%oneapi@2024.0.2
+  - parallelio1@1.10.1%gcc@13.2.0 ^openmpi@5.0.5%gcc@13.2.0
+  - parallelio1@1.10.1%nvhpc@24.7 ^openmpi@5.0.5%nvhpc@24.7
+  - parallelio1@1.10.1%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
+  - darshan-runtime@3.4.4%gcc@13.2.0 ^openmpi@5.0.5%gcc@13.2.0
+  - darshan-runtime@3.4.4%nvhpc@24.7 ^openmpi@5.0.5%nvhpc@24.7
+  - darshan-runtime@3.4.4%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
+  - parallelio@2.6.2%gcc@13.2.0 ^openmpi@5.0.5%gcc@13.2.0
+  - parallelio@2.6.2%nvhpc@24.7 ^openmpi@5.0.5%nvhpc@24.7
+  - parallelio@2.6.2%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
+  - esmf@8.6.1%gcc@13.2.0+mpi+pnetcdf ^openmpi@5.0.5%gcc@13.2.0
+  - esmf@8.6.1%nvhpc@24.7+mpi+pnetcdf ^openmpi@5.0.5%nvhpc@24.7
+  - esmf@8.6.1%oneapi@2024.0.2+mpi+pnetcdf ^openmpi@5.0.5%oneapi@2024.0.2
+  - parallelio@2.6.2%gcc@13.2.0~shared ^openmpi@5.0.5%gcc@13.2.0
+  - parallelio@2.6.2%nvhpc@24.7~shared ^openmpi@5.0.5%nvhpc@24.7
+  - parallelio@2.6.2%oneapi@2024.0.2~shared ^openmpi@5.0.5%oneapi@2024.0.2
+  - osu-micro-benchmarks%nvhpc@24.7 ^openmpi@5.0.5%nvhpc@24.7
+  - osu-micro-benchmarks%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
+  - gptl@8.1.1%gcc@13.2.0 ^openmpi@5.0.5%gcc@13.2.0
+  - gptl@8.1.1%nvhpc@24.7 ^openmpi@5.0.5%nvhpc@24.7
+  - gptl@8.1.1%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
+  - superlu-dist@8.2.1%gcc@13.2.0 ^openmpi@5.0.5%gcc@13.2.0
+  - superlu-dist@8.2.1%oneapi@2024.0.2 ^openmpi@5.0.5%oneapi@2024.0.2
