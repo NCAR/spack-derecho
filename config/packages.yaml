@@ -140,6 +140,8 @@ packages:
       - cray-libsci
       'zlib-api:':
       - zlib
+      tbb:
+      - intel-oneapi-tbb
     permissions:
       read: world
       write: user
@@ -517,6 +519,8 @@ packages:
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1
     - spec: intel-oneapi-compilers@2024.0.2
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2024.0.2
+    - spec: intel-oneapi-compilers@2024.2.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2024.2.1
     buildable: false
   intel-oneapi-mpi:
     variants:
@@ -946,6 +950,8 @@ packages:
     externals:
     - spec: intel-oneapi-inspector@2024.0.0
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-inspector/2024.0.0
+    - spec: intel-oneapi-inspector@2024.2.0
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-inspector/2024.2.0
     buildable: false
     require:
     - '%gcc@7.5.0'
@@ -959,6 +965,8 @@ packages:
     externals:
     - spec: intel-oneapi-vtune@2024.0.0
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-vtune/2024.0.0
+    - spec: intel-oneapi-vtune@2024.2.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-vtune/2024.2.1
     buildable: false
     require:
     - '%gcc@7.5.0'
@@ -966,6 +974,8 @@ packages:
     externals:
     - spec: intel-oneapi-advisor@2024.0.0
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-advisor/2024.0.0
+    - spec: intel-oneapi-advisor@2024.2.1
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-advisor/2024.2.1
     buildable: false
     require:
     - '%gcc@7.5.0'
