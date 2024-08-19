@@ -1402,7 +1402,7 @@ spack:
               DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
         defaults:
         - netcdf@4.9.2
-        - nvhpc@23.7
+        - nvhpc@24.7
         - parallelio+mpi+shared
         - esmf+mpi
         - cuda@12.2.1
