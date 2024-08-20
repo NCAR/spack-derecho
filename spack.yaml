@@ -2404,3 +2404,4 @@ spack:
   - superlu-dist@8.2.1%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
   - nco@5.2.4%gcc@12.2.0
   - cdo@2.4.2%gcc@12.2.0
+  - hdf5@1.12.2%oneapi@2024.2.1+mpi ^cray-mpich@8.1.29%oneapi@2024.2.1
