@@ -1621,6 +1621,10 @@ spack:
             exclude_env_vars:
             - PATH
             - CMAKE_PREFIX_PATH
+        matlab:
+          environment:
+            set:
+              MW_FEATURE_MathworksServiceHostIsOnByDefault: '0'
         miniconda3:
           filter:
             exclude_env_vars:
