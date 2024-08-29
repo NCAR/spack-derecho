@@ -1621,6 +1621,8 @@ spack:
             exclude_env_vars:
             - PATH
             - CMAKE_PREFIX_PATH
+        linaro-forge:
+          template: forge.lua
         matlab:
           environment:
             set:
