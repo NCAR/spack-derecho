@@ -549,6 +549,11 @@ spack:
       - spec: intel-oneapi-compilers@2024.2.1
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2024.2.1
       buildable: false
+    intel-oneapi-mkl:
+      require:
+      - one_of:
+        - +gfortran threads=openmp
+        when: '%gcc'
     intel-oneapi-mpi:
       variants:
       - +external-libfabric
@@ -2411,3 +2416,5 @@ spack:
   - nco@5.2.4%gcc@12.2.0
   - cdo@2.4.2%gcc@12.2.0
   - hdf5@1.12.2%oneapi@2024.2.1+mpi ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - intel-oneapi-mkl@2024.0.0%gcc@12.2.0
+  - intel-oneapi-mkl@2024.2.1%gcc@13.2.0
