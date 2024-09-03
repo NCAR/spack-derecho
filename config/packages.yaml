@@ -618,6 +618,8 @@ packages:
       prefix: /glade/u/apps/common/23.04/spack/opt/spack/linaro-forge/23.0
     - spec: linaro-forge@23.1
       prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/23.1
+    - spec: linaro-forge@24.0.4
+      prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/24.0.4
     buildable: false
   lz4:
     require:

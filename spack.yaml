@@ -645,6 +645,8 @@ spack:
         prefix: /glade/u/apps/common/23.04/spack/opt/spack/linaro-forge/23.0
       - spec: linaro-forge@23.1
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/23.1
+      - spec: linaro-forge@24.0.4
+        prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/24.0.4
       buildable: false
     lz4:
       require:
@@ -2418,3 +2420,4 @@ spack:
   - hdf5@1.12.2%oneapi@2024.2.1+mpi ^cray-mpich@8.1.29%oneapi@2024.2.1
   - intel-oneapi-mkl@2024.0.0%gcc@12.2.0
   - intel-oneapi-mkl@2024.2.1%gcc@13.2.0
+  - linaro-forge@24.0.4
