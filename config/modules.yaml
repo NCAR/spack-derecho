@@ -270,6 +270,16 @@ modules:
             NCAR_LDFLAGS_MKL: '{prefix}/mkl/{version}/lib/intel64'
             NCAR_ROOT_MKL: '{prefix}/mkl/{version}'
             NCAR_SPACK_HASH_MKL: '{hash}'
+      intel-oneapi-mkl@2024.0:
+        environment:
+          set:
+            NCAR_LDFLAGS_MKL: '{prefix}/mkl/2024.0/lib/intel64'
+            NCAR_ROOT_MKL: '{prefix}/mkl/2024.0'
+      intel-oneapi-mkl@2024.2:
+        environment:
+          set:
+            NCAR_LDFLAGS_MKL: '{prefix}/mkl/2024.2/lib/intel64'
+            NCAR_ROOT_MKL: '{prefix}/mkl/2024.2'
       intel-oneapi-mpi:
         filter:
           exclude_env_vars:
