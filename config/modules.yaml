@@ -119,6 +119,8 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - rclone
+      - pandoc
       - jq
       - ripgrep
       - py-pandas@2.1.4

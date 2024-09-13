@@ -1060,6 +1060,8 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - rclone
+      - pandoc
       - jq
       - ripgrep
       - ncftp
@@ -1419,6 +1421,8 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - rclone
+        - pandoc
         - jq
         - ripgrep
         - py-pandas@2.1.4
@@ -2431,3 +2435,5 @@ spack:
   - intel-oneapi-mkl@2024.0.0%gcc@12.2.0
   - intel-oneapi-mkl@2024.2.1%gcc@13.2.0
   - linaro-forge@24.0.4
+  - pandoc
+  - rclone
