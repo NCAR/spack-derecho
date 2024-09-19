@@ -2437,3 +2437,11 @@ spack:
   - linaro-forge@24.0.4
   - pandoc
   - rclone
+  - parallelio@2.6.3%gcc@13.2.0 ^cray-mpich@8.1.29%gcc@13.2.0
+  - parallelio@2.6.3%nvhpc@24.7 ^cray-mpich@8.1.29%nvhpc@24.7
+  - parallelio@2.6.3%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.3%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - parallelio@2.6.3%gcc@13.2.0~shared ^cray-mpich@8.1.29%gcc@13.2.0
+  - parallelio@2.6.3%nvhpc@24.7~shared ^cray-mpich@8.1.29%nvhpc@24.7
+  - parallelio@2.6.3%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.3%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
