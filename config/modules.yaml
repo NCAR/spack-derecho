@@ -119,6 +119,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - openjpeg
       - rclone
       - pandoc
       - jq

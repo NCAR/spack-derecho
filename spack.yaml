@@ -1060,6 +1060,7 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - openjpeg
       - rclone
       - pandoc
       - jq
@@ -1421,6 +1422,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - openjpeg
         - rclone
         - pandoc
         - jq
@@ -2445,3 +2447,4 @@ spack:
   - parallelio@2.6.3%nvhpc@24.7~shared ^cray-mpich@8.1.29%nvhpc@24.7
   - parallelio@2.6.3%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
   - parallelio@2.6.3%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
+  - openjpeg
