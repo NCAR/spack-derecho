@@ -181,3 +181,17 @@ compilers:
         NVCCFLAGS: -allow-unsupported-compiler
       append_path:
         LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
+- compiler:
+    spec: nvhpc@24.9
+    paths:
+      cc: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.9/Linux_x86_64/24.9/compilers/bin/nvc
+      cxx: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.9/Linux_x86_64/24.9/compilers/bin/nvc++
+      f77: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.9/Linux_x86_64/24.9/compilers/bin/nvfortran
+      fc: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.9/Linux_x86_64/24.9/compilers/bin/nvfortran
+    operating_system: sles15
+    modules: []
+    environment:
+      prepend_path:
+        LD_LIBRARY_PATH: /glade/u/apps/common/23.08/spack/opt/spack/nvhpc/24.9/Linux_x86_64/24.9/compilers/lib
+      append_path:
+        LD_LIBRARY_PATH: /opt/cray/libfabric/1.15.2.0/lib64
