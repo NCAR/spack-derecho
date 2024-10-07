@@ -119,6 +119,7 @@ modules:
       esmf:
         autoload: none
       exclude:
+      - py-pip
       - openjpeg
       - rclone
       - pandoc

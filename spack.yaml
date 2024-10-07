@@ -1062,6 +1062,7 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - py-pip
       - openjpeg
       - rclone
       - pandoc
@@ -1438,6 +1439,7 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - py-pip
         - openjpeg
         - rclone
         - pandoc
@@ -2490,3 +2492,4 @@ spack:
   - parallelio@2.6.3%nvhpc@24.9~shared ^cray-mpich@8.1.29%nvhpc@24.9
   - osu-micro-benchmarks%nvhpc@24.9 ^cray-mpich@8.1.29%nvhpc@24.9
   - gptl@8.1.1%nvhpc@24.9 ^cray-mpich@8.1.29%nvhpc@24.9
+  - py-pip
