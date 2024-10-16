@@ -2515,3 +2515,6 @@ spack:
   - osu-micro-benchmarks%nvhpc@24.9 ^cray-mpich@8.1.29%nvhpc@24.9
   - gptl@8.1.1%nvhpc@24.9 ^cray-mpich@8.1.29%nvhpc@24.9
   - py-pip
+  - kokkos@4.4.01%gcc@12.2.0
+  - kokkos@4.4.01%nvhpc@24.9
+  - kokkos@4.4.01%oneapi@2023.2.1
