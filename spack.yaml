@@ -572,6 +572,18 @@ spack:
     jsoncpp:
       require:
       - '%gcc@7.5.0'
+    kokkos:
+      variants:
+      - +examples
+      - +openmp
+      - +pic
+      require:
+      - any_of:
+        - +cuda cuda_arch=80 +wrapper
+        when: '%gcc'
+      - any_of:
+        - +cuda cuda_arch=80 +wrapper
+        when: '%nvhpc'
     krb5:
       require:
       - '%gcc@7.5.0'
@@ -647,6 +659,8 @@ spack:
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/23.1
       - spec: linaro-forge@24.0.4
         prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/24.0.4
+      - spec: linaro-forge@24.1p1
+        prefix: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/24.1p1
       buildable: false
     lz4:
       require:
@@ -1653,6 +1667,10 @@ spack:
           environment:
             append_path:
               PATH: '{^llvm.prefix}/bin'
+        kokkos:
+          environment:
+            set:
+              Kokkos_ROOT: '{prefix}'
         lcov:
           environment:
             prepend_path:
@@ -1664,6 +1682,10 @@ spack:
             - CMAKE_PREFIX_PATH
         linaro-forge:
           template: forge.lua
+        linaro-forge@24.1p1:
+          environment:
+            set:
+              FORGE_FORCE_LICENCE_FILE: /glade/u/apps/common/23.08/spack/opt/spack/linaro-forge/24.1p1/licences/Preview.Licence
         matlab:
           environment:
             set:
