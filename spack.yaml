@@ -579,10 +579,10 @@ spack:
       - +pic
       require:
       - any_of:
-        - +cuda cuda_arch=80 +wrapper
+        - +cuda cuda_arch=80 +cuda_lambda +wrapper
         when: '%gcc'
       - any_of:
-        - +cuda cuda_arch=80 +wrapper
+        - +cuda cuda_arch=80 +cuda_lambda +wrapper
         when: '%nvhpc'
     krb5:
       require:
@@ -2515,6 +2515,12 @@ spack:
   - osu-micro-benchmarks%nvhpc@24.9 ^cray-mpich@8.1.29%nvhpc@24.9
   - gptl@8.1.1%nvhpc@24.9 ^cray-mpich@8.1.29%nvhpc@24.9
   - py-pip
-  - kokkos@4.4.01%gcc@12.2.0
-  - kokkos@4.4.01%nvhpc@24.9
-  - kokkos@4.4.01%oneapi@2023.2.1
+  - esmf@8.7.0%gcc@13.2.0~mpi ^mpi-serial@2.5.0 ^parallelio@2.6.3~mpi
+  - esmf@8.7.0%nvhpc@24.9~mpi ^mpi-serial@2.5.0 ^parallelio@2.6.3~mpi
+  - esmf@8.7.0%nvhpc@24.9+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@24.9
+  - esmf@8.7.0%oneapi@2024.2.1+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - esmf@8.7.0%gcc@13.2.0+mpi+pnetcdf ^cray-mpich@8.1.29%gcc@13.2.0
+  - esmf@8.7.0%oneapi@2024.2.1~mpi ^mpi-serial@2.5.0 ^parallelio@2.6.3~mpi
+  - kokkos@4.2.01%oneapi@2023.2.1
+  - kokkos@4.2.01%nvhpc@24.9
+  - kokkos@4.2.01%gcc@12.2.0
