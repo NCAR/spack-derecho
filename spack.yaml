@@ -575,7 +575,6 @@ spack:
     kokkos:
       variants:
       - +examples
-      - +openmp
       - +pic
       require:
       - any_of:
@@ -1076,6 +1075,8 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/23.09/opt/view
       select:
+      - node-js
+      - npm
       - py-pip
       - openjpeg
       - rclone
@@ -1453,6 +1454,8 @@ spack:
         esmf:
           autoload: none
         exclude:
+        - node-js
+        - npm
         - py-pip
         - openjpeg
         - rclone
@@ -2524,3 +2527,5 @@ spack:
   - kokkos@4.2.01%oneapi@2023.2.1
   - kokkos@4.2.01%nvhpc@24.9
   - kokkos@4.2.01%gcc@12.2.0
+  - node-js
+  - npm
