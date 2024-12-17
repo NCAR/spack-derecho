@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+#   Unit: hide-module.helper
+#   Description:
+#       This unit provides a function for hidding modules using Lmod's hidden
+#       module list functionality.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   20:06, 28 Oct 2024
+#
+
+export HL_FILE=$SPACK_ENV/util/hidden-modules
+
+function hide_module {
+    if [[ -f $HL_FILE ]]; then
+        if grep -q $1 $HL_FILE; then
+            return
+        fi
+    fi
+
+    echo "hide-modulefile $1" >> $HL_FILE
+}

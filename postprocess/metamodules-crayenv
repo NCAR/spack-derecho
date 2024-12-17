@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+#   Unit: metamods-crayenv
+#   Description:
+#       This unit creates the top-level "environment/stack" modules to help us
+#       version crayenv stacks. These modules will be hidden by default as the
+#       CPE is provided as-is without support for power users.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   20:05, 28 Oct 2024
+#
+
+#
+##  UNIT DEPENDENCIES
+#
+
+. $POSTPROCESS_UNIT_DIR/cpe.helper
+. $POSTPROCESS_UNIT_DIR/hide-module.helper
+
+#
+##  USER INPUT
+#
+
+# These are the modules we wish to be included in the defaults for the user
+cpe_defmods="cray-pals craype cray-dsmml cray-libsci PrgEnv-cray cce cray-mpich cray-pmi"
+
+#
+##  BEGIN METAMODULE GENERATION
+#
+
+mkdir -p $MOD_ROOT/environment/crayenv
+mm_src=$NCAR_SPACK_ENV_BUILD/templates/modules/crayenv.lua
+
+for cpe_version in $(find /opt/cray/pe/cpe -mindepth 1 -maxdepth 1 -type d -exec basename {} \;); do
+    # Create list of default modules
+    my_defmods=libfabric/${ofi_version}:craype-x86-milan:craype-network-ofi
+
+    for mod_name in $cpe_defmods; do
+        my_defmods=${mod_name}/$(get_package_version $cpe_version $mod_name):$my_defmods
+    done
+
+    mm_file=$MOD_ROOT/environment/crayenv/$cpe_version.lua
+    sed "s|%MODPATH%|$cray_mpath|g" $mm_src > $TMP_FILE
+    sed -i "s|%VERSION%|$cpe_version|g" $TMP_FILE
+    sed -i "s|%DATE%|$(date)|g" $TMP_FILE
+    sed -i "s|%DEFMODS%|crayenv/${cpe_version}:$my_defmods|g" $TMP_FILE
+    sed -i "s|%TMPROOT%|$NCAR_SPACK_TMPROOT|g" $TMP_FILE
+    mv $TMP_FILE $mm_file
+
+    if [[ $SPACK_ENV == $NCAR_SPACK_ENV_PUBLIC ]]; then
+        hide_module $mm_file
+    fi
+done

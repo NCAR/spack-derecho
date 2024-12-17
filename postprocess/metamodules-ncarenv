@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+#   Unit: metamods-ncarenv
+#   Description:
+#       This unit creates the top-level "environment/stack" modules to help us
+#       version ncarenv stacks.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   15:45, 15 Nov 2024
+#
+
+#
+##  UNIT DEPENDENCIES
+#
+
+. $POSTPROCESS_UNIT_DIR/hide-module.helper
+
+#
+##  FUNCTION DEFINITIONS
+#
+
+function add_core_gcc {
+cat >> $TMP_FILE << EOF
+
+-- Add non-system core GCC to the user paths
+local cc_root = "$cc_root"
+prepend_path("PATH",            pathJoin(cc_root, "bin"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(cc_root, "lib64"))
+EOF
+}
+
+#
+##  BEGIN METAMODULE GENERATION
+#
+
+sys_gcc=gcc@$(gcc -dumpfullversion)
+spack_commit=$(cd $SPACK_ROOT; git rev-parse HEAD)
+
+# *This* ncarenv deployment
+for mod_type in ncarenv ncarenv-basic; do
+    mkdir -p $MOD_ROOT/environment/$mod_type
+    mm_src=$NCAR_SPACK_ENV_BUILD/templates/modules/$mod_type.lua
+    mm_file=$MOD_ROOT/environment/$mod_type/${NCAR_SPACK_HOST_VERSION}.lua
+
+    tsecho "Metamodule ${GCOL}$mod_type/${NCAR_SPACK_HOST_VERSION}$DCOL"
+    sed "s|%MODPATH%|$MOD_DEPLOYMENT/Core|g" $mm_src > $TMP_FILE
+    sed -i "s|%BASEROOT%|$BASE_ROOT|g" $TMP_FILE
+    sed -i "s|%VERSION%|${NCAR_SPACK_HOST_VERSION}|g" $TMP_FILE
+    sed -i "s|%DATE%|$(date)|g" $TMP_FILE
+    sed -i "s|%UTILPATH%|${SPACK_ENV}/util|g" $TMP_FILE
+    sed -i "s|%DEFMODS%|$NCAR_SPACK_DEFMODS_NCAR|g" $TMP_FILE
+    sed -i "s|%HOST%|$NCAR_SPACK_HOST|g" $TMP_FILE
+    sed -i "s|%TMPROOT%|$NCAR_SPACK_TMPROOT|g" $TMP_FILE
+    sed -i "s|%MODRC%|$HL_FILE|g" $TMP_FILE
+    sed -i "s|%ENVROOT%|$NCAR_SPACK_ROOT_DEPLOYMENT|g" $TMP_FILE
+    sed -i "s|%GITHASH%|$spack_commit|g" $TMP_FILE
+    
+    if [[ $NCAR_SPACK_CORE_GCC != $sys_gcc ]]; then
+        tsecho "    Inserting core compiler root into metamodule"
+        cc_root=${cc_root:-$(spack location -i $NCAR_SPACK_CORE_GCC)}
+        add_core_gcc
+    fi
+
+    mv $TMP_FILE $mm_file
+done
+
+if [[ $SPACK_ENV == $NCAR_SPACK_ENV_PUBLIC ]]; then
+    for mm_file in $(echo $MOD_ROOT/environment/ncarenv-basic/*); do
+        hide_module $mm_file
+    done
+fi

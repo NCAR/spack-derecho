@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+#   Unit: lmod-avail-hook
+#   Description:
+#       This unit creates the Lmod avail hook which makes the output more
+#       attractive with descriptive section headers.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   21:12, 28 Oct 2024
+#
+
+tsecho "Creating Lmod functionality extensions"
+
+function create_sp {
+cat > $TMP_FILE << EOF
+require("strict")
+require("sandbox")
+local hook = require("Hook")
+
+local mapT =
+{
+   grouped = {
+      ['/environment$'] = "Module Stack Environments",
+      ['/Core$'] = "Compilers and Core Software",
+EOF
+
+comp_cat_list="aocc arm cce clang gcc intel nag oneapi nvhpc"
+mpi_cat_list="cray-mpich hpcx-mpi intel-mpi intel-oneapi-mpi mpi-serial mpich mvapich2 mvapich2-gdr openmpi"
+
+for comp_cat in $comp_cat_list; do
+    for mpi_cat in $mpi_cat_list; do
+        echo "      ['modules/[^/]+/${mpi_cat//-/%-}/[^/]+/$comp_cat/[^/]*$'] = 'MPI-dependent Software - [$comp_cat + $mpi_cat]'," >> $TMP_FILE
+    done
+
+    echo "      ['modules/[^/]+/$comp_cat/[^/]*$'] = 'Compiler-dependent Software - [$comp_cat]'," >> $TMP_FILE
+done
+
+cat >> $TMP_FILE << EOF
+      ['perftools/[^/]+/modulefiles$'] = 'Cray Performance Analysis Tools - [perftools-base]',
+      ['modulefiles/perftools/[^/]*$'] = 'Cray Performance Analysis Tools - [perftools-base]',
+   },
+}
+
+function avail_hook(t)
+   local availStyle = masterTbl().availStyle
+   local styleT     = mapT[availStyle]
+   if (not availStyle or availStyle == "system" or styleT == nil) then
+      return
+   end
+
+   for k,v in pairs(t) do
+      for pat,label in pairs(styleT) do
+         if (k:find(pat)) then
+            t[k] = label
+            break
+         end
+      end
+   end
+end
+
+hook.register("avail",avail_hook)
+
+function universal_mgrload(required, active)
+   if (mode() == "load" or mode() == "unload") then
+      MCP:mgrload(required, active)
+   end
+end
+
+sandbox_registration {
+    universal_mgrload = universal_mgrload
+}
+EOF
+}
+
+# Path to Lmod site hook file
+sp_file=$SPACK_ENV/util/SitePackage.lua
+create_sp
+mv $TMP_FILE $sp_file

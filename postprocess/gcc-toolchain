@@ -1,0 +1,85 @@
+#!/bin/bash
+#
+#   Unit: gcc-toolchain
+#   Description:
+#       This unit creates gcc-toolchain modules for all other compilers, allowing
+#       users to use a newer GCC backend that the system version, which is
+#       typically old and does not support latest language features.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   16:00, 15 Nov 2024
+#
+
+#
+##  FUNCTION DEFINITIONS
+#
+
+function write_toolchain_module {
+cat > $TMP_FILE << EOF
+-- -*- lua -*-
+-- Module file created manually on $(date)
+--
+
+whatis([[Name : gcc-toolchain]])
+whatis([[Version : ${gcc_version}]])
+whatis([[Short description : GCC toolchain including C++ standard library]])
+
+help([[GCC toolchain: Includes major components from GCC install for use
+with other compilers. This allows you to use newer components than provided
+by the system $NCAR_SPACK_CORE_GCC (e.g., newer C++ standards)]])
+
+-- Requires ncarcompilers to function (insert modifier flag)
+depends_on("ncarcompilers")
+
+-- Does not work with older versions of Cray wrappers
+conflict("craype/2.7.20")
+
+local gcc_root = "${gcc_dirs[$gcc_version]}"
+local syspath  = os.getenv("NCAR_DEFAULT_PATH")
+
+setenv("NCAR_ROOT_GCC_TOOLCHAIN", gcc_root)
+
+-- Compiler toolchain setting needed for Intel
+prepend_path("NCAR_MFLAGS_COMPILER", "--gcc-toolchain=" .. gcc_root, " ")
+
+-- Path modification that should work for other Clang-based compilers
+append_path("PATH", pathJoin(gcc_root, "bin") .. ":" .. syspath)
+EOF
+
+# Cray requires LD_LIBRARY_PATH too :(
+if [[ $comp_name == cce ]]; then
+cat >> $TMP_FILE << EOF
+
+-- Cray compilers require LIBRARY_PATH settings too
+append_path("LD_LIBRARY_PATH", pathJoin(gcc_root, "lib64"))
+append_path("LIBRARY_PATH", pathJoin(gcc_root, "lib64"))
+EOF
+fi
+}
+
+tsecho "Populating GCC toolchain modules for vendor compilers"
+gcc_spack=$(spack find --format '{version} {prefix}' gcc)
+
+declare -A gcc_dirs
+
+while read gcc_version gcc_root; do
+    if [[ gcc@$gcc_version != $NCAR_SPACK_CORE_GCC ]]; then
+        gcc_dirs[$gcc_version]=$gcc_root
+    fi
+done <<< "$gcc_spack"
+
+cd $MOD_DEPLOYMENT
+
+for comp_name in cce aocc nvhpc oneapi clang; do
+    if [[ -d $comp_name ]]; then
+        for comp_vers in $(ls -1 --color=never $comp_name/); do
+            for gcc_version in ${!gcc_dirs[*]}; do
+                mod_file=$comp_name/$comp_vers/gcc-toolchain/${gcc_version}.lua
+                tsecho "    creating ${GCOL}gcc-toolchain/${gcc_version}$DCOL for vendor compiler ${PCOL}$comp_name/$comp_vers${DCOL}"
+                mkdir -p $comp_name/$comp_vers/gcc-toolchain
+                write_toolchain_module
+                mv $TMP_FILE $comp_name/$comp_vers/gcc-toolchain/${gcc_version}.lua
+            done
+        done
+    fi
+done

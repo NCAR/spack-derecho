@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+#   Unit: perl-library
+#   Description:
+#       For the benefit of certain defined workflows (e.g., CESM), we maintain
+#       a small Perl module library which is managed by this unit.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   22:33, 21 Nov 2024
+#
+
+#
+##  USER INPUT
+#
+
+perl_mod_list="Pod::Parser HTML::Entities XML::LibXML CPAN::Shell File::Slurp DateTime"
+perl_lib_root=$NCAR_SPACK_ROOT_BASE/perl
+
+#
+##  INSTALL PERL MODULES
+#
+
+tsecho "Checking for Spack-installed Perl"
+perl_hash=$(sed -n '3,$ s/ | /|/gp' $SPACK_ENV/registry | awk -F\| '$NF == "perl" { print $1 }')
+perl_deps="/$perl_hash"
+
+if [[ -n $perl_hash ]]; then
+    tsecho "Populating Perl library"
+    echo
+    spack load $perl_deps
+
+    for pmod in $perl_mod_list; do
+        if [[ $pmod == *LibXML ]]; then
+            # One test is a known-fail currently...
+            cpanm install --notest -L $perl_lib_root $pmod
+        else
+            cpanm install -L $perl_lib_root $pmod
+        fi
+    done
+    echo
+fi

@@ -1,0 +1,136 @@
+#!/bin/bash
+#
+#   Unit: augment-view
+#   Description:
+#       Add NCAR utilities to the view as well as a few customizations that
+#       make user software easier to build (e.g., RPC symlinking).
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   14:18, 19 Nov 2024
+#
+
+#
+##  UNIT DEPENDENCIES
+#
+
+. $POSTPROCESS_UNIT_DIR/hide-module.helper
+
+#
+##  USER INPUT
+#
+
+# Where should NCAR utilities be cloned?
+util_root=/glade/u/apps/opt
+
+# List of utilites - dictionary maps utility as key [] to repo as value
+suse_major=$(. /etc/os-release; echo ${VERSION_ID%.*})
+
+declare -A ncar_utils
+ncar_utils[qstat]=qstat-cache
+ncar_utils[qinteractive]=pbstools
+ncar_utils[execcasper]=pbstools
+ncar_utils[qcmd]=pbstools
+ncar_utils[qsub]=pbstools
+ncar_utils[launch_cf]=pbstools
+ncar_utils[qhist]=qhist
+ncar_utils[gladequota]=gladequota
+ncar_utils[snapls]=gladequota
+ncar_utils[set_gpu_rank]=mpitools
+ncar_utils[mpibind]=mpitools
+ncar_utils[cpu_bind]=mpitools
+ncar_utils[gpu_bind]=mpitools
+ncar_utils[create_conda_kernel]=ncar-conda
+ncar_utils[compare_env_yaml]=ncar-conda
+ncar_utils[start-jupyter]=ncar-conda
+ncar_utils[spack-downstream]=csg-spack-downstreams
+ncar_utils[sudox]=termtools
+ncar_utils[licstatus]=termtools
+ncar_utils[dumpenv]=termtools
+ncar_utils[vncmgr]=vncmgr
+ncar_utils[gedit]=leap-container/$suse_major
+ncar_utils[gv]=leap-container/$suse_major
+ncar_utils[evince]=leap-container/$suse_major
+ncar_utils[diffmerge]=precise-container
+ncar_utils[diffuse]=precise-container
+
+if [[ $NCAR_SPACK_HOST == casper ]]; then
+    ncar_utils[dask_resource_monitor]=negin513:ncar-dask-monitor
+    ncar_utils[casper_resource_monitor]=negin513:ncar-dask-monitor
+fi
+
+# These utilites don't actually come from github tracked repos, so let's not
+# clone them
+skip_clone="gladequota leap-container/$suse_major precise-container"
+
+#
+##  BEGIN METAMODULE GENERATION
+#
+
+tsecho "Adding external utilities to the shell environment"
+utils_owner=$(stat -c "%U" $util_root)
+my_user=$(whoami)
+
+cd $util_root
+
+if [[ $SPACK_ENV == $NCAR_SPACK_ENV_PUBLIC ]]; then
+    mkdir -p $NCAR_SPACK_ROOT_BASE/utils/bin
+
+    for util in ${!ncar_utils[@]}; do
+        repo_name=${ncar_utils[$util]#*:}
+        repo_owner=$(sed -n 's/\([^:]*\):.*/\1/p' <<< ${ncar_utils[$util]})
+
+        if [[ $my_user == $utils_owner ]] && [[ ! -d $repo_name ]]; then
+            if [[ -O $util_root ]]; then
+                if [[ " $skip_clone " != *" $repo_name "* ]]; then
+                    tsecho "    cloning $GCOL$repo_name$DCOL repo"
+                    git clone --recurse-submodules --remote-submodules git@github.com:${repo_owner:-NCAR}/${repo_name}.git
+                else
+                    tsecho "Error: No github repo for $util. Perform manual install and retry!"
+                    exit 1
+                fi
+            else
+                echo "Note: Skipping missing utility ${util}. $(whoami) does not own $util_root ..."
+                continue
+            fi
+        fi
+
+        if [[ ! -e $NCAR_SPACK_ROOT_BASE/utils/bin/$util ]]; then
+            # First, let's make sure the repo is up to date (and submodules pulled)
+            if [[ $my_user == $utils_owner ]] && [[ " $skip_clone " != *" $repo_name "* ]]; then
+                cd $util_root/$repo_name
+                git pull > /dev/null
+
+                if [[ -f .gitmodules ]]; then
+                    git submodule update --init --remote --recursive > /dev/null
+                fi
+                cd - > /dev/null
+            fi
+
+            if [[ -e $util_root/$repo_name/bin/$util ]]; then
+                tsecho "    adding $GCOL$util$DCOL"
+                ln -s $util_root/$repo_name/bin/$util $NCAR_SPACK_ROOT_BASE/utils/bin/
+            elif [[ -e $util_root/$repo_name/$util ]]; then
+                tsecho "    adding $GCOL$util$DCOL"
+                ln -s $util_root/$repo_name/$util $NCAR_SPACK_ROOT_BASE/utils/bin/
+            else
+                tsecho "Error: Expected binary not found ($util_root/$repo_name/bin/$util)!"
+                exit 1
+            fi
+        fi
+    done
+fi
+
+tsecho "Finalize the Spack view"
+view_root=$BASE_ROOT/view
+
+# Make sure RPC is available for WRF
+if [[ ! -e $view_root/include/rpc ]] && [[ -d $view_root/include/tirpc/rpc ]]; then
+    ln -s $view_root/include/tirpc/* $view_root/include/
+fi
+
+# Symlink nedit
+if [[ ! -e $view_root/bin/nedit ]] && [[ -e $view_root/bin/xnedit ]]; then
+    cd $view_root/bin
+    ln -s xnedit nedit
+    cd - > /dev/null
+fi

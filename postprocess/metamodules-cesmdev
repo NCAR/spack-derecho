@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+#   Unit: metamods-cesmdev
+#   Description:
+#       This unit creates a cesm development addendum module which, when loaded
+#       adds modulefiles to the user's environment that CSEG (current Jim E)
+#       maintains like development and beta versions of libraries.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   20:20, 28 Oct 2024
+#
+
+#
+##  UNIT DEPENDENCIES
+#
+
+. $POSTPROCESS_UNIT_DIR/hide-module.helper
+
+#
+##  BEGIN METAMODULE GENERATION
+#
+
+# Create developer addon modules and hide them
+mkdir -p $MOD_ROOT/environment/cesmdev
+mm_file=$MOD_ROOT/environment/cesmdev/1.0.lua
+sed "s|%DATE%|$(date)|g" $NCAR_SPACK_ENV_BUILD/templates/modules/cesmdev.lua > $TMP_FILE
+sed -i "s|%HOST%|$NCAR_SPACK_HOST|g" $TMP_FILE
+mv $TMP_FILE $mm_file
+hide_module $mm_file

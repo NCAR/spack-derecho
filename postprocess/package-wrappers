@@ -1,0 +1,131 @@
+#!/bin/bash
+#
+#   Unit: package-wrappers
+#   Description:
+#       Some packages have runtime dependencies on packages from the module
+#       tree, but we don't want them to be dependent on a module. Thus, we
+#       modify the environment at runtime for script invocation.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   12:25, 15 Nov 2024
+#
+
+#
+##  USER INPUT
+#
+
+# Dictionaries mapping the script in the view as the key [] with the package
+# dependencies as the values. The value can be defined as either "python",
+# "perl" (either of which searches for the actual dependencies using Spack), or
+# the specific dependencies if the script is not tracked by Spack
+declare -A wrapped_scripts
+wrapped_scripts["charliecloud"]=python
+
+if [[ $NCAR_SPACK_HOST == casper ]]; then
+    wrapped_scripts["dask_resource_monitor"]="py-numpy@1.25.2 py-pandas@2.1.4 py-tabulate py-python-dateutil py-pytz py-six"
+    wrapped_scripts["casper_resource_monitor"]="py-numpy@1.25.2 py-pandas@2.1.4 py-tabulate py-python-dateutil py-pytz py-six"
+    wrapped_scripts["paraview"]=python
+else
+    wrapped_scripts["lcov"]=perl
+fi
+
+#
+##  FUNCTION DECLARATIONS
+#
+
+function find_libpath {
+    unset my_libpath
+
+    while read dep_hash dep_name dep_prefix; do
+        if [[ -d $dep_prefix ]]; then
+            if [[ $dep_name == py-* ]]; then
+                dep_libpath=$(find $dep_prefix -type d -name site-packages)
+            else
+                dep_libpath=$dep_prefix/lib/perl5
+            fi
+        elif [[ -d $dep_root ]]; then
+            if [[ $dep_name == py-* ]]; then
+                dep_libpath=$(find $dep_root/${dep_name/@/\/} -type d -name site-packages | grep "/${dep_hash:0:4}/")
+            else
+                dep_libpath=$(find $dep_root/${dep_name/@/\/} -type d -name perl5 | grep "/${dep_hash:0:4}/")
+            fi
+        else
+            dep_path=$(spack location -i /$dep_hash)
+            dep_root=${dep_path%/${dep_name%@*}/*}
+            
+            if [[ $dep_name == py-* ]]; then
+                dep_libpath=$(find $dep_path -type d -name site-packages)
+            else
+                dep_libpath=$dep_path/lib/perl5
+            fi
+        fi
+
+        if [[ -n $dep_libpath ]]; then
+            my_libpath=${my_libpath:+${my_libpath}:}$dep_libpath
+        else
+            tsecho "Error: library directory could not be found for $dep_name"
+            exit 1
+        fi
+    done <<< "$1"
+
+    echo $my_libpath
+}
+
+function write_script_wrapper {
+cat > $TMP_FILE << EOF
+#!/bin/bash
+# This is a wrapper designed to ensure the environment contains the runtime package
+# dependencies that the script expects
+
+my_root=$wrapper_root
+
+if [[ -n \$NCAR_${my_type^^}_LIBRARY_DIRTY ]]; then
+    export ${libvar_map[$my_type]}=$2:\$${libvar_map[$my_type]}
+else
+    export ${libvar_map[$my_type]}=$2
+fi
+
+# Remove self from the PATH
+PATH=\${PATH/\${my_root}:}
+
+exec $1 \$@
+EOF
+}
+
+#
+##  BEGIN WRAPPER GENERATION
+#
+
+tsecho "Creating wrappers for packages with runtime package dependencies"
+
+declare -A libvar_map
+libvar_map[python]=PYTHONPATH
+libvar_map[perl]=PERL5LIB
+
+for my_script in ${!wrapped_scripts[@]}; do
+    my_type=${wrapped_scripts[$my_script]}
+
+    if [[ $my_type =~ ^(python|perl)$ ]]; then
+        while read spec_name spec_version spec_hash spec_root; do
+            tsecho "    creating wrapper for $GCOL$spec_name@$spec_version$DCOL"
+            my_deps=$(spack dependencies -i -t --deptype run $spec_name /$spec_hash | grep ${my_type/python/py}-)
+            my_libpath=$(find_libpath "$my_deps")
+            wrapper_root=$BASE_ROOT/wrappers/$spec_name/$spec_version/$spec_hash/bin
+            mkdir -p $wrapper_root
+
+            for bin_name in $(find $spec_root/bin -type f -executable -printf "%f\n"); do 
+                write_script_wrapper $bin_name "$my_libpath"
+                mv $TMP_FILE $wrapper_root/$bin_name
+                chmod +x $wrapper_root/$bin_name
+            done
+        done < <(spack find --format "{name} {version} {hash:4} {prefix}" $my_script 2> /dev/null)
+    else
+        tsecho "    creating wrapper for $GCOL$my_script$DCOL"
+        my_deps=$(spack find --format '{hash} {name}@{version} {prefix}' $my_type)
+        wrapper_root=$BASE_ROOT/wrappers/bin
+        mkdir -p $wrapper_root
+        write_script_wrapper $my_script "$(find_libpath "$my_deps")"
+        mv $TMP_FILE $wrapper_root/$script
+        chmod +x $wrapper_root/$script
+    fi
+done

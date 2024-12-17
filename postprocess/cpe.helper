@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+#   Unit: cpe.helper
+#   Description:
+#       This unit provides useful functions for finding modules and default
+#       versions for a particular CPE installation.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   19:45, 15 Nov 2024
+#
+
+#
+##  SITE SETTINGS
+#
+
+# CPE module paths
+cray_mpath=/opt/cray/pe/lmod/modulefiles/core:/opt/cray/modulefiles:/opt/cray/pe/lmod/modulefiles/craype-targets/default
+
+# Which network type are we using (ofi or ucx)
+cray_network=ofi
+
+# Determine the libfabric version on the system (hopefully one?)
+ofi_version=$(basename $(ls -1 -d --color=never /opt/cray/libfabric/* | tail -1))
+
+# Find CPE versions
+cpe_versions="$(ls --color=never -rd /opt/cray/pe/cpe/*.* | xargs -n1 basename | xargs)"
+
+# CPE GCC requirement
+cpe_needs_gcc=12
+
+#
+##  FUNCTION DEFINITIONS
+#
+
+# This function takes a package name and package version and returns which
+# CPE version provides it.
+function get_cpe_version {
+    for cpe in $cpe_versions; do
+        def_file=/opt/cray/pe/cpe/${cpe}/set_default_release_${cpe}.sh
+
+        for my_name in $1 ${1#cray-}; do 
+            if grep -q default_${my_name}_${2}$ $def_file; then
+                echo $cpe
+                return
+            fi
+        done
+    done
+
+    tsecho "Error: version $2 of $1 not found in any CPE release"
+    exit 1
+}
+
+# This function takes a CPE version and a package name and returns the
+# version of that package specified in that CPE
+function get_package_version {
+    my_cpe_versions=$(sed "s/.*\($1.*\)/\1/" <<< $cpe_versions)
+
+    for cpe in $my_cpe_versions; do
+        def_file=/opt/cray/pe/cpe/$cpe/set_default_release_$cpe.sh
+
+        for my_name in $2 ${2#cray-}; do
+            my_version=$(sed -n "s/.*${my_name}_\([0-9.]*\)$/\1/p" $def_file)
+
+            if [[ -n $my_version ]]; then
+                echo $my_version
+                return
+            fi
+        done
+
+        if [[ $3 == strict ]]; then
+            tsecho "Error: package $2 not found in CPE $cpe"
+            exit 1
+        fi
+    done
+
+    tsecho "Error: package $2 not found in any CPE release"
+    exit 1
+}
