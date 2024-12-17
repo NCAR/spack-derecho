@@ -1,23 +1,4 @@
 packages:
-  opencl:
-    buildable: false
-  cuda:
-    externals:
-    - spec: cuda@12.3.2
-      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.3.2/gcc/12.4.0/jw45
-    buildable: false
-    require:
-    - +allow-unsupported-compilers
-    - '%gcc'
-    variants:
-    - +dev
-  pkg-config:
-    externals:
-    - spec: pkg-config@0.29.2
-      prefix: /usr
-    buildable: false
-    require:
-    - '%gcc'
   openssl:
     externals:
     - spec: openssl@1.1.1l
@@ -26,6 +7,13 @@ packages:
     require:
     - certs=system
     - '%gcc'
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc'
   lustre:
     externals:
     - spec: lustre@2.15.4.2_cray_42_ga614b9c
@@ -33,6 +21,20 @@ packages:
     buildable: false
     require:
     - '%gcc'
+  opencl:
+    buildable: false
+  cuda:
+    externals:
+    - spec: cuda@12.3.2
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.3.2/gcc/12.4.0/jw45
+    - spec: cuda@12.6.3
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.6.3/gcc/12.4.0/r5og
+    buildable: false
+    require:
+    - +allow-unsupported-compilers
+    - '%gcc'
+    variants:
+    - +dev
   gcc:
     externals:
     - spec: gcc@7.5.0 languages='c,c++,fortran'
@@ -514,6 +516,8 @@ packages:
     externals:
     - spec: intel-oneapi-compilers@2024.2.1
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b
+    - spec: intel-oneapi-compilers@2025.0.3
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx
     buildable: false
     require:
     - '%gcc'
@@ -528,7 +532,9 @@ packages:
     externals:
     - spec: intel-oneapi-mkl@2024.2.2
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2024.2.2/oneapi/2024.2.1/kvnq
-    buildable: false
+    - spec: intel-oneapi-mkl@2025.0.1
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/oneapi/2025.0.3/vywn
+    buildable: true
   intel-oneapi-mpi:
     variants:
     - +external-libfabric

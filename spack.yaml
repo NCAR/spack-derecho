@@ -26,25 +26,6 @@ spack:
     template_dirs:
     - /glade/u/apps/derecho/24.12/envs/build/templates/modules
   packages:
-    opencl:
-      buildable: false
-    cuda:
-      externals:
-      - spec: cuda@12.3.2
-        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.3.2/gcc/12.4.0/jw45
-      buildable: false
-      require:
-      - +allow-unsupported-compilers
-      - '%gcc'
-      variants:
-      - +dev
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
-      require:
-      - '%gcc'
     openssl:
       externals:
       - spec: openssl@1.1.1l
@@ -53,6 +34,13 @@ spack:
       require:
       - certs=system
       - '%gcc'
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
+      require:
+      - '%gcc'
     lustre:
       externals:
       - spec: lustre@2.15.4.2_cray_42_ga614b9c
@@ -60,6 +48,20 @@ spack:
       buildable: false
       require:
       - '%gcc'
+    opencl:
+      buildable: false
+    cuda:
+      externals:
+      - spec: cuda@12.3.2
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.3.2/gcc/12.4.0/jw45
+      - spec: cuda@12.6.3
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.6.3/gcc/12.4.0/r5og
+      buildable: false
+      require:
+      - +allow-unsupported-compilers
+      - '%gcc'
+      variants:
+      - +dev
     gcc:
       externals:
       - spec: gcc@7.5.0 languages='c,c++,fortran'
@@ -541,6 +543,8 @@ spack:
       externals:
       - spec: intel-oneapi-compilers@2024.2.1
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b
+      - spec: intel-oneapi-compilers@2025.0.3
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx
       buildable: false
       require:
       - '%gcc'
@@ -555,7 +559,9 @@ spack:
       externals:
       - spec: intel-oneapi-mkl@2024.2.2
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2024.2.2/oneapi/2024.2.1/kvnq
-      buildable: false
+      - spec: intel-oneapi-mkl@2025.0.1
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/oneapi/2025.0.3/vywn
+      buildable: true
     intel-oneapi-mpi:
       variants:
       - +external-libfabric
@@ -1174,6 +1180,19 @@ spack:
         append_path:
           LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/gcc/12.4.0/5b5c/lib64:/opt/cray/libfabric/1.15.2.0/lib64
           LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/gcc/12.4.0/5b5c/lib64
+  - compiler:
+      spec: oneapi@2025.0.3
+      paths:
+        cc: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx/compiler/latest/bin/icx
+        cxx: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx/compiler/latest/bin/icpx
+        f77: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx/compiler/latest/bin/ifx
+        fc: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx/compiler/latest/bin/ifx
+      operating_system: sles15
+      modules: []
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   modules:
     'default:':
       roots:
@@ -1232,13 +1251,13 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - libfabric
         - nco
         - gmt
         - cdo
         - nccmp
         - ncview
         - cray-libsci
-        - intel-oneapi-mkl
         - lcov
         - neovim
         - libtorch
@@ -1262,7 +1281,6 @@ spack:
         - cmake
         - cuda
         - pcre
-        - intel-oneapi-compilers
         - nvhpc
         - r
         - miniconda
@@ -1872,3 +1890,33 @@ spack:
   - opencoarrays@2.10.2%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
   - libfabric@1.22.0
   - libfabric@1.15.2.0%gcc@7.5.0
+  - intel-oneapi-compilers@2025.0.3
+  - intel-oneapi-mkl@2025.0.1%oneapi@2025.0.3
+  - ncarcompilers@1.0.0%oneapi@2025.0.3
+  - fftw@3.3.10%oneapi@2025.0.3~mpi
+  - udunits@2.2.28%oneapi@2025.0.3
+  - hdf5@1.12.3%oneapi@2025.0.3~mpi
+  - netcdf@4.9.2%oneapi@2025.0.3~mpi
+  - proj@9.4.1%oneapi@2025.0.3
+  - geos@3.13.0%oneapi@2025.0.3
+  - gdal@3.9.3%oneapi@2025.0.3
+  - hdf@4.2.15%oneapi@2025.0.3 cflags='-std=c90 -Wno-error=int-conversion'
+  - superlu@6.0.0%oneapi@2025.0.3
+  - eccodes@2.34.0%oneapi@2025.0.3
+  - cray-mpich@8.1.29%oneapi@2025.0.3
+  - mpi-serial@2.5.0%oneapi@2025.0.3
+  - parallelio@2.6.3%oneapi@2025.0.3~mpi
+  - esmf@8.7.0%oneapi@2025.0.3~mpi
+  - kokkos@4.2.01%oneapi@2025.0.3
+  - parallel-netcdf@1.14.0%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - hdf5@1.12.3%oneapi@2025.0.3+mpi ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - netcdf@4.9.2%oneapi@2025.0.3+mpi ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - fftw@3.3.10%oneapi@2025.0.3+mpi ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - parallelio1@1.10.1%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - darshan-runtime@3.4.6%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - parallelio@2.6.3%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - esmf@8.7.0%oneapi@2025.0.3+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - parallelio@2.6.3%oneapi@2025.0.3~shared ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - osu-micro-benchmarks%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - gptl@8.1.1%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - superlu-dist@8.2.1%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3

@@ -54,13 +54,13 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - libfabric
       - nco
       - gmt
       - cdo
       - nccmp
       - ncview
       - cray-libsci
-      - intel-oneapi-mkl
       - lcov
       - neovim
       - libtorch
@@ -84,7 +84,6 @@ modules:
       - cmake
       - cuda
       - pcre
-      - intel-oneapi-compilers
       - nvhpc
       - r
       - miniconda
