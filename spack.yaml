@@ -1269,8 +1269,10 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - intel-oneapi-advisor
+        - intel-oneapi-vtune
+        - texlive
         - intel-oneapi-compilers
-        - libfabric
         - nco
         - gmt
         - cdo
@@ -1655,6 +1657,7 @@ spack:
           mvapich~cuda: mvapich/{version}-cpu
           mvapich+cuda: mvapich/{version}-cuda
           py-torch: libtorch/{version}
+          libfabric cflags=-g: libfabric/{version}-debug
         rstudio:
           filter:
             exclude_env_vars:
@@ -1940,3 +1943,6 @@ spack:
   - texlive
   - intel-oneapi-vtune@2025.0.1
   - intel-oneapi-advisor@2025.0.0
+  - libfabric@1.22.0 cflags=-g ^cassini-headers cflags=-g ^cxi-driver cflags=-g ^libcxi
+    cflags=-g
+  - h5z-zfp@1.1.1%gcc@12.4.0

@@ -54,8 +54,10 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - intel-oneapi-advisor
+      - intel-oneapi-vtune
+      - texlive
       - intel-oneapi-compilers
-      - libfabric
       - nco
       - gmt
       - cdo
@@ -440,6 +442,7 @@ modules:
         mvapich~cuda: mvapich/{version}-cpu
         mvapich+cuda: mvapich/{version}-cuda
         py-torch: libtorch/{version}
+        libfabric cflags=-g: libfabric/{version}-debug
       rstudio:
         filter:
           exclude_env_vars:
