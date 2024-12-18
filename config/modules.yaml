@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - intel-oneapi-compilers
       - libfabric
       - nco
       - gmt
@@ -89,8 +90,6 @@ modules:
       - miniconda
       - go
       - idl
-      - intel-oneapi-advisor
-      - intel-oneapi-vtune
       - matlab
       - rstudio
       cuda:

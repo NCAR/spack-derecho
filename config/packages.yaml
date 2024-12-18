@@ -977,6 +977,10 @@ packages:
   texlive:
     require:
     - '%gcc'
+    externals:
+    - spec: texlive@20240312
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/texlive/20240312/gcc/12.4.0/nm7e
+    buildable: false
   ucx:
     require:
     - '%gcc'
@@ -1028,5 +1032,19 @@ packages:
   zstd:
     variants:
     - +programs
+    require:
+    - '%gcc'
+  intel-oneapi-vtune:
+    externals:
+    - spec: intel-oneapi-vtune@2025.0.1
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-vtune/2025.0.1/gcc/12.4.0/6pef
+    buildable: false
+    require:
+    - '%gcc'
+  intel-oneapi-advisor:
+    externals:
+    - spec: intel-oneapi-advisor@2025.0.0
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-advisor/2025.0.0/gcc/12.4.0/4oqe
+    buildable: false
     require:
     - '%gcc'

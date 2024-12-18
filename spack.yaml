@@ -1004,6 +1004,10 @@ spack:
     texlive:
       require:
       - '%gcc'
+      externals:
+      - spec: texlive@20240312
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/texlive/20240312/gcc/12.4.0/nm7e
+      buildable: false
     ucx:
       require:
       - '%gcc'
@@ -1055,6 +1059,20 @@ spack:
     zstd:
       variants:
       - +programs
+      require:
+      - '%gcc'
+    intel-oneapi-vtune:
+      externals:
+      - spec: intel-oneapi-vtune@2025.0.1
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-vtune/2025.0.1/gcc/12.4.0/6pef
+      buildable: false
+      require:
+      - '%gcc'
+    intel-oneapi-advisor:
+      externals:
+      - spec: intel-oneapi-advisor@2025.0.0
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-advisor/2025.0.0/gcc/12.4.0/4oqe
+      buildable: false
       require:
       - '%gcc'
   view:
@@ -1251,6 +1269,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - intel-oneapi-compilers
         - libfabric
         - nco
         - gmt
@@ -1286,8 +1305,6 @@ spack:
         - miniconda
         - go
         - idl
-        - intel-oneapi-advisor
-        - intel-oneapi-vtune
         - matlab
         - rstudio
         cuda:
@@ -1920,3 +1937,6 @@ spack:
   - osu-micro-benchmarks%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
   - gptl@8.1.1%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
   - superlu-dist@8.2.1%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - texlive
+  - intel-oneapi-vtune@2025.0.1
+  - intel-oneapi-advisor@2025.0.0
