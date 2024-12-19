@@ -1,4 +1,11 @@
 packages:
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc'
   openssl:
     externals:
     - spec: openssl@1.1.1l
@@ -6,13 +13,6 @@ packages:
     buildable: false
     require:
     - certs=system
-    - '%gcc'
-  pkg-config:
-    externals:
-    - spec: pkg-config@0.29.2
-      prefix: /usr
-    buildable: false
-    require:
     - '%gcc'
   lustre:
     externals:
@@ -506,6 +506,8 @@ packages:
     externals:
     - spec: idl@9.0.0
       prefix: /glade/u/apps/opt/idl/9.0.0
+    - spec: idl@9.1.0
+      prefix: /glade/u/apps/opt/idl/9.1.0
     buildable: false
   imagemagick:
     variants:
@@ -709,6 +711,8 @@ packages:
     externals:
     - spec: matlab@R2024a
       prefix: /glade/u/apps/opt/matlab/R2024a
+    - spec: matlab@R2024b
+      prefix: /glade/u/apps/opt/matlab/R2024b
     buildable: false
   maven:
     require:
@@ -946,6 +950,8 @@ packages:
     externals:
     - spec: rstudio@2023.09.0
       prefix: /glade/u/apps/opt/rstudio/2023.09.0
+    - spec: rstudio@2024.12.0
+      prefix: /glade/u/apps/opt/rstudio/2024.12.0
     buildable: false
   rsync:
     require:

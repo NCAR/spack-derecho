@@ -26,6 +26,13 @@ spack:
     template_dirs:
     - /glade/u/apps/derecho/24.12/envs/build/templates/modules
   packages:
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
+      require:
+      - '%gcc'
     openssl:
       externals:
       - spec: openssl@1.1.1l
@@ -33,13 +40,6 @@ spack:
       buildable: false
       require:
       - certs=system
-      - '%gcc'
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
-      require:
       - '%gcc'
     lustre:
       externals:
@@ -533,6 +533,8 @@ spack:
       externals:
       - spec: idl@9.0.0
         prefix: /glade/u/apps/opt/idl/9.0.0
+      - spec: idl@9.1.0
+        prefix: /glade/u/apps/opt/idl/9.1.0
       buildable: false
     imagemagick:
       variants:
@@ -736,6 +738,8 @@ spack:
       externals:
       - spec: matlab@R2024a
         prefix: /glade/u/apps/opt/matlab/R2024a
+      - spec: matlab@R2024b
+        prefix: /glade/u/apps/opt/matlab/R2024b
       buildable: false
     maven:
       require:
@@ -973,6 +977,8 @@ spack:
       externals:
       - spec: rstudio@2023.09.0
         prefix: /glade/u/apps/opt/rstudio/2023.09.0
+      - spec: rstudio@2024.12.0
+        prefix: /glade/u/apps/opt/rstudio/2024.12.0
       buildable: false
     rsync:
       require:
@@ -1309,6 +1315,7 @@ spack:
         - idl
         - matlab
         - rstudio
+        - libfabric
         cuda:
           template: ncar_cuda.lua
           environment:
@@ -1943,6 +1950,4 @@ spack:
   - texlive
   - intel-oneapi-vtune@2025.0.1
   - intel-oneapi-advisor@2025.0.0
-  - libfabric@1.22.0 cflags=-g ^cassini-headers cflags=-g ^cxi-driver cflags=-g ^libcxi
-    cflags=-g
   - h5z-zfp@1.1.1%gcc@12.4.0
