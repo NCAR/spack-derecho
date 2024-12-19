@@ -91,9 +91,6 @@ modules:
       - r
       - miniconda
       - go
-      - idl
-      - matlab
-      - rstudio
       - libfabric
       cuda:
         template: ncar_cuda.lua

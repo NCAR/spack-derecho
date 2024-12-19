@@ -1312,9 +1312,6 @@ spack:
         - r
         - miniconda
         - go
-        - idl
-        - matlab
-        - rstudio
         - libfabric
         cuda:
           template: ncar_cuda.lua
@@ -1951,3 +1948,6 @@ spack:
   - intel-oneapi-vtune@2025.0.1
   - intel-oneapi-advisor@2025.0.0
   - h5z-zfp@1.1.1%gcc@12.4.0
+  - matlab@R2024b
+  - idl@9.1.0
+  - rstudio@2024.12.0
