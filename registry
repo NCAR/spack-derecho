@@ -95,7 +95,6 @@ vb7qnam23g6svxbvl6csypqtadx3ve5k | 2024-12-16T23:33:44 | 306501687743b85543ba17d
 7tt6kuoyuyzeizt2jukjaxnmn4ow3vb2 | 2024-12-16T23:39:53 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | nco@5.2.4 | nco@5.2.4
 yddmoyckaakn5f3srdj4e25yh5cw4qjp | 2024-12-16T23:40:26 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%gcc@12.4.0 | ncarcompilers@1.0.0%gcc@12.4.0
 bprzrm6krbdyvwxzkqtasysburnri2t3 | 2024-12-16T23:40:54 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%nvhpc@24.11 | ncarcompilers@1.0.0%nvhpc@24.11
-zhnpia5abmsmwmdkfi2nj4rvc7ntjsnf | 2024-12-16T23:41:24 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%oneapi@2024.2.1 | ncarcompilers@1.0.0%oneapi@2024.2.1
 zbuxngslsibzdxijuieuju4lhw3y4ti5 | 2024-12-16T23:41:54 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%cce@17.0.1 | ncarcompilers@1.0.0%cce@17.0.1
 7p4t76lf64zgkv4zlns4l464jmis4hdn | 2024-12-16T23:42:29 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | openblas@0.3.28%gcc@12.4.0 | openblas@0.3.28%gcc@12.4.0
 j3atdlg7ci6nfs5qc3hkerzpd5j3ido2 | 2024-12-16T23:42:57 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | fftw@3.3.10%gcc@12.4.0~mpi | fftw@3.3.10%gcc@12.4.0~mpi
@@ -210,7 +209,6 @@ tols4osbjk6p26ckby2jip7ycvkbtdlj | 2024-12-17T08:35:06 | 306501687743b85543ba17d
 ipgc6tkpycnbvf6drgjglqdf237jrxdy | 2024-12-17T08:35:37 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | libfabric@1.15.2.0%gcc@7.5.0 | libfabric@1.15.2.0%gcc@7.5.0
 a6fk7vsctgryk6g4kajvsuc3jngtanb6 | 2024-12-17T13:48:10 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      | yes       | intel-oneapi-compilers@2025.0.3 | intel-oneapi-compilers@2025.0.3
 n7g7jhzftgixmqqefn4cdduzmeyqyorh | 2024-12-17T13:51:02 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | intel-oneapi-mkl@2025.0.1%oneapi@2025.0.3 | intel-oneapi-mkl@2025.0.1%oneapi@2025.0.3
-4otfb4zymd6b4da6oqpwb46pjw4fq5n3 | 2024-12-17T13:51:38 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%oneapi@2025.0.3 | ncarcompilers@1.0.0%oneapi@2025.0.3
 ayewm6vo7z2rvlot7uozl5wojctrk4br | 2024-12-17T13:52:09 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | fftw@3.3.10%oneapi@2025.0.3~mpi | fftw@3.3.10%oneapi@2025.0.3~mpi
 wdovtuqjpybom5rcjz5xvscq6dvi623a | 2024-12-17T13:52:45 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | udunits@2.2.28%oneapi@2025.0.3 | udunits@2.2.28%oneapi@2025.0.3
 ga2td3tkrql2zxrvlpn7ozuhgaki6zec | 2024-12-17T13:53:21 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | hdf5@1.12.3%oneapi@2025.0.3~mpi | hdf5@1.12.3%oneapi@2025.0.3~mpi
@@ -245,3 +243,5 @@ uvozk7il65dkw34hoxesm3fj42awccs4 | 2024-12-18T13:34:59 | 350a74ae92e368fb76acd96
 xxhm7uc7on6cwihmp2irhbfbxtayyr4m | 2024-12-19T12:46:02 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | matlab@R2024b | matlab@R2024b
 tqbtg7cdneikzzjijlwgimvasz734bpp | 2024-12-19T12:46:36 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | idl@9.1.0 | idl@9.1.0
 uoxw7fysrgaz6hvrcn5xfwbegd6ccwzo | 2024-12-19T12:47:08 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | rstudio@2024.12.0 | rstudio@2024.12.0
+3aiv6winjxzcur3obqvg7j7xteh6b2b6 | 2024-12-19T14:24:56 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%oneapi@2024.2.1 | ncarcompilers@1.0.0%oneapi@2024.2.1
+d7f52z4tcmjavtt6n4ire5hidr3eziym | 2024-12-19T14:25:24 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%oneapi@2025.0.3 | ncarcompilers@1.0.0%oneapi@2025.0.3

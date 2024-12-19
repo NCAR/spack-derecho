@@ -54,6 +54,9 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - rstudio
+      - idl
+      - matlab
       - intel-oneapi-advisor
       - intel-oneapi-vtune
       - texlive
