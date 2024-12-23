@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   15:36, 12 Dec 2024
+#   Last Revised:   15:49, 23 Dec 2024
 #
 
 #
@@ -90,11 +90,12 @@ setenv("NCAR_ROOT_COMPILER",        CCE_M_CURPATH)
 depends_on("cray-libsci")
 EOF
 
-if [[ ${mod_version%%.*} -ge 17 ]] && [[ $cpe_needs_gcc -gt $core_gcc_major ]]; then
+# Apparently this is always needed, even if we LIBRARY_PATH the compiler libs
+if [[ ${mod_version%%.*} -ge 17 ]]; then
 cat >> $1 << EOF
 
 -- We need a newer GCC toolchain to use newer cray-mpich
-depends_on(atleast("gcc-toolchain", "13.0.0"))
+setenv("NCAR_MFLAGS_CCE", "--gcc-toolchain=$core_gcc_root")
 EOF
 fi
 elif [[ $mod_name == gcc ]]; then
@@ -406,6 +407,7 @@ tsecho "Copying core modules to $MOD_ROOT"
 
 # Get current core GCC major version for compat checks
 core_gcc_major=$(sed 's/.*@\([^.]*\).*/\1/' <<< $NCAR_SPACK_CORE_GCC)
+core_gcc_root=$(spack location -i $NCAR_SPACK_CORE_GCC)
 
 declare -A comp_pe
 comp_pe[cce]=CRAY

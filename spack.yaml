@@ -1275,6 +1275,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - intel-oneapi-compilers
         - libfabric
         - rstudio
         - idl
