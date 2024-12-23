@@ -54,13 +54,13 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - libfabric
       - rstudio
       - idl
       - matlab
       - intel-oneapi-advisor
       - intel-oneapi-vtune
       - texlive
-      - intel-oneapi-compilers
       - nco
       - gmt
       - cdo
@@ -94,7 +94,6 @@ modules:
       - r
       - miniconda
       - go
-      - libfabric
       cuda:
         template: ncar_cuda.lua
         environment:

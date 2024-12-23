@@ -427,7 +427,7 @@ packages:
     - +svn
     - +tcltk
   glibc:
-    require:
+    prefer:
     - '%gcc'
   glpk:
     require:

@@ -2,7 +2,6 @@ Package Hash                     | Date Installed      | Spack Git Repo Commit  
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 zzlhutnnv2s5iz7u5637mxwygeolyhud | 2024-12-16T21:40:14 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      | yes       | nvhpc@24.11 | nvhpc@24.11
 qop5pm4cuph4xetluqai65lzmosksybc | 2024-12-16T21:45:15 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      | yes       | gcc@12.4.0%gcc@7.5.0 | gcc@12.4.0%gcc@7.5.0
-xc25x34p5uiori5pp4jbfykhli67zlia | 2024-12-16T21:47:23 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      | yes       | intel-oneapi-compilers@2024.2.1 | intel-oneapi-compilers@2024.2.1
 tvcv2lxsq4nhgqd4il5b7bxg7eybfrxl | 2024-12-16T21:49:31 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | automake | automake
 4vhyfrxx3hp4vvg3d6hij377tyjbifuk | 2024-12-16T21:49:59 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | autoconf | autoconf
 rp55rd4yxcftw5mmoxvntfdrmtfkzwrw | 2024-12-16T21:50:29 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | autoconf-archive | autoconf-archive
@@ -93,9 +92,6 @@ ixjdbaolahm7hi5eti66soclhsaqtbjd | 2024-12-16T23:32:25 | 306501687743b85543ba17d
 l2m3pitk4lgxc6mg4jdp7c4d23tilypx | 2024-12-16T23:32:59 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | cdo@2.4.4 | cdo@2.4.4
 vb7qnam23g6svxbvl6csypqtadx3ve5k | 2024-12-16T23:33:44 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | gmt@6.5.0 | gmt@6.5.0
 7tt6kuoyuyzeizt2jukjaxnmn4ow3vb2 | 2024-12-16T23:39:53 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | nco@5.2.4 | nco@5.2.4
-yddmoyckaakn5f3srdj4e25yh5cw4qjp | 2024-12-16T23:40:26 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%gcc@12.4.0 | ncarcompilers@1.0.0%gcc@12.4.0
-bprzrm6krbdyvwxzkqtasysburnri2t3 | 2024-12-16T23:40:54 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%nvhpc@24.11 | ncarcompilers@1.0.0%nvhpc@24.11
-zbuxngslsibzdxijuieuju4lhw3y4ti5 | 2024-12-16T23:41:54 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%cce@17.0.1 | ncarcompilers@1.0.0%cce@17.0.1
 7p4t76lf64zgkv4zlns4l464jmis4hdn | 2024-12-16T23:42:29 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | openblas@0.3.28%gcc@12.4.0 | openblas@0.3.28%gcc@12.4.0
 j3atdlg7ci6nfs5qc3hkerzpd5j3ido2 | 2024-12-16T23:42:57 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | fftw@3.3.10%gcc@12.4.0~mpi | fftw@3.3.10%gcc@12.4.0~mpi
 e6z7h2olmwajhwue32b22yb6im3xwwqb | 2024-12-16T23:43:28 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | udunits@2.2.28%gcc@12.4.0 | udunits@2.2.28%gcc@12.4.0
@@ -207,7 +203,6 @@ d6df7xuttmwiftmxzceiqjbbypctgtdm | 2024-12-17T08:34:01 | 306501687743b85543ba17d
 pjjbwbovojwgbthu7gcs7qrfzwa5gdbr | 2024-12-17T08:34:34 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | opencoarrays@2.10.2%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0 | opencoarrays@2.10.2%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
 tols4osbjk6p26ckby2jip7ycvkbtdlj | 2024-12-17T08:35:06 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | libfabric@1.22.0 | libfabric@1.22.0
 ipgc6tkpycnbvf6drgjglqdf237jrxdy | 2024-12-17T08:35:37 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | libfabric@1.15.2.0%gcc@7.5.0 | libfabric@1.15.2.0%gcc@7.5.0
-a6fk7vsctgryk6g4kajvsuc3jngtanb6 | 2024-12-17T13:48:10 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      | yes       | intel-oneapi-compilers@2025.0.3 | intel-oneapi-compilers@2025.0.3
 n7g7jhzftgixmqqefn4cdduzmeyqyorh | 2024-12-17T13:51:02 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | intel-oneapi-mkl@2025.0.1%oneapi@2025.0.3 | intel-oneapi-mkl@2025.0.1%oneapi@2025.0.3
 ayewm6vo7z2rvlot7uozl5wojctrk4br | 2024-12-17T13:52:09 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | fftw@3.3.10%oneapi@2025.0.3~mpi | fftw@3.3.10%oneapi@2025.0.3~mpi
 wdovtuqjpybom5rcjz5xvscq6dvi623a | 2024-12-17T13:52:45 | 306501687743b85543ba17d212067b0106a2d0ff |      | no     | yes     | yes      |           | udunits@2.2.28%oneapi@2025.0.3 | udunits@2.2.28%oneapi@2025.0.3
@@ -245,3 +240,12 @@ tqbtg7cdneikzzjijlwgimvasz734bpp | 2024-12-19T12:46:36 | 350a74ae92e368fb76acd96
 uoxw7fysrgaz6hvrcn5xfwbegd6ccwzo | 2024-12-19T12:47:08 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | rstudio@2024.12.0 | rstudio@2024.12.0
 3aiv6winjxzcur3obqvg7j7xteh6b2b6 | 2024-12-19T14:24:56 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%oneapi@2024.2.1 | ncarcompilers@1.0.0%oneapi@2024.2.1
 d7f52z4tcmjavtt6n4ire5hidr3eziym | 2024-12-19T14:25:24 | 350a74ae92e368fb76acd9600ebda51709bb9927 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%oneapi@2025.0.3 | ncarcompilers@1.0.0%oneapi@2025.0.3
+ribzzel7zvgin7ey4kmgy4dnzrhaal4q | 2024-12-23T14:45:56 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      | yes       | intel-oneapi-compilers@2024.2.1 | intel-oneapi-compilers@2024.2.1
+xquknmf3nu7kujdia5qhedegttrg7g4c | N/A                 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%gcc@12.4.0 | ncarcompilers@1.0.0%gcc@12.4.0
+4jjuorhlyh7vkqztcdnrrhwi5qtymbdu | N/A                 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%nvhpc@24.11 | ncarcompilers@1.0.0%nvhpc@24.11
+5hmsc6cxs7pbtrteyykybcujvxvzuitu | N/A                 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | ncarcompilers@1.0.0%cce@17.0.1 | ncarcompilers@1.0.0%cce@17.0.1
+ja6jmw4gqndy5klyp7p6fhylvf5nmnzl | 2024-12-23T14:50:49 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      | yes       | intel-oneapi-compilers@2025.0.3 | intel-oneapi-compilers@2025.0.3
+c5inf7lra2q4cdhunogtmiwqphd4uh2o | 2024-12-23T14:54:22 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%gcc@12.4.0 | spherepack@3.2%gcc@12.4.0
+kulvhanqkufp3bbesekrwtgiiwxel57p | 2024-12-23T14:54:51 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%nvhpc@24.11 | spherepack@3.2%nvhpc@24.11
+hw4xqioxkl5x43mxdid72vo32osy3gju | 2024-12-23T14:55:20 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%oneapi@2024.2.1 | spherepack@3.2%oneapi@2024.2.1
+dmx2leyd42n7rg2lwrlomgupz4raa2sz | 2024-12-23T14:55:48 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%oneapi@2025.0.3 | spherepack@3.2%oneapi@2025.0.3
