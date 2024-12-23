@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   15:49, 23 Dec 2024
+#   Last Revised:   16:15, 23 Dec 2024
 #
 
 #
@@ -95,7 +95,7 @@ if [[ ${mod_version%%.*} -ge 17 ]]; then
 cat >> $1 << EOF
 
 -- We need a newer GCC toolchain to use newer cray-mpich
-setenv("NCAR_MFLAGS_CCE", "--gcc-toolchain=$core_gcc_root")
+setenv("NCAR_MFLAGS_COMPILER", "--gcc-toolchain=$core_gcc_root")
 EOF
 fi
 elif [[ $mod_name == gcc ]]; then
