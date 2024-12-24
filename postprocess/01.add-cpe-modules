@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   09:53, 24 Dec 2024
+#   Last Revised:   10:27, 24 Dec 2024
 #
 
 #
@@ -92,13 +92,10 @@ EOF
 
 if [[ ${mod_version%%.*} -ge 17 ]]; then
 # Apparently this is always needed, even if we LIBRARY_PATH the compiler libs
-# NOTE that --gcc-toolchain does not work as it results in a -lstdc++ cannot
-# be found error when using MPI (can be avoided by also setting LIBRARY_PATH,
-# but this is probably better...
 cat >> $1 << EOF
 
 -- We need a newer GCC toolchain to use newer cray-mpich
-setenv("NCAR_MFLAGS_COMPILER", "--gcc-install-dir=$core_gcc_root")
+setenv("NCAR_MFLAGS_COMPILER", "--gcc-toolchain=$core_gcc_root")
 EOF
 fi
 elif [[ $mod_name == gcc ]]; then
