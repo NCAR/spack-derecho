@@ -6,7 +6,7 @@
 #       version ncarenv stacks.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   15:45, 15 Nov 2024
+#   Last Revised:   10:09, 24 Dec 2024
 #
 
 #
@@ -25,6 +25,7 @@ cat >> $TMP_FILE << EOF
 -- Add non-system core GCC to the user paths
 local cc_root = "$cc_root"
 prepend_path("PATH",            pathJoin(cc_root, "bin"))
+prepend_path("LIBRARY_PATH",    pathJoin(cc_root, "lib64"))
 prepend_path("LD_LIBRARY_PATH", pathJoin(cc_root, "lib64"))
 EOF
 }
