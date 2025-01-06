@@ -429,6 +429,8 @@ packages:
   glibc:
     prefer:
     - '%gcc'
+    require:
+    - '%gcc'
   glpk:
     require:
     - '%gcc'
@@ -534,8 +536,10 @@ packages:
     externals:
     - spec: intel-oneapi-mkl@2024.2.2
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2024.2.2/oneapi/2024.2.1/kvnq
-    - spec: intel-oneapi-mkl@2025.0.1
+    - spec: intel-oneapi-mkl@2025.0.1 %oneapi@2025.0.3
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/oneapi/2025.0.3/vywn
+    - spec: intel-oneapi-mkl@2025.0.1 %gcc@12.4.0
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/gcc/12.4.0/n4er
     buildable: true
   intel-oneapi-mpi:
     variants:

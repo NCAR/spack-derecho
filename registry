@@ -249,3 +249,4 @@ c5inf7lra2q4cdhunogtmiwqphd4uh2o | 2024-12-23T14:54:22 | ce60b8b24ec49a3e93f70f2
 kulvhanqkufp3bbesekrwtgiiwxel57p | 2024-12-23T14:54:51 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%nvhpc@24.11 | spherepack@3.2%nvhpc@24.11
 hw4xqioxkl5x43mxdid72vo32osy3gju | 2024-12-23T14:55:20 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%oneapi@2024.2.1 | spherepack@3.2%oneapi@2024.2.1
 dmx2leyd42n7rg2lwrlomgupz4raa2sz | 2024-12-23T14:55:48 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | spherepack@3.2%oneapi@2025.0.3 | spherepack@3.2%oneapi@2025.0.3
+6xim5xi7vspguznrtry5bdv73ffzqqzw | 2025-01-06T13:36:03 | ce60b8b24ec49a3e93f70f2f71b6244452c40458 |      | no     | yes     | yes      |           | intel-oneapi-mkl@2025.0.1%gcc@12.4.0 | intel-oneapi-mkl@2025.0.1%gcc@12.4.0
