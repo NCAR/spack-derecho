@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - nco
       - intel-oneapi-compilers
       - libfabric
       - rstudio
@@ -62,7 +63,6 @@ modules:
       - intel-oneapi-advisor
       - intel-oneapi-vtune
       - texlive
-      - nco
       - gmt
       - cdo
       - nccmp

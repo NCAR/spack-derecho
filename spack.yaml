@@ -1279,6 +1279,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - nco
         - intel-oneapi-compilers
         - libfabric
         - rstudio
@@ -1287,7 +1288,6 @@ spack:
         - intel-oneapi-advisor
         - intel-oneapi-vtune
         - texlive
-        - nco
         - gmt
         - cdo
         - nccmp
@@ -1973,3 +1973,4 @@ spack:
   - esmf@8.8.0%oneapi@2024.2.1+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2024.2.1
   - esmf@8.8.0%oneapi@2025.0.3+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2025.0.3
   - esmf@8.8.0%cce@17.0.1+mpi+pnetcdf ^cray-mpich@8.1.29%cce@17.0.1
+  - nco@5.3.1
