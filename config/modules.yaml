@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - cudnn
       - nco
       - intel-oneapi-compilers
       - libfabric
@@ -82,7 +83,6 @@ modules:
       - darshan-util
       - linaro-forge
       - ncl
-      - cudnn
       - charliecloud
       - peak-memusage
       - podman
@@ -139,6 +139,7 @@ modules:
       - parallelio+mpi+shared
       - esmf+mpi
       - cuda@12.3.2
+      - cudnn@8.9.7.29-12
       - intel-oneapi-compilers@2024.2.1
       - gcc@12.4.0
       - libfabric@1.15.2.0

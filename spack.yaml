@@ -33,6 +33,13 @@ spack:
       buildable: false
       require:
       - '%gcc'
+    lustre:
+      externals:
+      - spec: lustre@2.15.4.2_cray_42_ga614b9c
+        prefix: /usr
+      buildable: false
+      require:
+      - '%gcc'
     openssl:
       externals:
       - spec: openssl@1.1.1l
@@ -40,13 +47,6 @@ spack:
       buildable: false
       require:
       - certs=system
-      - '%gcc'
-    lustre:
-      externals:
-      - spec: lustre@2.15.4.2_cray_42_ga614b9c
-        prefix: /usr
-      buildable: false
-      require:
       - '%gcc'
     opencl:
       buildable: false
@@ -289,6 +289,8 @@ spack:
       externals:
       - spec: cudnn@8.9.7.29-12
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cudnn/8.9.7.29-12/gcc/12.4.0/dyzl
+      - spec: cudnn@9.2.0.82-12
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cudnn/9.2.0.82-12/gcc/12.4.0/gguf
       buildable: false
       require:
       - '%gcc'
@@ -1279,6 +1281,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - cudnn
         - nco
         - intel-oneapi-compilers
         - libfabric
@@ -1307,7 +1310,6 @@ spack:
         - darshan-util
         - linaro-forge
         - ncl
-        - cudnn
         - charliecloud
         - peak-memusage
         - podman
@@ -1364,6 +1366,7 @@ spack:
         - parallelio+mpi+shared
         - esmf+mpi
         - cuda@12.3.2
+        - cudnn@8.9.7.29-12
         - intel-oneapi-compilers@2024.2.1
         - gcc@12.4.0
         - libfabric@1.15.2.0
@@ -1974,3 +1977,4 @@ spack:
   - esmf@8.8.0%oneapi@2025.0.3+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2025.0.3
   - esmf@8.8.0%cce@17.0.1+mpi+pnetcdf ^cray-mpich@8.1.29%cce@17.0.1
   - nco@5.3.1
+  - cudnn@9.2.0.82-12
