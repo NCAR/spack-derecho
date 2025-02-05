@@ -1978,3 +1978,13 @@ spack:
   - esmf@8.8.0%cce@17.0.1+mpi+pnetcdf ^cray-mpich@8.1.29%cce@17.0.1
   - nco@5.3.1
   - cudnn@9.2.0.82-12
+  - parallelio@2.6.4%gcc@12.4.0~mpi
+  - parallelio@2.6.4%nvhpc@24.11~mpi
+  - parallelio@2.6.4%oneapi@2024.2.1~mpi
+  - parallelio@2.6.4%oneapi@2025.0.3~mpi
+  - parallelio@2.6.4%cce@17.0.1~mpi
+  - parallelio@2.6.4%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
+  - parallelio@2.6.4%nvhpc@24.11 ^cray-mpich@8.1.29%nvhpc@24.11
+  - parallelio@2.6.4%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.4%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - parallelio@2.6.4%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
