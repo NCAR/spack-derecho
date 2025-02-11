@@ -1988,3 +1988,8 @@ spack:
   - parallelio@2.6.4%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
   - parallelio@2.6.4%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
   - parallelio@2.6.4%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - netcdf@4.9.3%gcc@12.4.0~mpi
+  - netcdf@4.9.3%nvhpc@24.11~mpi
+  - netcdf@4.9.3%oneapi@2024.2.1~mpi
+  - netcdf@4.9.3%oneapi@2025.0.3~mpi
+  - netcdf@4.9.3%cce@17.0.1~mpi
