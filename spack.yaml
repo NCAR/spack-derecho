@@ -1993,3 +1993,8 @@ spack:
   - netcdf@4.9.3%oneapi@2024.2.1~mpi
   - netcdf@4.9.3%oneapi@2025.0.3~mpi
   - netcdf@4.9.3%cce@17.0.1~mpi
+  - netcdf@4.9.3%gcc@12.4.0+mpi ^cray-mpich@8.1.29%gcc@12.4.0
+  - netcdf@4.9.3%nvhpc@24.11+mpi ^cray-mpich@8.1.29%nvhpc@24.11
+  - netcdf@4.9.3%oneapi@2024.2.1+mpi ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - netcdf@4.9.3%oneapi@2025.0.3+mpi ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - netcdf@4.9.3%cce@17.0.1+mpi ^cray-mpich@8.1.29%cce@17.0.1
