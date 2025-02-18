@@ -6,13 +6,6 @@ packages:
     buildable: false
     require:
     - '%gcc'
-  lustre:
-    externals:
-    - spec: lustre@2.15.4.2_cray_42_ga614b9c
-      prefix: /usr
-    buildable: false
-    require:
-    - '%gcc'
   openssl:
     externals:
     - spec: openssl@1.1.1l
@@ -20,6 +13,13 @@ packages:
     buildable: false
     require:
     - certs=system
+    - '%gcc'
+  lustre:
+    externals:
+    - spec: lustre@2.15.4.2_cray_42_ga614b9c
+      prefix: /usr
+    buildable: false
+    require:
     - '%gcc'
   opencl:
     buildable: false
@@ -29,6 +29,8 @@ packages:
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.3.2/gcc/12.4.0/jw45
     - spec: cuda@12.6.3
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.6.3/gcc/12.4.0/r5og
+    - spec: cuda@12.8.0
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/cuda/12.8.0/gcc/12.4.0/f3vp
     buildable: false
     require:
     - +allow-unsupported-compilers

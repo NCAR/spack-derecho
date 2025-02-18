@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - cuda
       - cudnn
       - nco
       - intel-oneapi-compilers
@@ -89,7 +90,6 @@ modules:
       - apptainer
       - miniconda3
       - cmake
-      - cuda
       - pcre
       - nvhpc
       - r
