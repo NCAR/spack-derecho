@@ -2001,3 +2001,18 @@ spack:
   - netcdf@4.9.3%oneapi@2025.0.3+mpi ^cray-mpich@8.1.29%oneapi@2025.0.3
   - netcdf@4.9.3%cce@17.0.1+mpi ^cray-mpich@8.1.29%cce@17.0.1
   - cuda@12.8.0
+  - parallelio@2.6.5%gcc@12.4.0~mpi
+  - parallelio@2.6.5%nvhpc@24.11~mpi
+  - parallelio@2.6.5%oneapi@2024.2.1~mpi
+  - parallelio@2.6.5%oneapi@2025.0.3~mpi
+  - parallelio@2.6.5%cce@17.0.1~mpi
+  - parallelio@2.6.5%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
+  - parallelio@2.6.5%nvhpc@24.11 ^cray-mpich@8.1.29%nvhpc@24.11
+  - parallelio@2.6.5%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.5%oneapi@2025.0.3 ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - parallelio@2.6.5%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - parallelio@2.6.5%gcc@12.4.0~shared ^cray-mpich@8.1.29%gcc@12.4.0
+  - parallelio@2.6.5%nvhpc@24.11~shared ^cray-mpich@8.1.29%nvhpc@24.11
+  - parallelio@2.6.5%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.5%oneapi@2025.0.3~shared ^cray-mpich@8.1.29%oneapi@2025.0.3
+  - parallelio@2.6.5%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1

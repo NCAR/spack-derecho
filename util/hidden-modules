@@ -9,3 +9,4 @@ hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/23.06.lu
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/23.09.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/24.12.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/default
+hide-modulefile /glade/u/apps/derecho/modules/24.12/Core/cuda/12.8.0.lua
