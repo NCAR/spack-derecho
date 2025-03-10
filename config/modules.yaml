@@ -54,11 +54,11 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - libfabric
       - cuda
       - cudnn
       - nco
       - intel-oneapi-compilers
-      - libfabric
       - rstudio
       - idl
       - matlab
@@ -136,7 +136,7 @@ modules:
       defaults:
       - netcdf@4.9.2
       - nvhpc@24.11
-      - parallelio+mpi+shared
+      - parallelio+mpi+shared@2.6.3
       - esmf+mpi
       - cuda@12.3.2
       - cudnn@8.9.7.29-12
@@ -401,6 +401,9 @@ modules:
           set:
             OMPI_MCA_rmaps_default_mapping_policy: :hwtcpus
             OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
+            PRTE_MCA_prte_tmpdir_base: /tmp
+            FI_PROVIDER: cxi+shm:lnx
+            FI_LNX_PROV_LINKS: cxi+shm
           prepend_path:
             LD_LIBRARY_PATH: '{prefix}/lib'
       parallel-netcdf:

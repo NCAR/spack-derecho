@@ -641,7 +641,7 @@ spack:
         when: grib=eccodes
     libfabric:
       variants:
-      - fabrics=sockets,tcp,udp,cxi,rxm,rxd,mrail,shm
+      - fabrics=sockets,tcp,udp,cxi,rxm,rxd,mrail,shm,lnx
       - +uring
       - +cuda
       require:
@@ -881,6 +881,8 @@ spack:
       - +lustre
       - +internal-pmix
       - +cuda
+      - spec: ^libfabric@2.0.x fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
+        when: '@5.0.7'
     openpbs:
       externals:
       - spec: openpbs@2021.1.3
@@ -1283,11 +1285,11 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - libfabric
         - cuda
         - cudnn
         - nco
         - intel-oneapi-compilers
-        - libfabric
         - rstudio
         - idl
         - matlab
@@ -1365,7 +1367,7 @@ spack:
         defaults:
         - netcdf@4.9.2
         - nvhpc@24.11
-        - parallelio+mpi+shared
+        - parallelio+mpi+shared@2.6.3
         - esmf+mpi
         - cuda@12.3.2
         - cudnn@8.9.7.29-12
@@ -1630,6 +1632,9 @@ spack:
             set:
               OMPI_MCA_rmaps_default_mapping_policy: :hwtcpus
               OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
+              PRTE_MCA_prte_tmpdir_base: /tmp
+              FI_PROVIDER: cxi+shm:lnx
+              FI_LNX_PROV_LINKS: cxi+shm
             prepend_path:
               LD_LIBRARY_PATH: '{prefix}/lib'
         parallel-netcdf:
@@ -1919,7 +1924,6 @@ spack:
   - superlu-dist@8.2.1%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
   - mpifileutils@0.11.1%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
   - opencoarrays@2.10.2%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
-  - libfabric@1.22.0
   - libfabric@1.15.2.0%gcc@7.5.0
   - intel-oneapi-mkl@2025.0.1%oneapi@2025.0.3
   - fftw@3.3.10%oneapi@2025.0.3~mpi

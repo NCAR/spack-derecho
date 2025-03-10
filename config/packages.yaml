@@ -614,7 +614,7 @@ packages:
       when: grib=eccodes
   libfabric:
     variants:
-    - fabrics=sockets,tcp,udp,cxi,rxm,rxd,mrail,shm
+    - fabrics=sockets,tcp,udp,cxi,rxm,rxd,mrail,shm,lnx
     - +uring
     - +cuda
     require:
@@ -854,6 +854,8 @@ packages:
     - +lustre
     - +internal-pmix
     - +cuda
+    - spec: ^libfabric@2.0.x fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
+      when: '@5.0.7'
   openpbs:
     externals:
     - spec: openpbs@2021.1.3
