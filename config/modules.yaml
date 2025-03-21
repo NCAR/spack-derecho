@@ -448,6 +448,7 @@ modules:
         mvapich+cuda: mvapich/{version}-cuda
         py-torch: libtorch/{version}
         libfabric cflags=-g: libfabric/{version}-debug
+        esmf%gcc^cray-libsci: esmf/{version}-libsci
       rstudio:
         filter:
           exclude_env_vars:

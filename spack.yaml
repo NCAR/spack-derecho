@@ -256,9 +256,11 @@ spack:
       - '%gcc'
     cray-libsci:
       externals:
-      - spec: cray-libsci@24.03.0
+      - spec: cray-libsci@24.03.0 %cce
         modules:
         - cray-libsci/24.03.0
+      - spec: cray-libsci@24.03.0 %gcc
+        prefix: /opt/cray/pe/libsci/24.03.0/gnu/12.3/x86_64
       buildable: false
     cray-mpich:
       externals:
@@ -352,8 +354,6 @@ spack:
       # external-lapack. Unbelievable!
       - +external-lapack
       - +external-parallelio
-      - spec: ^openblas
-        when: '%gcc ^lapack'
       - spec: ^intel-oneapi-mkl
         when: '%oneapi ^lapack'
       - spec: ^nvhpc
@@ -361,6 +361,8 @@ spack:
       - spec: ^cray-libsci
         when: '%cce ^lapack'
       prefer:
+      - spec: ^openblas
+        when: '%gcc ^lapack'
       - spec: +pnetcdf
         when: +mpi
       - spec: ~pnetcdf
@@ -1679,6 +1681,7 @@ spack:
           mvapich+cuda: mvapich/{version}-cuda
           py-torch: libtorch/{version}
           libfabric cflags=-g: libfabric/{version}-debug
+          esmf%gcc^cray-libsci: esmf/{version}-libsci
         rstudio:
           filter:
             exclude_env_vars:
@@ -2020,3 +2023,4 @@ spack:
   - parallelio@2.6.5%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
   - parallelio@2.6.5%oneapi@2025.0.3~shared ^cray-mpich@8.1.29%oneapi@2025.0.3
   - parallelio@2.6.5%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
+  - esmf@8.8.0%gcc@12.4.0+mpi+pnetcdf ^cray-libsci@24.03.0%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0

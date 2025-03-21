@@ -229,9 +229,11 @@ packages:
     - '%gcc'
   cray-libsci:
     externals:
-    - spec: cray-libsci@24.03.0
+    - spec: cray-libsci@24.03.0 %cce
       modules:
       - cray-libsci/24.03.0
+    - spec: cray-libsci@24.03.0 %gcc
+      prefix: /opt/cray/pe/libsci/24.03.0/gnu/12.3/x86_64
     buildable: false
   cray-mpich:
     externals:
@@ -325,8 +327,6 @@ packages:
     # external-lapack. Unbelievable!
     - +external-lapack
     - +external-parallelio
-    - spec: ^openblas
-      when: '%gcc ^lapack'
     - spec: ^intel-oneapi-mkl
       when: '%oneapi ^lapack'
     - spec: ^nvhpc
@@ -334,6 +334,8 @@ packages:
     - spec: ^cray-libsci
       when: '%cce ^lapack'
     prefer:
+    - spec: ^openblas
+      when: '%gcc ^lapack'
     - spec: +pnetcdf
       when: +mpi
     - spec: ~pnetcdf
