@@ -2023,4 +2023,3 @@ spack:
   - parallelio@2.6.5%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
   - parallelio@2.6.5%oneapi@2025.0.3~shared ^cray-mpich@8.1.29%oneapi@2025.0.3
   - parallelio@2.6.5%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
-  - esmf@8.8.0%gcc@12.4.0+mpi+pnetcdf ^cray-libsci@24.03.0%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
