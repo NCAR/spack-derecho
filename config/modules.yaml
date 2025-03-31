@@ -330,6 +330,10 @@ modules:
           exclude_env_vars:
           - CMAKE_PREFIX_PATH
           - PATH
+      matlab:
+        environment:
+          set:
+            MW_FEATURE_MathworksServiceHostIsOnByDefault: '0'
       miniconda3:
         filter:
           exclude_env_vars:
