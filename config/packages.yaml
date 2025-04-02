@@ -115,16 +115,20 @@ packages:
       when: '%gcc ^lapack'
     - spec: ^intel-oneapi-mkl
       when: '%oneapi ^lapack'
-    - spec: ^nvhpc
-      when: '%nvhpc ^lapack'
+    - spec: ^nvhpc@24.11
+      when: '%nvhpc@24.11 ^lapack'
+    - spec: ^nvhpc@25.1
+      when: '%nvhpc@25.1 ^lapack'
     - spec: ^cray-libsci
       when: '%cce ^lapack'
     - spec: ^openblas
       when: '%gcc ^blas'
     - spec: ^intel-oneapi-mkl
       when: '%oneapi ^blas'
-    - spec: ^nvhpc
-      when: '%nvhpc ^blas'
+    - spec: ^nvhpc@24.11
+      when: '%nvhpc@24.11 ^blas'
+    - spec: ^nvhpc@25.1
+      when: '%nvhpc@25.1 ^blas'
     - spec: ^cray-libsci
       when: '%cce ^blas'
     - spec: ^pkg-config
@@ -329,8 +333,10 @@ packages:
     - +external-parallelio
     - spec: ^intel-oneapi-mkl
       when: '%oneapi ^lapack'
-    - spec: ^nvhpc
-      when: '%nvhpc ^lapack'
+    - spec: ^nvhpc@24.11
+      when: '%nvhpc@24.11 ^lapack'
+    - spec: ^nvhpc@25.1
+      when: '%nvhpc@25.1 ^lapack'
     - spec: ^cray-libsci
       when: '%cce ^lapack'
     prefer:
@@ -434,8 +440,6 @@ packages:
     - +tcltk
   glibc:
     prefer:
-    - '%gcc'
-    require:
     - '%gcc'
   glpk:
     require:
@@ -817,6 +821,8 @@ packages:
     externals:
     - spec: nvhpc@24.11
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/24.11/gcc/12.4.0/bzc3
+    - spec: nvhpc@25.1
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw
     buildable: false
     require:
     - '%gcc'

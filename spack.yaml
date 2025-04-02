@@ -142,16 +142,20 @@ spack:
         when: '%gcc ^lapack'
       - spec: ^intel-oneapi-mkl
         when: '%oneapi ^lapack'
-      - spec: ^nvhpc
-        when: '%nvhpc ^lapack'
+      - spec: ^nvhpc@24.11
+        when: '%nvhpc@24.11 ^lapack'
+      - spec: ^nvhpc@25.1
+        when: '%nvhpc@25.1 ^lapack'
       - spec: ^cray-libsci
         when: '%cce ^lapack'
       - spec: ^openblas
         when: '%gcc ^blas'
       - spec: ^intel-oneapi-mkl
         when: '%oneapi ^blas'
-      - spec: ^nvhpc
-        when: '%nvhpc ^blas'
+      - spec: ^nvhpc@24.11
+        when: '%nvhpc@24.11 ^blas'
+      - spec: ^nvhpc@25.1
+        when: '%nvhpc@25.1 ^blas'
       - spec: ^cray-libsci
         when: '%cce ^blas'
       - spec: ^pkg-config
@@ -356,8 +360,10 @@ spack:
       - +external-parallelio
       - spec: ^intel-oneapi-mkl
         when: '%oneapi ^lapack'
-      - spec: ^nvhpc
-        when: '%nvhpc ^lapack'
+      - spec: ^nvhpc@24.11
+        when: '%nvhpc@24.11 ^lapack'
+      - spec: ^nvhpc@25.1
+        when: '%nvhpc@25.1 ^lapack'
       - spec: ^cray-libsci
         when: '%cce ^lapack'
       prefer:
@@ -461,8 +467,6 @@ spack:
       - +tcltk
     glibc:
       prefer:
-      - '%gcc'
-      require:
       - '%gcc'
     glpk:
       require:
@@ -844,6 +848,8 @@ spack:
       externals:
       - spec: nvhpc@24.11
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/24.11/gcc/12.4.0/bzc3
+      - spec: nvhpc@25.1
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw
       buildable: false
       require:
       - '%gcc'
@@ -1229,6 +1235,21 @@ spack:
         set:
           NVCCFLAGS: -allow-unsupported-compiler
           NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+  - compiler:
+      spec: nvhpc@25.1
+      paths:
+        cc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/bin/nvc
+        cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/bin/nvc++
+        f77: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/bin/nvfortran
+        fc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/bin/nvfortran
+      operating_system: sles15
+      modules: []
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+        prepend_path:
+          LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/lib
   modules:
     'default:':
       roots:
@@ -1287,6 +1308,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - nvhpc
         - libfabric
         - cuda
         - cudnn
@@ -1324,7 +1346,6 @@ spack:
         - miniconda3
         - cmake
         - pcre
-        - nvhpc
         - r
         - miniconda
         - go
@@ -2027,3 +2048,31 @@ spack:
   - parallelio@2.6.5%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
   - parallelio@2.6.5%oneapi@2025.0.3~shared ^cray-mpich@8.1.29%oneapi@2025.0.3
   - parallelio@2.6.5%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
+  - nvhpc@25.1
+  - ncarcompilers@1.0.0%nvhpc@25.1
+  - fftw@3.3.10%nvhpc@25.1~mpi
+  - udunits@2.2.28%nvhpc@25.1
+  - hdf5@1.12.3%nvhpc@25.1~mpi
+  - netcdf@4.9.3%nvhpc@25.1~mpi
+  - proj@9.4.1%nvhpc@25.1
+  - geos@3.13.0%nvhpc@25.1
+  - hdf@4.2.15%nvhpc@25.1
+  - superlu@6.0.0%nvhpc@25.1
+  - eccodes@2.34.0%nvhpc@25.1
+  - mpi-serial@2.5.0%nvhpc@25.1
+  - parallelio@2.6.5%nvhpc@25.1~mpi
+  - esmf@8.8.0%nvhpc@25.1~mpi
+  - kokkos@4.2.01%nvhpc@25.1
+  - spherepack@3.2%nvhpc@25.1
+  - cray-mpich@8.1.29%nvhpc@25.1
+  - parallel-netcdf@1.14.0%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
+  - hdf5@1.12.3%nvhpc@25.1+mpi ^cray-mpich@8.1.29%nvhpc@25.1
+  - netcdf@4.9.3%nvhpc@25.1+mpi ^cray-mpich@8.1.29%nvhpc@25.1
+  - fftw@3.3.10%nvhpc@25.1+mpi ^cray-mpich@8.1.29%nvhpc@25.1
+  - parallelio1@1.10.1%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
+  - darshan-runtime@3.4.6%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
+  - parallelio@2.6.5%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
+  - esmf@8.8.0%nvhpc@25.1+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@25.1
+  - parallelio@2.6.5%nvhpc@25.1~shared ^cray-mpich@8.1.29%nvhpc@25.1
+  - osu-micro-benchmarks%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
+  - gptl@8.1.1%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
