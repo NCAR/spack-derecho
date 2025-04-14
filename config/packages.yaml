@@ -862,7 +862,7 @@ packages:
     - +lustre
     - +internal-pmix
     - +cuda
-    - spec: ^libfabric@2.0.x fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
+    - spec: ^libfabric@2.1.0 fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
       when: '@5.0.7'
   openpbs:
     externals:

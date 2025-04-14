@@ -5,7 +5,7 @@
 #       Hides all modules from a specified list. Wildcards are supported.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   10:41, 21 Mar 2025
+#   Last Revised:   16:28, 14 Apr 2025
 #
 
 #
@@ -19,10 +19,6 @@
 #
 
 hide_list=" */*/mvapich/* */*/vasp/* */*/intel-mpi/* */*/mpich/* Core/libfabric/*-debug Core/cuda/12.8* */*/*/*/esmf/*-libsci*"
-
-if [[ $NCAR_SPACK_HOST == derecho ]]; then
-    hide_list="$hidelist */*/openmpi/* "
-fi
 
 #
 ##  BEGIN HIDDEN MODULE FILE GENERATION
