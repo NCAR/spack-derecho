@@ -1308,6 +1308,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - heaptrack
         - libfabric
         - nvhpc
         - cuda
@@ -2128,3 +2129,4 @@ spack:
   - gptl@8.1.1%oneapi@2025.0.3 ^openmpi@5.0.7%oneapi@2025.0.3
   - superlu-dist@8.2.1%oneapi@2024.2.1 ^openmpi@5.0.7%oneapi@2024.2.1
   - superlu-dist@8.2.1%oneapi@2025.0.3 ^openmpi@5.0.7%oneapi@2025.0.3
+  - heaptrack
