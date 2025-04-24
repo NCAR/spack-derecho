@@ -33,6 +33,13 @@ spack:
       buildable: false
       require:
       - '%gcc'
+    lustre:
+      externals:
+      - spec: lustre@2.15.4.2_cray_42_ga614b9c
+        prefix: /usr
+      buildable: false
+      require:
+      - '%gcc'
     openssl:
       externals:
       - spec: openssl@1.1.1l
@@ -40,13 +47,6 @@ spack:
       buildable: false
       require:
       - certs=system
-      - '%gcc'
-    lustre:
-      externals:
-      - spec: lustre@2.15.4.2_cray_42_ga614b9c
-        prefix: /usr
-      buildable: false
-      require:
       - '%gcc'
     opencl:
       buildable: false
@@ -468,6 +468,8 @@ spack:
     glibc:
       prefer:
       - '%gcc'
+      require:
+      - '%gcc'
     glpk:
       require:
       - '%gcc'
@@ -559,6 +561,8 @@ spack:
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b
       - spec: intel-oneapi-compilers@2025.0.3
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx
+      - spec: intel-oneapi-compilers@2025.1.0
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn
       buildable: false
       require:
       - '%gcc'
@@ -566,8 +570,10 @@ spack:
       require:
       - spec: '@2024'
         when: '%oneapi@2024'
-      - spec: '@2025'
-        when: '%oneapi@2025'
+      - spec: '@2025.0'
+        when: '%oneapi@2025.0'
+      - spec: '@2025.1'
+        when: '%oneapi@2025.1'
       - spec: +gfortran threads=openmp
         when: '%gcc'
       externals:
@@ -577,6 +583,8 @@ spack:
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/oneapi/2025.0.3/vywn
       - spec: intel-oneapi-mkl@2025.0.1 %gcc@12.4.0
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/gcc/12.4.0/n4er
+      - spec: intel-oneapi-mkl@2025.1.0
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.1.0/oneapi/2025.1.0/f76g
       buildable: true
     intel-oneapi-mpi:
       variants:
@@ -1250,6 +1258,19 @@ spack:
           NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
         prepend_path:
           LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/lib
+  - compiler:
+      spec: oneapi@2025.1.0
+      paths:
+        cc: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/icx
+        cxx: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/icpx
+        f77: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/ifx
+        fc: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/ifx
+      operating_system: sles15
+      modules: []
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   modules:
     'default:':
       roots:
@@ -1308,13 +1329,13 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - intel-oneapi-compilers
         - heaptrack
         - libfabric
         - nvhpc
         - cuda
         - cudnn
         - nco
-        - intel-oneapi-compilers
         - rstudio
         - idl
         - matlab
@@ -2130,3 +2151,47 @@ spack:
   - superlu-dist@8.2.1%oneapi@2024.2.1 ^openmpi@5.0.7%oneapi@2024.2.1
   - superlu-dist@8.2.1%oneapi@2025.0.3 ^openmpi@5.0.7%oneapi@2025.0.3
   - heaptrack
+  - intel-oneapi-compilers@2025.1.0
+  - intel-oneapi-mkl@2025.1.0%oneapi@2025.1.0
+  - ncarcompilers@1.0.0%oneapi@2025.1.0
+  - fftw@3.3.10%oneapi@2025.1.0~mpi
+  - udunits@2.2.28%oneapi@2025.1.0
+  - hdf5@1.12.3%oneapi@2025.1.0~mpi
+  - netcdf@4.9.3%oneapi@2025.1.0~mpi
+  - proj@9.4.1%oneapi@2025.1.0
+  - geos@3.13.0%oneapi@2025.1.0
+  - gdal@3.9.3%oneapi@2025.1.0
+  - hdf@4.2.15%oneapi@2025.1.0 cflags='-std=c90 -Wno-error=int-conversion'
+  - superlu@6.0.0%oneapi@2025.1.0
+  - eccodes@2.34.0%oneapi@2025.1.0
+  - mpi-serial@2.5.0%oneapi@2025.1.0
+  - parallelio@2.6.5%oneapi@2025.1.0~mpi
+  - esmf@8.8.0%oneapi@2025.1.0~mpi
+  - kokkos@4.2.01%oneapi@2025.1.0
+  - spherepack@3.2%oneapi@2025.1.0
+  - cray-mpich@8.1.29%oneapi@2025.1.0
+  - openmpi@5.0.7%oneapi@2025.1.0
+  - parallel-netcdf@1.14.0%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - parallel-netcdf@1.14.0%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - hdf5@1.12.3%oneapi@2025.1.0+mpi ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - hdf5@1.12.3%oneapi@2025.1.0+mpi ^openmpi@5.0.7%oneapi@2025.1.0
+  - netcdf@4.9.3%oneapi@2025.1.0+mpi ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - netcdf@4.9.3%oneapi@2025.1.0+mpi ^openmpi@5.0.7%oneapi@2025.1.0
+  - fftw@3.3.10%oneapi@2025.1.0+mpi ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - fftw@3.3.10%oneapi@2025.1.0+mpi ^openmpi@5.0.7%oneapi@2025.1.0
+  - parallelio1@1.10.1%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - parallelio1@1.10.1%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - darshan-runtime@3.4.6%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - darshan-runtime@3.4.6%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - parallelio@2.6.5%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - parallelio@2.6.5%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - esmf@8.8.0%oneapi@2025.1.0+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - esmf@8.8.0%oneapi@2025.1.0+mpi+pnetcdf ^openmpi@5.0.7%oneapi@2025.1.0
+  - parallelio@2.6.5%oneapi@2025.1.0~shared ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - parallelio@2.6.5%oneapi@2025.1.0~shared ^openmpi@5.0.7%oneapi@2025.1.0
+  - osu-micro-benchmarks%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - osu-micro-benchmarks%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - gptl@8.1.1%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - gptl@8.1.1%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - superlu-dist@8.2.1%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - superlu-dist@8.2.1%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0

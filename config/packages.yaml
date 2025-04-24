@@ -6,6 +6,13 @@ packages:
     buildable: false
     require:
     - '%gcc'
+  lustre:
+    externals:
+    - spec: lustre@2.15.4.2_cray_42_ga614b9c
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc'
   openssl:
     externals:
     - spec: openssl@1.1.1l
@@ -13,13 +20,6 @@ packages:
     buildable: false
     require:
     - certs=system
-    - '%gcc'
-  lustre:
-    externals:
-    - spec: lustre@2.15.4.2_cray_42_ga614b9c
-      prefix: /usr
-    buildable: false
-    require:
     - '%gcc'
   opencl:
     buildable: false
@@ -441,6 +441,8 @@ packages:
   glibc:
     prefer:
     - '%gcc'
+    require:
+    - '%gcc'
   glpk:
     require:
     - '%gcc'
@@ -532,6 +534,8 @@ packages:
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b
     - spec: intel-oneapi-compilers@2025.0.3
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.0.3/gcc/12.4.0/y3xx
+    - spec: intel-oneapi-compilers@2025.1.0
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn
     buildable: false
     require:
     - '%gcc'
@@ -539,8 +543,10 @@ packages:
     require:
     - spec: '@2024'
       when: '%oneapi@2024'
-    - spec: '@2025'
-      when: '%oneapi@2025'
+    - spec: '@2025.0'
+      when: '%oneapi@2025.0'
+    - spec: '@2025.1'
+      when: '%oneapi@2025.1'
     - spec: +gfortran threads=openmp
       when: '%gcc'
     externals:
@@ -550,6 +556,8 @@ packages:
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/oneapi/2025.0.3/vywn
     - spec: intel-oneapi-mkl@2025.0.1 %gcc@12.4.0
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.0.1/gcc/12.4.0/n4er
+    - spec: intel-oneapi-mkl@2025.1.0
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-mkl/2025.1.0/oneapi/2025.1.0/f76g
     buildable: true
   intel-oneapi-mpi:
     variants:

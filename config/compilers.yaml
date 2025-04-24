@@ -84,3 +84,16 @@ compilers:
         NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
       prepend_path:
         LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw/Linux_x86_64/25.1/compilers/lib
+- compiler:
+    spec: oneapi@2025.1.0
+    paths:
+      cc: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/icx
+      cxx: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/icpx
+      f77: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/ifx
+      fc: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2025.1.0/gcc/12.4.0/47hn/compiler/latest/bin/ifx
+    operating_system: sles15
+    modules: []
+    environment:
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
+        NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
