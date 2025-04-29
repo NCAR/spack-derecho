@@ -2195,3 +2195,40 @@ spack:
   - gptl@8.1.1%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
   - superlu-dist@8.2.1%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
   - superlu-dist@8.2.1%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - parallelio@2.6.6%gcc@12.4.0~mpi
+  - parallelio@2.6.6%nvhpc@25.1~mpi
+  - parallelio@2.6.6%oneapi@2024.2.1~mpi
+  - parallelio@2.6.6%oneapi@2025.1.0~mpi
+  - parallelio@2.6.6%cce@17.0.1~mpi
+  - esmf@8.8.1%gcc@12.4.0~mpi
+  - esmf@8.8.1%nvhpc@25.1~mpi
+  - esmf@8.8.1%oneapi@2024.2.1~mpi
+  - esmf@8.8.1%oneapi@2025.1.0~mpi
+  - esmf@8.8.1%cce@17.0.1~mpi
+  - parallelio@2.6.6%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
+  - parallelio@2.6.6%gcc@12.4.0 ^openmpi@5.0.7%gcc@12.4.0
+  - parallelio@2.6.6%nvhpc@25.1 ^cray-mpich@8.1.29%nvhpc@25.1
+  - parallelio@2.6.6%nvhpc@25.1 ^openmpi@5.0.7%nvhpc@25.1
+  - parallelio@2.6.6%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.6%oneapi@2024.2.1 ^openmpi@5.0.7%oneapi@2024.2.1
+  - parallelio@2.6.6%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - parallelio@2.6.6%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - parallelio@2.6.6%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - esmf@8.8.1%gcc@12.4.0+mpi+pnetcdf ^cray-mpich@8.1.29%gcc@12.4.0
+  - esmf@8.8.1%gcc@12.4.0+mpi+pnetcdf ^openmpi@5.0.7%gcc@12.4.0
+  - esmf@8.8.1%nvhpc@25.1+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@25.1
+  - esmf@8.8.1%nvhpc@25.1+mpi+pnetcdf ^openmpi@5.0.7%nvhpc@25.1
+  - esmf@8.8.1%oneapi@2024.2.1+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - esmf@8.8.1%oneapi@2024.2.1+mpi+pnetcdf ^openmpi@5.0.7%oneapi@2024.2.1
+  - esmf@8.8.1%oneapi@2025.1.0+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - esmf@8.8.1%oneapi@2025.1.0+mpi+pnetcdf ^openmpi@5.0.7%oneapi@2025.1.0
+  - esmf@8.8.1%cce@17.0.1+mpi+pnetcdf ^cray-mpich@8.1.29%cce@17.0.1
+  - parallelio@2.6.6%gcc@12.4.0~shared ^cray-mpich@8.1.29%gcc@12.4.0
+  - parallelio@2.6.6%gcc@12.4.0~shared ^openmpi@5.0.7%gcc@12.4.0
+  - parallelio@2.6.6%nvhpc@25.1~shared ^cray-mpich@8.1.29%nvhpc@25.1
+  - parallelio@2.6.6%nvhpc@25.1~shared ^openmpi@5.0.7%nvhpc@25.1
+  - parallelio@2.6.6%oneapi@2024.2.1~shared ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - parallelio@2.6.6%oneapi@2024.2.1~shared ^openmpi@5.0.7%oneapi@2024.2.1
+  - parallelio@2.6.6%oneapi@2025.1.0~shared ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - parallelio@2.6.6%oneapi@2025.1.0~shared ^openmpi@5.0.7%oneapi@2025.1.0
+  - parallelio@2.6.6%cce@17.0.1~shared ^cray-mpich@8.1.29%cce@17.0.1
