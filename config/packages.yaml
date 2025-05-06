@@ -775,6 +775,9 @@ packages:
     - +gpfs
     - +lustre
     - +xattr
+  musica:
+    variants:
+    - ~tuvx
   mvapich:
     variants:
     - file_systems=lustre,gpfs,nfs,ufs

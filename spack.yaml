@@ -802,6 +802,9 @@ spack:
       - +gpfs
       - +lustre
       - +xattr
+    musica:
+      variants:
+      - ~tuvx
     mvapich:
       variants:
       - file_systems=lustre,gpfs,nfs,ufs
@@ -2235,3 +2238,7 @@ spack:
   - mpifileutils@0.12%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
   - mpifileutils@0.12%gcc@12.4.0 ^openmpi@5.0.7%gcc@12.4.0
   - opencoarrays@2.10.2%gcc@12.4.0 ^openmpi@5.0.7%gcc@12.4.0
+  - musica@0.10.1%gcc@12.4.0
+  - musica@0.10.1%nvhpc@25.1
+  - musica@0.10.1%oneapi@2024.2.1
+  - musica@0.10.1%oneapi@2025.1.0
