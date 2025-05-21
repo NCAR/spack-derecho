@@ -26,13 +26,6 @@ spack:
     template_dirs:
     - /glade/u/apps/derecho/24.12/envs/build/templates/modules
   packages:
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
-      require:
-      - '%gcc'
     lustre:
       externals:
       - spec: lustre@2.15.4.2_cray_42_ga614b9c
@@ -47,6 +40,13 @@ spack:
       buildable: false
       require:
       - certs=system
+      - '%gcc'
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
+      require:
       - '%gcc'
     opencl:
       buildable: false
@@ -146,6 +146,8 @@ spack:
         when: '%nvhpc@24.11 ^lapack'
       - spec: ^nvhpc@25.1
         when: '%nvhpc@25.1 ^lapack'
+      - spec: ^nvhpc@25.5
+        when: '%nvhpc@25.5 ^lapack'
       - spec: ^cray-libsci
         when: '%cce ^lapack'
       - spec: ^openblas
@@ -156,6 +158,8 @@ spack:
         when: '%nvhpc@24.11 ^blas'
       - spec: ^nvhpc@25.1
         when: '%nvhpc@25.1 ^blas'
+      - spec: ^nvhpc@25.5
+        when: '%nvhpc@25.5 ^blas'
       - spec: ^cray-libsci
         when: '%cce ^blas'
       - spec: ^pkg-config
@@ -364,6 +368,8 @@ spack:
         when: '%nvhpc@24.11 ^lapack'
       - spec: ^nvhpc@25.1
         when: '%nvhpc@25.1 ^lapack'
+      - spec: ^nvhpc@25.5
+        when: '%nvhpc@25.5 ^lapack'
       - spec: ^cray-libsci
         when: '%cce ^lapack'
       prefer:
@@ -467,8 +473,6 @@ spack:
       - +tcltk
     glibc:
       prefer:
-      - '%gcc'
-      require:
       - '%gcc'
     glpk:
       require:
@@ -861,6 +865,8 @@ spack:
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/24.11/gcc/12.4.0/bzc3
       - spec: nvhpc@25.1
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw
+      - spec: nvhpc@25.5
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4
       buildable: false
       require:
       - '%gcc'
@@ -900,6 +906,8 @@ spack:
       - +lustre
       - +internal-pmix
       - +cuda
+      - +romio
+      - romio-filesystem=nfs,gpfs,lustre
       - spec: ^libfabric@2.1.0 fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
         when: '@5.0.7'
     openpbs:
@@ -1274,6 +1282,21 @@ spack:
         set:
           NVCCFLAGS: -allow-unsupported-compiler
           NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+  - compiler:
+      spec: nvhpc@25.5
+      paths:
+        cc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/bin/nvc
+        cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/bin/nvc++
+        f77: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/bin/nvfortran
+        fc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/bin/nvfortran
+      operating_system: sles15
+      modules: []
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+        prepend_path:
+          LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/lib
   modules:
     'default:':
       roots:
@@ -1332,10 +1355,10 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - nvhpc
         - intel-oneapi-compilers
         - heaptrack
         - libfabric
-        - nvhpc
         - cuda
         - cudnn
         - nco
@@ -2242,3 +2265,44 @@ spack:
   - musica@0.10.1%nvhpc@25.1
   - musica@0.10.1%oneapi@2024.2.1
   - musica@0.10.1%oneapi@2025.1.0
+  - nvhpc@25.5
+  - ncarcompilers@1.0.0%nvhpc@25.5
+  - fftw@3.3.10%nvhpc@25.5~mpi
+  - udunits@2.2.28%nvhpc@25.5
+  - hdf5@1.12.3%nvhpc@25.5~mpi
+  - netcdf@4.9.3%nvhpc@25.5~mpi
+  - proj@9.4.1%nvhpc@25.5
+  - geos@3.13.0%nvhpc@25.5
+  - hdf@4.2.15%nvhpc@25.5
+  - superlu@6.0.0%nvhpc@25.5
+  - eccodes@2.34.0%nvhpc@25.5
+  - mpi-serial@2.5.0%nvhpc@25.5
+  - parallelio@2.6.6%nvhpc@25.5~mpi
+  - esmf@8.8.1%nvhpc@25.5~mpi
+  - cray-mpich@8.1.29%nvhpc@25.5
+  - openmpi@5.0.7%nvhpc@25.5
+  - kokkos@4.2.01%nvhpc@25.5
+  - spherepack@3.2%nvhpc@25.5
+  - musica@0.10.1%nvhpc@25.5
+  - parallel-netcdf@1.14.0%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
+  - parallel-netcdf@1.14.0%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
+  - hdf5@1.12.3%nvhpc@25.5+mpi ^cray-mpich@8.1.29%nvhpc@25.5
+  - hdf5@1.12.3%nvhpc@25.5+mpi ^openmpi@5.0.7%nvhpc@25.5
+  - netcdf@4.9.3%nvhpc@25.5+mpi ^cray-mpich@8.1.29%nvhpc@25.5
+  - netcdf@4.9.3%nvhpc@25.5+mpi ^openmpi@5.0.7%nvhpc@25.5
+  - fftw@3.3.10%nvhpc@25.5+mpi ^cray-mpich@8.1.29%nvhpc@25.5
+  - fftw@3.3.10%nvhpc@25.5+mpi ^openmpi@5.0.7%nvhpc@25.5
+  - parallelio1@1.10.1%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
+  - parallelio1@1.10.1%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
+  - darshan-runtime@3.4.6%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
+  - darshan-runtime@3.4.6%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
+  - parallelio@2.6.6%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
+  - parallelio@2.6.6%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
+  - esmf@8.8.1%nvhpc@25.5+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@25.5
+  - esmf@8.8.1%nvhpc@25.5+mpi+pnetcdf ^openmpi@5.0.7%nvhpc@25.5
+  - parallelio@2.6.6%nvhpc@25.5~shared ^cray-mpich@8.1.29%nvhpc@25.5
+  - parallelio@2.6.6%nvhpc@25.5~shared ^openmpi@5.0.7%nvhpc@25.5
+  - osu-micro-benchmarks%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
+  - osu-micro-benchmarks%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
+  - gptl@8.1.1%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
+  - gptl@8.1.1%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5

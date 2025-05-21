@@ -54,10 +54,10 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - nvhpc
       - intel-oneapi-compilers
       - heaptrack
       - libfabric
-      - nvhpc
       - cuda
       - cudnn
       - nco
