@@ -26,6 +26,13 @@ spack:
     template_dirs:
     - /glade/u/apps/derecho/24.12/envs/build/templates/modules
   packages:
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
+      require:
+      - '%gcc'
     lustre:
       externals:
       - spec: lustre@2.15.4.2_cray_42_ga614b9c
@@ -40,13 +47,6 @@ spack:
       buildable: false
       require:
       - certs=system
-      - '%gcc'
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
-      require:
       - '%gcc'
     opencl:
       buildable: false
@@ -751,6 +751,8 @@ spack:
       externals:
       - spec: linaro-forge@24.1
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/linaro-forge/24.1/gcc/12.4.0/olev
+      - spec: linaro-forge@25.0
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/linaro-forge/25.0/gcc/12.4.0/rhxn
       buildable: false
     lz4:
       require:
@@ -1355,6 +1357,7 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
+        - linaro-forge
         - nvhpc
         - intel-oneapi-compilers
         - heaptrack
@@ -1385,7 +1388,6 @@ spack:
         - ncvis
         - julia
         - darshan-util
-        - linaro-forge
         - ncl
         - charliecloud
         - peak-memusage
@@ -2306,3 +2308,4 @@ spack:
   - osu-micro-benchmarks%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
   - gptl@8.1.1%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
   - gptl@8.1.1%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
+  - linaro-forge@25.0

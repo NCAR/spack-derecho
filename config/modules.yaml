@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@7.5.0
       core_specs:
+      - linaro-forge
       - nvhpc
       - intel-oneapi-compilers
       - heaptrack
@@ -84,7 +85,6 @@ modules:
       - ncvis
       - julia
       - darshan-util
-      - linaro-forge
       - ncl
       - charliecloud
       - peak-memusage

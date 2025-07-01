@@ -1,4 +1,11 @@
 packages:
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+    require:
+    - '%gcc'
   lustre:
     externals:
     - spec: lustre@2.15.4.2_cray_42_ga614b9c
@@ -13,13 +20,6 @@ packages:
     buildable: false
     require:
     - certs=system
-    - '%gcc'
-  pkg-config:
-    externals:
-    - spec: pkg-config@0.29.2
-      prefix: /usr
-    buildable: false
-    require:
     - '%gcc'
   opencl:
     buildable: false
@@ -724,6 +724,8 @@ packages:
     externals:
     - spec: linaro-forge@24.1
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/linaro-forge/24.1/gcc/12.4.0/olev
+    - spec: linaro-forge@25.0
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/linaro-forge/25.0/gcc/12.4.0/rhxn
     buildable: false
   lz4:
     require:
