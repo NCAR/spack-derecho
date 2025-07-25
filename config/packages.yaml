@@ -842,6 +842,8 @@ packages:
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw
     - spec: nvhpc@25.5
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4
+    - spec: nvhpc@25.7
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn
     buildable: false
     require:
     - '%gcc'
@@ -881,10 +883,10 @@ packages:
     - +lustre
     - +internal-pmix
     - +cuda
-    - +romio
-    - romio-filesystem=nfs,gpfs,lustre
     - spec: ^libfabric@2.1.0 fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
       when: '@5.0.7'
+    - spec: +romio romio-filesystem=nfs,gpfs,lustre
+      when: '%nvhpc@25.7'
   openpbs:
     externals:
     - spec: openpbs@2021.1.3

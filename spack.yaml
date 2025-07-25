@@ -869,6 +869,8 @@ spack:
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.1/gcc/12.4.0/4bkw
       - spec: nvhpc@25.5
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4
+      - spec: nvhpc@25.7
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn
       buildable: false
       require:
       - '%gcc'
@@ -908,10 +910,10 @@ spack:
       - +lustre
       - +internal-pmix
       - +cuda
-      - +romio
-      - romio-filesystem=nfs,gpfs,lustre
       - spec: ^libfabric@2.1.0 fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
         when: '@5.0.7'
+      - spec: +romio romio-filesystem=nfs,gpfs,lustre
+        when: '%nvhpc@25.7'
     openpbs:
       externals:
       - spec: openpbs@2021.1.3
@@ -1299,6 +1301,21 @@ spack:
           NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
         prepend_path:
           LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/lib
+  - compiler:
+      spec: nvhpc@25.7
+      paths:
+        cc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvc
+        cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvc++
+        f77: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvfortran
+        fc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvfortran
+      operating_system: sles15
+      modules: []
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+        prepend_path:
+          LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/lib
   modules:
     'default:':
       roots:
@@ -1357,8 +1374,8 @@ spack:
         core_compilers:
         - gcc@7.5.0
         core_specs:
-        - linaro-forge
         - nvhpc
+        - linaro-forge
         - intel-oneapi-compilers
         - heaptrack
         - libfabric
@@ -2309,3 +2326,51 @@ spack:
   - gptl@8.1.1%nvhpc@25.5 ^cray-mpich@8.1.29%nvhpc@25.5
   - gptl@8.1.1%nvhpc@25.5 ^openmpi@5.0.7%nvhpc@25.5
   - linaro-forge@25.0
+  - nvhpc@25.7
+  - ncarcompilers@1.0.0%nvhpc@25.7
+  - fftw@3.3.10%nvhpc@25.7~mpi
+  - udunits@2.2.28%nvhpc@25.7
+  - hdf5@1.12.3%nvhpc@25.7~mpi
+  - netcdf@4.9.3%nvhpc@25.7~mpi
+  - proj@9.4.1%nvhpc@25.7
+  - geos@3.13.0%nvhpc@25.7
+  - hdf@4.2.15%nvhpc@25.7
+  - superlu@6.0.0%nvhpc@25.7
+  - eccodes@2.34.0%nvhpc@25.7
+  - mpi-serial@2.5.0%nvhpc@25.7
+  - parallelio@2.6.6%nvhpc@25.7~mpi
+  - esmf@8.8.1%nvhpc@25.7~mpi
+  - cray-mpich@8.1.29%nvhpc@25.7
+  - openmpi@5.0.7%nvhpc@25.7
+  - kokkos@4.2.01%nvhpc@25.7
+  - spherepack@3.2%nvhpc@25.7
+  - musica@0.10.1%nvhpc@25.7
+  - parallel-netcdf@1.14.0%nvhpc@25.7 ^cray-mpich@8.1.29%nvhpc@25.7
+  - parallel-netcdf@1.14.0%nvhpc@25.7 ^openmpi@5.0.7%nvhpc@25.7
+  - hdf5@1.12.3%nvhpc@25.7+mpi ^cray-mpich@8.1.29%nvhpc@25.7
+  - hdf5@1.12.3%nvhpc@25.7+mpi ^openmpi@5.0.7%nvhpc@25.7
+  - netcdf@4.9.3%nvhpc@25.7+mpi ^cray-mpich@8.1.29%nvhpc@25.7
+  - netcdf@4.9.3%nvhpc@25.7+mpi ^openmpi@5.0.7%nvhpc@25.7
+  - fftw@3.3.10%nvhpc@25.7+mpi ^cray-mpich@8.1.29%nvhpc@25.7
+  - fftw@3.3.10%nvhpc@25.7+mpi ^openmpi@5.0.7%nvhpc@25.7
+  - parallelio1@1.10.1%nvhpc@25.7 ^cray-mpich@8.1.29%nvhpc@25.7
+  - parallelio1@1.10.1%nvhpc@25.7 ^openmpi@5.0.7%nvhpc@25.7
+  - darshan-runtime@3.4.6%nvhpc@25.7 ^cray-mpich@8.1.29%nvhpc@25.7
+  - darshan-runtime@3.4.6%nvhpc@25.7 ^openmpi@5.0.7%nvhpc@25.7
+  - parallelio@2.6.6%nvhpc@25.7 ^cray-mpich@8.1.29%nvhpc@25.7
+  - parallelio@2.6.6%nvhpc@25.7 ^openmpi@5.0.7%nvhpc@25.7
+  - esmf@8.8.1%nvhpc@25.7+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@25.7
+  - esmf@8.8.1%nvhpc@25.7+mpi+pnetcdf ^openmpi@5.0.7%nvhpc@25.7
+  - parallelio@2.6.6%nvhpc@25.7~shared ^cray-mpich@8.1.29%nvhpc@25.7
+  - parallelio@2.6.6%nvhpc@25.7~shared ^openmpi@5.0.7%nvhpc@25.7
+  - osu-micro-benchmarks%nvhpc@25.7 ^cray-mpich@8.1.29%nvhpc@25.7
+  - osu-micro-benchmarks%nvhpc@25.7 ^openmpi@5.0.7%nvhpc@25.7
+  - gptl@8.1.1%nvhpc@25.7 ^cray-mpich@8.1.29%nvhpc@25.7
+  - gptl@8.1.1%nvhpc@25.7 ^openmpi@5.0.7%nvhpc@25.7
+  - superlu-dist@9.1.0%gcc@12.4.0 ^cray-mpich@8.1.29%gcc@12.4.0
+  - superlu-dist@9.1.0%oneapi@2024.2.1 ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - superlu-dist@9.1.0%oneapi@2025.1.0 ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - superlu-dist@9.1.0%cce@17.0.1 ^cray-mpich@8.1.29%cce@17.0.1
+  - superlu-dist@9.1.0%gcc@12.4.0 ^openmpi@5.0.7%gcc@12.4.0
+  - superlu-dist@9.1.0%oneapi@2024.2.1 ^openmpi@5.0.7%oneapi@2024.2.1
+  - superlu-dist@9.1.0%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0

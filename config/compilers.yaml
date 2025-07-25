@@ -112,3 +112,18 @@ compilers:
         NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
       prepend_path:
         LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4/Linux_x86_64/25.5/compilers/lib
+- compiler:
+    spec: nvhpc@25.7
+    paths:
+      cc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvc
+      cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvc++
+      f77: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvfortran
+      fc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/bin/nvfortran
+    operating_system: sles15
+    modules: []
+    environment:
+      set:
+        NVCCFLAGS: -allow-unsupported-compiler
+        NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+      prepend_path:
+        LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/lib
