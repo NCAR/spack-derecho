@@ -6,7 +6,7 @@
 #       make user software easier to build (e.g., RPC symlinking).
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   11:46, 29 Jul 2025
+#   Last Revised:   10:43, 21 Aug 2025
 #
 
 #
@@ -54,6 +54,7 @@ ncar_utils[diffmerge]=precise-container
 ncar_utils[diffuse]=precise-container
 ncar_utils[esgfsearch]=cmipap-configuration
 ncar_utils[esgfdownload]=cmipap-configuration
+ncar_utils[glade_hsm]=csg-utils
 
 if [[ $NCAR_SPACK_HOST == casper ]]; then
     ncar_utils[dask_resource_monitor]=negin513:ncar-dask-monitor
