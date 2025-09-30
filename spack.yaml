@@ -26,6 +26,14 @@ spack:
     template_dirs:
     - /glade/u/apps/derecho/24.12/envs/build/templates/modules
   packages:
+    openssl:
+      externals:
+      - spec: openssl@1.1.1l
+        prefix: /usr
+      buildable: false
+      require:
+      - certs=system
+      - '%gcc'
     pkg-config:
       externals:
       - spec: pkg-config@0.29.2
@@ -39,14 +47,6 @@ spack:
         prefix: /usr
       buildable: false
       require:
-      - '%gcc'
-    openssl:
-      externals:
-      - spec: openssl@1.1.1l
-        prefix: /usr
-      buildable: false
-      require:
-      - certs=system
       - '%gcc'
     opencl:
       buildable: false
@@ -871,6 +871,8 @@ spack:
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4
       - spec: nvhpc@25.7
         prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn
+      - spec: nvhpc@25.9
+        prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur
       buildable: false
       require:
       - '%gcc'
@@ -1316,6 +1318,21 @@ spack:
           NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
         prepend_path:
           LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn/Linux_x86_64/25.7/compilers/lib
+  - compiler:
+      spec: nvhpc@25.9
+      paths:
+        cc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvc
+        cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvc++
+        f77: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvfortran
+        fc: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvfortran
+      operating_system: sles15
+      modules: []
+      environment:
+        set:
+          NVCCFLAGS: -allow-unsupported-compiler
+          NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
+        prepend_path:
+          LD_LIBRARY_PATH: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/lib
   modules:
     'default:':
       roots:
@@ -2374,3 +2391,44 @@ spack:
   - superlu-dist@9.1.0%gcc@12.4.0 ^openmpi@5.0.7%gcc@12.4.0
   - superlu-dist@9.1.0%oneapi@2024.2.1 ^openmpi@5.0.7%oneapi@2024.2.1
   - superlu-dist@9.1.0%oneapi@2025.1.0 ^openmpi@5.0.7%oneapi@2025.1.0
+  - nvhpc@25.9
+  - ncarcompilers@1.0.0%nvhpc@25.9
+  - fftw@3.3.10%nvhpc@25.9~mpi
+  - udunits@2.2.28%nvhpc@25.9
+  - hdf5@1.12.3%nvhpc@25.9~mpi
+  - netcdf@4.9.3%nvhpc@25.9~mpi
+  - proj@9.4.1%nvhpc@25.9
+  - geos@3.13.0%nvhpc@25.9
+  - hdf@4.2.15%nvhpc@25.9
+  - superlu@6.0.0%nvhpc@25.9
+  - eccodes@2.34.0%nvhpc@25.9
+  - mpi-serial@2.5.0%nvhpc@25.9
+  - parallelio@2.6.6%nvhpc@25.9~mpi
+  - esmf@8.8.1%nvhpc@25.9~mpi
+  - cray-mpich@8.1.29%nvhpc@25.9
+  - openmpi@5.0.7%nvhpc@25.9
+  - kokkos@4.2.01%nvhpc@25.9
+  - spherepack@3.2%nvhpc@25.9
+  - musica@0.10.1%nvhpc@25.9
+  - parallel-netcdf@1.14.0%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
+  - parallel-netcdf@1.14.0%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
+  - hdf5@1.12.3%nvhpc@25.9+mpi ^cray-mpich@8.1.29%nvhpc@25.9
+  - hdf5@1.12.3%nvhpc@25.9+mpi ^openmpi@5.0.7%nvhpc@25.9
+  - netcdf@4.9.3%nvhpc@25.9+mpi ^cray-mpich@8.1.29%nvhpc@25.9
+  - netcdf@4.9.3%nvhpc@25.9+mpi ^openmpi@5.0.7%nvhpc@25.9
+  - fftw@3.3.10%nvhpc@25.9+mpi ^cray-mpich@8.1.29%nvhpc@25.9
+  - parallelio1@1.10.1%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
+  - parallelio1@1.10.1%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
+  - fftw@3.3.10%nvhpc@25.9+mpi ^openmpi@5.0.7%nvhpc@25.9
+  - darshan-runtime@3.4.6%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
+  - darshan-runtime@3.4.6%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
+  - parallelio@2.6.6%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
+  - parallelio@2.6.6%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
+  - esmf@8.8.1%nvhpc@25.9+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@25.9
+  - esmf@8.8.1%nvhpc@25.9+mpi+pnetcdf ^openmpi@5.0.7%nvhpc@25.9
+  - parallelio@2.6.6%nvhpc@25.9~shared ^cray-mpich@8.1.29%nvhpc@25.9
+  - parallelio@2.6.6%nvhpc@25.9~shared ^openmpi@5.0.7%nvhpc@25.9
+  - osu-micro-benchmarks%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
+  - osu-micro-benchmarks%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
+  - gptl@8.1.1%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
+  - gptl@8.1.1%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9

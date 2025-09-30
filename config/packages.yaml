@@ -1,4 +1,12 @@
 packages:
+  openssl:
+    externals:
+    - spec: openssl@1.1.1l
+      prefix: /usr
+    buildable: false
+    require:
+    - certs=system
+    - '%gcc'
   pkg-config:
     externals:
     - spec: pkg-config@0.29.2
@@ -12,14 +20,6 @@ packages:
       prefix: /usr
     buildable: false
     require:
-    - '%gcc'
-  openssl:
-    externals:
-    - spec: openssl@1.1.1l
-      prefix: /usr
-    buildable: false
-    require:
-    - certs=system
     - '%gcc'
   opencl:
     buildable: false
@@ -844,6 +844,8 @@ packages:
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.5/gcc/12.4.0/2cd4
     - spec: nvhpc@25.7
       prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.7/gcc/12.4.0/njjn
+    - spec: nvhpc@25.9
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur
     buildable: false
     require:
     - '%gcc'
