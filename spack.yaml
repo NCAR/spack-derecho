@@ -2432,3 +2432,17 @@ spack:
   - osu-micro-benchmarks%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
   - gptl@8.1.1%nvhpc@25.9 ^cray-mpich@8.1.29%nvhpc@25.9
   - gptl@8.1.1%nvhpc@25.9 ^openmpi@5.0.7%nvhpc@25.9
+  - esmf@8.9.0%gcc@12.4.0~mpi
+  - esmf@8.9.0%nvhpc@25.9~mpi
+  - esmf@8.9.0%oneapi@2024.2.1~mpi
+  - esmf@8.9.0%oneapi@2025.1.0~mpi
+  - esmf@8.9.0%cce@17.0.1~mpi
+  - esmf@8.9.0%gcc@12.4.0+mpi+pnetcdf ^cray-mpich@8.1.29%gcc@12.4.0
+  - esmf@8.9.0%gcc@12.4.0+mpi+pnetcdf ^openmpi@5.0.7%gcc@12.4.0
+  - esmf@8.9.0%nvhpc@25.9+mpi+pnetcdf ^cray-mpich@8.1.29%nvhpc@25.9
+  - esmf@8.9.0%nvhpc@25.9+mpi+pnetcdf ^openmpi@5.0.7%nvhpc@25.9
+  - esmf@8.9.0%oneapi@2024.2.1+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2024.2.1
+  - esmf@8.9.0%oneapi@2024.2.1+mpi+pnetcdf ^openmpi@5.0.7%oneapi@2024.2.1
+  - esmf@8.9.0%oneapi@2025.1.0+mpi+pnetcdf ^cray-mpich@8.1.29%oneapi@2025.1.0
+  - esmf@8.9.0%oneapi@2025.1.0+mpi+pnetcdf ^openmpi@5.0.7%oneapi@2025.1.0
+  - esmf@8.9.0%cce@17.0.1+mpi+pnetcdf ^cray-mpich@8.1.29%cce@17.0.1
