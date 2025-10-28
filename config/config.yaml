@@ -1,0 +1,32 @@
+config:
+  install_tree:
+    projections:
+      c: '{name}/{version}/{hash:4}'
+      netcdf-c^mpi: netcdf/{version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-c: netcdf/{version}/packages/{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-cxx4^mpi: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-cxx4: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-fortran^mpi: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}
+      netcdf-fortran: netcdf/{^netcdf-c.version}/packages/{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}
+      ^mpi: '{name}/{version}/{^mpi.name}/{^mpi.version}/{compiler.name}/{compiler.version}/{hash:4}'
+      ^c: '{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}'
+      ^cxx: '{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}'
+      ^fortran: '{name}/{version}/{compiler.name}/{compiler.version}/{hash:4}'
+      all: '{name}/{version}/{hash:4}'
+  build_jobs: 4
+  test_stage: /glade/derecho/scratch/$user/temp/spack/derecho/25.10/tests
+  source_cache: /glade/derecho/scratch/$user/temp/spack/cache
+  misc_cache: /glade/derecho/scratch/$user/temp/spack/derecho/25.10/misc
+  build_stage:
+  - /glade/derecho/scratch/$user/temp/spack/derecho/25.10/builds
+  shared_linking:
+  # Turning bind setting on would be beneficial but vendor compilers do not
+  # seem to work with it! Avoid!
+    type: rpath
+    bind: false
+  template_dirs:
+  - /glade/u/apps/derecho/25.10/envs/build/templates/modules
+env_vars:
+  set:
+    NVCCFLAGS: -allow-unsupported-compiler
+    NVCC_PREPEND_FLAGS: -allow-unsupported-compiler

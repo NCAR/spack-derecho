@@ -1,0 +1,8 @@
+concretizer:
+  unify: false
+  reuse: true
+  os_compatible:
+    opensuse15:
+    - sles15
+    sles15:
+    - opensuse15

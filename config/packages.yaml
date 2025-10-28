@@ -1,0 +1,1191 @@
+packages:
+  openssl:
+    externals:
+    - spec: openssl@1.1.1w-fips
+      prefix: /usr
+    - spec: openssl@3.1.4
+      prefix: /usr
+    buildable: false
+    require:
+    - certs=system
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+  lustre:
+    externals:
+    - spec: lustre@2.15.6.1_cray_100_g2c66dd0
+      prefix: /usr
+    buildable: false
+  gcc:
+    externals:
+    - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/gcc/14.3.0/nw2m
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/common/25.10/spack/opt/spack/gcc/14.3.0/nw2m/bin/gcc
+          cxx: /glade/u/apps/common/25.10/spack/opt/spack/gcc/14.3.0/nw2m/bin/g++
+          fortran: /glade/u/apps/common/25.10/spack/opt/spack/gcc/14.3.0/nw2m/bin/gfortran
+    - spec: gcc@12.5.0 languages:='c,c++,fortran,go'
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/gcc/12.5.0/hsbg
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/common/25.10/spack/opt/spack/gcc/12.5.0/hsbg/bin/gcc
+          cxx: /glade/u/apps/common/25.10/spack/opt/spack/gcc/12.5.0/hsbg/bin/g++
+          fortran: /glade/u/apps/common/25.10/spack/opt/spack/gcc/12.5.0/hsbg/bin/gfortran
+    - spec: gcc@7.5.0 languages:='c,c++,fortran'
+      prefix: /usr
+      extra_attributes:
+        compilers:
+          c: /usr/bin/gcc
+          cxx: /usr/bin/g++
+          fortran: /usr/bin/gfortran
+    - spec: gcc@12.3.0 languages:='c,c++,fortran'
+      prefix: /usr
+      extra_attributes:
+        compilers:
+          c: /usr/bin/gcc-12
+          cxx: /usr/bin/g++-12
+          fortran: /usr/bin/gfortran-12
+    - spec: gcc@13.3.1 languages:='c,c++,fortran'
+      prefix: /usr
+      extra_attributes:
+        compilers:
+          c: /usr/bin/gcc-13
+          cxx: /usr/bin/g++-13
+          fortran: /usr/bin/gfortran-13
+    - spec: gcc@14.2.0 languages:='c,c++,fortran'
+      prefix: /usr
+      extra_attributes:
+        compilers:
+          c: /usr/bin/gcc-14
+          cxx: /usr/bin/g++-14
+          fortran: /usr/bin/gfortran-14
+    buildable: false
+    prefer:
+    - spec: '%gcc@7.5.0'
+      when: '@:12'
+    - spec: '%gcc@12.5.0'
+      when: '@13:'
+    variants:
+    - +piclibs
+    - languages=c,c++,fortran,go
+  cuda:
+    externals:
+    - spec: cuda@12.9.0
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/cuda/12.9.0/b74h
+    buildable: false
+    require:
+    - +allow-unsupported-compilers
+    variants:
+    - +dev
+  opencl:
+    buildable: false
+  nvhpc:
+    require:
+    - +blas
+    - +lapack
+    - ~mpi
+    prefer:
+    - '%gcc@12.5.0'
+    buildable: false
+    externals:
+    - spec: nvhpc@25.9
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvc
+          cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvc++
+          fortran: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvfortran
+  intel-oneapi-compilers:
+    variants:
+    - +nvidia
+    prefer:
+    - '%gcc@12.5.0'
+    buildable: false
+    externals:
+    - spec: intel-oneapi-compilers@2024.2.1
+      prefix: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b/compiler/2024.2/bin/icx
+          cxx: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b/compiler/2024.2/bin/icpx
+          fortran: /glade/u/apps/casper/24.12/spack/opt/spack/intel-oneapi-compilers/2024.2.1/gcc/12.4.0/iq3b/compiler/2024.2/bin/ifx
+    - spec: intel-oneapi-compilers@2025.2.1
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2/compiler/2025.2/bin/icx
+          cxx: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2/compiler/2025.2/bin/icpx
+          fortran: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2/compiler/2025.2/bin/ifx
+  pkgconfig:
+    buildable: false
+    prefer:
+    - pkg-config
+  c:
+    buildable: true
+  cxx:
+    buildable: true
+  fortran:
+    buildable: true
+  cce:
+    externals:
+    - spec: cce@19.0.0
+      prefix: /opt/cray/pe/cce/19.0.0
+      extra_attributes:
+        compilers:
+          c: /opt/cray/pe/cce/19.0.0/bin/craycc
+          cxx: /opt/cray/pe/cce/19.0.0/bin/crayCC
+          fortran: /opt/cray/pe/cce/19.0.0/bin/crayftn
+        environment:
+          set:
+            CRAYPE_LINK_TYPE: dynamic
+    buildable: false
+  libfabric:
+    externals:
+    - spec: libfabric@1.22.0 fabrics=cxi,shm,tcp,udp
+      prefix: /opt/cray/libfabric/1.22.0
+    - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
+      prefix: /opt/cray/libfabric/1.15.2.0
+    variants:
+    - +cuda
+    - +uring
+    - fabrics=sockets,tcp,udp,cxi,rxm,rxd,mrail,shm,lnx
+    prefer:
+    - spec: '%gcc@12.5.0'
+      when: '@2:'
+    - spec: '%gcc@7.5.0'
+      when: '@1'
+  adios2:
+    variants:
+    - +cuda
+    - +hdf5
+    - +python
+  all:
+    permissions:
+      read: world
+      write: user
+    target:
+    # This target is lowest-common denominator between Intel and Milans
+    - x86_64_v3
+    prefer:
+    - +pic
+    - spec: ^hdf5 %gcc@12.5.0
+      when: '%gcc@12.5.0 ^hdf5'
+    - spec: ^udunits %gcc@12.5.0
+      when: '%gcc@12.5.0 ^udunits'
+    - spec: ^openblas %gcc@12.5.0
+      when: '%gcc@12.5.0 ^openblas'
+    require:
+    - spec: cuda_arch=80
+      when: ^cuda
+  antlr:
+    prefer:
+    - '%gcc@12.5.0'
+  aocc:
+    require:
+    - +license-agreed
+  apptainer:
+    prefer:
+    - '%gcc@12.5.0'
+  arpack-ng:
+    variants:
+    - ~mpi
+  arrow:
+    prefer:
+    - '%gcc@12.5.0'
+  assimp:
+    prefer:
+    - '%gcc@12.5.0'
+  automake:
+    prefer:
+    - '%gcc@12.5.0'
+  bash:
+    prefer:
+    - '%gcc@12.5.0'
+  berkeley-db:
+    prefer:
+    - '%gcc@12.5.0'
+  bison:
+    prefer:
+    - '%gcc@12.5.0'
+  bzip2:
+    prefer:
+    - '%gcc@12.5.0'
+  c-blosc:
+    prefer:
+    - '%gcc@12.5.0'
+  cairo:
+    variants:
+    - +X
+    - +fc
+    - +ft
+    - +gobject
+    - +pdf
+    - +png
+    - +svg
+    - +zlib
+    prefer:
+    - '%gcc@12.5.0'
+  cdo:
+    variants:
+    - +curl
+    prefer:
+    - '%gcc@12.5.0'
+    - ^udunits %gcc@12.5.0
+  charliecloud:
+    prefer:
+    - '%gcc@12.5.0'
+  cmake:
+    variants:
+    - +ownlibs
+    prefer:
+    - '%gcc@12.5.0'
+  cmor:
+    prefer:
+    - '%gcc@12.5.0'
+    - ^udunits %gcc@12.5.0
+  cp2k:
+    variants:
+    - +elpa
+    - +libvori
+    - +plumed
+    - +spglib
+  cray-libsci:
+    externals:
+    - spec: cray-libsci@25.03.0 %cce
+      prefix: /opt/cray/pe/libsci/25.03.0/CRAY/17.0/x86_64
+    - spec: cray-libsci@25.03.0 %gcc
+      prefix: /opt/cray/pe/libsci/25.03.0/GNU/12.3/x86_64
+    - spec: cray-libsci@25.03.0 %nvhpc
+      prefix: /opt/cray/pe/libsci/25.03.0/NVIDIA/23.3/x86_64
+    - spec: cray-libsci@25.03.0 %intel-oneapi-compilers
+      prefix: /opt/cray/pe/libsci/25.03.0/INTEL/2025.0/x86_64
+    buildable: false
+  cray-mpich:
+    externals:
+    - spec: cray-mpich@8.1.32 %gcc
+      prefix: /opt/cray/pe/mpich/8.1.32/ofi/gnu/12.3
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@8.1.32 %cce
+      prefix: /opt/cray/pe/mpich/8.1.32/ofi/cray/17.0
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@8.1.32 %nvhpc
+      prefix: /opt/cray/pe/mpich/8.1.32/ofi/nvidia/23.3
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@8.1.32 %intel-oneapi-compilers
+      prefix: /opt/cray/pe/mpich/8.1.32/ofi/intel/2022.1
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@9.0.0 %gcc
+      prefix: /opt/cray/pe/mpich/9.0.0/ofi/gnu/12.3
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@9.0.0 %cce
+      prefix: /opt/cray/pe/mpich/9.0.0/ofi/cray/17.0
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@9.0.0 %nvhpc
+      prefix: /opt/cray/pe/mpich/9.0.0/ofi/nvidia/23.3
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    - spec: cray-mpich@9.0.0 %intel-oneapi-compilers
+      prefix: /opt/cray/pe/mpich/9.0.0/ofi/intel/2022.1
+      extra_attributes:
+        environment:
+          append_path:
+            LD_LIBRARY_PATH: /opt/cray/libfabric/1.22.0/lib64
+    prefer:
+    - +cuda
+    - cuda_arch=80
+    buildable: false
+  curl:
+    variants:
+    - +libidn2
+    - +libssh
+    - +libssh2
+    - +nghttp2
+    prefer:
+    - tls=openssl
+    - '%gcc@12.5.0'
+  darshan-runtime:
+    variants:
+    - +parallel-netcdf
+    - scheduler=pbs
+    require:
+    - spec: ^hdf5+mpi
+      when: +hdf5
+    prefer:
+    - spec: cflags='-std=gnu17 -Wno-error=implicit-function-declaration -Wno-error=int-conversion'
+      when: '%gcc@15'
+  darshan-util:
+    variants:
+    - +bzip2
+    prefer:
+    - '%gcc@12.5.0'
+  dbus:
+    prefer:
+    - '%gcc@12.5.0'
+  diffutils:
+    prefer:
+    - '%gcc@12.5.0'
+  doxygen:
+    variants:
+    - +graphviz
+  eccodes:
+    variants:
+    - +fortran
+    - +png
+    - +tools
+    - jp2k=jasper
+    require:
+    - +netcdf
+  ecflow:
+    require:
+    - +pic
+    - +ui
+    prefer:
+    - '%gcc@12.5.0'
+  eigen:
+    prefer:
+    - '%gcc@12.5.0'
+  emacs:
+    variants:
+    - +X
+    - +json
+    - +treesitter
+    prefer:
+    - gui=x11
+    - '%gcc@12.5.0'
+  esmf:
+    variants:
+    - ~mpi
+    - ~xerces
+    require:
+    - +external-lapack
+    - +external-parallelio
+    - +netcdf
+    - one_of:
+      - +pnetcdf +mpi
+      - ~pnetcdf ~mpi
+  expat:
+    prefer:
+    - '%gcc@12.5.0'
+  ffmpeg:
+    variants:
+    - +X
+    - +drawtext
+    - +libaom
+    - +libmp3lame
+    - +libopenjpeg
+    - +libopus
+    - +libsnappy
+    - +libspeex
+    - +libssh
+    - +libvorbis
+    - +libvpx
+    - +libwebp
+    - +libx264
+    - +libxml2
+    - +libzma
+    - +libzmq
+    - +sdl2
+  fftw:
+    variants:
+    - ~mpi
+  findutils:
+    prefer:
+    - '%gcc@12.5.0'
+  flatbuffers:
+    prefer:
+    - '%gcc@12.5.0'
+  flex:
+    prefer:
+    - '%gcc@12.5.0'
+  gawk:
+    prefer:
+    - '%gcc@12.5.0'
+  go-or-gccgo-bootstrap:
+    prefer:
+    - go-bootstrap
+    buildable: true
+  golang:
+    buildable: true
+  gdal:
+    require:
+    - spec: ^hdf5~mpi
+      when: +hdf5
+    variants:
+    - +blosc
+    - +curl
+    - +deflate
+    - +expat
+    - +geos
+    - +gif
+    - +grib
+    - +hdf5
+    - +iconv
+    - +jpeg
+    - +libaec
+    - +libcsf
+    - +liblzma
+    - +libxml2
+    - +lz4
+    - +netcdf
+    - +openjpeg
+    - +parquet
+    - +pcidsk
+    - +pdfium
+    - +png
+    - +qhull
+    - +sqlite3
+    - +webp
+    - +zstd
+    - ~hdf4
+  gdb:
+    variants:
+    - +gold
+    - +ld
+    - +lto
+    - +source-highlight
+    - +tui
+    - ~debuginfod
+    - ~python
+    prefer:
+    - '%gcc@12.5.0'
+  gdbm:
+    prefer:
+    - '%gcc@12.5.0'
+  gettext:
+    prefer:
+    - '%gcc@12.5.0'
+    - spec: +libxml2
+      when: '%gcc@8:'
+  git:
+    variants:
+    - +svn
+    - +tcltk
+    prefer:
+    - '%gcc@12.5.0'
+  glx:
+    require:
+    - mesa
+  gmake:
+    variants:
+    - ~guile
+    require:
+    # This may help ioapi build
+    - '@:4.2'
+    prefer:
+    - '%gcc@12.5.0'
+  gmp:
+    prefer:
+    - '%gcc@12.5.0'
+  gmt:
+    variants:
+    - +ffmpeg
+    - +fftw
+    - +geos
+    - +ghostscript
+    - +glib
+    - +pcre
+    require:
+    - +blas
+    - +lapack
+    - spec: '^ffmpeg@7:'
+      when: +ffmpeg
+    prefer:
+    - '%gcc@12.5.0'
+  gnuplot:
+    variants:
+    - +X
+    - +wx
+    prefer:
+    - +qt
+    - '%gcc@12.5.0'
+  gnutls:
+    prefer:
+    - '%gcc@12.5.0'
+  go:
+    prefer:
+    - '%gcc@12.5.0'
+  googletest:
+    prefer:
+    - '%gcc@12.5.0'
+  gptl:
+    variants:
+    - +nestedomp
+    - +papi
+    - +pmpi
+    prefer:
+    - spec: cflags='-std=gnu17 -Wno-error=implicit-function-declaration -Wno-error=int-conversion'
+      when: '%gcc@15'
+  grads:
+    require:
+    - +dap
+    - +hdf4
+  graphite2:
+    prefer:
+    - '%gcc@12.5.0'
+  grep:
+    prefer:
+    - '%gcc@12.5.0'
+  grib-util:
+    prefer:
+    - '%gcc@12.5.0'
+  gtkplus:
+    prefer:
+    - '%gcc@12.5.0'
+  gzip:
+    prefer:
+    - '%gcc@12.5.0'
+  h5z-ftp:
+    require:
+    - ^hdf5~mpi
+  harfbuzz:
+    variants:
+    - +graphite2
+    prefer:
+    - '%gcc@12.5.0'
+  hdf:
+    variants:
+    - +fortran
+    - +szip
+    require:
+    - +external-xdr
+    prefer:
+    - spec: cflags='-std=c90 -Wno-error=int-conversion'
+      when: '%gcc@15'
+    - spec: cflags='-std=c90 -Wno-error=int-conversion'
+      when: '%cce'
+    - spec: cflags='-std=c90 -Wno-error=int-conversion'
+      when: '%intel-oneapi-compilers'
+  hdf5:
+    variants:
+    - +cxx
+    - +fortran
+    - +hl
+    - +map
+    - +szip
+    - ~mpi
+  heaptrack:
+    prefer:
+    - '%gcc@12.5.0'
+  help2man:
+    prefer:
+    - '%gcc@12.5.0'
+  hwloc:
+    variants:
+    - +cuda
+    - +nvml
+    prefer:
+    - '%gcc@12.5.0'
+  imagemagick:
+    variants:
+    - +ghostscript
+  intel-oneapi-advisor:
+    prefer:
+    - '%gcc@12.5.0'
+    buildable: false
+    externals:
+    - spec: intel-oneapi-advisor@2025.3.0
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-advisor/2025.3.0/gcc/12.5.0/fyfp
+  intel-oneapi-mkl:
+    require:
+    - spec: +gfortran threads=openmp
+      when: '%gcc'
+  intel-oneapi-mpi:
+    variants:
+    - +external-libfabric
+    - +generic-names
+  intel-oneapi-runtime:
+    prefer:
+    - ^gcc-runtime@12.5.0
+  intel-oneapi-vtune:
+    prefer:
+    - '%gcc@12.5.0'
+    buildable: false
+    externals:
+    - spec: intel-oneapi-vtune@2025.6.0
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-vtune/2025.6.0/gcc/12.5.0/e3bw
+  ip:
+    prefer:
+    - '%lapack=openblas'
+  ispc:
+    require:
+    - '%clang'
+  jasper:
+    prefer:
+    - '@:2'
+    - '%gcc@12.5.0'
+  jq:
+    prefer:
+    - '%gcc@12.5.0'
+  json-c:
+    prefer:
+    - '%gcc@12.5.0'
+  kokkos:
+    variants:
+    - +examples
+    - ~openmp
+    require:
+    - spec: +cuda +wrapper ~alloc_async
+      when: '%gcc'
+    - spec: +cuda +wrapper ~alloc_async
+      when: '%nvhpc'
+    - spec: ^cmake@3.27
+      when: '@:4.2.01 +cuda'
+  krb5:
+    prefer:
+    - '%gcc@12.5.0'
+  lcov:
+    prefer:
+    - '%gcc@12.5.0'
+  lerc:
+    prefer:
+    - '%gcc@12.5.0'
+  libarchive:
+    require:
+    - compression=bz2lib,lz4,lzma,lzo2,zlib,zstd xar=expat
+  libcap:
+    prefer:
+    - '%gcc@12.5.0'
+  libcerf:
+    prefer:
+    - '%gcc@12.5.0'
+  libcxi:
+    variants:
+    - +cuda
+  libdeflate:
+    prefer:
+    - '%gcc@12.5.0'
+  libepoxy:
+    prefer:
+    - '%gcc@12.5.0'
+  libevent:
+    prefer:
+    - '%gcc@12.5.0'
+  libffi:
+    prefer:
+    - '%gcc@12.5.0'
+  libfuse:
+    prefer:
+    - '%gcc@12.5.0'
+  libgd:
+    prefer:
+    - '%gcc@12.5.0'
+  libgeotiff:
+    require:
+    # Doesn't build without proj as a dependency for me
+    - +proj
+    prefer:
+    - '%gcc@12.5.0'
+  libibn2:
+    prefer:
+    - '%gcc@12.5.0'
+  libiconv:
+    prefer:
+    - '%gcc@12.5.0'
+  libjpeg:
+    prefer:
+    - '%gcc@12.5.0'
+  libjpeg-turbo:
+    prefer:
+    - '%gcc@12.5.0'
+  libllvm:
+    conflict:
+    - llvm-amdgpu
+  libpng:
+    prefer:
+    - '%gcc@12.5.0'
+  librsvg:
+    prefer:
+    - '%gcc@12.5.0'
+  libseccomp:
+    prefer:
+    - '%gcc@12.5.0'
+  libsigsegv:
+    prefer:
+    - '%gcc@12.5.0'
+  libslirp:
+    prefer:
+    - '%gcc@12.5.0'
+  libssh2:
+    prefer:
+    - '%gcc@12.5.0'
+  libszip:
+    prefer:
+    - '%gcc@12.5.0'
+  libtiff:
+    prefer:
+    - '%gcc@12.5.0'
+  libtirpc:
+    prefer:
+    - '%gcc@12.5.0'
+  libtool:
+    prefer:
+    - '%gcc@12.5.0'
+  libtree:
+    prefer:
+    - '%gcc@12.5.0'
+  libunwind:
+    variants:
+    - +cxx_exceptions
+    - +debug_frame
+    - +xz
+    - +zlib
+    - components=setjmp,ptrace,coredump
+  libuv:
+    prefer:
+    - '%gcc@12.5.0'
+  libwebp:
+    prefer:
+    - '%gcc@12.5.0'
+  libx11:
+    prefer:
+    - '%gcc@12.5.0'
+  libxcrypt:
+    prefer:
+    - '%gcc@12.5.0'
+  libxft:
+    prefer:
+    - '%gcc@12.5.0'
+  libyaml:
+    prefer:
+    - '%gcc@12.5.0'
+  linaro-forge:
+    require:
+    - +accept-eula
+    externals:
+    - spec: linaro-forge@25.0.4
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/linaro-forge/25.0.4/i6z5
+    buildable: false
+  lmod:
+    prefer:
+    - '%gcc@12.5.0'
+  lua:
+    prefer:
+    - '%gcc@12.5.0'
+  lz4:
+    prefer:
+    - '%gcc@12.5.0'
+  lzo:
+    prefer:
+    - '%gcc@12.5.0'
+  m4:
+    prefer:
+    - '%gcc@12.5.0'
+  madis:
+    prefer:
+    - '%gcc@12.5.0'
+  mesa:
+    require:
+    - +llvm
+    - '@25:'
+    prefer:
+    - ^llvm ~clang
+  met:
+    variants:
+    - +graphics
+    - +grib2
+    - +lidar2nc
+    - +modis
+    - +python
+  metplus:
+    variants:
+    - +cycloneplotter
+    - +makeplots
+    - +plotdataplane
+    - +series_analysis
+  motif:
+    prefer:
+    - '%gcc@12.5.0'
+  mpc:
+    prefer:
+    - '%gcc@12.5.0'
+  mpfr:
+    prefer:
+    - '%gcc@12.5.0'
+  mpi:
+    prefer:
+    - cray-mpich
+  mpich:
+    variants:
+    - +cuda
+    require:
+    - device=ch4
+    - netmod=ofi
+    - pmi=pmi2
+    - +vci
+    - +xpmem
+  mpifileutils:
+    variants:
+    - +gpfs
+    - +lustre
+    - +xattr
+  muparser:
+    prefer:
+    - '%gcc@12.5.0'
+  musica:
+    variants:
+    - ~tuvx
+  mvapich:
+    variants:
+    - file_systems=lustre,gpfs,nfs,ufs
+    - process_managers=auto
+    require:
+    - netmod=ofi
+    - spec: ~cuda
+      when: '%intel-oneapi-compilers'
+    - spec: +cuda
+      when: '%nvhpc'
+  nano:
+    prefer:
+    - '%gcc@12.5.0'
+  nasm:
+    prefer:
+    - '%gcc@12.5.0'
+  nccmp:
+    prefer:
+    - '%gcc@12.5.0'
+  ncl:
+    variants:
+    - +eemd
+    - +gdal
+    - +grib
+    - +hdf-eos2
+    - +hdf-eos5
+    - +hdf4
+    externals:
+    - spec: ncl@6.6.2
+      prefix: /glade/u/apps/opt/ncl/6.6.2
+    buildable: false
+  nco:
+    prefer:
+    - '%gcc@12.5.0'
+    - ^udunits %gcc@12.5.0
+  ncurses:
+    prefer:
+    - '%gcc@12.5.0'
+  ncview:
+    prefer:
+    - '%gcc@12.5.0'
+    - ^udunits %gcc@12.5.0
+  ncvis:
+    require:
+    - ^netcdf-c build_system=autotools
+    prefer:
+    - '%gcc@12.5.0'
+  neovim:
+    prefer:
+    - '%gcc@12.5.0'
+  netcdf:
+    variants:
+    - +dap
+    - ~mpi
+  netcdf-c:
+    variants:
+    - +dap
+    - +nczarr_zip
+    - ~mpi
+    prefer:
+    # Would do require, but ncvis barfs
+    - build_system=cmake
+  nghttp2:
+    prefer:
+    - '%gcc@12.5.0'
+  ninja:
+    prefer:
+    - '%gcc@12.5.0'
+  octave:
+    variants:
+    - +arpack
+    - +curl
+    - +fftw
+    - +fltk
+    - +fontconfig
+    - +freetype
+    - +gl2ps
+    - +glpk
+    - +gnuplot
+    - +hdf5
+    - +llvm
+    - +magick
+    - +opengl
+    - +qhull
+    - +qrupdate
+    - +qscintilla
+    - +qt
+    - +suitesparse
+    - +zlib
+  openblas:
+    variants:
+    - +fortran
+    - threads=openmp
+  openjpeg:
+    prefer:
+    - '%gcc@12.5.0'
+  openmpi:
+    require:
+    - fabrics=cma,ofi
+    - schedulers=tm
+    - +gpfs
+    - +lustre
+    - +internal-pmix
+    - +cuda
+    - +romio
+    - romio-filesystem=nfs,gpfs,lustre,ufs
+    - spec: ^libfabric fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
+  openpbs:
+    externals:
+    - spec: openpbs@2021.1.3
+      prefix: /opt/pbs
+    buildable: false
+  openssh:
+    prefer:
+    - '%gcc@12.5.0'
+  osu-micro-benchmarks:
+    variants:
+    - +cuda
+    prefer:
+    - spec: ~cuda
+      when: '%gcc@15'
+  pandoc:
+    require:
+    - +texlive
+  pango:
+    variants:
+    - +X
+    prefer:
+    - '%gcc@12.5.0'
+  parallel-netcdf:
+    variants:
+    - +examples
+    prefer:
+    - spec: cflags='-std=c17 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion'
+      when: '%gcc@15'
+  parallelio:
+    variants:
+    - +ncint
+    - +pnetcdf
+    - ~logging
+    require:
+    - +fortran
+    - spec: ~pnetcdf
+      when: ~mpi
+  parallelio1:
+    variants:
+    - +pnetcdf
+  pbs:
+    require:
+    - openpbs
+  pcre:
+    prefer:
+    - '%gcc@12.5.0'
+  pcre2:
+    prefer:
+    - '%gcc@12.5.0'
+  peak-memusage:
+    prefer:
+    - '%gcc@12.5.0'
+  perl:
+    prefer:
+    - '%gcc@12.5.0'
+  podman:
+    prefer:
+    - '%gcc@12.5.0'
+  py-cython:
+    prefer:
+    - '%gcc@12.5.0'
+  py-netcdf4:
+    variants:
+    - ~mpi
+  py-numpy:
+    require:
+    - '%blas=openblas'
+  python:
+    prefer:
+    - spec: '@3.11'
+    - '%gcc@12.5.0'
+    - +ssl
+  qhull:
+    prefer:
+    - '%gcc@12.5.0'
+  qt:
+    variants:
+    - +dbus
+    - +examples
+    - +opengl
+    - +webkit
+    require:
+    - +gtk
+    - +ssl
+    - '@5.14.2'
+    prefer:
+    - '%gcc@12.5.0'
+  rapidjson:
+    prefer:
+    - '%gcc@12.5.0'
+  readline:
+    prefer:
+    - '%gcc@12.5.0'
+  ripgrep:
+    prefer:
+    - '%gcc@12.5.0'
+  ruby:
+    prefer:
+    - '%gcc@12.5.0'
+  rust:
+    prefer:
+    - '%gcc@12.5.0'
+  sed:
+    prefer:
+    - '%gcc@12.5.0'
+  singularityce:
+    variants:
+    - ~suid
+  slirp4netns:
+    prefer:
+    - '%gcc@12.5.0'
+  snappy:
+    require:
+    # Required for arrow, which is needed for parquet support in GDAL
+    - ~shared
+  source-highlight:
+    prefer:
+    - '%gcc@12.5.0'
+  sqlite:
+    prefer:
+    - '%gcc@12.5.0'
+  squashfs:
+    prefer:
+    - '%gcc@12.5.0'
+  squashfuse:
+    prefer:
+    - '%gcc@12.5.0'
+  superlu-dist:
+    variants:
+    - +openmp
+    prefer:
+    - spec: cflags='-std=gnu17 -Wno-error=implicit-function-declaration -Wno-error=int-conversion'
+      when: '%gcc@15'
+  szip:
+    prefer:
+    - libszip
+  tbb:
+    prefer:
+    - intel-oneapi-tbb
+  tcl:
+    prefer:
+    - '%gcc@12.5.0'
+  texinfo:
+    prefer:
+    - '%gcc@12.5.0'
+  tk:
+    prefer:
+    - '%gcc@12.5.0'
+  tmux:
+    prefer:
+    - '%gcc@12.5.0'
+  tree:
+    prefer:
+    - '%gcc@12.5.0'
+  unzip:
+    prefer:
+    - '%gcc@12.5.0'
+  vim:
+    variants:
+    - +cscope
+    - +lua
+    - +perl
+    - +python
+    - +ruby
+    - +x
+    - features=huge
+    prefer:
+    - '%gcc@12.5.0'
+    require:
+    - +gui
+    - +gtk
+  wgrib2:
+    variants:
+    - +ipolates
+    - +netcdf
+    - +proj4
+    - +udf
+    - ~netcdf3
+    prefer:
+    - '%gcc@12.5.0'
+  wxwidgets:
+    variants:
+    - +opengl
+  xnedit:
+    require:
+    # Wont build without this, actually!
+    - +motif
+    prefer:
+    - '%gcc@12.5.0'
+  xsimd:
+    prefer:
+    - '%gcc@12.5.0'
+  xxdiff:
+    prefer:
+    - '%gcc@12.5.0'
+  xz:
+    prefer:
+    - '%gcc@12.5.0'
+  zfp:
+    variants:
+    - +tight-error
+    - round=first
+  zlib:
+    prefer:
+    - '%gcc@12.5.0'
+  zlib-api:
+    prefer:
+    - zlib-ng
+  zlib-ng:
+    require:
+    - +compat
+    - +new_strategies
+    - +shared
+    prefer:
+    - '%gcc@12.5.0'
+  zstd:
+    variants:
+    - +programs
+    prefer:
+    - '%gcc@12.5.0'
+    - compression=lz4,lzma,zlib
+  elfutils:
+    prefer:
+    - '%gcc@12.5.0'
+  fmt:
+    prefer:
+    - '%gcc@12.5.0'
+  xxd-standalone:
+    prefer:
+    - '%gcc@12.5.0'
+  cudnn:
+    buildable: false
+    externals:
+    - spec: cudnn@9.8.0.87-12
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/cudnn/9.8.0.87-12/hjmo

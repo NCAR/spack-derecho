@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+#   Unit: perl-library
+#   Description:
+#       For the benefit of certain defined workflows (e.g., CESM), we maintain
+#       a small Perl module library which is managed by this unit.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   10:57, 26 Feb 2025
+#
+
+#
+##  USER INPUT
+#
+
+perl_mod_list="Pod::Parser HTML::Entities XML::LibXML CPAN::Shell File::Slurp DateTime DBD::Pg DBD::mysql"
+perl_lib_root=$NCAR_SPACK_ROOT_BASE/perl
+
+#
+##  INSTALL PERL MODULES
+#
+
+# This setting is needed for Pg to test properly
+# https://github.com/bucardo/dbdpg/issues/78
+export DBDPG_TEMPDIR=/tmp
+
+tsecho "Checking for Spack-installed Perl"
+perl_hash=$(sed -n '3,$ s/ | /|/gp' $SPACK_ENV/registry | awk -F\| '$NF == "perl" { print $1 }')
+perl_deps="/$perl_hash postgresql mysql patchelf"
+
+if [[ -n $perl_hash ]]; then
+    tsecho "Populating Perl library"
+    echo
+    spack load $perl_deps
+
+    for pmod in $perl_mod_list; do
+        if [[ $pmod == *LibXML ]]; then
+            # One test is a known-fail currently...
+            cpanm install --notest -L $perl_lib_root $pmod
+        elif [[ $pmod == DBD::mysql ]]; then
+            # It seems like the mysql config needs LD_LIBRARY_PATH set
+            mysql_lib=$(find $(cd $(dirname $(which mysql))/..; pwd) -name libmysqlclient.so -printf "%h\n")
+
+            # Recent versions of mysql (>8.0.29) also need help with zstd
+            zstd_lib=$(echo $PKG_CONFIG_PATH | tr ':' '\n' | grep -m1 zstd | sed 's/\/pkgconfig//')
+            LD_LIBRARY_PATH=$mysql_lib:$LD_LIBRARY_PATH LIBRARY_PATH=$zstd_lib:$LIBRARY_PATH cpanm install -L $perl_lib_root $pmod |& tee .pbout
+
+            # These friendly folk expect you to rpath the SO yourself if mysql in nonstandard path
+            # https://github.com/mattn/p5-Devel-CheckLib/issues/31#issuecomment-819735516
+            if grep -q "Successfully.*DBD-mysql" .pbout; then
+                mysql_so=$(find $perl_lib_root -name mysql.so)
+                chmod u+w $mysql_so
+                patchelf --add-rpath $mysql_lib $mysql_so
+                chmod u-w $mysql_so
+            fi
+
+            rm -f .pbout
+        else
+            cpanm install -L $perl_lib_root $pmod
+        fi
+    done
+    echo
+fi

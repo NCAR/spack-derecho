@@ -1,0 +1,5 @@
+mirrors:
+  ncar_mirror_global:
+    url: https://stratus.ucar.edu/spack-cache-derecho
+    profile: boreas
+  ncar_mirror_local: /glade/u/apps/derecho/mirror
