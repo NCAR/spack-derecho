@@ -6,15 +6,21 @@
 #       a small Perl module library which is managed by this unit.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   10:57, 26 Feb 2025
+#   Last Revised:   19:18, 27 Oct 2025
 #
 
 #
 ##  USER INPUT
 #
 
-perl_mod_list="Pod::Parser HTML::Entities XML::LibXML CPAN::Shell File::Slurp DateTime DBD::Pg DBD::mysql"
+perl_pkg_list="patchelf"
+perl_mod_list="Pod::Parser HTML::Entities XML::LibXML CPAN::Shell File::Slurp DateTime"
 perl_lib_root=$NCAR_SPACK_ROOT_BASE/perl
+
+if [[ $NCAR_SPACK_HOST == casper* ]]; then
+    perl_pkg_list="$perl_pkg_list postgresql mysql"
+    perl_mod_list="$perl_mod_list DBD::Pg DBD::mysql"
+fi
 
 #
 ##  INSTALL PERL MODULES
@@ -26,12 +32,17 @@ export DBDPG_TEMPDIR=/tmp
 
 tsecho "Checking for Spack-installed Perl"
 perl_hash=$(sed -n '3,$ s/ | /|/gp' $SPACK_ENV/registry | awk -F\| '$NF == "perl" { print $1 }')
-perl_deps="/$perl_hash postgresql mysql patchelf"
+perl_deps="/$perl_hash $perl_pkg_list"
 
 if [[ -n $perl_hash ]]; then
     tsecho "Populating Perl library"
     echo
     spack load $perl_deps
+
+    # If loads fail, do not continue
+    if [[ $? != 0 ]]; then
+        exit
+    fi
 
     for pmod in $perl_mod_list; do
         if [[ $pmod == *LibXML ]]; then

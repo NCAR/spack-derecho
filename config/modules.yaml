@@ -54,6 +54,8 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - intel-oneapi-advisor
+      - intel-oneapi-vtune
       - intel-oneapi-mkl
       - heaptrack
       - cmor
@@ -68,8 +70,6 @@ modules:
       - grib-util
       - wgrib2
       - ecflow
-      - intel-oneapi-advisor
-      - intel-oneapi-vtune
       - darshan-util
       - linaro-forge
       - ncvis

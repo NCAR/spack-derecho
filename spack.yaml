@@ -1344,6 +1344,8 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - intel-oneapi-advisor
+        - intel-oneapi-vtune
         - intel-oneapi-mkl
         - heaptrack
         - cmor
@@ -1358,8 +1360,6 @@ spack:
         - grib-util
         - wgrib2
         - ecflow
-        - intel-oneapi-advisor
-        - intel-oneapi-vtune
         - darshan-util
         - linaro-forge
         - ncvis
@@ -1978,3 +1978,5 @@ spack:
   - gptl@8.1.1 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^cray-mpich@8.1.32 %oneapi
   - superlu-dist@9.1.0 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^cray-mpich@8.1.32 %oneapi ^metis %oneapi@2025.2.1
   - superlu-dist@9.1.0 %[when='%c'] c=cce@19.0.0 %[when='%cxx'] cxx=cce@19.0.0 %[when='%fortran'] fortran=cce@19.0.0 %[when='%blas'] blas=cray-libsci@25.03.0 %[when='%lapack'] lapack=cray-libsci@25.03.0 ^cray-mpich@8.1.32 %cce ^metis %cce@19.0.0
+  - intel-oneapi-vtune@2025.6.0
+  - intel-oneapi-advisor@2025.3.0
