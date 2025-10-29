@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - gcc
       - intel-oneapi-advisor
       - intel-oneapi-vtune
       - intel-oneapi-mkl
@@ -87,7 +88,6 @@ modules:
       - cce
       - intel-oneapi-compilers
       - nvhpc
-      - gcc
       - libfabric
       - charliecloud
       - rstudio
@@ -189,7 +189,7 @@ modules:
       - antlr
       - squashfuse
       - squashfs
-      - flex@2.6.4
+      - flex
       - tcl
       - ruby
       - bison
@@ -215,6 +215,7 @@ modules:
       - autoconf
       - automake
       - cray-mpich
+      - gcc@12.5.0
       exclude_implicits: true
       fftw+mpi:
         conflict:

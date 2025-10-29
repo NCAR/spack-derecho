@@ -1,4 +1,14 @@
 packages:
+  lustre:
+    externals:
+    - spec: lustre@2.15.6.1_cray_100_g2c66dd0
+      prefix: /usr
+    buildable: false
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
   openssl:
     externals:
     - spec: openssl@1.1.1w-fips
@@ -8,16 +18,6 @@ packages:
     buildable: false
     require:
     - certs=system
-  pkg-config:
-    externals:
-    - spec: pkg-config@0.29.2
-      prefix: /usr
-    buildable: false
-  lustre:
-    externals:
-    - spec: lustre@2.15.6.1_cray_100_g2c66dd0
-      prefix: /usr
-    buildable: false
   gcc:
     externals:
     - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -177,6 +177,12 @@ packages:
       when: '%gcc@12.5.0 ^udunits'
     - spec: ^openblas %gcc@12.5.0
       when: '%gcc@12.5.0 ^openblas'
+    - spec: ^hdf5 %gcc@14.3.0
+      when: '%gcc@14.3.0 ^hdf5'
+    - spec: ^udunits %gcc@14.3.0
+      when: '%gcc@12.5.0 ^udunits'
+    - spec: ^openblas %gcc@14.3.0
+      when: '%gcc@14.3.0 ^openblas'
     require:
     - spec: cuda_arch=80
       when: ^cuda
@@ -1084,7 +1090,7 @@ packages:
   superlu-dist:
     variants:
     - +openmp
-    prefer:
+    require:
     - spec: cflags='-std=gnu17 -Wno-error=implicit-function-declaration -Wno-error=int-conversion'
       when: '%gcc@15'
   szip:
