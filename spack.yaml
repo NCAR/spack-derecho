@@ -33,11 +33,6 @@ spack:
       NVCCFLAGS: -allow-unsupported-compiler
       NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   packages:
-    lustre:
-      externals:
-      - spec: lustre@2.15.6.1_cray_100_g2c66dd0
-        prefix: /usr
-      buildable: false
     pkg-config:
       externals:
       - spec: pkg-config@0.29.2
@@ -52,6 +47,11 @@ spack:
       buildable: false
       require:
       - certs=system
+    lustre:
+      externals:
+      - spec: lustre@2.15.6.1_cray_100_g2c66dd0
+        prefix: /usr
+      buildable: false
     gcc:
       externals:
       - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -1229,10 +1229,23 @@ spack:
       externals:
       - spec: cudnn@9.8.0.87-12
         prefix: /glade/u/apps/common/25.10/spack/opt/spack/cudnn/9.8.0.87-12/hjmo
+    libpaper:
+      prefer:
+      - '%gcc@12.5.0'
+    teckit:
+      prefer:
+      - '%gcc@12.5.0'
+    texlive:
+      prefer:
+      - '%gcc@12.5.0'
+    zziplib:
+      prefer:
+      - '%gcc@12.5.0'
   view:
     baseenv:
       root: /glade/u/apps/derecho/25.10/opt/view
       select:
+      - pandoc
       - vim
       - xxdiff
       - gnuplot
@@ -1452,6 +1465,7 @@ spack:
           conflict:
           - esmf+mpi
         exclude:
+        - pandoc
         - vim
         - xxdiff
         - gnuplot
@@ -2018,3 +2032,4 @@ spack:
   - superlu-dist@9.1.0 %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^cray-mpich@8.1.32 %gcc ^metis %gcc@14.3.0
   - mpifileutils@0.12 %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^cray-mpich@8.1.32 %gcc
   - esmf@8.9.0+mpi %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^cray-mpich@8.1.32 %gcc ^hdf5 %gcc@14.3.0
+  - pandoc

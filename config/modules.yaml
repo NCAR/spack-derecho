@@ -156,6 +156,7 @@ modules:
         conflict:
         - esmf+mpi
       exclude:
+      - pandoc
       - vim
       - xxdiff
       - gnuplot

@@ -1,0 +1,89 @@
+#!/bin/bash
+#
+#   Unit: init-scripts
+#   Description:
+#       This script creates the shell initialization scripts for both Bourne
+#       variants and C-shell variants. These scripts get called by a primary
+#       localinit generated at publishing time, which in turn get called by
+#       /etc/profile.d scripts.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   13:25, 27 Aug 2025
+#
+
+#
+##  UNIT DEPENDENCIES
+#
+
+. $POSTPROCESS_UNIT_DIR/init-templates.helper
+
+if [[ -e $POSTPROCESS_UNIT_DIR/entry-templates.helper ]]; then
+    . $POSTPROCESS_UNIT_DIR/entry-templates.helper
+else
+    create_entries=false
+fi
+
+#
+## CREATE INIT SCRIPTS
+#
+
+if [[ $NCAR_SPACK_ENV_TYPE == build ]]; then
+    pkg_root=$SPACK_ENV/opt
+    module_root=$SPACK_ENV/modules
+else
+    pkg_root=$NCAR_SPACK_ROOT_PUBLIC/default/spack/opt/spack
+    module_root=$NCAR_SPACK_ROOT_PUBLIC/modules
+fi
+
+util_path=$SPACK_ENV/util
+
+if [[ ${NCAR_SPACK_LMOD_VERSION:-latest} != latest ]]; then
+    lmod_location=$(spack location -i lmod@$NCAR_SPACK_LMOD_VERSION 2> /dev/null || true)
+else
+    lmod_latest=$(spack find --format '{hash}' lmod 2> /dev/null | tail -n 1)
+
+    if [[ -n $lmod_latest ]]; then
+        lmod_location=$(spack location -i /$lmod_latest 2> /dev/null || true)
+    fi
+fi
+
+if [[ -z $lmod_location ]]; then
+    tsecho "lmod (${NCAR_SPACK_LMOD_VERSION:-latest}) not installed; skipping module generation"
+else
+    mkdir -p $util_path
+    tsecho "Generating localinit.sh and localinit.csh"
+    tm_file=$SPACK_ENV/.tempinit
+
+    generate_bourne_init $tm_file
+    mv $tm_file $util_path/localinit.sh
+    tsecho " >> bourne init created: ${GCOL} $util_path/localinit.sh$DCOL" 1
+
+    generate_csh_init $tm_file
+    mv $tm_file $util_path/localinit.csh
+    tsecho " >> csh init created: ${GCOL} $util_path/localinit.csh$DCOL" 1
+    
+    if [[ $NCAR_SPACK_ENV_TYPE == public ]]; then
+        entry_path=$NCAR_SPACK_ROOT_DEPLOYMENT/util
+
+        if [[ ${create_entries:-true} == true ]]; then
+            tsecho "Generating shell entry scripts"
+
+            if [[ -L $entry_path ]]; then
+                rm $entry_path
+            fi
+            
+            mkdir -p $entry_path
+            
+            generate_bourne_init $tm_file
+            mv $tm_file $entry_path/localinit.sh
+            tsecho " >> bourne entry created: ${GCOL}$entry_path/localinit.sh$DCOL" 1
+
+            generate_csh_init $tm_file
+            mv $tm_file $entry_path/localinit.csh
+            tsecho " >> csh entry created: ${GCOL} $entry_path/localinit.csh$DCOL" 1
+        elif [[ ! -e $entry_path ]]; then
+            tsecho "Symlinking init scripts into entry path"
+            ln -s $util_path $entry_path
+        fi
+    fi
+fi
