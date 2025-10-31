@@ -4,7 +4,7 @@ export MODULEPATH_ROOT=/glade/u/apps/derecho/modules
 
 # Lmod configuration
 export LMOD_SYSTEM_NAME=derecho
-export LMOD_SYSTEM_DEFAULT_MODULES="ncarenv/25.10:craype/2.7.34:intel/2024.2.1:ncarcompilers/1.1.0:cray-mpich/8.1.32:netcdf/4.9.3"
+export LMOD_SYSTEM_DEFAULT_MODULES="ncarenv/25.10:craype/2.7.34:intel/2025.2.1:ncarcompilers/1.1.0:cray-mpich/8.1.32:netcdf/4.9.3"
 
 case "$MODULEPATH" in
     *"${MODULEPATH_ROOT}"*)

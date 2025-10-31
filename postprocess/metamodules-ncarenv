@@ -6,7 +6,7 @@
 #       version ncarenv stacks.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   21:25, 29 Oct 2025
+#   Last Revised:   23:41, 30 Oct 2025
 #
 
 #
@@ -22,15 +22,17 @@
 function add_core_gcc {
 cat >> $TMP_FILE << EOF
 
--- Add non-system core GCC to the user paths. We only do this if node
--- is running SUSE 15.4, as system libraries in 15.6 are newer than
--- our ncarenv stack and thus backward compatible.
-os_major, os_minor = os.getenv("NCAR_OS_VERSION"):match("([^.]*).(.*)")
+-- Add non-system core GCC to the user paths.
+local cc_root = "$cc_root"
+prepend_path("PATH",            pathJoin(cc_root, "bin"))
+prepend_path("LIBRARY_PATH",    pathJoin(cc_root, "lib64"))
 
-if os_minor == "4" then
-    local cc_root = "$cc_root"
-    prepend_path("PATH",            pathJoin(cc_root, "bin"))
-    prepend_path("LIBRARY_PATH",    pathJoin(cc_root, "lib64"))
+-- We only do this for LD_LIBRARY_PATH if the node is running SUSE 15.4, as
+-- system libraries in 15.6 are newer than our ncarenv stack and thus backward
+-- compatible.
+os_version = os.getenv("NCAR_OS_VERSION") or "15.4"
+
+if os_version == "15.4" then
     prepend_path("LD_LIBRARY_PATH", pathJoin(cc_root, "lib64"))
 end
 EOF

@@ -632,6 +632,9 @@ packages:
     externals:
     - spec: intel-oneapi-vtune@2025.6.0
       prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-vtune/2025.6.0/gcc/12.5.0/e3bw
+  ioapi:
+    require:
+    - cflags=-Wno-error=implicit-function-declaration
   ip:
     prefer:
     - '%lapack=openblas'
@@ -683,6 +686,10 @@ packages:
   libdeflate:
     prefer:
     - '%gcc@12.5.0'
+  libemos:
+    require:
+    - spec: fflags=-fallow-argument-mismatch
+      when: '%gcc@10:'
   libepoxy:
     prefer:
     - '%gcc@12.5.0'

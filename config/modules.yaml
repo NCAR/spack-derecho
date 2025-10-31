@@ -54,6 +54,8 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - gmt
+      - texlive
       - gcc
       - intel-oneapi-advisor
       - intel-oneapi-vtune
@@ -93,8 +95,6 @@ modules:
       - rstudio
       - idl
       - matlab
-      - texlive
-      - gmt
       - cray-libsci
       - libtorch
       - grads
