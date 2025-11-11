@@ -149,6 +149,7 @@ packages:
     - spec: libfabric@1.15.2 fabrics=cxi,tcp,udp
       prefix: /opt/cray/libfabric/1.15.2.0
     variants:
+    - +gdrcopy
     - +cuda
     - +uring
     - fabrics=sockets,tcp,udp,cxi,rxm,rxd,mrail,shm,lnx
@@ -966,7 +967,7 @@ packages:
     - +cuda
     - +romio
     - romio-filesystem=nfs,gpfs,lustre,ufs
-    - spec: ^libfabric fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
+    - spec: ^libfabric@2 fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
   openpbs:
     externals:
     - spec: openpbs@2021.1.3

@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - libfabric
       - gmt
       - texlive
       - gcc
@@ -90,7 +91,6 @@ modules:
       - cce
       - intel-oneapi-compilers
       - nvhpc
-      - libfabric
       - charliecloud
       - rstudio
       - idl

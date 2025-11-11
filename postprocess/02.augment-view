@@ -6,7 +6,7 @@
 #       make user software easier to build (e.g., RPC symlinking).
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   17:28, 18 Aug 2025
+#   Last Revised:   20:04, 04 Nov 2025
 #
 
 #
@@ -30,7 +30,6 @@ ncar_utils[qstat]=qstat-cache
 ncar_utils[qinteractive]=pbstools
 ncar_utils[execcasper]=pbstools
 ncar_utils[qcmd]=pbstools
-ncar_utils[qsub]=pbstools
 ncar_utils[launch_cf]=pbstools
 ncar_utils[qhist]=qhist
 ncar_utils[gladequota]=gladequota
