@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - miniconda3
       - libfabric
       - gmt
       - texlive
@@ -84,7 +85,6 @@ modules:
       - podman
       - pcre
       - apptainer
-      - miniconda3
       - go
       - meson
       - cmake

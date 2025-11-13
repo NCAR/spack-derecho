@@ -33,6 +33,11 @@ spack:
       NVCCFLAGS: -allow-unsupported-compiler
       NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   packages:
+    miniconda3:
+      externals:
+      - spec: miniconda3@25.5.1
+        prefix: /glade/u/apps/opt/conda
+      buildable: false
     pkg-config:
       externals:
       - spec: pkg-config@0.29.2
@@ -1371,6 +1376,7 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - miniconda3
         - libfabric
         - gmt
         - texlive
@@ -1401,7 +1407,6 @@ spack:
         - podman
         - pcre
         - apptainer
-        - miniconda3
         - go
         - meson
         - cmake
@@ -2136,3 +2141,4 @@ spack:
   - superlu-dist@9.1.0 %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^metis %gcc@14.3.0 ^openmpi@5.0.9 %gcc@14.3.0
   - superlu-dist@9.1.0 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^metis %oneapi@2025.2.1 ^openmpi@5.0.9 %oneapi@2025.2.1
   - mpifileutils@0.12 %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^openmpi@5.0.9 %gcc@14.3.0
+  - miniconda3
