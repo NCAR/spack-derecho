@@ -1901,7 +1901,6 @@ spack:
   - openjpeg
   - json-c
   - lmod
-  - miniconda3
   - apptainer
   - pcre
   - podman
