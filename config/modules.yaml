@@ -312,6 +312,11 @@ modules:
             I_MPI_HYDRA_BOOTSTRAP: rsh
             I_MPI_HYDRA_BOOTSTRAP_EXEC: pbs_tmrsh
             I_MPI_OFI_PROVIDER: cxi
+            # These settings help with Slingshot 11 buffer issues
+            # See: https://docs.alcf.anl.gov/aurora/known-issues/#1-cassini-event-queue-overflow-detected
+            FI_CXI_DEFAULT_CQ_SIZE: '131072'
+            FI_CXI_OFLOW_BUF_SIZE: '12582912'
+            #FI_CXI_CQ_FILL_PERCENT: '20'
             NCAR_ROOT_INTEL_MPI: '{prefix}'
             NCAR_SPACK_HASH_INTEL_MPI: '{hash}'
       intel-oneapi-vtune:
@@ -420,6 +425,11 @@ modules:
           set:
             FI_LNX_PROV_LINKS: cxi+shm
             FI_PROVIDER: cxi+shm:lnx
+            # These settings help with Slingshot 11 buffer issues
+            # See: https://docs.alcf.anl.gov/aurora/known-issues/#1-cassini-event-queue-overflow-detected
+            FI_CXI_DEFAULT_CQ_SIZE: '131072'
+            FI_CXI_OFLOW_BUF_SIZE: '12582912'
+            #FI_CXI_CQ_FILL_PERCENT: '20'
             OMPI_MCA_rmaps_default_mapping_policy: :hwtcpus
             OMPI_MCA_shmem_mmap_enable_nfs_warning: '0'
             PRTE_MCA_prte_tmpdir_base: /tmp
