@@ -1,12 +1,12 @@
 packages:
-  miniconda3:
-    externals:
-    - spec: miniconda3@25.5.1
-      prefix: /glade/u/apps/opt/conda
-    buildable: false
   pkg-config:
     externals:
     - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
+  lustre:
+    externals:
+    - spec: lustre@2.15.6.1_cray_100_g2c66dd0
       prefix: /usr
     buildable: false
   openssl:
@@ -18,11 +18,6 @@ packages:
     buildable: false
     require:
     - certs=system
-  lustre:
-    externals:
-    - spec: lustre@2.15.6.1_cray_100_g2c66dd0
-      prefix: /usr
-    buildable: false
   gcc:
     externals:
     - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -76,6 +71,11 @@ packages:
     variants:
     - +piclibs
     - languages=c,c++,fortran,go
+  miniconda3:
+    externals:
+    - spec: miniconda3@25.5.1
+      prefix: /glade/u/apps/opt/conda
+    buildable: false
   cuda:
     externals:
     - spec: cuda@12.9.0
@@ -554,6 +554,8 @@ packages:
     require:
     - +dap
     - +hdf4
+    prefer:
+    - '%gcc@12.5.0'
   graphite2:
     prefer:
     - '%gcc@12.5.0'

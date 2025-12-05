@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - grads
       - miniconda3
       - libfabric
       - gmt
@@ -97,7 +98,6 @@ modules:
       - matlab
       - cray-libsci
       - libtorch
-      - grads
       - julia
       - r
       - miniconda
