@@ -1476,9 +1476,12 @@ spack:
         esmf+mpi:
           conflict:
           - esmf
+          - mpi-serial
         esmf~mpi:
           conflict:
-          - esmf+mpi
+          - esmf-mpi
+          - cray-mpich
+          - openmpi
         exclude:
         - pandoc
         - vim
@@ -1770,9 +1773,12 @@ spack:
         parallelio+mpi:
           conflict:
           - parallelio-serial
+          - mpi-serial
         parallelio~mpi:
           conflict:
           - parallelio
+          - cray-mpich
+          - openmpi
         parallelio1:
           filter:
             exclude_env_vars:
