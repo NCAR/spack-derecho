@@ -1607,6 +1607,9 @@ spack:
               OMPI_CXX: icpx
               OMPI_F77: ifx
               OMPI_FC: ifx
+              MPICH_CC: icx
+              MPICH_CXX: icpx
+              MPICH_FC: ifx
               PE_ENV: INTEL
         intel-oneapi-inspector:
           filter:
