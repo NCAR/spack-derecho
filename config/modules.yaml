@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - nccmp
       - grads
       - miniconda3
       - libfabric
@@ -67,7 +68,6 @@ modules:
       - cmor
       - nco
       - cdo
-      - nccmp
       - ncview
       - lcov
       - neovim
@@ -393,6 +393,9 @@ modules:
         template: ncar_wrapper.lua
       nccmp:
         autoload: none
+        environment:
+          set:
+            HDF5_PLUGIN_PATH: '{^netcdf-c.prefix}/plugins'
       nco:
         autoload: none
       ncview:

@@ -921,6 +921,7 @@ spack:
     nccmp:
       prefer:
       - '%gcc@12.5.0'
+      - ^netcdf-c build_system=autotools
     ncl:
       variants:
       - +eemd
@@ -1378,6 +1379,7 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - nccmp
         - grads
         - miniconda3
         - libfabric
@@ -1391,7 +1393,6 @@ spack:
         - cmor
         - nco
         - cdo
-        - nccmp
         - ncview
         - lcov
         - neovim
@@ -1717,6 +1718,9 @@ spack:
           template: ncar_wrapper.lua
         nccmp:
           autoload: none
+          environment:
+            set:
+              HDF5_PLUGIN_PATH: '{^netcdf-c.prefix}/plugins'
         nco:
           autoload: none
         ncview:
@@ -1949,7 +1953,6 @@ spack:
   - neovim
   - lcov
   - ncview@2.1.9
-  - nccmp@1.9.1.0
   - cdo@2.5.2
   - nco@5.3.4
   - cmor@3.8.0
@@ -2196,3 +2199,4 @@ spack:
   - superlu-dist@9.2.1 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^cray-mpich@8.1.32 %oneapi ^metis %oneapi@2025.2.1
   - superlu-dist@9.2.1 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^cray-mpich@9.0.0 %oneapi ^metis %oneapi@2025.2.1
   - superlu-dist@9.2.1 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^metis %oneapi@2025.2.1 ^openmpi@5.0.9 %oneapi@2025.2.1
+  - nccmp@1.9.1.0

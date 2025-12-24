@@ -887,6 +887,7 @@ packages:
   nccmp:
     prefer:
     - '%gcc@12.5.0'
+    - ^netcdf-c build_system=autotools
   ncl:
     variants:
     - +eemd
