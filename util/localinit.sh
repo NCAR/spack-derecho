@@ -1,5 +1,5 @@
 # Location variables
-export INSTALLPATH_ROOT=/glade/u/apps/derecho/default/spack/opt/spack
+export INSTALLPATH_ROOT=/glade/u/apps/derecho/25.10/spack/opt/spack
 export MODULEPATH_ROOT=/glade/u/apps/derecho/modules
 
 # Lmod configuration

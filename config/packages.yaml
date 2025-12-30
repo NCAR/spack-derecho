@@ -71,6 +71,16 @@ packages:
     variants:
     - +piclibs
     - languages=c,c++,fortran,go
+  pixi:
+    externals:
+    - spec: pixi@1.0.0
+      prefix: /glade/u/apps/opt/pixi
+    buildable: false
+  uv:
+    externals:
+    - spec: uv@1.0.0
+      prefix: /glade/u/apps/opt/uv
+    buildable: false
   miniconda3:
     externals:
     - spec: miniconda3@25.5.1

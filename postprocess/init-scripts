@@ -8,7 +8,7 @@
 #       /etc/profile.d scripts.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   13:25, 27 Aug 2025
+#   Last Revised:   09:31, 25 Dec 2025
 #
 
 #
@@ -31,7 +31,7 @@ if [[ $NCAR_SPACK_ENV_TYPE == build ]]; then
     pkg_root=$SPACK_ENV/opt
     module_root=$SPACK_ENV/modules
 else
-    pkg_root=$NCAR_SPACK_ROOT_PUBLIC/default/spack/opt/spack
+    pkg_root=$NCAR_SPACK_ROOT_PUBLIC/$NCAR_SPACK_HOST_VERSION/spack/opt/spack
     module_root=$NCAR_SPACK_ROOT_PUBLIC/modules
 fi
 
@@ -74,11 +74,11 @@ else
             
             mkdir -p $entry_path
             
-            generate_bourne_init $tm_file
+            generate_bourne_entry $tm_file
             mv $tm_file $entry_path/localinit.sh
             tsecho " >> bourne entry created: ${GCOL}$entry_path/localinit.sh$DCOL" 1
 
-            generate_csh_init $tm_file
+            generate_csh_entry $tm_file
             mv $tm_file $entry_path/localinit.csh
             tsecho " >> csh entry created: ${GCOL} $entry_path/localinit.csh$DCOL" 1
         elif [[ ! -e $entry_path ]]; then

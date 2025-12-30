@@ -1,5 +1,5 @@
 # Location variables
-setenv INSTALLPATH_ROOT /glade/u/apps/derecho/default/spack/opt/spack
+setenv INSTALLPATH_ROOT /glade/u/apps/derecho/25.10/spack/opt/spack
 setenv MODULEPATH_ROOT /glade/u/apps/derecho/modules
 
 # Lmod configuration

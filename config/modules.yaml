@@ -54,6 +54,8 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - pixi
+      - uv
       - nccmp
       - grads
       - miniconda3
@@ -379,6 +381,25 @@ modules:
           set:
             NCAR_ROOT_CONDA: '{prefix}'
         template: conda.lua
+        conflict:
+        - uv
+        - pixi
+      uv:
+        conflict:
+        - conda
+        - pixi
+        environment:
+          set:
+            UV_CACHE_DIR: /glade/derecho/scratch/" .. os.getenv("USER") .. "/.cache/uv
+            #XDG_CACHE_HOME: '/glade/derecho/scratch/" .. os.getenv("USER") .. "/.cache'
+      pixi:
+        conflict:
+        - conda
+        - uv
+        environment:
+          set:
+            PIXI_CACHE_DIR: /glade/derecho/scratch/" .. os.getenv("USER") .. "/.cache/pixi
+            RATTLER_CACHE_DIR: /glade/derecho/scratch/" .. os.getenv("USER") .. "/.cache/pixi/rattler
       mpi:
         template: ncar_wrapper_mpi.lua
         environment:
@@ -491,6 +512,8 @@ modules:
         intel-oneapi-mkl: mkl/{version}
         intel-oneapi-vtune: intel-vtune/{version}
         miniconda3: conda/latest
+        pixi: pixi/latest
+        uv: uv/latest
         parallelio1: parallelio/{version}
         parallelio~shared: parallelio/{version}-static
         py-torch: libtorch/{version}
