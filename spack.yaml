@@ -120,6 +120,11 @@ spack:
       - spec: miniconda3@25.5.1
         prefix: /glade/u/apps/opt/conda
       buildable: false
+    miniforge3:
+      externals:
+      - spec: miniforge3@25.11
+        prefix: /glade/u/apps/opt/miniforge/default
+      buildable: false
     cuda:
       externals:
       - spec: cuda@12.9.0
@@ -1389,11 +1394,11 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - miniforge3
         - pixi
         - uv
         - nccmp
         - grads
-        - miniconda3
         - libfabric
         - gmt
         - texlive
@@ -1496,6 +1501,7 @@ spack:
           - cray-mpich
           - openmpi
         exclude:
+        - miniconda3
         - pandoc
         - vim
         - xxdiff
@@ -1719,6 +1725,33 @@ spack:
           conflict:
           - uv
           - pixi
+        miniforge3:
+          filter:
+            exclude_env_vars:
+            - ACLOCAL_PATH
+            - CMAKE_PREFIX_PATH
+            - CONDA_EXE
+            - CONDA_PYTHON_EXE
+            - CONDA_SHLVL
+            - LD_LIBRARY_PATH
+            - MANPATH
+            - NCAR_INC_MINIFORGE3
+            - NCAR_LDFLAGS_MINIFORGE3
+            - NCAR_ROOT_MINIFORGE3
+            - PATH
+            - PKG_CONFIG_PATH
+            - _CE_CONDA
+            - _CE_M
+            - _CONDA_EXE
+            - _CONDA_ROOT
+            - MAMBA_ROOT_PREFIX
+          environment:
+            set:
+              NCAR_ROOT_CONDA: '{prefix}'
+          template: conda.lua
+          conflict:
+          - uv
+          - pixi
         uv:
           conflict:
           - conda
@@ -1850,6 +1883,7 @@ spack:
           intel-oneapi-mkl: mkl/{version}
           intel-oneapi-vtune: intel-vtune/{version}
           miniconda3: conda/latest
+          miniforge3: conda/latest
           pixi: pixi/latest
           uv: uv/latest
           parallelio1: parallelio/{version}
@@ -2253,3 +2287,4 @@ spack:
   - esmf@8.9.1+mpi %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^hdf5 %oneapi@2025.2.1 ^openmpi@5.0.9 %oneapi@2025.2.1
   - esmf@8.9.1+mpi %[when='%c'] c=cce@19.0.0 %[when='%cxx'] cxx=cce@19.0.0 %[when='%fortran'] fortran=cce@19.0.0 %[when='%blas'] blas=cray-libsci@25.03.0 %[when='%lapack'] lapack=cray-libsci@25.03.0 ^cray-mpich@8.1.32 %cce ^hdf5 %cce@19.0.0
   - esmf@8.9.1+mpi %[when='%c'] c=cce@19.0.0 %[when='%cxx'] cxx=cce@19.0.0 %[when='%fortran'] fortran=cce@19.0.0 %[when='%blas'] blas=cray-libsci@25.03.0 %[when='%lapack'] lapack=cray-libsci@25.03.0 ^cray-mpich@9.0.0 %cce ^hdf5 %cce@19.0.0
+  - miniforge3

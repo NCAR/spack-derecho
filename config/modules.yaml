@@ -54,11 +54,11 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - miniforge3
       - pixi
       - uv
       - nccmp
       - grads
-      - miniconda3
       - libfabric
       - gmt
       - texlive
@@ -161,6 +161,7 @@ modules:
         - cray-mpich
         - openmpi
       exclude:
+      - miniconda3
       - pandoc
       - vim
       - xxdiff
@@ -384,6 +385,33 @@ modules:
         conflict:
         - uv
         - pixi
+      miniforge3:
+        filter:
+          exclude_env_vars:
+          - ACLOCAL_PATH
+          - CMAKE_PREFIX_PATH
+          - CONDA_EXE
+          - CONDA_PYTHON_EXE
+          - CONDA_SHLVL
+          - LD_LIBRARY_PATH
+          - MANPATH
+          - NCAR_INC_MINIFORGE3
+          - NCAR_LDFLAGS_MINIFORGE3
+          - NCAR_ROOT_MINIFORGE3
+          - PATH
+          - PKG_CONFIG_PATH
+          - _CE_CONDA
+          - _CE_M
+          - _CONDA_EXE
+          - _CONDA_ROOT
+          - MAMBA_ROOT_PREFIX
+        environment:
+          set:
+            NCAR_ROOT_CONDA: '{prefix}'
+        template: conda.lua
+        conflict:
+        - uv
+        - pixi
       uv:
         conflict:
         - conda
@@ -515,6 +543,7 @@ modules:
         intel-oneapi-mkl: mkl/{version}
         intel-oneapi-vtune: intel-vtune/{version}
         miniconda3: conda/latest
+        miniforge3: conda/latest
         pixi: pixi/latest
         uv: uv/latest
         parallelio1: parallelio/{version}

@@ -86,6 +86,11 @@ packages:
     - spec: miniconda3@25.5.1
       prefix: /glade/u/apps/opt/conda
     buildable: false
+  miniforge3:
+    externals:
+    - spec: miniforge3@25.11
+      prefix: /glade/u/apps/opt/miniforge/default
+    buildable: false
   cuda:
     externals:
     - spec: cuda@12.9.0
