@@ -813,6 +813,8 @@ packages:
     externals:
     - spec: linaro-forge@25.0.4
       prefix: /glade/u/apps/common/25.10/spack/opt/spack/linaro-forge/25.0.4/i6z5
+    - spec: linaro-forge@25.1
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/linaro-forge/25.1/xg4z
     buildable: false
   lmod:
     prefer:

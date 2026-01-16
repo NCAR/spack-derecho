@@ -847,6 +847,8 @@ spack:
       externals:
       - spec: linaro-forge@25.0.4
         prefix: /glade/u/apps/common/25.10/spack/opt/spack/linaro-forge/25.0.4/i6z5
+      - spec: linaro-forge@25.1
+        prefix: /glade/u/apps/common/25.10/spack/opt/spack/linaro-forge/25.1/xg4z
       buildable: false
     lmod:
       prefer:
@@ -1394,6 +1396,7 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - linaro-forge
         - miniforge3
         - pixi
         - uv
@@ -1419,7 +1422,6 @@ spack:
         - wgrib2
         - ecflow
         - darshan-util
-        - linaro-forge
         - ncvis
         - ncl
         - cudnn
@@ -2288,3 +2290,4 @@ spack:
   - esmf@8.9.1+mpi %[when='%c'] c=cce@19.0.0 %[when='%cxx'] cxx=cce@19.0.0 %[when='%fortran'] fortran=cce@19.0.0 %[when='%blas'] blas=cray-libsci@25.03.0 %[when='%lapack'] lapack=cray-libsci@25.03.0 ^cray-mpich@8.1.32 %cce ^hdf5 %cce@19.0.0
   - esmf@8.9.1+mpi %[when='%c'] c=cce@19.0.0 %[when='%cxx'] cxx=cce@19.0.0 %[when='%fortran'] fortran=cce@19.0.0 %[when='%blas'] blas=cray-libsci@25.03.0 %[when='%lapack'] lapack=cray-libsci@25.03.0 ^cray-mpich@9.0.0 %cce ^hdf5 %cce@19.0.0
   - miniforge3
+  - linaro-forge@25.1

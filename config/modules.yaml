@@ -54,6 +54,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - linaro-forge
       - miniforge3
       - pixi
       - uv
@@ -79,7 +80,6 @@ modules:
       - wgrib2
       - ecflow
       - darshan-util
-      - linaro-forge
       - ncvis
       - ncl
       - cudnn
