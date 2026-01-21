@@ -982,6 +982,9 @@ spack:
       prefer:
       # Would do require, but ncvis barfs
       - build_system=cmake
+      require:
+      - spec: build_type=Debug
+        when: +logging
     nghttp2:
       prefer:
       - '%gcc@12.5.0'
@@ -1064,6 +1067,8 @@ spack:
       - +fortran
       - spec: ~pnetcdf
         when: ~mpi
+      - spec: build_type=Debug
+        when: +logging
     parallelio1:
       variants:
       - +pnetcdf
@@ -1486,7 +1491,7 @@ spack:
         - netcdf@4.9.3
         - nvhpc@25.09
         - parallelio+mpi+shared@2.6.6
-        - esmf+mpi
+        - esmf+mpi~debug
         - cuda@12.9.0
         - cudnn@9.8.0.87-12
         - intel-oneapi-compilers@2024.2.1
@@ -1872,8 +1877,10 @@ spack:
         projections:
           all: '{name}/{version}'
           fftw+mpi: fftw-mpi/{version}
+          netcdf+mpi+debug: netcdf-mpi/{version}-debug
           netcdf+mpi: netcdf-mpi/{version}
           hdf5+mpi: hdf5-mpi/{version}
+          esmf+mpi+debug: esmf-mpi/{version}-debug
           esmf+mpi: esmf-mpi/{version}
           parallelio~mpi: parallelio-serial/{version}
           netcdf: netcdf/{version}
@@ -1891,6 +1898,9 @@ spack:
           parallelio1: parallelio/{version}
           parallelio~shared: parallelio/{version}-static
           py-torch: libtorch/{version}
+          cppflags=-g: '{name}/{version}-debug'
+          build_type=Debug: '{name}/{version}-debug'
+          +debug: '{name}/{version}-debug'
         podman:
           environment:
             set:
@@ -2291,3 +2301,7 @@ spack:
   - esmf@8.9.1+mpi %[when='%c'] c=cce@19.0.0 %[when='%cxx'] cxx=cce@19.0.0 %[when='%fortran'] fortran=cce@19.0.0 %[when='%blas'] blas=cray-libsci@25.03.0 %[when='%lapack'] lapack=cray-libsci@25.03.0 ^cray-mpich@9.0.0 %cce ^hdf5 %cce@19.0.0
   - miniforge3
   - linaro-forge@25.1
+  - parallelio@2.6.8+logging %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc ^netcdf-c+logging ^netcdf-fortran cppflags=-g ^parallel-netcdf cppflags=-g
+  - netcdf@4.9.3+debug+mpi %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc
+  - esmf@8.9.1+debug+mpi %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc ^hdf5 %nvhpc@25.9 ^netcdf-c+logging ^netcdf-fortran cppflags=-g ^parallel-netcdf cppflags=-g ^parallelio+logging
+  - parallel-netcdf@1.14.1 cppflags=-g %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc

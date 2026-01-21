@@ -948,6 +948,9 @@ packages:
     prefer:
     # Would do require, but ncvis barfs
     - build_system=cmake
+    require:
+    - spec: build_type=Debug
+      when: +logging
   nghttp2:
     prefer:
     - '%gcc@12.5.0'
@@ -1030,6 +1033,8 @@ packages:
     - +fortran
     - spec: ~pnetcdf
       when: ~mpi
+    - spec: build_type=Debug
+      when: +logging
   parallelio1:
     variants:
     - +pnetcdf

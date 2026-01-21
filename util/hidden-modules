@@ -11,3 +11,7 @@ hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/23.09.lu
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/24.12.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/25.10.lua
 hide-modulefile /glade/u/apps/derecho/modules/environment/ncarenv-basic/default
+hide-modulefile /glade/u/apps/derecho/modules/25.10/cray-mpich/8.1.32/nvhpc/25.9/parallel-netcdf/1.14.1-debug.lua
+hide-modulefile /glade/u/apps/derecho/modules/25.10/cray-mpich/8.1.32/nvhpc/25.9/esmf-mpi/8.9.1-debug.lua
+hide-modulefile /glade/u/apps/derecho/modules/25.10/cray-mpich/8.1.32/nvhpc/25.9/parallelio/2.6.8-debug.lua
+hide-modulefile /glade/u/apps/derecho/modules/25.10/cray-mpich/8.1.32/nvhpc/25.9/netcdf-mpi/4.9.3-debug.lua

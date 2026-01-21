@@ -5,7 +5,7 @@
 #       Hides all modules from a specified list. Wildcards are supported.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   11:17, 11 Nov 2025
+#   Last Revised:   10:57, 21 Jan 2026
 #
 
 #
@@ -19,6 +19,7 @@
 #
 
 hide_list=" */*/mvapich/* */*/vasp/* */*/intel-mpi/* */*/mpich/* Core/libfabric/*-debug Core/aocc/*"
+find_list="*-debug.lua"
 
 #
 ##  BEGIN HIDDEN MODULE FILE GENERATION
@@ -26,6 +27,14 @@ hide_list=" */*/mvapich/* */*/vasp/* */*/intel-mpi/* */*/mpich/* Core/libfabric/
 
 for hl in $hide_list; do
     hide_mods="$(ls -1 --color=never $MOD_DEPLOYMENT/$hl 2> /dev/null || true)"
+
+    for hm in $hide_mods; do
+        hide_module $hm
+    done
+done
+
+for fl in $find_list; do
+    hide_mods="$(find $MOD_DEPLOYMENT -name $fl)"
 
     for hm in $hide_mods; do
         hide_module $hm

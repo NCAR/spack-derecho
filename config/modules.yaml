@@ -144,7 +144,7 @@ modules:
       - netcdf@4.9.3
       - nvhpc@25.09
       - parallelio+mpi+shared@2.6.6
-      - esmf+mpi
+      - esmf+mpi~debug
       - cuda@12.9.0
       - cudnn@9.8.0.87-12
       - intel-oneapi-compilers@2024.2.1
@@ -530,8 +530,10 @@ modules:
       projections:
         all: '{name}/{version}'
         fftw+mpi: fftw-mpi/{version}
+        netcdf+mpi+debug: netcdf-mpi/{version}-debug
         netcdf+mpi: netcdf-mpi/{version}
         hdf5+mpi: hdf5-mpi/{version}
+        esmf+mpi+debug: esmf-mpi/{version}-debug
         esmf+mpi: esmf-mpi/{version}
         parallelio~mpi: parallelio-serial/{version}
         netcdf: netcdf/{version}
@@ -549,6 +551,9 @@ modules:
         parallelio1: parallelio/{version}
         parallelio~shared: parallelio/{version}-static
         py-torch: libtorch/{version}
+        cppflags=-g: '{name}/{version}-debug'
+        build_type=Debug: '{name}/{version}-debug'
+        +debug: '{name}/{version}-debug'
       podman:
         environment:
           set:
