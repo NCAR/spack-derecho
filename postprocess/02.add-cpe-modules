@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   14:43, 29 Sep 2025
+#   Last Revised:   22:35, 22 Jan 2026
 #
 
 #
@@ -40,7 +40,7 @@ core="  craype/2.7.34
 
 # Specify compiler-dependent modules to import into the Spack module tree
 cdep="  cray-libsci/25.03.0
-        cray-mpich/8.1.32 default
+        cray-mpich/8.1.32 default variants=debug
         cray-mpich/9.0.0 cpe=25.03"
 
 # Specify mpi-dependent modules to import into the Spack module tree
@@ -217,6 +217,18 @@ cat >> $1 << EOF
 depends_on(atleast("gcc-toolchain", "12.0.0"))
 EOF
 fi
+
+if [[ $variant == debug ]]; then
+cat >> $1 << EOF
+
+-- Add debug versions of this library to the LD_LIBRARY_PATH
+local DEBUG_DIR = "$BASE_ROOT/extras/$mod_name/$mod_version/"
+prepend_path("LD_LIBRARY_PATH", DEBUG_DIR .. string.lower(COMPILER) .. "/lib-debug")
+
+-- We need to disable Cray RPATHing for this to work
+pushenv("CRAY_ADD_RPATH", "no")
+EOF
+fi
 }
 
 function modify_craype {
@@ -319,7 +331,7 @@ function copy_mods {
         tsecho "Package: $GCOL$mod$DCOL"
         
         # Set up known metadata
-        set_default=false mpich_cpe=
+        set_default=false mpich_cpe= variants=
 
         for meta_value in $mod_meta; do
             case $meta_value in
@@ -328,6 +340,9 @@ function copy_mods {
                     ;;
                 cpe=*)
                     mpich_cpe=${meta_value#*=}
+                    ;;
+                variants=*)
+                    variants=${meta_value#*=}
                     ;;
                 *)
                     tsecho "Error: unknown metadata $meta_value set on module $mod"
@@ -366,22 +381,36 @@ function copy_mods {
 
                 mod_path=$MOD_DEPLOYMENT/$comp
                 mkdir -p $mod_path/$mod_name
-                tsecho "    copying module from ${PCOL}${src_file}$DCOL (${PCOL}comp=$comp$DCOL)"
-                cp $src_file $mod_path/$mod_name
 
-                if [[ $set_default == true ]]; then
-                    ln -sf ${mod_version}.lua $mod_path/$mod_name/default
-                    tsecho "    creating ${PCOL}default$DCOL module symlink"
-                fi
+                for variant in default $variants; do
+                    tsecho "    copying module from ${PCOL}${src_file}$DCOL (${PCOL}comp=$comp, variant=$variant$DCOL)"
 
-                if [[ " $mpis " == *" $mod_name "* ]]; then
-                    modify_mpi $mod_path/${mod}.lua
-                    tsecho "    modified $GCOL$mod$DCOL (${PCOL}compat=$src_compat$DCOL) for use as MPI library"
-                elif [[ $mod_name == cray-libsci ]]; then
-                    modify_libsci $mod_path/${mod}.lua
-                fi
-                
-                set_dependency $mod_path/${mod}.lua
+                    if [[ $variant == default ]]; then
+                        unset mod_suffix
+                        cp $src_file $mod_path/$mod_name
+
+                        if [[ $set_default == true ]]; then
+                            ln -sf ${mod_version}.lua $mod_path/$mod_name/default
+                            tsecho "    creating ${PCOL}default$DCOL module symlink"
+                        fi
+                    else
+                        mod_suffix=-$variant
+                        cp $src_file $mod_path/$mod_name/${mod_version}${mod_suffix}.lua
+                    fi
+
+                    if [[ " $mpis " == *" $mod_name "* ]]; then
+                        modify_mpi $mod_path/$mod${mod_suffix}.lua
+
+                        if [[ $variant == default ]]; then
+                            tsecho "    modified $GCOL$mod$mod_suffix$DCOL (${PCOL}compat=$src_compat$DCOL) for use as MPI library"
+                        fi
+                    elif [[ $mod_name == cray-libsci ]]; then
+                        modify_libsci $mod_path/$mod${mod_suffix}.lua
+                    fi
+                    
+                    set_dependency $mod_path/$mod${mod_suffix}.lua
+                done
+
                 unset comp_name comp_version
             done
         else

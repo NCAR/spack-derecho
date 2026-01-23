@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+#   Unit: splice-debug-mpich
+#   Description:
+#       This postprocessing unit "splices" the Cray debug versions of
+#       cray-mpich libraries for use by other compilers since HPE only
+#       included Cray versions in cray-mpich <= 8.1.32, and afterward
+#       may only include Cray, Intel, and NVIDIA.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   22:32, 22 Jan 2026
+#
+
+#
+##  BEGIN CRAY-MPICH DEBUG LIBRARY SPLICING
+#
+
+mpich_versions=$(spack find --format "{name}/{version}" cray-mpich | uniq)
+
+for mpich in $mpich_versions; do
+    cray_path=$(ls --color=never -d /opt/cray/pe/${mpich/cray-}/ofi/cray/*/lib-debug 2> /dev/null)
+    
+    if [[ $? == 0 ]]; then
+        for compiler in crayclang gnu intel nvidia; do
+            version_root=$BASE_ROOT/extras/$mpich/$compiler
+            
+            # Let's not clobber if it already exists
+            if [[ -d $version_root ]]; then
+                continue
+            fi
+        
+            tsecho "    splicing debug mpich libraries for $GCOL$mpich$DCOL with compiler $PCOL$compiler$DCOL"
+
+            mkdir -p $version_root
+            comp_path=$(ls --color=never -d /opt/cray/pe/${mpich/cray-}/ofi/$compiler/*/lib-debug 2> /dev/null)
+
+            if [[ $? == 0 ]]; then
+                ln -s $comp_path $version_root/lib-debug
+            else
+                cray_libs=$(ls --color=never $cray_path)
+                comp_path=$(ls --color=never -d /opt/cray/pe/${mpich/cray-}/ofi/$compiler/*/lib 2> /dev/null)
+
+                if [[ $? == 0 ]]; then
+                    mkdir $version_root/lib-debug
+                    comp_libs=$(ls --color=never $comp_path)
+                    lib_id=$(grep libmpi_.*.a$ <<< $comp_libs | sed 's/libmpi_\([^\.]*\).*/\1/')
+
+                    for libfile in $cray_libs; do
+                        if [[ -L $debug_libs/$libfile ]]; then
+                            link_target=$(basename $(readlink -f $cray_path/$libfile) | sed "s/cray/$lib_id/")
+                            ln -s $link_target $version_root/lib-debug/${libfile/cray/$lib_id}
+                        else
+                            ln -s $cray_path/$libfile $version_root/lib-debug/${libfile/cray/$lib_id}
+                        fi
+                    done
+                fi
+            fi
+        done
+    fi
+done
