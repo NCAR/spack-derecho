@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   22:35, 22 Jan 2026
+#   Last Revised:   09:44, 26 Jan 2026
 #
 
 #
@@ -45,6 +45,9 @@ cdep="  cray-libsci/25.03.0
 
 # Specify mpi-dependent modules to import into the Spack module tree
 mdep="  cray-mpixlate/1.0.2"
+
+# Override auto-detection of component versions
+cti_explicit=2.18.3     # Latest version has GLIBCXX symbols not supported by Forge 25.1
 
 #
 ##  FUNCTION DEFINITIONS
@@ -87,6 +90,9 @@ cat >> $1 << EOF
 setenv("NCAR_ROOT_CCE",             CCE_M_CURPATH)
 setenv("NCAR_ROOT_COMPILER",        CCE_M_CURPATH)
 
+setenv("NCAR_MFLAGS_PROFILE_C",         "-g1 -O3 -fno-inline-functions -fno-optimize-sibling-calls")
+setenv("NCAR_MFLAGS_PROFILE_FORTRAN",   "-G2 -O3 -h ipa0")
+
 -- Always try loading cray-libsci, since crayftn will use it (but not link!)
 depends_on("cray-libsci")
 EOF
@@ -109,8 +115,8 @@ fi
 
 function modify_mpi {
 mpich_cpe=${mpich_cpe:-$(get_cpe_version $mod_name $mod_version)}
-pmi_version=$(get_package_version $mpich_cpe pmi)
-cti_version=$(get_package_version $mpich_cpe cti)
+pmi_version=${pmi_explicit:-$(get_package_version $mpich_cpe pmi)}
+cti_version=${cti_explicit:-$(get_package_version $mpich_cpe cti)}
 
 if [[ $log_me != no ]]; then
 tsecho "    using CPE=$mpich_cpe, PALS=$pals_version, PMI=$pmi_version, CTI=$cti_version"

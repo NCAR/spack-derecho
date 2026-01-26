@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+#   Unit: add-compile-tool-modules
+#   Description:
+#       This postprocessing unit adds modules that activate compiler-wrapper
+#       modes which make it easier to build code ready for debugging and
+#       profiling with tools like Linaro Forge and CrayPAT.
+#
+#   Author:         Brian Vanderwende
+#   Last Revised:   09:29, 26 Jan 2026
+#
+
+#
+##  USER INPUT
+#
+
+declare -A module_versions
+module_versions[debug]=1.0
+module_versions[profile]=1.0
+
+#
+##  UNIT DEPENDENCIES
+#
+
+. $POSTPROCESS_UNIT_DIR/hide-module.helper
+
+#
+##  BEGIN HELPER MODULE GENERATION
+#
+
+# Create these modules from templates; hide them for now until they are robust
+for module_type in ${!module_versions[@]}; do
+    module_path=$MOD_DEPLOYMENT/Core/${module_type}-compile
+    mkdir -p $module_path
+    module_file=$module_path/${module_versions[$module_type]}.lua
+    sed "s|%DATE%|$(date)|g" $NCAR_SPACK_ENV_BUILD/templates/modules/$module_type.lua > $TMP_FILE
+    sed -i "s|%VERSION%|${module_versions[$module_type]}|g" $TMP_FILE
+    mv $TMP_FILE $module_file
+    hide_module $module_file
+done

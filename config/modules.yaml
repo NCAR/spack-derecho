@@ -27,6 +27,7 @@ modules:
         environment:
           set:
             NCAR_ROOT_{name}: '{prefix}'
+            NCAR_VERSION_{name}: '{version}'
             NCAR_SPACK_HASH_{name}: '{hash}'
         template: ncar_default.lua
       apptainer:
@@ -141,6 +142,7 @@ modules:
             DARSHAN_MOD_DISABLE: LUSTRE
             DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
       defaults:
+      - ncarcompilers@1.1.0
       - netcdf@4.9.3
       - nvhpc@25.09
       - parallelio+mpi+shared@2.6.6
@@ -239,6 +241,7 @@ modules:
             NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
             NCAR_ID_COMPILER: '{name}-{version}'
             NCAR_ROOT_COMPILER: '{prefix}'
+            NCAR_MFLAGS_PROFILE: -g1 -O3 -fno-inline -fno-optimize-sibling-calls
             PE_ENV: GNU
       hash_length: 0
       hdf5+mpi:
@@ -282,6 +285,7 @@ modules:
             NCAR_ROOT_COMPILER: '{prefix}'
             NCAR_ROOT_INTEL: '{prefix}'
             NCAR_SPACK_HASH_INTEL: '{hash}'
+            NCAR_MFLAGS_PROFILE: -debug minimal -O3 -fno-inline -no-ip -no-ipo -fno-omit-frame-pointer -fno-optimize-sibling-calls
             OMPI_CC: icx
             OMPI_CXX: icpx
             OMPI_F77: ifx
@@ -467,6 +471,7 @@ modules:
             NCAR_BUILD_ENV_COMPILER: derecho-{name}-{version}
             NCAR_ID_COMPILER: '{name}-{version}'
             NCAR_ROOT_COMPILER: '{prefix}'
+            NCAR_MFLAGS_PROFILE: -g -O3 -Meh_frame -Mnoautoinline
             NVIDIA_PATH: '{prefix}'
             NVIDIA_VERSION: '{version}'
             PE_ENV: NVIDIA
