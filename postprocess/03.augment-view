@@ -6,7 +6,7 @@
 #       make user software easier to build (e.g., RPC symlinking).
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   09:21, 28 Jan 2026
+#   Last Revised:   13:28, 28 Jan 2026
 #
 
 #
@@ -62,6 +62,7 @@ if [[ $NCAR_SPACK_HOST != gust ]]; then
     ncar_utils[diffuse]=precise-container
     ncar_utils[snapls]=gladequota
     ncar_utils[cs-usage]=benkirk:hpc-usage-queries
+    ncar_utils[sam-search]=benkirk:sam-queries
 fi
 
 # These utilites don't actually come from github tracked repos, so let's not
@@ -69,7 +70,7 @@ fi
 skip_clone="gladequota leap-container/$suse_major precise-container"
 
 # These are tracked by github but we may not want to use the latest version
-skip_update="hpc-usage-queries"
+skip_update="hpc-usage-queries sam-queries"
 
 #
 ##  BEGIN METAMODULE GENERATION
