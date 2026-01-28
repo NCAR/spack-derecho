@@ -6,7 +6,7 @@
 #       make user software easier to build (e.g., RPC symlinking).
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   20:04, 04 Nov 2025
+#   Last Revised:   09:21, 28 Jan 2026
 #
 
 #
@@ -61,11 +61,15 @@ if [[ $NCAR_SPACK_HOST != gust ]]; then
     ncar_utils[diffmerge]=precise-container
     ncar_utils[diffuse]=precise-container
     ncar_utils[snapls]=gladequota
+    ncar_utils[cs-usage]=benkirk:hpc-usage-queries
 fi
 
 # These utilites don't actually come from github tracked repos, so let's not
 # clone them
 skip_clone="gladequota leap-container/$suse_major precise-container"
+
+# These are tracked by github but we may not want to use the latest version
+skip_update="hpc-usage-queries"
 
 #
 ##  BEGIN METAMODULE GENERATION
@@ -101,7 +105,7 @@ if [[ $SPACK_ENV == $NCAR_SPACK_ENV_PUBLIC ]]; then
 
         if [[ ! -e $NCAR_SPACK_ROOT_BASE/utils/bin/$util ]]; then
             # First, let's make sure the repo is up to date (and submodules pulled)
-            if [[ $my_user == $utils_owner ]] && [[ -d $util_root/$repo_name/.git ]]; then
+            if [[ $my_user == $utils_owner ]] && [[ " $skip_update " != *" $repo_name "* ]] && [[ -d $util_root/$repo_name/.git ]]; then
                 cd $util_root/$repo_name
                 git pull > /dev/null
 
