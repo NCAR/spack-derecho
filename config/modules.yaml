@@ -577,3 +577,19 @@ modules:
         filter:
           exclude_env_vars:
           - GOPATH
+      +debug:
+        environment:
+          append_path:
+            NCAR_SOURCE_DIRS: '{prefix}/share/{name}/src'
+      netcdf+debug:
+        environment:
+          append_path:
+            NCAR_SOURCE_DIRS: '{^netcdf-c.prefix}/share/netcdf-c/src:{^netcdf-fortran.prefix}/share/netcdf-fortran/src:{^netcdf-cxx4.prefix}/share/netcdf-cxx4/src'
+      cppflags=-g:
+        environment:
+          append_path:
+            NCAR_SOURCE_DIRS: '{prefix}/share/{name}/src'
+      build_type=Debug:
+        environment:
+          append_path:
+            NCAR_SOURCE_DIRS: '{prefix}/share/{name}/src'
