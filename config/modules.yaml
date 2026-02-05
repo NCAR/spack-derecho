@@ -55,6 +55,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - cprnc
       - linaro-forge
       - miniforge3
       - pixi
@@ -143,7 +144,7 @@ modules:
             DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
       defaults:
       - ncarcompilers@1.1.0
-      - netcdf@4.9.3
+      - netcdf@4.9.3~debug
       - nvhpc@25.09
       - parallelio+mpi+shared@2.6.6
       - esmf+mpi~debug

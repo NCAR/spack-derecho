@@ -1,9 +1,4 @@
 packages:
-  pkg-config:
-    externals:
-    - spec: pkg-config@0.29.2
-      prefix: /usr
-    buildable: false
   lustre:
     externals:
     - spec: lustre@2.15.6.1_cray_100_g2c66dd0
@@ -18,6 +13,11 @@ packages:
     buildable: false
     require:
     - certs=system
+  pkg-config:
+    externals:
+    - spec: pkg-config@0.29.2
+      prefix: /usr
+    buildable: false
   gcc:
     externals:
     - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -1053,6 +1053,10 @@ packages:
   perl:
     prefer:
     - '%gcc@12.5.0'
+  pfunit:
+    variants:
+    - ~mpi
+    - ~openmp
   podman:
     prefer:
     - '%gcc@12.5.0'
@@ -1243,5 +1247,8 @@ packages:
     prefer:
     - '%gcc@12.5.0'
   zziplib:
+    prefer:
+    - '%gcc@12.5.0'
+  cprnc:
     prefer:
     - '%gcc@12.5.0'

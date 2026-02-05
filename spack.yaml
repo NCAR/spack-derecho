@@ -33,11 +33,6 @@ spack:
       NVCCFLAGS: -allow-unsupported-compiler
       NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   packages:
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
     lustre:
       externals:
       - spec: lustre@2.15.6.1_cray_100_g2c66dd0
@@ -52,6 +47,11 @@ spack:
       buildable: false
       require:
       - certs=system
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
     gcc:
       externals:
       - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -1087,6 +1087,10 @@ spack:
     perl:
       prefer:
       - '%gcc@12.5.0'
+    pfunit:
+      variants:
+      - ~mpi
+      - ~openmp
     podman:
       prefer:
       - '%gcc@12.5.0'
@@ -1279,6 +1283,9 @@ spack:
     zziplib:
       prefer:
       - '%gcc@12.5.0'
+    cprnc:
+      prefer:
+      - '%gcc@12.5.0'
   view:
     baseenv:
       root: /glade/u/apps/derecho/25.10/opt/view
@@ -1402,6 +1409,7 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - cprnc
         - linaro-forge
         - miniforge3
         - pixi
@@ -1490,7 +1498,7 @@ spack:
               DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
         defaults:
         - ncarcompilers@1.1.0
-        - netcdf@4.9.3
+        - netcdf@4.9.3~debug
         - nvhpc@25.09
         - parallelio+mpi+shared@2.6.6
         - esmf+mpi~debug
@@ -2330,3 +2338,7 @@ spack:
   - parallel-netcdf@1.14.1 cppflags=-g %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc
   - parallelio@2.6.8+logging %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc ^netcdf-c+logging ^netcdf-fortran cppflags=-g ^parallel-netcdf cppflags=-g
   - esmf@8.9.1+debug+mpi %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^cray-mpich@8.1.32 %nvhpc ^hdf5 %nvhpc@25.9 ^netcdf-c+logging ^netcdf-fortran cppflags=-g ^parallel-netcdf cppflags=-g ^parallelio+logging
+  - cprnc %[when='%c'] c=gcc@12.5.0 %[when='%cxx'] cxx=gcc@12.5.0 %[when='%fortran'] fortran=gcc@12.5.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^hdf5 %gcc@12.5.0
+  - pfunit@4.14.0 %[when='%c'] c=nvhpc@25.9 %[when='%cxx'] cxx=nvhpc@25.9 %[when='%fortran'] fortran=nvhpc@25.9 %[when='%blas'] blas=nvhpc@25.9 %[when='%lapack'] lapack=nvhpc@25.9 ^gftl %nvhpc@25.9
+  - pfunit@4.14.0 %[when='%c'] c=oneapi@2025.2.1 %[when='%cxx'] cxx=oneapi@2025.2.1 %[when='%fortran'] fortran=oneapi@2025.2.1 %[when='%blas'] blas=intel-oneapi-mkl@2025 %[when='%lapack'] lapack=intel-oneapi-mkl@2025 ^gftl %oneapi@2025.2.1
+  - pfunit@4.14.0 %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30 ^gftl %gcc@14.3.0
