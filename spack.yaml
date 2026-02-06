@@ -1896,6 +1896,7 @@ spack:
           esmf+mpi+debug: esmf-mpi/{version}-debug
           esmf+mpi: esmf-mpi/{version}
           parallelio~mpi: parallelio-serial/{version}
+          parallelio~mpi build_type=Debug: parallelio-serial/{version}-debug
           netcdf: netcdf/{version}
           intel-oneapi-advisor: intel-advisor/{version}
           intel-oneapi-compilers@2024: intel-oneapi/{version}
