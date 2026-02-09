@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   09:44, 26 Jan 2026
+#   Last Revised:   11:17, 09 Feb 2026
 #
 
 #
@@ -458,6 +458,19 @@ function copy_mods {
 #
 ##  BEGIN CRAY PROGRAMMING ENVIRONMENT INTEGRATION
 #
+
+# Generate or update a separate module set designed to provide access to CSG-installed
+# compilers within the Cray environment. This allows the user to load other Programming
+# Environments aside from those utilizing an HPE-provided compiler.
+tsecho "Checking for crayenv module definitions in spack.yaml"
+crayenv_lmod=$(spack config get modules | grep lmod:.*crayenv | awk '{print $2}')
+
+if [[ -n $crayenv_lmod ]]; then
+    if [[ ${NCAR_SPACK_ENV_TYPE:-build} == public ]] || [[ ! -e $crayenv_lmod ]]; then
+        tsecho " >> Generating modules: $GCOL$crayenv_lmod$DCOL"
+        spack module lmod -n crayenv refresh -y
+    fi
+fi
 
 tsecho "Copying core modules to $MOD_ROOT"
 

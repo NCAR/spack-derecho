@@ -6,7 +6,7 @@
 #       attractive with descriptive section headers.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   10:55, 11 Aug 2025
+#   Last Revised:   15:04, 09 Feb 2026
 #
 
 tsecho "Creating Lmod functionality extensions"
@@ -21,7 +21,7 @@ local mapT =
 {
    grouped = {
       ['/environment$'] = "Module Stack Environments",
-      ['/Core$'] = "Compilers and Core Software",
+      ['/[Cc]ore$'] = "Compilers and Core Software",
 EOF
 
 comp_cat_list="aocc arm cce clang gcc intel nag oneapi nvhpc intel-oneapi-compilers"

@@ -7,7 +7,7 @@
 #       CPE is provided as-is without support for power users.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   10:30, 11 Aug 2025
+#   Last Revised:   11:10, 09 Feb 2026
 #
 
 #
@@ -45,6 +45,7 @@ for cpe_version in $(find /opt/cray/pe/cpe -mindepth 1 -maxdepth 1 -type d -exec
     sed -i "s|%DATE%|$(date)|g" $TMP_FILE
     sed -i "s|%DEFMODS%|crayenv/${cpe_version}:$my_defmods|g" $TMP_FILE
     sed -i "s|%TMPROOT%|$NCAR_SPACK_TMPROOT|g" $TMP_FILE
+    sed -i "s|%SPACKMODS%|$MOD_ROOT/crayenv/Core|g" $TMP_FILE
     mv $TMP_FILE $mm_file
 
     if [[ $SPACK_ENV == $NCAR_SPACK_ENV_PUBLIC ]]; then

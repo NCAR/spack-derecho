@@ -7,23 +7,42 @@
 #       maintains like development and beta versions of libraries.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   20:20, 28 Oct 2024
+#   Last Revised:   08:30, 06 Feb 2026
 #
 
 #
 ##  UNIT DEPENDENCIES
 #
 
-. $POSTPROCESS_UNIT_DIR/hide-module.helper
+if [[ -f $POSTPROCESS_UNIT_DIR/hide-module.helper ]]; then
+    . $POSTPROCESS_UNIT_DIR/hide-module.helper
+fi
 
 #
 ##  BEGIN METAMODULE GENERATION
 #
 
-# Create developer addon modules and hide them
-mkdir -p $MOD_ROOT/environment/cesmdev
-mm_file=$MOD_ROOT/environment/cesmdev/1.0.lua
-sed "s|%DATE%|$(date)|g" $NCAR_SPACK_ENV_BUILD/templates/modules/cesmdev.lua > $TMP_FILE
-sed -i "s|%HOST%|$NCAR_SPACK_HOST|g" $TMP_FILE
-mv $TMP_FILE $mm_file
-hide_module $mm_file
+if [[ $NCAR_SPACK_HOST == cesmdev ]]; then
+    # If this is a cesmdev deployment, we only want to create modules for testing
+    mkdir -p $SPACK_ENV/modules/environment/cesmdev
+    mm_file=$SPACK_ENV/modules/environment/cesmdev/test.lua
+    sed "s|%DATE%|$(date)|g" $NCAR_SPACK_ENV_BUILD/templates/modules/cesmdev.lua > $TMP_FILE
+    sed -i "s|%STACKMAJOR%|${NCAR_SPACK_HOST_VERSION%%.*}|g" $TMP_FILE
+
+    if [[ ${NCAR_SPACK_ENV_TYPE:-build} == build ]]; then
+        sed -i "s|%MODULEPATH%|$SPACK_ENV/modules|g" $TMP_FILE
+    else
+        sed -i "s|%MODULEPATH%|$MOD_ROOT|g" $TMP_FILE
+    fi
+
+    mv $TMP_FILE $mm_file
+else
+    # If this is a full stack (Derecho) we create a module for public usage
+    mkdir -p $MOD_ROOT/environment/cesmdev
+    mm_file=$MOD_ROOT/environment/cesmdev/1.0.lua
+    sed "s|%DATE%|$(date)|g" $NCAR_SPACK_ENV_BUILD/templates/modules/cesmdev.lua > $TMP_FILE
+    sed -i "s|%STACKMAJOR%|${NCAR_SPACK_HOST_VERSION%%.*}|g" $TMP_FILE
+    sed -i "s|%MODULEPATH%|/glade/u/apps/cesmdev/modules|g" $TMP_FILE
+    mv $TMP_FILE $mm_file
+    hide_module $mm_file
+fi

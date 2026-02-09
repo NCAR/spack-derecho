@@ -6,7 +6,7 @@ local mapT =
 {
    grouped = {
       ['/environment$'] = "Module Stack Environments",
-      ['/Core$'] = "Compilers and Core Software",
+      ['/[Cc]ore$'] = "Compilers and Core Software",
       ['modules/[^/]+/cray%-mpich/[^/]+/aocc/[^/]*$'] = 'MPI-dependent Software - [aocc + cray-mpich]',
       ['modules/[^/]+/hpcx%-mpi/[^/]+/aocc/[^/]*$'] = 'MPI-dependent Software - [aocc + hpcx-mpi]',
       ['modules/[^/]+/intel%-mpi/[^/]+/aocc/[^/]*$'] = 'MPI-dependent Software - [aocc + intel-mpi]',
