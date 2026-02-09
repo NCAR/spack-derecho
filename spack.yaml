@@ -1351,6 +1351,60 @@ spack:
       link_type: symlink
       link: roots
   modules:
+    crayenv:
+      roots:
+        lmod: /glade/u/apps/derecho/modules/25.10
+      arch_folder: false
+      lmod:
+        exclude:
+        - '@:'
+        exclude_implicits: false
+        hash_length: 0
+        hierarchy:
+        - mpi
+        include:
+        - gcc@14.3.0
+        - intel-oneapi-compilers
+        - nvhpc
+        core_compilers:
+        - gcc@7.5.0
+        - gcc@12.5.0
+        gcc:
+          environment:
+            set:
+              GNU_PATH: '{prefix}'
+              GNU_VERSION: '{version}'
+              PE_ENV: GNU
+        intel-oneapi-compilers:
+          environment:
+            set:
+              INTEL_COMPILER_TYPE: ONEAPI
+              INTEL_PATH: '{prefix}'
+              INTEL_VERSION: '{version}'
+              I_MPI_CC: icx
+              I_MPI_CXX: icpx
+              I_MPI_F77: ifx
+              I_MPI_F90: ifx
+              I_MPI_FC: ifx
+              OMPI_CC: icx
+              OMPI_CXX: icpx
+              OMPI_F77: ifx
+              OMPI_FC: ifx
+              MPICH_CC: icx
+              MPICH_CXX: icpx
+              MPICH_FC: ifx
+              PE_ENV: INTEL
+        nvhpc:
+          environment:
+            set:
+              CRAY_NVIDIA_VERSION: '{version}'
+              NVIDIA_PATH: '{prefix}'
+              NVIDIA_VERSION: '{version}'
+              PE_ENV: NVIDIA
+            prepend_path:
+              LD_LIBRARY_PATH: '{prefix}/Linux_x86_64/{version}/compilers/lib'
+        projections:
+          intel-oneapi-compilers: intel/{version}
     'default:':
       roots:
         lmod: /glade/u/apps/derecho/modules/25.10
@@ -1895,8 +1949,8 @@ spack:
           hdf5+mpi: hdf5-mpi/{version}
           esmf+mpi+debug: esmf-mpi/{version}-debug
           esmf+mpi: esmf-mpi/{version}
-          parallelio~mpi: parallelio-serial/{version}
           parallelio~mpi build_type=Debug: parallelio-serial/{version}-debug
+          parallelio~mpi: parallelio-serial/{version}
           netcdf: netcdf/{version}
           intel-oneapi-advisor: intel-advisor/{version}
           intel-oneapi-compilers@2024: intel-oneapi/{version}
