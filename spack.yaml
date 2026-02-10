@@ -1356,6 +1356,8 @@ spack:
         lmod: /glade/u/apps/derecho/modules/25.10
       arch_folder: false
       lmod:
+        all:
+          template: cpe_compiler.lua
         exclude:
         - '@:'
         exclude_implicits: false
@@ -1375,6 +1377,11 @@ spack:
               GNU_PATH: '{prefix}'
               GNU_VERSION: '{version}'
               PE_ENV: GNU
+              PRGENV: gnu
+              COMPAT_VERSION: '12.0'
+              CRAY_LMOD_COMPILER: gnu/12.0
+            prepend_path:
+              MODULEPATH: /opt/cray/pe/lmod/modulefiles/comnet/gnu/12.0/ofi/1.0:/opt/cray/pe/lmod/modulefiles/compiler/gnu/12.0:/opt/cray/pe/lmod/modulefiles/mix_compilers
         intel-oneapi-compilers:
           environment:
             set:
@@ -1394,6 +1401,11 @@ spack:
               MPICH_CXX: icpx
               MPICH_FC: ifx
               PE_ENV: INTEL
+              PRGENV: intel
+              COMPAT_VERSION: '2023.2'
+              CRAY_LMOD_COMPILER: intel/2023.2
+            prepend_path:
+              MODULEPATH: /opt/cray/pe/lmod/modulefiles/comnet/intel/2023.2/ofi/1.0:/opt/cray/pe/lmod/modulefiles/compiler/intel/2023.2:/opt/cray/pe/lmod/modulefiles/mix_compilers
         nvhpc:
           environment:
             set:
@@ -1401,7 +1413,11 @@ spack:
               NVIDIA_PATH: '{prefix}'
               NVIDIA_VERSION: '{version}'
               PE_ENV: NVIDIA
+              PRGENV: nvidia
+              COMPAT_VERSION: '20'
+              CRAY_LMOD_COMPILER: nvidia/20
             prepend_path:
+              MODULEPATH: /opt/cray/pe/lmod/modulefiles/comnet/nvidia/20/ofi/1.0:/opt/cray/pe/lmod/modulefiles/compiler/nvidia/20:/opt/cray/pe/lmod/modulefiles/mix_compilers
               LD_LIBRARY_PATH: '{prefix}/Linux_x86_64/{version}/compilers/lib'
         projections:
           intel-oneapi-compilers: intel/{version}
@@ -1908,6 +1924,7 @@ spack:
               # Open MPI puts Fortran modules in an atypical place
               # https://github.com/open-mpi/ompi/issues/12600
               NCAR_INC_OPENMPIMOD: '{prefix}/lib'
+              FORGE_MPI: openmpi
             prepend_path:
               LD_LIBRARY_PATH: '{prefix}/lib'
         parallel-netcdf:

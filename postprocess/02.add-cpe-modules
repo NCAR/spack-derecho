@@ -7,7 +7,7 @@
 #       many packages are not tracked in Spack at all.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   11:17, 09 Feb 2026
+#   Last Revised:   21:43, 09 Feb 2026
 #
 
 #
@@ -205,6 +205,9 @@ setenv("NCAR_BUILD_ENV_MPI",    my_ncar_env)
 pushenv("NCAR_BUILD_ENV",       my_ncar_env)
 setenv("NCAR_ROOT_CRAY_MPICH",  MPICH_DIR)
 setenv("NCAR_ROOT_MPI",         MPICH_DIR)
+
+-- Helper variables for tools
+setenv("FORGE_MPI", "Cray PALS")
 
 -- If GPUs available, depend on CUDA
 local num_gpus = os.getenv("NGPUS")
