@@ -6,7 +6,7 @@
 #       version ncarenv stacks.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   19:04, 17 Feb 2026
+#   Last Revised:   19:12, 17 Feb 2026
 #
 
 #
@@ -44,6 +44,7 @@ cat >> $TMP_FILE << EOF
 -- If we use MPICH on Derecho (e.g., conda), we want the OFI netmod
 setenv("MPIR_CVAR_CH4_NETMOD", "ofi")
 EOF
+}
 
 #
 ##  BEGIN METAMODULE GENERATION
