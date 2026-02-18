@@ -6,7 +6,7 @@
 #       version ncarenv stacks.
 #
 #   Author:         Brian Vanderwende
-#   Last Revised:   23:41, 30 Oct 2025
+#   Last Revised:   19:04, 17 Feb 2026
 #
 
 #
@@ -38,6 +38,13 @@ end
 EOF
 }
 
+function add_mpi_settings {
+cat >> $TMP_FILE << EOF
+
+-- If we use MPICH on Derecho (e.g., conda), we want the OFI netmod
+setenv("MPIR_CVAR_CH4_NETMOD", "ofi")
+EOF
+
 #
 ##  BEGIN METAMODULE GENERATION
 #
@@ -68,6 +75,10 @@ for mod_type in ncarenv ncarenv-basic; do
         tsecho "    Inserting core compiler root into metamodule"
         cc_root=${cc_root:-$(spack location -i $NCAR_SPACK_CORE_GCC)}
         add_core_gcc
+    fi
+
+    if [[ $NCAR_SPACK_HOST =~ (derecho|gust) ]] && [[ $mod_type != *-basic ]]; then
+        add_mpi_settings
     fi
 
     mv $TMP_FILE $mm_file
