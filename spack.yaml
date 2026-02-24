@@ -38,6 +38,11 @@ spack:
       - spec: lustre@2.15.6.1_cray_100_g2c66dd0
         prefix: /usr
       buildable: false
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
     openssl:
       externals:
       - spec: openssl@1.1.1w-fips
@@ -47,11 +52,6 @@ spack:
       buildable: false
       require:
       - certs=system
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
     gcc:
       externals:
       - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -766,8 +766,6 @@ spack:
       require:
       # Doesn't build without proj as a dependency for me
       - +proj
-      prefer:
-      - '%gcc@12.5.0'
     libibn2:
       prefer:
       - '%gcc@12.5.0'
@@ -1479,6 +1477,8 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - intel-oneapi-mkl
+        - intel-oneapi-compilers
         - cprnc
         - linaro-forge
         - miniforge3
@@ -1492,7 +1492,6 @@ spack:
         - gcc
         - intel-oneapi-advisor
         - intel-oneapi-vtune
-        - intel-oneapi-mkl
         - heaptrack
         - cmor
         - nco
@@ -1518,7 +1517,6 @@ spack:
         - meson
         - cmake
         - cce
-        - intel-oneapi-compilers
         - nvhpc
         - charliecloud
         - rstudio
@@ -1567,14 +1565,14 @@ spack:
               DARSHAN_MOD_DISABLE: LUSTRE
               DARSHAN_SHARED_LIB: '{prefix}/lib/libdarshan.so'
         defaults:
-        - ncarcompilers@1.1.0
+        - ncarcompilers@1.2.0
         - netcdf@4.9.3~debug
         - nvhpc@25.09
-        - parallelio+mpi+shared@2.6.6
+        - parallelio+mpi+shared
         - esmf+mpi~debug
         - cuda@12.9.0
         - cudnn@9.8.0.87-12
-        - intel-oneapi-compilers@2024.2.1
+        - intel-oneapi-compilers@2025.2.1
         - libfabric@1.22.0
         esmf:
           autoload: none
