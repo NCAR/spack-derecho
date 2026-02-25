@@ -139,6 +139,13 @@ packages:
           c: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2/compiler/2025.2/bin/icx
           cxx: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2/compiler/2025.2/bin/icpx
           fortran: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.2.1/s4f2/compiler/2025.2/bin/ifx
+    - spec: intel-oneapi-compilers@2025.3.2
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.3.2/snvt
+      extra_attributes:
+        compilers:
+          c: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.3.2/snvt/compiler/2025.3/bin/icx
+          cxx: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.3.2/snvt/compiler/2025.3/bin/icpx
+          fortran: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-compilers/2025.3.2/snvt/compiler/2025.3/bin/ifx
   pkgconfig:
     buildable: false
     prefer:
@@ -637,6 +644,8 @@ packages:
     externals:
     - spec: intel-oneapi-advisor@2025.3.0
       prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-advisor/2025.3.0/gcc/12.5.0/fyfp
+    - spec: intel-oneapi-advisor@2025.4.1
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-advisor/2025.4.1/gcc/12.5.0/rt7t
   intel-oneapi-mkl:
     require:
     - spec: +gfortran threads=openmp
@@ -655,6 +664,8 @@ packages:
     externals:
     - spec: intel-oneapi-vtune@2025.6.0
       prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-vtune/2025.6.0/gcc/12.5.0/e3bw
+    - spec: intel-oneapi-vtune@2025.8.1
+      prefix: /glade/u/apps/common/25.10/spack/opt/spack/intel-oneapi-vtune/2025.8.1/gcc/12.5.0/kwf5
   ioapi:
     require:
     - cflags=-Wno-error=implicit-function-declaration
