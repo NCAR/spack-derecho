@@ -22,3 +22,4 @@ hide-modulefile /glade/u/apps/derecho/modules/25.10/gcc/14.3.0/cray-mpich/8.1.32
 hide-modulefile /glade/u/apps/derecho/modules/25.10/Core/profile-compile/1.0.lua
 hide-modulefile /glade/u/apps/derecho/modules/25.10/Core/debug-compile/1.0.lua
 hide-modulefile /glade/u/apps/derecho/modules/25.10/intel-oneapi-compilers/2025.3.2/cray-mpich/8.1.32-debug.lua
+hide-modulefile /glade/u/apps/derecho/modules/25.10/nvhpc/26.1/cray-mpich/8.1.32-debug.lua

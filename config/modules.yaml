@@ -123,6 +123,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - nvhpc
       - intel-oneapi-mkl
       - intel-oneapi-compilers
       - cprnc
@@ -163,7 +164,6 @@ modules:
       - meson
       - cmake
       - cce
-      - nvhpc
       - charliecloud
       - rstudio
       - idl

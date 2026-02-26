@@ -33,16 +33,6 @@ spack:
       NVCCFLAGS: -allow-unsupported-compiler
       NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   packages:
-    lustre:
-      externals:
-      - spec: lustre@2.15.6.1_cray_100_g2c66dd0
-        prefix: /usr
-      buildable: false
-    pkg-config:
-      externals:
-      - spec: pkg-config@0.29.2
-        prefix: /usr
-      buildable: false
     openssl:
       externals:
       - spec: openssl@1.1.1w-fips
@@ -52,6 +42,16 @@ spack:
       buildable: false
       require:
       - certs=system
+    pkg-config:
+      externals:
+      - spec: pkg-config@0.29.2
+        prefix: /usr
+      buildable: false
+    lustre:
+      externals:
+      - spec: lustre@2.15.6.1_cray_100_g2c66dd0
+        prefix: /usr
+      buildable: false
     gcc:
       externals:
       - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -152,6 +152,13 @@ spack:
             c: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvc
             cxx: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvc++
             fortran: /glade/u/apps/casper/24.12/spack/opt/spack/nvhpc/25.9/gcc/12.4.0/luur/Linux_x86_64/25.9/compilers/bin/nvfortran
+      - spec: nvhpc@26.1
+        prefix: /glade/u/apps/common/25.10/spack/opt/spack/nvhpc/26.1/tl4a
+        extra_attributes:
+          compilers:
+            c: /glade/u/apps/common/25.10/spack/opt/spack/nvhpc/26.1/tl4a/Linux_x86_64/26.1/compilers/bin/nvc
+            cxx: /glade/u/apps/common/25.10/spack/opt/spack/nvhpc/26.1/tl4a/Linux_x86_64/26.1/compilers/bin/nvc++
+            fortran: /glade/u/apps/common/25.10/spack/opt/spack/nvhpc/26.1/tl4a/Linux_x86_64/26.1/compilers/bin/nvfortran
     intel-oneapi-compilers:
       variants:
       - +nvidia
@@ -1030,15 +1037,19 @@ spack:
       - '%gcc@12.5.0'
     openmpi:
       require:
-      - fabrics=cma,ofi
-      - schedulers=tm
+      - fabrics:=cma,ofi
+      - +fortran
+      - schedulers:=tm
       - +gpfs
       - +lustre
       - +internal-pmix
       - +cuda
       - +romio
-      - romio-filesystem=nfs,gpfs,lustre,ufs
+      - romio-filesystem:=nfs,gpfs,lustre,ufs
       - spec: ^libfabric@2 fabrics=cxi,lnx,mrail,rxd,rxm,shm,sockets,tcp,udp
+      prefer:
+      - spec: cuda_arch=80
+        when: ^cuda
     openpbs:
       externals:
       - spec: openpbs@2021.1.3
@@ -1488,6 +1499,7 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - nvhpc
         - intel-oneapi-mkl
         - intel-oneapi-compilers
         - cprnc
@@ -1528,7 +1540,6 @@ spack:
         - meson
         - cmake
         - cce
-        - nvhpc
         - charliecloud
         - rstudio
         - idl
@@ -2127,6 +2138,17 @@ spack:
       when: '%blas'
     - spec: '%lapack=intel-oneapi-mkl@2025.3.1'
       when: '%lapack'
+    nvhpc-261:
+    - spec: '%c=nvhpc@26.1'
+      when: '%c'
+    - spec: '%cxx=nvhpc@26.1'
+      when: '%cxx'
+    - spec: '%fortran=nvhpc@26.1'
+      when: '%fortran'
+    - spec: '%blas=nvhpc@26.1'
+      when: '%blas'
+    - spec: '%lapack=nvhpc@26.1'
+      when: '%lapack'
   specs:
   - libfabric@1.22.0
   - gcc@12.5.0
@@ -2545,3 +2567,53 @@ spack:
   - superlu-dist@9.2.1 %[when='%c'] c=oneapi@2025.3.2 %[when='%cxx'] cxx=oneapi@2025.3.2 %[when='%fortran'] fortran=oneapi@2025.3.2 %[when='%blas'] blas=intel-oneapi-mkl@2025.3.1 %[when='%lapack'] lapack=intel-oneapi-mkl@2025.3.1 ^cray-mpich@8.1.32 %oneapi ^metis %oneapi@2025.3.2
   - superlu-dist@9.2.1 %[when='%c'] c=oneapi@2025.3.2 %[when='%cxx'] cxx=oneapi@2025.3.2 %[when='%fortran'] fortran=oneapi@2025.3.2 %[when='%blas'] blas=intel-oneapi-mkl@2025.3.1 %[when='%lapack'] lapack=intel-oneapi-mkl@2025.3.1 ^cray-mpich@9.0.0 %oneapi ^metis %oneapi@2025.3.2
   - superlu-dist@9.2.1 %[when='%c'] c=oneapi@2025.3.2 %[when='%cxx'] cxx=oneapi@2025.3.2 %[when='%fortran'] fortran=oneapi@2025.3.2 %[when='%blas'] blas=intel-oneapi-mkl@2025.3.1 %[when='%lapack'] lapack=intel-oneapi-mkl@2025.3.1 ^metis %oneapi@2025.3.2 ^openmpi@5.0.9 %oneapi@2025.3.2
+  - nvhpc@26.1
+  - ncarcompilers@1.2.0 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - fftw@3.3.10~mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - udunits@2.2.28 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - hdf5@1.14.6~mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - hdf@4.2.15 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - netcdf@4.9.3~mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^hdf5 %nvhpc@26.1
+  - geos@3.14.0 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - superlu@7.0.0 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^metis %nvhpc@26.1
+  - eccodes@2.41.0 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^hdf5 %nvhpc@26.1
+  - proj@9.7.0 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - mpi-serial@2.5.3 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - parallelio@2.6.8~mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^hdf5 %nvhpc@26.1 ^mpi-serial %nvhpc@26.1
+  - esmf@8.9.1~mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^hdf5 %nvhpc@26.1 ^mpi-serial %nvhpc@26.1
+  - openmpi@5.0.9 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - spherepack@3.2 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - pfunit@4.14.0 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^gftl %nvhpc@26.1
+  - parallel-netcdf@1.14.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - parallel-netcdf@1.14.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - parallel-netcdf@1.14.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - hdf5@1.14.6+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - hdf5@1.14.6+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - hdf5@1.14.6+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - netcdf@4.9.3+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - netcdf@4.9.3+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - netcdf@4.9.3+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - parallelio@2.6.8 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - parallelio@2.6.8 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - parallelio@2.6.8 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - esmf@8.9.1+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc ^hdf5 %nvhpc@26.1
+  - esmf@8.9.1+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc ^hdf5 %nvhpc@26.1
+  - esmf@8.9.1+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^hdf5 %nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - fftw@3.3.10+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - fftw@3.3.10+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - fftw@3.3.10+mpi %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - parallelio1@1.10.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - parallelio1@1.10.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - parallelio1@1.10.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - parallelio@2.6.8~shared %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - parallelio@2.6.8~shared %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - parallelio@2.6.8~shared %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - darshan-runtime@3.4.7 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - darshan-runtime@3.4.7 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - darshan-runtime@3.4.7 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - osu-micro-benchmarks %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - osu-micro-benchmarks %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - osu-micro-benchmarks %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - gptl@8.1.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
+  - gptl@8.1.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
+  - gptl@8.1.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
