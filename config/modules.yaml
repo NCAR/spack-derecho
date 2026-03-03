@@ -123,6 +123,8 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - idl
+      - matlab
       - nvhpc
       - intel-oneapi-mkl
       - intel-oneapi-compilers
@@ -166,8 +168,6 @@ modules:
       - cce
       - charliecloud
       - rstudio
-      - idl
-      - matlab
       - cray-libsci
       - libtorch
       - julia
@@ -518,6 +518,10 @@ modules:
         environment:
           set:
             HDF5_PLUGIN_PATH: '{^netcdf-c.prefix}/plugins'
+      ncl:
+        environment:
+          set:
+            NCARG_LIBS_ROOT: /glade/u/apps/opt/ncl/ncarglibs/{version}
       nco:
         autoload: none
       ncview:

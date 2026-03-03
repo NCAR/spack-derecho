@@ -33,15 +33,6 @@ spack:
       NVCCFLAGS: -allow-unsupported-compiler
       NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
   packages:
-    openssl:
-      externals:
-      - spec: openssl@1.1.1w-fips
-        prefix: /usr
-      - spec: openssl@3.1.4
-        prefix: /usr
-      buildable: false
-      require:
-      - certs=system
     pkg-config:
       externals:
       - spec: pkg-config@0.29.2
@@ -52,6 +43,15 @@ spack:
       - spec: lustre@2.15.6.1_cray_100_g2c66dd0
         prefix: /usr
       buildable: false
+    openssl:
+      externals:
+      - spec: openssl@1.1.1w-fips
+        prefix: /usr
+      - spec: openssl@3.1.4
+        prefix: /usr
+      buildable: false
+      require:
+      - certs=system
     gcc:
       externals:
       - spec: gcc@14.3.0 languages:='c,c++,fortran,go'
@@ -730,13 +730,13 @@ spack:
       variants:
       - +examples
       - ~openmp
-      require:
+      prefer:
       - spec: +cuda +wrapper ~alloc_async
         when: '%gcc'
       - spec: +cuda +wrapper ~alloc_async
         when: '%nvhpc'
-      - spec: ^cmake@3.27
-        when: '@:4.2.01 +cuda'
+      - spec: +serial
+        when: '%intel-oneapi-compilers'
     krb5:
       prefer:
       - '%gcc@12.5.0'
@@ -1306,6 +1306,18 @@ spack:
     cprnc:
       prefer:
       - '%gcc@12.5.0'
+    matlab:
+      externals:
+      - spec: matlab@R2024b
+        prefix: /glade/u/apps/opt/matlab/R2024b
+      - spec: matlab@R2025b
+        prefix: /glade/u/apps/opt/matlab/R2025b
+      buildable: false
+    idl:
+      externals:
+      - spec: idl@9.2.0
+        prefix: /glade/u/apps/opt/idl/9.2.0
+      buildable: false
   view:
     baseenv:
       root: /glade/u/apps/derecho/25.10/opt/view
@@ -1499,6 +1511,8 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - idl
+        - matlab
         - nvhpc
         - intel-oneapi-mkl
         - intel-oneapi-compilers
@@ -1542,8 +1556,6 @@ spack:
         - cce
         - charliecloud
         - rstudio
-        - idl
-        - matlab
         - cray-libsci
         - libtorch
         - julia
@@ -1894,6 +1906,10 @@ spack:
           environment:
             set:
               HDF5_PLUGIN_PATH: '{^netcdf-c.prefix}/plugins'
+        ncl:
+          environment:
+            set:
+              NCARG_LIBS_ROOT: /glade/u/apps/opt/ncl/ncarglibs/{version}
         nco:
           autoload: none
         ncview:
@@ -2617,3 +2633,8 @@ spack:
   - gptl@8.1.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@8.1.32 %nvhpc
   - gptl@8.1.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^cray-mpich@9.0.0 %nvhpc
   - gptl@8.1.1 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1 ^openmpi@5.0.9 %nvhpc@26.1
+  - kokkos@4.7.02 %[when='%c'] c=gcc@14.3.0 %[when='%cxx'] cxx=gcc@14.3.0 %[when='%fortran'] fortran=gcc@14.3.0 %[when='%blas'] blas=openblas@0.3.30 %[when='%lapack'] lapack=openblas@0.3.30
+  - kokkos@4.7.02 %[when='%c'] c=nvhpc@26.1 %[when='%cxx'] cxx=nvhpc@26.1 %[when='%fortran'] fortran=nvhpc@26.1 %[when='%blas'] blas=nvhpc@26.1 %[when='%lapack'] lapack=nvhpc@26.1
+  - kokkos@4.7.02 %[when='%c'] c=oneapi@2025.3.2 %[when='%cxx'] cxx=oneapi@2025.3.2 %[when='%fortran'] fortran=oneapi@2025.3.2 %[when='%blas'] blas=intel-oneapi-mkl@2025.3.1 %[when='%lapack'] lapack=intel-oneapi-mkl@2025.3.1
+  - matlab@R2024b
+  - idl@9.2.0
