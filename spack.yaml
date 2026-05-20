@@ -1511,6 +1511,7 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - gh
         - idl
         - matlab
         - nvhpc
@@ -2638,3 +2639,4 @@ spack:
   - kokkos@4.7.02 %[when='%c'] c=oneapi@2025.3.2 %[when='%cxx'] cxx=oneapi@2025.3.2 %[when='%fortran'] fortran=oneapi@2025.3.2 %[when='%blas'] blas=intel-oneapi-mkl@2025.3.1 %[when='%lapack'] lapack=intel-oneapi-mkl@2025.3.1
   - matlab@R2024b
   - idl@9.2.0
+  - gh@2.74.2

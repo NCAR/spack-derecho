@@ -123,6 +123,7 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - gh
       - idl
       - matlab
       - nvhpc
