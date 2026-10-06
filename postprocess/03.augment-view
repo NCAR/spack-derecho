@@ -48,6 +48,7 @@ ncar_utils[vncmgr]=vncmgr
 ncar_utils[esgfsearch]=cmipap-configuration
 ncar_utils[esgfdownload]=cmipap-configuration
 ncar_utils[glade_hsm]=csg-utils
+ncar_utils[bao-getkey]=hsg-openbao-scripts
 
 if [[ $NCAR_SPACK_HOST == casper ]]; then
     ncar_utils[dask_resource_monitor]=negin513:ncar-dask-monitor
