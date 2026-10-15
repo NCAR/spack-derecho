@@ -1322,6 +1322,8 @@ spack:
     baseenv:
       root: /glade/u/apps/derecho/25.10/opt/view
       select:
+      - socat
+      - bubblewrap
       - pandoc
       - vim
       - xxdiff
@@ -1621,6 +1623,8 @@ spack:
           - cray-mpich
           - openmpi
         exclude:
+        - socat
+        - bubblewrap
         - miniconda3
         - pandoc
         - vim
@@ -2640,3 +2644,5 @@ spack:
   - matlab@R2024b
   - idl@9.2.0
   - gh@2.74.2
+  - bubblewrap
+  - socat

@@ -233,6 +233,8 @@ modules:
         - cray-mpich
         - openmpi
       exclude:
+      - socat
+      - bubblewrap
       - miniconda3
       - pandoc
       - vim
