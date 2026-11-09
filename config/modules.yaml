@@ -123,9 +123,9 @@ modules:
       core_compilers:
       - gcc@12.5.0
       core_specs:
+      - matlab
       - gh
       - idl
-      - matlab
       - nvhpc
       - intel-oneapi-mkl
       - intel-oneapi-compilers

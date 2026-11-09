@@ -1513,9 +1513,9 @@ spack:
         core_compilers:
         - gcc@12.5.0
         core_specs:
+        - matlab
         - gh
         - idl
-        - matlab
         - nvhpc
         - intel-oneapi-mkl
         - intel-oneapi-compilers
@@ -2646,3 +2646,4 @@ spack:
   - gh@2.74.2
   - bubblewrap
   - socat
+  - matlab@R2025b
