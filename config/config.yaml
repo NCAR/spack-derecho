@@ -26,7 +26,3 @@ config:
     bind: false
   template_dirs:
   - /glade/u/apps/derecho/25.10/envs/build/templates/modules
-env_vars:
-  set:
-    NVCCFLAGS: -allow-unsupported-compiler
-    NVCC_PREPEND_FLAGS: -allow-unsupported-compiler

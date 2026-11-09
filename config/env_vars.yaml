@@ -1,0 +1,4 @@
+env_vars:
+  set:
+    NVCCFLAGS: -allow-unsupported-compiler
+    NVCC_PREPEND_FLAGS: -allow-unsupported-compiler
